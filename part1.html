@@ -6,14 +6,16 @@
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
         h1, h2, h3 { color: var(--accent); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
         th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
         th { background: #0f172a; color: var(--accent); }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -28,48 +30,87 @@
         <h1>Parte 1: El Corazón Inteligente de la Máquina</h1>
         
         <div class="card">
-            <h2>1. Análisis Arquitectónico: CPU y NPU</h2>
+            <h2>1.1. Análisis Arquitectónico Comparativo: CPU y NPU</h2>
+            <p>En el ámbito de la investigación avanzada en seguridad de IA, la ejecución local de modelos de lenguaje (LLMs) es imperativa para garantizar la soberanía de datos. Un investigador de IA requiere capacidades masivas de virtualización y aislamiento (sandboxing) para evaluar vectores de ataque como la inyección de peticiones (*prompt injection*)[cite: 13].</p>
+            <p>Mientras que en dispositivos móviles los fabricantes integran NPU de alta potencia, en el segmento de escritorio la estrategia difiere: Intel integra la NPU "Intel AI Boost" (~13 TOPS) en la plataforma Core Ultra 200S, mientras que AMD (Ryzen 9000) delega el cálculo matricial pesado a las GPUs dedicadas, priorizando el rendimiento multinúcleo puro[cite: 13].</p>
+
             <table>
                 <tr>
-                    <th>Especificación</th>
+                    <th>Especificación Técnica</th>
                     <th>Intel Core Ultra 9 285K</th>
                     <th>AMD Ryzen 9 9950X</th>
                 </tr>
                 <tr>
-                    <td>Arquitectura</td>
+                    <td>Arquitectura de Núcleos</td>
                     <td>Híbrida: 8 P-Cores + 16 E-Cores</td>
-                    <td>Monolítica: 16 Cores Zen 5</td>
+                    <td>Monolítica / Chiplet: 16 Cores Zen 5</td>
                 </tr>
                 <tr>
-                    <td>Núcleos / Hilos</td>
-                    <td>24 Cores / 24 Hilos</td>
-                    <td>16 Cores / 32 Hilos (SMT)</td>
+                    <td>Núcleos e Hilos</td>
+                    <td>24 Núcleos / 24 Hilos (Sin Hyper-Threading)</td>
+                    <td>16 Núcleos / 32 Hilos (Con SMT completo)</td>
+                </tr>
+                <tr>
+                    <td>Memoria Caché L3</td>
+                    <td>36 MB (Compartida)</td>
+                    <td>64 MB (Distribuida en CCDs)</td>
                 </tr>
                 <tr>
                     <td>NPU Integrada</td>
-                    <td>Intel AI Boost (~13 TOPS)</td>
-                    <td>No integrada en Desktop</td>
+                    <td>Intel AI Boost (~13 TOPS INT8)</td>
+                    <td>No integrada en escritorio (Requiere GPU o APU móvil)</td>
                 </tr>
                 <tr>
-                    <td>Virtualización / Seguridad</td>
-                    <td>Intel VT-x / VT-d / TME</td>
-                    <td>AMD-V / AMD-Vi / SEV</td>
+                    <td>Aislamiento y Seguridad</td>
+                    <td>Intel VT-x, VT-d, TME</td>
+                    <td>AMD-V, AMD-Vi, Secure Encrypted Virtualization (SEV)</td>
                 </tr>
             </table>
-            <p><strong>Veredicto:</strong> El AMD Ryzen 9 9950X es superior gracias a sus 32 hilos y la tecnología Secure Encrypted Virtualization (SEV), permitiendo ejecutar múltiples entornos aisaldos (sandboxing) sin degradación.</p>
+
+            <p><strong>Veredicto Técnico para Ciberseguridad:</strong> A pesar de la NPU de Intel, el <strong>AMD Ryzen 9 9950X</strong> es superior para este perfil. Sus 32 hilos simultáneos (SMT) y la tecnología <em>Secure Encrypted Virtualization (SEV)</em> permiten cifrar la memoria de cada máquina virtual de forma independiente, protegiendo los pesos del modelo contra ataques de canal lateral[cite: 13].</p>
         </div>
 
         <div class="card">
-            <h2>2. Rendimiento de GPUs: RTX 4090 vs RX 7900 XTX</h2>
-            <p>Para la inferencia y fine-tuning local de LLMs de más de 70B parámetros, se requiere un mínimo de 24 GB de VRAM. La <strong>NVIDIA GeForce RTX 4090</strong> domina gracias a la arquitectura CUDA, sus 512 Tensor Cores y la aceleración nativa en librerías como vLLM, FlashAttention-2 y Unsloth.</p>
+            <h2>1.2. Rendimiento en el Mundo Real: La GPU como Motor de IA</h2>
+            <p>El procesamiento pesado (entrenamiento, fine-tuning e inferencia masiva) requiere una GPU de gama alta. Para auditar modelos abiertos como Llama 3 o Mistral, la elección del acelerador determina el tamaño máximo del modelo local[cite: 13].</p>
+
+            <table>
+                <tr>
+                    <th>Especificación</th>
+                    <th>NVIDIA GeForce RTX 4090</th>
+                    <th>AMD Radeon RX 7900 XTX</th>
+                </tr>
+                <tr>
+                    <td>Memoria VRAM</td>
+                    <td>24 GB GDDR6X</td>
+                    <td>24 GB GDDR6</td>
+                </tr>
+                <tr>
+                    <td>Ancho de Banda</td>
+                    <td>1,008 GB/s</td>
+                    <td>960 GB/s</td>
+                </tr>
+                <tr>
+                    <td>Ecosistema Software</td>
+                    <td>NVIDIA CUDA / TensorRT / FlashAttention-2</td>
+                    <td>AMD ROCm / HIP Framework</td>
+                </tr>
+                <tr>
+                    <td>Compatibilidad</td>
+                    <td>Nativa en PyTorch, vLLM, Unsloth</td>
+                    <td>Secundaria / Requiere compilación manual</td>
+                </tr>
+            </table>
+
+            <p><strong>Justificación:</strong> El ecosistema <strong>NVIDIA CUDA</strong> es el estándar indiscutible. Herramientas críticas como <em>vLLM</em> y <em>BitsAndBytes</em> están optimizadas nativamente para los Tensor Cores de NVIDIA, convirtiendo a la RTX 4090 en una herramienta indispensable[cite: 13].</p>
         </div>
 
         <div class="card">
-            <h2>3. Galería de Aplicaciones Reales</h2>
+            <h2>1.3. Galería de Aplicaciones Reales</h2>
             <ul>
-                <li><strong>LM Studio / Ollama:</strong> Inferencia local 100% offline sin fugas de datos.</li>
-                <li><strong>Garak:</strong> Escáner de vulnerabilidades para prompt injection y sesgos.</li>
-                <li><strong>Docker Desktop:</strong> Entornos virtuales aislados para probar agentes autónomos.</li>
+                <li><strong>LM Studio / Ollama:</strong> Permiten desplegar LLMs de forma 100% offline, asegurando que ningún dato salga de la workstation[cite: 14].</li>
+                <li><strong>Garak (LLM Vulnerability Scanner):</strong> Escáner de código abierto para evaluar vulnerabilidades, alucinaciones y sesgos éticos en modelos locales[cite: 14].</li>
+                <li><strong>Docker Desktop:</strong> Infraestructura de virtualización indispensable para crear entornos aislados (sandboxes) donde probar agentes de IA maliciosos sin riesgo[cite: 14].</li>
             </ul>
         </div>
     </div>
