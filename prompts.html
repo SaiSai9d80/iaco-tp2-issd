@@ -6,16 +6,18 @@
     <title>Anexo: Uso de IA y Prompts - TP2 ISSD</title>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
-        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #22d3ee; text-decoration: underline; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        h1, h2, h3 { color: var(--accent); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
-        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
-        th { background: #0f172a; color: var(--accent); }
+        h1, h2, h3 { color: var(--accent); margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }
+        th, td { border: 1px solid #334155; padding: 14px; text-align: left; vertical-align: top; }
+        th { background: #0f172a; color: var(--accent); font-weight: 600; }
+        tr:hover { background-color: #263345; }
+        .highlight { color: #22d3ee; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -25,72 +27,73 @@
         <a href="part2.html">Parte 2: Almacenamiento</a>
         <a href="part3.html">Parte 3: Workstations</a>
         <a href="resources.html">Recursos y APA</a>
-        <a href="prompts.html">Prompts e IA</a>
+        <a href="prompts.html" style="color: #22d3ee;">Prompts e IA</a>
     </nav>
+    
     <div class="container">
         <h1>Anexo: Uso de Inteligencia Artificial y Trazabilidad de Prompts</h1>
         
         <div class="card">
             <h2>Descargo de Responsabilidad (Disclaimer)</h2>
             <p>El presente documento y el sitio web derivado han sido desarrollados con fines estrictamente académicos e investigativos en el marco de la asignatura <strong>Introducción a la Arquitectura de Computadoras (IACO 2026)</strong> del Instituto Superior Santo Domingo (ISSD).</p>
-            <p>Se deja constancia del uso de herramientas de Inteligencia Artificial Generativa como asistentes metodológicos y de redacción técnica. Las especificaciones de hardware, comparativas de rendimiento, presupuestos de componentes y evaluaciones técnicas se fundamentan en hojas de datos oficiales de los fabricantes y benchmarks de la industria. Los autores y el ISSD no asumen responsabilidad legal por el uso indebido de las configuraciones propuestas ni por variaciones en el mercado informático.</p>
+            <p>Se deja constancia del uso de herramientas de <em>Inteligencia Artificial Generativa</em> como asistentes metodológicos y de redacción técnica. Las especificaciones de hardware, comparativas de rendimiento, presupuestos de componentes y evaluaciones técnicas se fundamentan en hojas de datos oficiales de los fabricantes y benchmarks de la industria, los cuales han sido verificados manualmente por el equipo de trabajo para prevenir alucinaciones de la IA. Los autores y el ISSD no asumen responsabilidad legal por el uso indebido de las configuraciones propuestas, ni por variaciones en el mercado informático o en el rendimiento de modelos de código abierto auditados localmente.</p>
         </div>
 
         <div class="card">
             <h2>Tabla de Trazabilidad Metodológica de Prompts</h2>
-            <p>A continuación se documenta la secuencia de interacción realizada con la IA para la elaboración de este proyecto:</p>
+            <p>A continuación se documenta la secuencia de interacción realizada con la IA para la elaboración de este proyecto, cumpliendo con la metodología de <em>"Rol + Contexto + Tarea + Restricciones"</em> recomendada en la cátedra:</p>
             
             <table>
                 <thead>
                     <tr>
-                        <th>Código</th>
-                        <th>Rol Asignado a la IA</th>
-                        <th>Propósito Técnico / Consulta</th>
-                        <th>Resultado Integrado en el Trabajo</th>
+                        <th style="width: 8%;">Código</th>
+                        <th style="width: 25%;">Rol Asignado a la IA</th>
+                        <th style="width: 37%;">Propósito Técnico / Consulta</th>
+                        <th style="width: 30%;">Resultado Integrado en el Trabajo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>PR-01</strong></td>
-                        <td>[Rol del Prompt 1]</td>
-                        <td>[Propósito técnico de la consulta 1]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Experto en Arquitectura y Ciberseguridad de IA</td>
+                        <td>Análisis comparativo de CPUs de escritorio (Intel Core Ultra vs. AMD Ryzen 9000) con enfoque en NPU, hilos de virtualización y tecnologías de aislamiento para <em>sandboxing</em>.</td>
+                        <td>Sección 1.1: Tabla comparativa de CPUs y justificación de la tecnología AMD SEV para ciberseguridad.</td>
                     </tr>
                     <tr>
                         <td><strong>PR-02</strong></td>
-                        <td>[Rol del Prompt 2]</td>
-                        <td>[Propósito técnico de la consulta 2]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Ingeniero de Machine Learning y Hardware</td>
+                        <td>Comparativa técnica de GPUs de alta gama (RTX 4090 vs. RX 7900 XTX), análisis de VRAM, ancho de banda y dominio del ecosistema CUDA vs. ROCm para inferencia local de LLMs.</td>
+                        <td>Sección 1.2: Análisis de VRAM, Tensor Cores y frameworks nativos (vLLM, Unsloth).</td>
                     </tr>
                     <tr>
                         <td><strong>PR-03</strong></td>
-                        <td>[Rol del Prompt 3]</td>
-                        <td>[Propósito técnico de la consulta 3]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Arquitecto de Sistemas de Almacenamiento</td>
+                        <td>Explicación de la diferencia de velocidad entre buses SATA y PCIe utilizando la analogía de la autopista, incluyendo el impacto de DirectStorage y PCIe 5.0 en cargas de trabajo de IA.</td>
+                        <td>Sección 2.1 - 2.3: Analogía de buses, tabla de velocidades y bloque de datos JSON para gráficos.</td>
                     </tr>
                     <tr>
                         <td><strong>PR-04</strong></td>
-                        <td>[Rol del Prompt 4]</td>
-                        <td>[Propósito técnico de la consulta 4]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Ingeniero de Hardware Senior ("Money is No Object")</td>
+                        <td>Diseño de una workstation de gama absoluta sin restricciones presupuestarias, incluyendo Threadripper PRO, RTX 6000 Ada y cálculo de margen energético para una PSU Titanium.</td>
+                        <td>Sección 3.1: Configuración de gama absoluta, justificación de RAM ECC y balance energético.</td>
                     </tr>
                     <tr>
                         <td><strong>PR-05</strong></td>
-                        <td>[Rol del Prompt 5]</td>
-                        <td>[Propósito técnico de la consulta 5]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Especialista en Ensamblaje y Presupuesto Ajustado</td>
+                        <td>Selección de componentes optimizados para la configuración "El Punto Dulce" (hasta 800 USD), priorizando 12GB de VRAM mediante el mercado de segunda mano, sin sacrificar la calidad de la fuente de alimentación.</td>
+                        <td>Sección 3.2: Tabla detallada de componentes de 800 USD con PSU certificada 80+ Bronze.</td>
                     </tr>
                     <tr>
                         <td><strong>PR-06</strong></td>
-                        <td>[Rol del Prompt 6]</td>
-                        <td>[Propósito técnico de la consulta 6]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Desarrollador Web y Visualizador de Datos</td>
+                        <td>Generación de bloques de datos estructurados (JSON) para gráficos comparativos y creación de un diagrama de bloques esquemático en sintaxis Mermaid.js para la build económica.</td>
+                        <td>Sección 3.3: Código Mermaid exportable y guía de implementación visual en Google Sites.</td>
                     </tr>
                     <tr>
                         <td><strong>PR-07</strong></td>
-                        <td>[Rol del Prompt 7]</td>
-                        <td>[Propósito técnico de la consulta 7]</td>
-                        <td>[Resultado integrado en la entrega]</td>
+                        <td>Consultor de Metodología Académica</td>
+                        <td>Redacción del descargo de responsabilidad (disclaimer), estructuración de la bibliografía en formato APA 7ª edición con enlaces directos y diseño de esta tabla de trazabilidad.</td>
+                        <td>Sección 4.1 - 4.3: Anexos finales, bibliografía verificada y tabla de prompts.</td>
                     </tr>
                 </tbody>
             </table>
