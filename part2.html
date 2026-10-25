@@ -16,6 +16,7 @@
         h1, h2, h3 { color: var(--accent); margin-top: 0; }
         h1 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
         h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        h3 { font-size: 1.2rem; margin-bottom: 10px; }
         table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
         th, td { border: 1px solid #334155; padding: 14px; text-align: left; vertical-align: top; }
         th { background: #0f172a; color: var(--accent); font-weight: 600; }
@@ -46,7 +47,6 @@
         .analogy-card.sata { border-left: 4px solid #ef4444; }
         .analogy-card.pcie { border-left: 4px solid #22c55e; }
         
-        /* Стили для графика */
         .chart-container {
             background: #0f172a;
             padding: 30px;
@@ -55,6 +55,22 @@
             margin: 25px 0;
             position: relative;
             height: 400px;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .analogy-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -131,9 +147,14 @@
                 </tr>
             </table>
 
-            <!-- График сравнения скоростей -->
-            <div class="chart-container">
-                <canvas id="storageChart"></canvas>
+            <!-- Два графика рядом -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <canvas id="readChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="writeChart"></canvas>
+                </div>
             </div>
         </div>
 
@@ -163,9 +184,56 @@
     </div>
 
     <script>
-        // Данные для графика
-        const ctx = document.getElementById('storageChart').getContext('2d');
-        const storageChart = new Chart(ctx, {
+        // Общие настройки для графиков
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    color: '#06b6d4',
+                    font: { size: 16, weight: 'bold' }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.y + ' MB/s';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 15000,
+                    ticks: {
+                        color: '#94a3b8',
+                        callback: function(value) {
+                            return value + ' MB/s';
+                        }
+                    },
+                    grid: {
+                        color: '#334155'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#94a3b8',
+                        font: { size: 11 }
+                    },
+                    grid: {
+                        color: '#334155'
+                    }
+                }
+            }
+        };
+
+        // График скорости чтения
+        const readCtx = document.getElementById('readChart').getContext('2d');
+        new Chart(readCtx, {
             type: 'bar',
             data: {
                 labels: ['HDD 7200 RPM', 'SSD SATA III', 'SSD NVMe PCIe 4.0', 'SSD NVMe PCIe 5.0'],
@@ -188,44 +256,49 @@
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                ...chartOptions,
                 plugins: {
-                    legend: {
-                        labels: {
-                            color: '#f8fafc',
-                            font: { size: 14 }
-                        }
-                    },
+                    ...chartOptions.plugins,
                     title: {
-                        display: true,
-                        text: 'Comparativa de Velocidades de Almacenamiento',
-                        color: '#06b6d4',
-                        font: { size: 18, weight: 'bold' }
+                        ...chartOptions.plugins.title,
+                        text: 'Velocidad de Lectura Secuencial'
                     }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 15000,
-                        ticks: {
-                            color: '#94a3b8',
-                            callback: function(value) {
-                                return value + ' MB/s';
-                            }
-                        },
-                        grid: {
-                            color: '#334155'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#94a3b8',
-                            font: { size: 12 }
-                        },
-                        grid: {
-                            color: '#334155'
-                        }
+                }
+            }
+        });
+
+        // График скорости записи
+        const writeCtx = document.getElementById('writeChart').getContext('2d');
+        new Chart(writeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['HDD 7200 RPM', 'SSD SATA III', 'SSD NVMe PCIe 4.0', 'SSD NVMe PCIe 5.0'],
+                datasets: [{
+                    label: 'Velocidad de Escritura (MB/s)',
+                    data: [150, 520, 6500, 12000],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.6)',
+                        'rgba(245, 158, 11, 0.6)',
+                        'rgba(34, 197, 94, 0.6)',
+                        'rgba(6, 182, 212, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgb(239, 68, 68)',
+                        'rgb(245, 158, 11)',
+                        'rgb(34, 197, 94)',
+                        'rgb(6, 182, 212)'
+                    ],
+                    borderWidth: 2,
+                    borderDash: [5, 5]
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        ...chartOptions.plugins.title,
+                        text: 'Velocidad de Escritura Secuencial'
                     }
                 }
             }
