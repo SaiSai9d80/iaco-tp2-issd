@@ -6,12 +6,13 @@
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; display: flex; flex-direction: column; gap: 10px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; display: flex; flex-direction: column; gap: 15px; }
         h1, h2 { color: var(--accent); }
-        .btn { display: inline-block; background: var(--accent); color: #000; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; align-self: start; }
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; align-self: start; }
+        .btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -23,18 +24,18 @@
         <a href="resources.html">Recursos y APA</a>
     </nav>
     <div class="container">
-        <h1>Parte 3: El Diseño Maestro - Workstations de IA</h1>
+        <h1>Parte 3: El Diseño Maestro — Workstations de IA</h1>
         
         <div class="card">
-            <h2>Configuración 1: "Money is No Object"</h2>
-            <p>La bestia absoluta de rendimiento. Diseñada con procesadores AMD Threadripper PRO, 256 GB de Memoria RAM ECC y tarjeta gráfica NVIDIA RTX 6000 Ada (48 GB VRAM) con fuente Titanium.</p>
-            <a href="part3-money.html" class="btn">Ver Configuración Completa →</a>
+            <h2>Configuración 1: "Money is No Object" (La Bestia Absoluta)</h2>
+            <p>Estación de trabajo profesional definitiva sin restricciones presupuestarias, orientada a la máxima capacidad de cómputo, sandboxing concurrente y protección absoluta contra la corrupción de datos mediante memoria ECC y fuente de poder de categoría industrial[cite: 14].</p>
+            <a href="part3-money.html" class="btn">Ver Especificaciones de Gama Alta →</a>
         </div>
 
         <div class="card">
-            <h2>Configuración 2: "El Punto Dulce" (Hasta $800 USD)</h2>
-            <p>El presupuesto inteligente. Configuración optimizada maximizando la VRAM con una RTX 3060 de 12 GB usada y fuente certificada 80 PLUS Bronze.</p>
-            <a href="part3-budget.html" class="btn">Ver Landing Page $800 USD →</a>
+            <h2>Configuración 2: "El Punto Dulce" (Presupuesto Inteligente - $800 USD)</h2>
+            <p>Landing page interactiva de la workstation accesible. Diseñada para maximizar la VRAM con una RTX 3060 de 12GB usada y fuente certificada, cumpliendo estrictamente con el techo presupuestario de la cátedra[cite: 14].</p>
+            <a href="part3-budget.html" class="btn">Ver Landing Page e Infografía $800 USD →</a>
         </div>
     </div>
 </body>
