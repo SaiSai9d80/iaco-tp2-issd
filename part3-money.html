@@ -6,13 +6,13 @@
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
         h1, h2 { color: var(--accent); }
         ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
+        li { margin-bottom: 12px; }
     </style>
 </head>
 <body>
@@ -21,15 +21,17 @@
         <a href="part3.html">← Volver a Workstations</a>
     </nav>
     <div class="container">
-        <h1>Configuración: "Money is No Object"</h1>
+        <h1>Configuración: "Money is No Object" (Gama Absoluta)</h1>
         <div class="card">
+            <h2>Componentes de Grado Industrial y Justificación Técnica</h2>
             <ul>
-                <li><strong>CPU:</strong> AMD Ryzen Threadripper PRO 7975WX (32 Cores / 64 Hilos)</li>
-                <li><strong>Motherboard:</strong> ASUS Pro WS TRX50-SAGE WIFI</li>
-                <li><strong>RAM:</strong> 256 GB (4x64GB) DDR5 Registered ECC (Evita corrupción de datos)</li>
-                <li><strong>GPU:</strong> NVIDIA RTX 6000 Ada Generation (48 GB VRAM ECC)</li>
-                <li><strong>Almacenamiento:</strong> 2 TB Crucial T700 PCIe 5.0 + 8 TB NVMe RAID 0</li>
-                <li><strong>PSU:</strong> Corsair AX1600i 1600W (80 PLUS Titanium) — Margen de reserva ~47%</li>
+                <li><strong>Procesador (CPU):</strong> AMD Ryzen Threadripper PRO 7975WX (32 Cores / 64 Hilos) — <em>Proporciona 64 hilos para sandboxes concurrentes y soporte para 128 carriles PCIe 5.0[cite: 14].</em></li>
+                <li><strong>Placa Base:</strong> ASUS Pro WS TRX50-SAGE WIFI — <em>Estabilidad de servidor, disipación robusta y conectividad de red de 10 Gbps.</em></li>
+                <li><strong>Memoria RAM:</strong> 256 GB (4 x 64 GB) DDR5-5600 MHz Registered ECC — <em>El Código de Corrección de Errores (ECC) evita la corrupción de datasets por interferencias térmicas o eléctricas[cite: 14].</em></li>
+                <li><strong>Tarjeta Gráfica (GPU):</strong> NVIDIA RTX 6000 Ada Generation (48 GB VRAM con ECC) — <em>Permite cargar modelos de más de 70B de parámetros sin cuantización agresiva[cite: 14].</em></li>
+                <li><strong>Almacenamiento Principal:</strong> 2 TB Crucial T700 PCIe 5.0 NVMe M.2 SSD — <em>Lectura ultra rápida de hasta 12,400 MB/s para sistema y herramientas.</em></li>
+                <li><strong>Almacenamiento de Datasets:</strong> 8 TB (2 x 4 TB en RAID 0) Corsair MP700 Pro PCIe 5.0 — <em>Ancho de banda extremo para repositorios de entrenamiento locales.</em></li>
+                <li><strong>Fuente de Alimentación (PSU):</strong> Corsair AX1600i 1600W (80 PLUS Titanium) — <em>Ofrece un margen de seguridad operacional del ~47% (consumo estimado de 850W), operando en su zona de máxima eficiencia (>94%) y protegiendo contra picos transitorios (*power transients*)[cite: 14].</em></li>
             </ul>
         </div>
     </div>
