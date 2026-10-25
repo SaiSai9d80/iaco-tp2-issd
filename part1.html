@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,13 +26,15 @@
         .btn:hover { opacity: 0.9; }
         .citation { color: var(--accent); font-size: 0.85rem; vertical-align: super; text-decoration: none; }
         .citation:hover { text-decoration: underline; }
-        .image-placeholder { background: #0f172a; border: 2px dashed #334155; border-radius: 8px; padding: 40px; text-align: center; margin: 20px 0; color: var(--muted); }
-        .image-placeholder strong { color: var(--accent); display: block; margin-bottom: 10px; }
-        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
+        .image-grid img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #334155; }
         .app-card { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; text-align: center; }
+        .app-card img { max-width: 120px; margin-bottom: 15px; background: white; padding: 10px; border-radius: 8px; }
         .app-card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; }
+        .app-card p { color: var(--muted); font-size: 0.9rem; margin: 0; }
         .highlight { background: #0f172a; padding: 15px; border-left: 4px solid var(--accent); border-radius: 4px; margin: 15px 0; }
         .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
+        .garak-badge { background: #0f172a; border: 1px solid #06b6d4; border-radius: 6px; padding: 12px 20px; display: inline-flex; align-items: center; gap: 8px; font-family: 'Courier New', Courier, monospace; color: #06b6d4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(6, 182, 212, 0.1); }
     </style>
 </head>
 <body>
@@ -53,13 +56,9 @@
             
             <p>Mientras que en dispositivos móviles los fabricantes integran NPU de alta potencia, en el segmento de escritorio la estrategia difiere: Intel integra la NPU "Intel AI Boost" (~13 TOPS) en la plataforma Core Ultra 200S, mientras que AMD (Ryzen 9000) delega el cálculo matricial pesado a las GPUs dedicadas, priorizando el rendimiento multinúcleo puro<a href="resources.html#ref-intel" class="citation">[2]</a>.</p>
 
-            <!-- ЗДЕСЬ НУЖНО ВСТАВИТЬ: Изображения процессоров Intel Core Ultra 9 285K и AMD Ryzen 9 9950X рядом -->
-            <div class="image-placeholder">
-                <strong> AQUÍ INSERTAR IMÁGENES DE LOS PROCESADORES</strong>
-                <p>Insertar renders oficiales o fotografías de alta calidad de:<br>
-                • Intel Core Ultra 9 285K (Arrow Lake-S)<br>
-                • AMD Ryzen 9 9950X (Zen 5)<br>
-                <em>Formato recomendado: PNG o SVG, tamaño 400x300px cada uno, lado a lado</em></p>
+            <div class="image-grid">
+                <img src="images/intel-core-ultra-9-285k.png" alt="Intel Core Ultra 9 285K">
+                <img src="images/AMD Ryzen 9 9950X.png" alt="AMD Ryzen 9 9950X">
             </div>
 
             <table>
@@ -104,13 +103,9 @@
             <h2>1.2. Rendimiento en el Mundo Real: La GPU como Motor de IA</h2>
             <p>El procesamiento pesado (entrenamiento, <em>fine-tuning</em> e inferencia masiva) requiere una GPU de gama alta. Para auditar modelos abiertos como Llama 3 o Mistral, la elección del acelerador determina el tamaño máximo del modelo local<a href="resources.html#ref-nvidia-4090" class="citation">[3]</a>.</p>
 
-            <!-- ЗДЕСЬ НУЖНО ВСТАВИТЬ: Изображения видеокарт RTX 4090 и RX 7900 XTX -->
-            <div class="image-placeholder">
-                <strong>📷 AQUÍ INSERTAR IMÁGENES DE LAS TARJETAS GRÁFICAS</strong>
-                <p>Insertar renders oficiales o fotografías de alta calidad de:<br>
-                • NVIDIA GeForce RTX 4090 (24 GB)<br>
-                • AMD Radeon RX 7900 XTX (24 GB)<br>
-                <em>Formato recomendado: PNG o SVG, tamaño 400x300px cada uno, lado a lado</em></p>
+            <div class="image-grid">
+                <img src="images/NVIDIA GeForce RTX 4090.png" alt="NVIDIA GeForce RTX 4090">
+                <img src="images/AMD Radeon RX 7900 XTX.png" alt="AMD Radeon RX 7900 XTX">
             </div>
 
             <table>
@@ -152,30 +147,23 @@
             
             <div class="image-grid">
                 <div class="app-card">
-                    <!-- ЗДЕСЬ НУЖНО ВСТАВИТЬ: Логотип LM Studio или Ollama -->
-                    <div class="image-placeholder" style="padding: 20px; margin-bottom: 10px;">
-                        <strong>📷 LOGO LM Studio / Ollama</strong>
-                    </div>
+                    <img src="images/ollama.png" alt="Ollama">
                     <h3>LM Studio / Ollama</h3>
-                    <p style="font-size: 0.9rem; margin: 0;">Permiten desplegar LLMs de forma 100% offline, asegurando que ningún dato salga de la workstation<a href="resources.html#ref-ollama" class="citation">[6]</a>.</p>
+                    <p>Permiten desplegar LLMs de forma 100% offline, asegurando que ningún dato salga de la workstation<a href="resources.html#ref-ollama" class="citation">[6]</a>.</p>
                 </div>
                 
                 <div class="app-card">
-                    <!-- ЗДЕСЬ НУЖНО ВСТАВИТЬ: Логотип Garak -->
-                    <div class="image-placeholder" style="padding: 20px; margin-bottom: 10px;">
-                        <strong>📷 LOGO Garak</strong>
+                    <div class="garak-badge">
+                        <span style="color: #22d3ee;">></span> garak
                     </div>
                     <h3>Garak Scanner</h3>
-                    <p style="font-size: 0.9rem; margin: 0;">Escáner de código abierto para evaluar vulnerabilidades, alucinaciones y sesgos éticos en modelos locales<a href="resources.html#ref-garak" class="citation">[7]</a>.</p>
+                    <p>Escáner de código abierto para evaluar vulnerabilidades, alucinaciones y sesgos éticos en modelos locales<a href="resources.html#ref-garak" class="citation">[7]</a>.</p>
                 </div>
                 
                 <div class="app-card">
-                    <!-- ЗДЕСЬ НУЖНО ВСТАВИТЬ: Логотип Docker -->
-                    <div class="image-placeholder" style="padding: 20px; margin-bottom: 10px;">
-                        <strong> LOGO Docker</strong>
-                    </div>
+                    <img src="images/docker-logo.png" alt="Docker">
                     <h3>Docker Desktop</h3>
-                    <p style="font-size: 0.9rem; margin: 0;">Infraestructura de virtualización indispensable para crear entornos aislados (sandboxes) donde probar agentes de IA maliciosos sin riesgo.</p>
+                    <p>Infraestructura de virtualización indispensable para crear entornos aislados (sandboxes) donde probar agentes de IA maliciosos sin riesgo.</p>
                 </div>
             </div>
         </div>
