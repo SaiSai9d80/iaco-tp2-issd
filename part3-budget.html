@@ -6,12 +6,12 @@
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
         h1, h2 { color: var(--accent); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
         th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
         th { background: #0f172a; color: var(--accent); }
     </style>
@@ -29,30 +29,90 @@
         <h1>Landing Page: Workstation "El Punto Dulce" ($800 USD)</h1>
         
         <div class="card">
-            <h2>Presupuesto Detallado</h2>
+            <h2>Presupuesto Detallado y Justificación Técnica</h2>
             <table>
-                <tr><th>Componente</th><th>Modelo</th><th>Precio</th></tr>
-                <tr><td>GPU (Usada)</td><td>NVIDIA RTX 3060 12GB</td><td>$220.00</td></tr>
-                <tr><td>CPU</td><td>AMD Ryzen 5 5600</td><td>$115.00</td></tr>
-                <tr><td>Motherboard</td><td>MSI B550M PRO-VDH WIFI</td><td>$105.00</td></tr>
-                <tr><td>RAM</td><td>32 GB (2x16GB) DDR4 3200 MHz</td><td>$65.00</td></tr>
-                <tr><td>Storage</td><td>1 TB Kingston NV2 PCIe 4.0</td><td>$60.00</td></tr>
-                <tr><td>PSU</td><td>MSI MAG A650BN 650W 80+ Bronze</td><td>$75.00</td></tr>
-                <tr><td>Gabinete</td><td>DeepCool CC560</td><td>$60.00</td></tr>
-                <tr><td>Reserva Logística</td><td>Tasas e Impuestos</td><td>$100.00</td></tr>
-                <tr><th>TOTAL</th><th></th><th>$800.00 USD</th></tr>
+                <tr>
+                    <th>Componente</th>
+                    <th>Modelo Específico</th>
+                    <th>Precio (USD)</th>
+                    <th>Justificación Técnica para IA</th>
+                </tr>
+                <tr>
+                    <td>GPU (Usada)</td>
+                    <td>NVIDIA GeForce RTX 3060 12GB</td>
+                    <td>$220.00</td>
+                    <td>Prioridad Absoluta: 12 GB de VRAM permiten cargar modelos de 7B/8B manteniendo el ecosistema CUDA[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>CPU</td>
+                    <td>AMD Ryzen 5 5600 (6C/12T)</td>
+                    <td>$115.00</td>
+                    <td>Gestiona eficazmente contenedores Docker sin restringir a la GPU[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>Placa Madre</td>
+                    <td>MSI B550M PRO-VDH WIFI</td>
+                    <td>$105.00</td>
+                    <td>Soporte nativo PCIe 4.0 y disipación térmica adecuada[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>Memoria RAM</td>
+                    <td>32 GB (2x16GB) DDR4-3200 MHz</td>
+                    <td>$65.00</td>
+                    <td>Capacidad mínima para cargar datasets en búfer sin paginación[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>Almacenamiento</td>
+                    <td>1TB Kingston NV2 M.2 PCIe 4.0</td>
+                    <td>$60.00</td>
+                    <td>Velocidades de 3,500 MB/s para baja latencia en carga de modelos[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>Fuente (PSU)</td>
+                    <td>MSI MAG A650BN 650W (80+ Bronze)</td>
+                    <td>$75.00</td>
+                    <td>Regla de Cátedra: Protege contra picos de tensión (OVP, OPP, SCP)[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>Gabinete</td>
+                    <td>DeepCool CC560 (4 ventiladores)</td>
+                    <td>$60.00</td>
+                    <td>Flujo de aire óptimo para inferencia prolongada[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td>Reserva Logística</td>
+                    <td>Tasas / Envíos / Fluctuaciones</td>
+                    <td>$100.00</td>
+                    <td>Previsión realista de costos logísticos[cite: 14].</td>
+                </tr>
+                <tr>
+                    <th>TOTAL</th>
+                    <th>Cumplimiento Estricto del Techo</th>
+                    <th>$800.00 USD</th>
+                    <th>Maximiza VRAM sin sacrificar la integridad del sistema[cite: 14].</th>
+                </tr>
             </table>
         </div>
 
         <div class="card">
-            <h2>Diagrama de Conexiones</h2>
+            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build)</h2>
             <div class="mermaid">
                 graph TD
-                PSU[MSI 650W Bronze] --> MOBO[MSI B550M Motherboard]
-                MOBO --> CPU[AMD Ryzen 5 5600]
-                MOBO --> RAM[32GB DDR4]
-                MOBO --> NVMe[1TB NVMe SSD]
-                MOBO --> GPU[RTX 3060 12GB]
+                subgraph PSU_Group [Suministro de Energía]
+                    PSU["MSI MAG A650BN 650W 80+ Bronze"]
+                end
+                subgraph Motherboard_Group [Placa Base: MSI B550M PRO-VDH WIFI]
+                    CPU["AMD Ryzen 5 5600 (6C/12T)"]
+                    RAM["32 GB DDR4 3200 MHz"]
+                    NVMe["1TB Kingston NV2 PCIe 4.0"]
+                    GPU["NVIDIA RTX 3060 12GB GDDR6"]
+                end
+                CPU <-->|"Bus de Memoria Dual-Channel"| RAM
+                CPU <-->|"Bus PCIe 4.0 x4"| NVMe
+                CPU <-->|"Bus PCIe 4.0 x16"| GPU
+                PSU -->|"Conector ATX 24-Pines"| Motherboard_Group
+                PSU -->|"Conector EPS 8-Pines"| CPU
+                PSU -->|"Conector PCIe 8-Pines"| GPU
             </div>
         </div>
     </div>
