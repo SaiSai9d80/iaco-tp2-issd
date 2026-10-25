@@ -21,7 +21,6 @@
         
         .card { background: var(--card); border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
         
-        /* Сетка для сравнения двух сборок */
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -43,7 +42,27 @@
         .build-header.premium { border-left: 4px solid #f59e0b; }
         .build-header.budget { border-left: 4px solid #22c55e; }
 
-        /* Таблицы и списки */
+        .build-image {
+            text-align: center;
+            margin: 20px 0;
+            background: #020617;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #334155;
+        }
+        .build-image img {
+            max-width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .build-image p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
         table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
         th, td { border: 1px solid #334155; padding: 12px; text-align: left; vertical-align: top; }
         th { background: #0f172a; color: var(--accent); font-weight: 600; }
@@ -60,20 +79,9 @@
         }
         ul.specs-list li strong { color: var(--accent); display: block; margin-bottom: 5px; }
 
-        /* Изображения */
-        .image-placeholder {
-            background: #0f172a;
-            border: 2px dashed #334155;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            margin: 15px 0;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-        .image-placeholder strong { color: var(--accent); display: block; margin-bottom: 5px; }
-
-        /* Инфографика */
+        .citation { color: var(--accent); font-size: 0.8rem; vertical-align: super; text-decoration: none; }
+        .citation:hover { text-decoration: underline; }
+        
         .infographic-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -93,9 +101,6 @@
         .info-box h4 { color: var(--accent); margin: 0 0 10px 0; font-size: 1.1rem; }
         .info-box p { color: var(--muted); font-size: 0.85rem; margin: 0; }
 
-        .citation { color: var(--accent); font-size: 0.8rem; vertical-align: super; text-decoration: none; }
-        .citation:hover { text-decoration: underline; }
-        
         .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
         .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
@@ -117,7 +122,6 @@
             A continuación, se presentan dos enfoques de ingeniería para el perfil de Investigador en Alineación y Seguridad de IA: la capacidad absoluta sin límites, y la optimización estratégica de recursos.
         </p>
 
-        <!-- СЕТКА СРАВНЕНИЯ ДВУХ СБОРОК -->
         <div class="comparison-grid">
             
             <!-- СБОРКА 1: MONEY IS NO OBJECT -->
@@ -127,9 +131,10 @@
                     <p style="margin: 0; color: var(--muted);">La Bestia Absoluta (Sin restricciones)</p>
                 </div>
                 
-                <div class="image-placeholder">
-                    <strong>📷 AQUÍ INSERTAR IMÁGENES</strong>
-                    Threadripper PRO 7975WX, RTX 6000 Ada, Corsair AX1600i
+                <div class="build-image">
+                    <img src="images/money-no-object.jpg" 
+                         alt="Workstation Profesional: Threadripper PRO + RTX 6000 Ada + Corsair AX1600i">
+                    <p>Workstation Profesional Sin Límites: Threadripper PRO 7975WX + RTX 6000 Ada + Corsair AX1600i</p>
                 </div>
 
                 <p style="font-size: 0.95rem;">Estación de trabajo profesional orientada a la máxima capacidad de cómputo, <em>sandboxing</em> concurrente y protección absoluta contra la corrupción de datos<a href="resources.html#ref-amd-thread" class="citation">[1]</a>.</p>
@@ -165,9 +170,10 @@
                     <p style="margin: 0; color: var(--muted);">Presupuesto Inteligente (Hasta $800 USD)</p>
                 </div>
 
-                <div class="image-placeholder">
-                    <strong>📷 AQUÍ INSERTAR IMÁONES</strong>
-                    RTX 3060 12GB, Ryzen 5 5600, MSI B550M, DeepCool CC560
+                <div class="build-image">
+                    <img src="images/el-punto-dulce.jpg" 
+                         alt="Workstation Presupuesto Inteligente: Ryzen 5 + RTX 3060">
+                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5600 + RTX 3060 12GB + MSI B550M</p>
                 </div>
 
                 <p style="font-size: 0.95rem;">Diseñada para maximizar la VRAM con una GPU de segunda mano y fuente certificada, cumpliendo estrictamente con el techo presupuestario de la cátedra<a href="resources.html#ref-nvidia-3060" class="citation">[4]</a>.</p>
@@ -241,29 +247,28 @@
             <h2>Diagrama de Bloques Esquemático (Conexiones de la Build $800)</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente.</p>
             <div class="mermaid" style="display: flex; justify-content: center;">
-                graph TD
-                subgraph PSU_Group [Suministro de Energía]
-                    PSU["MSI MAG A650BN 650W 80+ Bronze"]
-                end
-                subgraph Motherboard_Group [Placa Base: MSI B550M PRO-VDH WIFI]
-                    CPU["AMD Ryzen 5 5600<br/>(6C/12T)"]
-                    RAM["32 GB DDR4 3200 MHz"]
-                    NVMe["1TB Kingston NV2<br/>PCIe 4.0 x4"]
-                    GPU["NVIDIA RTX 3060 12GB<br/>(Mercado Usado)"]
-                end
-                
-                CPU <-->|"Bus de Memoria Dual-Channel"| RAM
-                CPU <-->|"Bus PCIe 4.0 x4 (3,500 MB/s)"| NVMe
-                CPU <-->|"Bus PCIe 4.0 x16"| GPU
-                
-                PSU -->|"Conector ATX 24-Pines"| Motherboard_Group
-                PSU -->|"Conector EPS 8-Pines"| CPU
-                PSU -->|"Conector PCIe 8-Pines"| GPU
-                
-                classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
-                classDef psu fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
-                class PSU psu;
-           6000
+graph TD
+    subgraph PSU_Group [Suministro de Energía]
+        PSU["MSI MAG A650BN 650W 80+ Bronze"]
+    end
+    subgraph Motherboard_Group [Placa Base: MSI B550M PRO-VDH WIFI]
+        CPU["AMD Ryzen 5 5600 (6C/12T)"]
+        RAM["32 GB DDR4 3200 MHz"]
+        NVMe["1TB Kingston NV2 PCIe 4.0 x4"]
+        GPU["NVIDIA RTX 3060 12GB (Mercado Usado)"]
+    end
+    
+    CPU <-->|"Bus de Memoria Dual-Channel"| RAM
+    CPU <-->|"Bus PCIe 4.0 x4 (3,500 MB/s)"| NVMe
+    CPU <-->|"Bus PCIe 4.0 x16"| GPU
+    
+    PSU -->|"Conector ATX 24-Pines"| Motherboard_Group
+    PSU -->|"Conector EPS 8-Pines"| CPU
+    PSU -->|"Conector PCIe 8-Pines"| GPU
+    
+    classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
+    classDef psu fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
+    class PSU psu;
             </div>
         </div>
 
