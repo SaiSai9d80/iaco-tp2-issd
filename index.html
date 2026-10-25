@@ -21,8 +21,27 @@
         li { margin-bottom: 8px; }
         .meta-info { color: var(--muted); font-size: 0.95rem; }
         .profile-highlight { background: #0f172a; padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent); margin: 20px 0; }
-        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
-        .nav-card { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; text-decoration: none; color: var(--text); transition: all 0.3s; }
+        
+        /* ИЗМЕНЕНО: Flexbox вместо Grid для центрирования */
+        .nav-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 20px; 
+        }
+        .nav-card { 
+            background: #0f172a; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 1px solid #334155; 
+            text-decoration: none; 
+            color: var(--text); 
+            transition: all 0.3s; 
+            flex: 0 1 calc(33.333% - 15px); 
+            min-width: 280px; 
+            max-width: 350px; 
+        }
         .nav-card:hover { border-color: var(--accent); transform: translateY(-2px); }
         .nav-card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; }
         .nav-card p { color: var(--muted); font-size: 0.9rem; margin: 0; }
