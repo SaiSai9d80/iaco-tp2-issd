@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parte 1: El Corazón Inteligente - TP2 ISSD</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
+        h1, h2, h3 { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #0f172a; color: var(--accent); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="resources.html">Recursos y APA</a>
+    </nav>
+    <div class="container">
+        <h1>Parte 1: El Corazón Inteligente de la Máquina</h1>
+        
+        <div class="card">
+            <h2>1. Análisis Arquitectónico: CPU y NPU</h2>
+            <table>
+                <tr>
+                    <th>Especificación</th>
+                    <th>Intel Core Ultra 9 285K</th>
+                    <th>AMD Ryzen 9 9950X</th>
+                </tr>
+                <tr>
+                    <td>Arquitectura</td>
+                    <td>Híbrida: 8 P-Cores + 16 E-Cores</td>
+                    <td>Monolítica: 16 Cores Zen 5</td>
+                </tr>
+                <tr>
+                    <td>Núcleos / Hilos</td>
+                    <td>24 Cores / 24 Hilos</td>
+                    <td>16 Cores / 32 Hilos (SMT)</td>
+                </tr>
+                <tr>
+                    <td>NPU Integrada</td>
+                    <td>Intel AI Boost (~13 TOPS)</td>
+                    <td>No integrada en Desktop</td>
+                </tr>
+                <tr>
+                    <td>Virtualización / Seguridad</td>
+                    <td>Intel VT-x / VT-d / TME</td>
+                    <td>AMD-V / AMD-Vi / SEV</td>
+                </tr>
+            </table>
+            <p><strong>Veredicto:</strong> El AMD Ryzen 9 9950X es superior gracias a sus 32 hilos y la tecnología Secure Encrypted Virtualization (SEV), permitiendo ejecutar múltiples entornos aisaldos (sandboxing) sin degradación.</p>
+        </div>
+
+        <div class="card">
+            <h2>2. Rendimiento de GPUs: RTX 4090 vs RX 7900 XTX</h2>
+            <p>Para la inferencia y fine-tuning local de LLMs de más de 70B parámetros, se requiere un mínimo de 24 GB de VRAM. La <strong>NVIDIA GeForce RTX 4090</strong> domina gracias a la arquitectura CUDA, sus 512 Tensor Cores y la aceleración nativa en librerías como vLLM, FlashAttention-2 y Unsloth.</p>
+        </div>
+
+        <div class="card">
+            <h2>3. Galería de Aplicaciones Reales</h2>
+            <ul>
+                <li><strong>LM Studio / Ollama:</strong> Inferencia local 100% offline sin fugas de datos.</li>
+                <li><strong>Garak:</strong> Escáner de vulnerabilidades para prompt injection y sesgos.</li>
+                <li><strong>Docker Desktop:</strong> Entornos virtuales aislados para probar agentes autónomos.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

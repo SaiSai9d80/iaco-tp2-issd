@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parte 2: La Superautopista de los Datos - TP2 ISSD</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
+        h1, h2 { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #0f172a; color: var(--accent); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="resources.html">Recursos y APA</a>
+    </nav>
+    <div class="container">
+        <h1>Parte 2: La Superautopista de los Datos</h1>
+        
+        <div class="card">
+            <h2>1. La Analogía del Bus de Datos</h2>
+            <p><strong>SATA III:</strong> Equivale a una carretera de 2 carriles (~550 MB/s), estrangulando la carga de datasets masivos de IA.</p>
+            <p><strong>PCIe NVMe:</strong> Representa una autopista de alta velocidad de 8 a 16 carriles, permitiendo transferencias masivas hacia la VRAM sin saturar el sistema.</p>
+        </div>
+
+        <div class="card">
+            <h2>2. Comparativa de Velocidades</h2>
+            <table>
+                <tr>
+                    <th>Tecnología</th>
+                    <th>Bus / Interfaz</th>
+                    <th>Lectura Secuencial</th>
+                    <th>Impacto en IA</th>
+                </tr>
+                <tr>
+                    <td>HDD 7200 RPM</td>
+                    <td>SATA III Mecánico</td>
+                    <td>~150 MB/s</td>
+                    <td>Inviable</td>
+                </tr>
+                <tr>
+                    <td>SSD SATA III</td>
+                    <td>SATA 6 Gbps</td>
+                    <td>~550 MB/s</td>
+                    <td>Limitado</td>
+                </tr>
+                <tr>
+                    <td>SSD NVMe PCIe 4.0</td>
+                    <td>PCIe 4.0 x4</td>
+                    <td>~7,500 MB/s</td>
+                    <td>Óptimo</td>
+                </tr>
+                <tr>
+                    <td>SSD NVMe PCIe 5.0</td>
+                    <td>PCIe 5.0 x4</td>
+                    <td>~14,000 MB/s</td>
+                    <td>Extremo</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>3. Tecnologías Futuras: DirectStorage y PCIe 5.0</h2>
+            <p><strong>Microsoft DirectStorage:</strong> Transfiera datos comprimidos desde el SSD NVMe directamente a la VRAM mediante DMA (Direct Memory Access), omitiendo la CPU y reduciendo tiempos de carga a milisegundos.</p>
+        </div>
+    </div>
+</body>
+</html>
