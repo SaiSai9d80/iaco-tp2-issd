@@ -2,38 +2,94 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parte 2: La Superautopista de los Datos - TP2 ISSD</title>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; --muted: #94a3b8; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
-        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
-        h1, h2, h3 { color: var(--accent); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
-        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
-        th { background: #0f172a; color: var(--accent); }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #22d3ee; text-decoration: underline; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        h1, h2, h3 { color: var(--accent); margin-top: 0; }
+        h1 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+        h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+        th, td { border: 1px solid #334155; padding: 14px; text-align: left; vertical-align: top; }
+        th { background: #0f172a; color: var(--accent); font-weight: 600; }
+        tr:hover { background-color: #263345; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 12px; }
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 20px; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        .citation { color: var(--accent); font-size: 0.85rem; vertical-align: super; text-decoration: none; }
+        .citation:hover { text-decoration: underline; }
+        .highlight { background: #0f172a; padding: 15px; border-left: 4px solid var(--accent); border-radius: 4px; margin: 15px 0; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
+        
+        /* Placeholder для графика */
+        .chart-placeholder {
+            background: #0f172a;
+            border: 2px dashed #334155;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin: 25px 0;
+            color: var(--muted);
+        }
+        .chart-placeholder strong { color: var(--accent); display: block; margin-bottom: 10px; font-size: 1.1rem; }
+        
+        /* Визуализация аналогии */
+        .analogy-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .analogy-card {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .analogy-card h3 { color: var(--accent); margin-bottom: 10px; }
+        .analogy-card .speed { font-size: 1.5rem; font-weight: bold; color: var(--accent); margin: 10px 0; }
+        .analogy-card.sata { border-left: 4px solid #ef4444; }
+        .analogy-card.pcie { border-left: 4px solid #22c55e; }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html">Inicio</a>
         <a href="part1.html">Parte 1: Cómputo</a>
-        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part2.html" style="color: #22d3ee;">Parte 2: Almacenamiento</a>
         <a href="part3.html">Parte 3: Workstations</a>
         <a href="resources.html">Recursos y APA</a>
+        <a href="prompts.html">Prompts e IA</a>
     </nav>
+    
     <div class="container">
         <h1>Parte 2: La Superautopista de los Datos</h1>
         
         <div class="card">
             <h2>2.1. La Analogía del Bus de Datos y el Impacto en Datasets</h2>
-            <p>En las cargas de trabajo de IA, el almacenamiento secundario deja de ser pasivo para convertirse en una tubería de alto rendimiento. Un investigador de seguridad necesita cargar datasets de entrenamiento de cientos de gigabytes en tiempo real[cite: 13].</p>
-            <ul>
-                <li><strong>Bus SATA III:</strong> Equivale a una carretera secundaria de dos carriles (~150-550 MB/s). Al transferir un dataset masivo, la carretera se congestiona, dejando a la CPU y GPU inactivas[cite: 14].</li>
-                <li><strong>Bus PCIe (NVMe):</strong> Representa una autopista de alta velocidad de 8 a 16 carriles expresos (hasta 7,500 - 14,000 MB/s). Los datos se transmiten en miles de colas paralelas directamente hacia la memoria[cite: 14].</li>
-            </ul>
+            <p>En las cargas de trabajo de inteligencia artificial, el almacenamiento secundario deja de ser un componente pasivo de archivo para convertirse en una tubería de alto rendimiento. Un investigador de seguridad necesita cargar <em>datasets</em> de entrenamiento de cientos de gigabytes y volcar imágenes de memoria RAM (<em>RAM dumps</em>) de modelos en tiempo real<a href="resources.html#ref-samsung" class="citation">[1]</a>.</p>
+            
+            <div class="analogy-container">
+                <div class="analogy-card sata">
+                    <h3>🛣️ Bus SATA III</h3>
+                    <p><strong>Carretera secundaria de 2 carriles</strong></p>
+                    <div class="speed">~150-550 MB/s</div>
+                    <p>Al transferir un <em>dataset</em> masivo de 50 GB, la carretera se congestiona inmediatamente. La CPU y GPU permanecen inactivas esperando la llegada de los datos, creando un cuello de botella crítico<a href="resources.html#ref-storagereview" class="citation">[2]</a>.</p>
+                </div>
+                <div class="analogy-card pcie">
+                    <h3>🚀 Bus PCIe (NVMe)</h3>
+                    <p><strong>Autopista de 8 a 16 carriles expresos</strong></p>
+                    <div class="speed">~7,500-14,000 MB/s</div>
+                    <p>Utilizando el protocolo NVMe (<em>Non-Volatile Memory Express</em>), los datos se transmiten en miles de colas paralelas directamente hacia la memoria del sistema, eliminando los cuellos de botella de transferencia<a href="resources.html#ref-pcisig" class="citation">[3]</a>.</p>
+                </div>
+            </div>
         </div>
 
         <div class="card">
@@ -43,39 +99,70 @@
                     <th>Tecnología</th>
                     <th>Interfaz y Bus</th>
                     <th>Lectura Secuencial</th>
+                    <th>Escritura Secuencial</th>
                     <th>Impacto en Cargas de IA</th>
                 </tr>
                 <tr>
                     <td>HDD Tradicional (7200 RPM)</td>
                     <td>SATA III / Mecánico</td>
                     <td>~150 MB/s</td>
-                    <td><strong>Inviable:</strong> Produce pausas severas en la inferencia[cite: 14].</td>
+                    <td>~150 MB/s</td>
+                    <td><strong>Inviable:</strong> Produce pausas severas en la inferencia<a href="resources.html#ref-storagereview" class="citation">[2]</a>.</td>
                 </tr>
                 <tr>
                     <td>SSD SATA III (2.5")</td>
                     <td>SATA III 6 Gbps</td>
                     <td>~550 MB/s</td>
-                    <td><strong>Limitado:</strong> Estrangula la carga de modelos grandes[cite: 14].</td>
+                    <td>~520 MB/s</td>
+                    <td><strong>Limitado:</strong> Estrangula la carga de modelos grandes<a href="resources.html#ref-storagereview" class="citation">[2]</a>.</td>
                 </tr>
                 <tr>
                     <td>SSD NVMe M.2 (PCIe 4.0)</td>
                     <td>PCIe 4.0 x4</td>
                     <td>~7,500 MB/s</td>
-                    <td><strong>Óptimo:</strong> Carga un modelo de 50 GB en VRAM en segundos[cite: 14].</td>
+                    <td>~6,500 MB/s</td>
+                    <td><strong>Óptimo:</strong> Carga un modelo de 50 GB en VRAM en segundos<a href="resources.html#ref-samsung" class="citation">[1]</a>.</td>
                 </tr>
                 <tr>
                     <td>SSD NVMe M.2 (PCIe 5.0)</td>
                     <td>PCIe 5.0 x4</td>
                     <td>~14,000 MB/s</td>
-                    <td><strong>Vanguardia:</strong> Intercambio casi instantáneo de contextos[cite: 14].</td>
+                    <td>~12,000 MB/s</td>
+                    <td><strong>Vanguardia:</strong> Intercambio casi instantáneo de contextos<a href="resources.html#ref-pcisig" class="citation">[3]</a>.</td>
                 </tr>
             </table>
+
+            <!-- Placeholder для графика -->
+            <div class="chart-placeholder">
+                <strong>📊 AQUÍ INSERTAR GRÁFICO COMPARATIVO DE VELOCIDADES</strong>
+                <p>Insertar gráfico de barras generado en Google Sheets o Chart.js<br>
+                comparando velocidades de lectura/escritura de HDD, SSD SATA y SSD NVMe.<br>
+                <em>Usar los datos del bloque JSON proporcionado en la documentación del proyecto.</em></p>
+            </div>
         </div>
 
         <div class="card">
             <h2>2.3. Mirando al Horizonte: DirectStorage y Tecnologías Post-Silicio</h2>
-            <p><strong>Microsoft DirectStorage:</strong> Permite transferir datos directamente desde el SSD NVMe hacia la VRAM de la GPU mediante Acceso Directo a Memoria (DMA), omitiendo a la CPU. Esto posibilita canalizar datasets masivos de <em>embeddings</em> directamente hacia los Tensor Cores[cite: 14].</p>
-            <p><strong>Tecnologías Post-Silicio:</strong> Más allá del PCIe 5.0, la industria explora el <em>Compute Express Link (CXL)</em> y el almacenamiento óptico 5D (nanovidrio), que prometen desafiar las limitaciones físicas del silicio tradicional en centros de datos de IA[cite: 14].</p>
+            
+            <div class="highlight">
+                <h3>Microsoft DirectStorage</h3>
+                <p>Diseñada originalmente para reducir los tiempos de carga en videojuegos de última generación, la API DirectStorage revoluciona el procesamiento de IA local. Esta tecnología permite transferir datos directamente desde un SSD NVMe PCIe hacia la memoria VRAM de la GPU mediante Acceso Directo a Memoria (DMA), <strong>omitiendo la intervención de la CPU</strong>. En la investigación de seguridad de IA, esto posibilita canalizar <em>datasets</em> masivos de vectores (<em>embeddings</em>) e inyecciones de prueba directamente hacia los <em>Tensor Cores</em> sin causar sobrecarga en los núcleos del procesador<a href="resources.html#ref-microsoft" class="citation">[4]</a>.</p>
+            </div>
+
+            <div class="highlight">
+                <h3>La Revolución del Bus PCIe 5.0</h3>
+                <p>La quinta generación del bus PCI Express duplica el ancho de banda del estándar PCIe 4.0, alcanzando tasas de transferencia secuencial de hasta 14 GB/s. Para un profesional que audita continuamente modelos pesados, esta interfaz erradica los tiempos de espera al cambiar entre diferentes modelos de lenguaje, permitiendo iterar pruebas de alineación ética de manera fluida<a href="resources.html#ref-pcisig" class="citation">[3]</a>.</p>
+            </div>
+
+            <div class="highlight">
+                <h3>Tecnologías Post-Silicio</h3>
+                <p>Más allá del PCIe 5.0, la industria explora el <strong>Compute Express Link (CXL)</strong> y el <strong>almacenamiento óptico 5D (nanovidrio)</strong>, que prometen desafiar las limitaciones físicas del silicio tradicional en centros de datos de IA, ofreciendo densidades y velocidades teóricamente ilimitadas. Estas tecnologías emergentes representan el futuro del almacenamiento para cargas de trabajo de inteligencia artificial a escala exabyte<a href="resources.html#ref-storagereview" class="citation">[2]</a>.</p>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="part1.html" class="btn">← Parte 1: El Corazón Inteligente</a>
+            <a href="part3.html" class="btn">Parte 3: El Diseño Maestro →</a>
         </div>
     </div>
 </body>
