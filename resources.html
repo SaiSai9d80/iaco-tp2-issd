@@ -6,12 +6,17 @@
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
         h1, h2 { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #0f172a; color: var(--accent); }
         a { color: var(--accent); }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -23,20 +28,77 @@
         <a href="resources.html">Recursos y APA</a>
     </nav>
     <div class="container">
-        <h1>Bibliografía y Recursos Académicos</h1>
+        <h1>Cierre Metodológico y Anexos Académicos</h1>
         
         <div class="card">
-            <h2>Referencias APA (7ª Edición)</h2>
+            <h2>4.1. Descargo de Responsabilidad (Disclaimer)</h2>
+            <p>El presente documento y el sitio web derivado han sido desarrollados con fines estrictamente académicos e investigativos en el marco de la asignatura <strong>Introducción a la Arquitectura de Computadoras (IACO 2026)</strong> del Instituto Superior Santo Domingo (ISSD). Las especificaciones de hardware, comparativas de rendimiento y precios de mercado se basan en datos públicos de fabricantes y benchmarks vigentes. Los autores y el ISSD no asumen responsabilidad legal por el uso indebido de las configuraciones propuestas ni por las fluctuaciones en el mercado informático[cite: 14].</p>
+        </div>
+
+        <div class="card">
+            <h2>4.2. Bibliografía y Recursos Consultados (Formato APA 7ª Edición)</h2>
             <ul>
-                <li>AMD. (2026). <em>Ryzen Threadripper PRO 7000 WX Specs</em>. <a href="https://www.amd.com" target="_blank">amd.com</a></li>
-                <li>Microsoft. (2025). <em>DirectStorage Overview</em>. <a href="https://learn.microsoft.com" target="_blank">learn.microsoft.com</a></li>
-                <li>NVIDIA. (2026). <em>GeForce RTX 4090 Architecture</em>. <a href="https://www.nvidia.com" target="_blank">nvidia.com</a></li>
+                <li>Advanced Micro Devices, Inc. (2026). <em>AMD Ryzen Threadripper PRO 7000 WX-Series Specifications</em>. Recuperado de: <a href="https://www.amd.com" target="_blank">https://www.amd.com</a>[cite: 13]</li>
+                <li>Intel Corporation. (2026). <em>Intel Core Ultra Processors Series 2 Whitepaper</em>. Recuperado de: <a href="https://ark.intel.com" target="_blank">https://ark.intel.com</a>[cite: 13]</li>
+                <li>Microsoft Developer Network. (2025). <em>DirectStorage Overview and Architecture</em>. Recuperado de: <a href="https://learn.microsoft.com" target="_blank">https://learn.microsoft.com</a>[cite: 14]</li>
+                <li>NVIDIA Corporation. (2026). *NVIDIA GeForce RTX 4090 & RTX 6000 Ada Architecture Overview*. Recuperado de: <a href="https://www.nvidia.com" target="_blank">https://www.nvidia.com</a>[cite: 14]</li>
+                <li>PCI-SIG. (2026). <em>PCI Express Base Specification Revision 5.0</em>. Recuperado de: <a href="https://pcisig.com" target="_blank">https://pcisig.com</a>[cite: 14]</li>
+                <li>vLLM Project Team. (2025). <em>vLLM: High-throughput Inference Engine for LLMs</em>. Recuperado de: <a href="https://vllm.ai/" target="_blank">https://vllm.ai/</a>[cite: 14]</li>
             </ul>
         </div>
 
         <div class="card">
-            <h2>Descargo de Responsabilidad (Disclaimer)</h2>
-            <p>Trabajo elaborado estrictamente con fines académicos para la asignatura IACO 2026 del Instituto Superior Santo Domingo (ISSD).</p>
+            <h2>4.3. Tabla de Trazabilidad de Prompts (Apéndice de Interacción con IA)</h2>
+            <table>
+                <tr>
+                    <th>Código</th>
+                    <th>Rol Asignado a la IA</th>
+                    <th>Propósito Técnico</th>
+                    <th>Resultado Integrado en el Trabajo</th>
+                </tr>
+                <tr>
+                    <td><strong>PR-01</strong></td>
+                    <td>Experto en Arquitectura</td>
+                    <td>Análisis de CPUs con NPU y virtualización.</td>
+                    <td>Sección 1.1: Tabla de CPUs y justificación SEV[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td><strong>PR-02</strong></td>
+                    <td>Ingeniero de ML y Hardware</td>
+                    <td>Comparativa de GPUs y ecosistema CUDA.</td>
+                    <td>Sección 1.2: Análisis de VRAM y Tensor Cores[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td><strong>PR-03</strong></td>
+                    <td>Arquitecto de Almacenamiento</td>
+                    <td>Buses de datos, DirectStorage y PCIe 5.0.</td>
+                    <td>Sección 2.1 - 2.3: Analogía y rendimiento[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td><strong>PR-04</strong></td>
+                    <td>Ingeniero Senior (High-End)</td>
+                    <td>Diseño "Money is No Object" y PSU Titanium.</td>
+                    <td>Sección 3.1: Configuración absoluta y balance energético[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td><strong>PR-05</strong></td>
+                    <td>Especialista en Presupuesto</td>
+                    <td>Configuración "Punto Dulce" ($800) priorizando VRAM.</td>
+                    <td>Sección 3.2: Tabla de componentes con PSU certificada[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td><strong>PR-06</strong></td>
+                    <td>Desarrollador Web / UI/UX</td>
+                    <td>Diagrama Mermaid.js y directrices para GitHub Pages.</td>
+                    <td>Sección 3.3: Código Mermaid y maquetación web[cite: 14].</td>
+                </tr>
+                <tr>
+                    <td><strong>PR-07</strong></td>
+                    <td>Consultor de Metodología</td>
+                    <td>Redacción de disclaimer, APA y trazabilidad.</td>
+                    <td>Sección 4.1 - 4.3: Anexos finales y bibliografía[cite: 14].</td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>
