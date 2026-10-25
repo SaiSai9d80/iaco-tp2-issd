@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP2 IACO 2026 - Workstation de IA (ISSD)</title>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; --muted: #94a3b8; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
-        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #22d3ee; text-decoration: underline; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        h1, h2, h3 { color: var(--accent); }
+        h1, h2, h3 { color: var(--accent); margin-top: 0; }
+        h1 { font-size: 2rem; margin-bottom: 10px; }
+        h2 { font-size: 1.5rem; margin-bottom: 15px; }
         .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
         ul { padding-left: 20px; }
         li { margin-bottom: 8px; }
+        .meta-info { color: var(--muted); font-size: 0.95rem; }
+        .profile-highlight { background: #0f172a; padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent); margin: 20px 0; }
+        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
+        .nav-card { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #334155; text-decoration: none; color: var(--text); transition: all 0.3s; }
+        .nav-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .nav-card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; }
+        .nav-card p { color: var(--muted); font-size: 0.9rem; margin: 0; }
+        hr { border-color: #334155; margin: 20px 0; }
     </style>
 </head>
 <body>
@@ -28,23 +38,75 @@
         <a href="resources.html">Recursos y APA</a>
         <a href="prompts.html">Prompts e IA</a>
     </nav>
+    
     <div class="container">
         <div class="card">
             <h1>Trabajo Práctico Integrador (TP2 - 2026)</h1>
             <h2>Introducción a la Arquitectura de Computadoras (IACO)</h2>
-            <p><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD)</p>
-            <p><strong>Profesor:</strong> Emmanuel Galiotti</p>
-            <p><strong>Perfil Profesional Seleccionado:</strong> Investigador en Alineación y Seguridad de Inteligencia Artificia</p>
-            <hr style="border-color: #334155; margin: 20px 0;">
+            <p class="meta-info"><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD), Córdoba, Argentina</p>
+            <p class="meta-info"><strong>Profesor:</strong> Emmanuel Galiotti</p>
+            <p class="meta-info"><strong>Fecha de Entrega:</strong> 2 de Noviembre de 2026</p>
+            <hr>
+            <h3>Perfil Profesional Seleccionado:</h3>
+            <div class="profile-highlight">
+                <strong style="color: var(--accent); font-size: 1.1rem;">Investigador en Alineación y Seguridad de Inteligencia Artificial</strong>
+            </div>
             <h3>Autor / Estudiante:</h3>
             <ul>
                 <li>Vitalii Golovin</li>
             </ul>
         </div>
+
         <div class="card">
             <h2>Resumen Ejecutivo del Proyecto</h2>
-            <p>Este sitio web documenta de manera integral el diseño de infraestructura de hardware de alta gama y optimización de rendimiento para la ejecución local de modelos de lenguaje (LLMs). El objetivo central es garantizar la soberanía absoluta de los datos, el aislamiento estricto mediante sandboxing y la capacidad de auditar sesgos, alucinaciones y vectores de ataque como el prompt injection sin depender de la nube[cite: 13].</p>
+            <p>Este sitio web documenta de manera integral el diseño de infraestructura de hardware de alta gama y optimización de rendimiento para la ejecución local de modelos de lenguaje (LLMs). El objetivo central es garantizar la <strong>soberanía absoluta de los datos</strong>, el aislamiento estricto mediante <em>sandboxing</em> y la capacidad de auditar sesgos, alucinaciones y vectores de ataque como el <em>prompt injection</em> sin depender de la nube.</p>
+            
+            <h3>Justificación del Perfil Profesional</h3>
+            <p>En el contexto actual de despliegue global de tecnologías de Inteligencia Artificial, la industria enfrenta tres riesgos críticos que requieren atención inmediata:</p>
+            <ul>
+                <li><strong>Factor Humano:</strong> La tendencia a delegar decisiones complejas a sistemas automatizados sin la supervisión adecuada.</li>
+                <li><strong>Factor Técnico:</strong> La capacidad demostrada de los modelos de gran escala para evadir controles y operar fuera de los parámetros establecidos por sus desarrolladores.</li>
+                <li><strong>Factor Geopolítico:</strong> El potencial uso de estas tecnologías con fines destructivos por parte de actores maliciosos o regímenes autoritarios.</li>
+            </ul>
+            <p>Por estas razones, el perfil de Investigador en Alineación y Seguridad de IA se erige como una figura fundamental para garantizar el equilibrio entre la innovación tecnológica y la ética computacional. La misión principal de este profesional es asegurar la soberanía de los datos y la integridad de los modelos mediante la ejecución 100% local de LLMs, auditando sesgos algorítmicos y vulnerabilidades en entornos estrictamente aislados.</p>
+            
+            <h3>Impacto en la Arquitectura del Hardware</h3>
+            <p>Esta misión impone requisitos de hardware muy específicos y exigentes:</p>
+            <ul>
+                <li><strong>GPU con alta VRAM:</strong> Para inferencia local de modelos de 7B-70B parámetros sin enviar datos a la nube.</li>
+                <li><strong>CPU multinúcleo:</strong> Para ejecutar múltiples entornos virtuales de prueba (Docker, VMs) simultáneamente.</li>
+                <li><strong>Memoria ECC:</strong> Para prevenir la corrupción de datos durante auditorías prolongadas.</li>
+                <li><strong>PSU certificada:</strong> Para garantizar la estabilidad eléctrica y proteger la integridad de los datos.</li>
+            </ul>
+            
             <a href="part1.html" class="btn">Iniciar Investigación Técnica →</a>
+        </div>
+
+        <div class="card">
+            <h2>Estructura del Sitio Web</h2>
+            <p>Navegue por las diferentes secciones del proyecto:</p>
+            <div class="nav-grid">
+                <a href="part1.html" class="nav-card">
+                    <h3>Parte 1: El Corazón Inteligente</h3>
+                    <p>Análisis comparativo de CPUs (Intel vs AMD), GPUs (RTX 4090 vs RX 7900 XTX) y NPU. Galería de aplicaciones reales.</p>
+                </a>
+                <a href="part2.html" class="nav-card">
+                    <h3>Parte 2: La Superautopista de los Datos</h3>
+                    <p>Analogía de buses de datos (SATA vs NVMe), gráfico comparativo de velocidades, DirectStorage y PCIe 5.0.</p>
+                </a>
+                <a href="part3.html" class="nav-card">
+                    <h3>Parte 3: El Diseño Maestro</h3>
+                    <p>Dos configuraciones: "Money is No Object" y "El Punto Dulce" ($800 USD) con diagrama de bloques.</p>
+                </a>
+                <a href="resources.html" class="nav-card">
+                    <h3>Bibliografía y Recursos</h3>
+                    <p>Fuentes consultadas en formato APA 7ª edición con enlaces directos a especificaciones técnicas.</p>
+                </a>
+                <a href="prompts.html" class="nav-card">
+                    <h3>Prompts e IA</h3>
+                    <p>Descargo de responsabilidad y tabla de trazabilidad metodológica de prompts utilizados.</p>
+                </a>
+            </div>
         </div>
     </div>
 </body>
