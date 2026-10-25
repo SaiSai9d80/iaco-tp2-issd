@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2 IACO 2026 - Workstation IA (ISSD)</title>
+    <title>TP2 IACO 2026 - Workstation de IA (ISSD)</title>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
         nav a:hover { text-decoration: underline; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
-        h1, h2 { color: var(--accent); }
-        .btn { display: inline-block; background: var(--accent); color: #000; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        h1, h2, h3 { color: var(--accent); }
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -28,23 +31,23 @@
         <div class="card">
             <h1>Trabajo Práctico Integrador (TP2 - 2026)</h1>
             <h2>Introducción a la Arquitectura de Computadoras (IACO)</h2>
-            <p><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD)</p>
-            <p><strong>Profesor:</strong> Emmanuel Galiotti</p>
-            <p><strong>Perfil Profesional:</strong> Investigador en Alineación y Seguridad de Inteligencia Artificial</p>
-            <hr style="border-color: #334155;">
+            <p><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD)[cite: 13]</p>
+            <p><strong>Profesor:</strong> Emmanuel Galiotti[cite: 5]</p>
+            <p><strong>Perfil Profesional Seleccionado:</strong> Investigador en Alineación y Seguridad de Inteligencia Artificial[cite: 13]</p>
+            <hr style="border-color: #334155; margin: 20px 0;">
             <h3>Integrantes del Equipo:</h3>
             <ul>
-                <li>Estudiante 1</li>
-                <li>Estudiante 2</li>
-                <li>Estudiante 3</li>
-                <li>Estudiante 4</li>
-                <li>Estudiante 5</li>
+                <li>[Nombre del Estudiante 1]</li>
+                <li>[Nombre del Estudiante 2]</li>
+                <li>[Nombre del Estudiante 3]</li>
+                <li>[Nombre del Estudiante 4]</li>
+                <li>[Nombre del Estudiante 5]</li>
             </ul>
         </div>
         <div class="card">
-            <h2>Resumen del Proyecto</h2>
-            <p>Diseño de infraestructura de hardware de alta gama y optimización de rendimiento para la ejecución local de modelos de lenguaje (LLMs), garantizando la soberanía de datos, el aislamiento estricto (sandboxing) y la auditoría de sesgos e inyecciones de prompts (prompt injection).</p>
-            <a href="part1.html" class="btn">Iniciar Recorrido Técnico →</a>
+            <h2>Resumen Ejecutivo del Proyecto</h2>
+            <p>Este sitio web documenta de manera integral el diseño de infraestructura de hardware de alta gama y optimización de rendimiento para la ejecución local de modelos de lenguaje (LLMs). El objetivo central es garantizar la soberanía absoluta de los datos, el aislamiento estricto mediante sandboxing y la capacidad de auditar sesgos, alucinaciones y vectores de ataque como el prompt injection sin depender de la nube[cite: 13].</p>
+            <a href="part1.html" class="btn">Iniciar Investigación Técnica →</a>
         </div>
     </div>
 </body>
