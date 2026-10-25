@@ -2,16 +2,102 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parte 3: El Diseño Maestro - TP2 ISSD</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; --muted: #94a3b8; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
-        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; display: flex; flex-direction: column; gap: 15px; }
-        h1, h2 { color: var(--accent); }
-        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; align-self: start; }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #22d3ee; text-decoration: underline; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        h1, h2, h3 { color: var(--accent); margin-top: 0; }
+        h1 { font-size: 2rem; margin-bottom: 10px; text-align: center; }
+        h2 { font-size: 1.4rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        
+        .card { background: var(--card); border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        
+        /* Сетка для сравнения двух сборок */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        @media (max-width: 900px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+
+        .build-header {
+            text-align: center;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+        .build-header.premium { border-left: 4px solid #f59e0b; }
+        .build-header.budget { border-left: 4px solid #22c55e; }
+
+        /* Таблицы и списки */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; vertical-align: top; }
+        th { background: #0f172a; color: var(--accent); font-weight: 600; }
+        tr:hover { background-color: #263345; }
+        
+        ul.specs-list { list-style: none; padding: 0; }
+        ul.specs-list li { 
+            margin-bottom: 15px; 
+            padding-left: 20px; 
+            border-left: 3px solid var(--accent); 
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        ul.specs-list li strong { color: var(--accent); display: block; margin-bottom: 5px; }
+
+        /* Изображения */
+        .image-placeholder {
+            background: #0f172a;
+            border: 2px dashed #334155;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .image-placeholder strong { color: var(--accent); display: block; margin-bottom: 5px; }
+
+        /* Инфографика */
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .info-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .info-box:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .info-box .icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .info-box h4 { color: var(--accent); margin: 0 0 10px 0; font-size: 1.1rem; }
+        .info-box p { color: var(--muted); font-size: 0.85rem; margin: 0; }
+
+        .citation { color: var(--accent); font-size: 0.8rem; vertical-align: super; text-decoration: none; }
+        .citation:hover { text-decoration: underline; }
+        
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
     </style>
 </head>
@@ -20,22 +106,199 @@
         <a href="index.html">Inicio</a>
         <a href="part1.html">Parte 1: Cómputo</a>
         <a href="part2.html">Parte 2: Almacenamiento</a>
-        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="part3.html" style="color: #22d3ee;">Parte 3: Workstations</a>
         <a href="resources.html">Recursos y APA</a>
+        <a href="prompts.html">Prompts e IA</a>
     </nav>
+    
     <div class="container">
-        <h1>Parte 3: El Diseño Maestro — Workstations de IA</h1>
-        
-        <div class="card">
-            <h2>Configuración 1: "Money is No Object" (La Bestia Absoluta)</h2>
-            <p>Estación de trabajo profesional definitiva sin restricciones presupuestarias, orientada a la máxima capacidad de cómputo, sandboxing concurrente y protección absoluta contra la corrupción de datos mediante memoria ECC y fuente de poder de categoría industrial[cite: 14].</p>
-            <a href="part3-money.html" class="btn">Ver Especificaciones de Gama Alta →</a>
+        <h1>Parte 3: El Diseño Maestro — Workstations de IA Definitivas</h1>
+        <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 30px auto;">
+            A continuación, se presentan dos enfoques de ingeniería para el perfil de Investigador en Alineación y Seguridad de IA: la capacidad absoluta sin límites, y la optimización estratégica de recursos.
+        </p>
+
+        <!-- СЕТКА СРАВНЕНИЯ ДВУХ СБОРОК -->
+        <div class="comparison-grid">
+            
+            <!-- СБОРКА 1: MONEY IS NO OBJECT -->
+            <div class="card">
+                <div class="build-header premium">
+                    <h2>Configuración 1: "Money is No Object"</h2>
+                    <p style="margin: 0; color: var(--muted);">La Bestia Absoluta (Sin restricciones)</p>
+                </div>
+                
+                <div class="image-placeholder">
+                    <strong>📷 AQUÍ INSERTAR IMÁGENES</strong>
+                    Threadripper PRO 7975WX, RTX 6000 Ada, Corsair AX1600i
+                </div>
+
+                <p style="font-size: 0.95rem;">Estación de trabajo profesional orientada a la máxima capacidad de cómputo, <em>sandboxing</em> concurrente y protección absoluta contra la corrupción de datos<a href="resources.html#ref-amd-thread" class="citation">[1]</a>.</p>
+                
+                <ul class="specs-list">
+                    <li>
+                        <strong>CPU: AMD Ryzen Threadripper PRO 7975WX (32C/64T)</strong>
+                        Proporciona 64 hilos para entornos aislados concurrentes y 128 carriles PCIe 5.0.
+                    </li>
+                    <li>
+                        <strong>GPU: NVIDIA RTX 6000 Ada Generation (48 GB VRAM con ECC)</strong>
+                        Permite cargar modelos de más de 70B de parámetros sin cuantización agresiva<a href="resources.html#ref-nvidia-6000" class="citation">[2]</a>.
+                    </li>
+                    <li>
+                        <strong>RAM: 256 GB DDR5-5600 MHz Registered ECC</strong>
+                        El Código de Corrección de Errores (ECC) evita la corrupción de datasets por interferencias térmicas o eléctricas.
+                    </li>
+                    <li>
+                        <strong>Almacenamiento: 2TB Crucial T700 (OS) + 8TB Corsair MP700 Pro (Datasets)</strong>
+                        PCIe 5.0 NVMe para lectura ultra rápida de hasta 12,400 MB/s.
+                    </li>
+                    <li>
+                        <strong>PSU: Corsair AX1600i 1600W (80 PLUS Titanium)</strong>
+                        Ofrece un margen de seguridad operacional del ~47% (consumo estimado de 850W), operando en su zona de máxima eficiencia (>94%)<a href="resources.html#ref-corsair" class="citation">[3]</a>.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- СБОРКА 2: EL PUNTO DULCE -->
+            <div class="card">
+                <div class="build-header budget">
+                    <h2>Configuración 2: "El Punto Dulce"</h2>
+                    <p style="margin: 0; color: var(--muted);">Presupuesto Inteligente (Hasta $800 USD)</p>
+                </div>
+
+                <div class="image-placeholder">
+                    <strong>📷 AQUÍ INSERTAR IMÁONES</strong>
+                    RTX 3060 12GB, Ryzen 5 5600, MSI B550M, DeepCool CC560
+                </div>
+
+                <p style="font-size: 0.95rem;">Diseñada para maximizar la VRAM con una GPU de segunda mano y fuente certificada, cumpliendo estrictamente con el techo presupuestario de la cátedra<a href="resources.html#ref-nvidia-3060" class="citation">[4]</a>.</p>
+
+                <table>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Modelo</th>
+                        <th>Precio</th>
+                        <th>Justificación IA</th>
+                    </tr>
+                    <tr>
+                        <td><strong>GPU (Usada)</strong></td>
+                        <td>RTX 3060 12GB</td>
+                        <td>$220</td>
+                        <td>Prioridad Absoluta: 12 GB de VRAM para modelos de 7B/8B con CUDA<a href="resources.html#ref-nvidia-3060" class="citation">[4]</a>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CPU</strong></td>
+                        <td>Ryzen 5 5600 (6C/12T)</td>
+                        <td>$115</td>
+                        <td>Gestiona contenedores Docker sin restringir a la GPU<a href="resources.html#ref-amd-5600" class="citation">[5]</a>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Placa Madre</strong></td>
+                        <td>MSI B550M PRO-VDH WIFI</td>
+                        <td>$105</td>
+                        <td>Soporte nativo PCIe 4.0 y disipación térmica adecuada<a href="resources.html#ref-msi-mobo" class="citation">[6]</a>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RAM</strong></td>
+                        <td>32 GB (2x16GB) DDR4-3200</td>
+                        <td>$65</td>
+                        <td>Capacidad mínima para cargar datasets en búfer sin paginación.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Almacenamiento</strong></td>
+                        <td>1TB Kingston NV2 PCIe 4.0</td>
+                        <td>$60</td>
+                        <td>3,500 MB/s para baja latencia en carga de modelos<a href="resources.html#ref-kingston" class="citation">[7]</a>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fuente (PSU)</strong></td>
+                        <td>MSI MAG A650BN 650W</td>
+                        <td>$75</td>
+                        <td>Regla de Cátedra: Protege contra picos de tensión (OVP, OPP, SCP).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gabinete</strong></td>
+                        <td>DeepCool CC560 (4 fans)</td>
+                        <td>$60</td>
+                        <td>Flujo de aire óptimo para inferencia prolongada.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reserva</strong></td>
+                        <td>Envíos / Fluctuaciones</td>
+                        <td>$100</td>
+                        <td>Previsión realista de costos logísticos.</td>
+                    </tr>
+                    <tr style="background: #0f172a; font-weight: bold;">
+                        <td>TOTAL</td>
+                        <td colspan="2">$800.00 USD</td>
+                        <td>Maximiza VRAM sin sacrificar integridad.</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
+        <!-- ДИАГРАММА MERMAID -->
         <div class="card">
-            <h2>Configuración 2: "El Punto Dulce" (Presupuesto Inteligente - $800 USD)</h2>
-            <p>Landing page interactiva de la workstation accesible. Diseñada para maximizar la VRAM con una RTX 3060 de 12GB usada y fuente certificada, cumpliendo estrictamente con el techo presupuestario de la cátedra[cite: 14].</p>
-            <a href="part3-budget.html" class="btn">Ver Landing Page e Infografía $800 USD →</a>
+            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build $800)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente.</p>
+            <div class="mermaid" style="display: flex; justify-content: center;">
+                graph TD
+                subgraph PSU_Group [Suministro de Energía]
+                    PSU["MSI MAG A650BN 650W 80+ Bronze"]
+                end
+                subgraph Motherboard_Group [Placa Base: MSI B550M PRO-VDH WIFI]
+                    CPU["AMD Ryzen 5 5600<br/>(6C/12T)"]
+                    RAM["32 GB DDR4 3200 MHz"]
+                    NVMe["1TB Kingston NV2<br/>PCIe 4.0 x4"]
+                    GPU["NVIDIA RTX 3060 12GB<br/>(Mercado Usado)"]
+                end
+                
+                CPU <-->|"Bus de Memoria Dual-Channel"| RAM
+                CPU <-->|"Bus PCIe 4.0 x4 (3,500 MB/s)"| NVMe
+                CPU <-->|"Bus PCIe 4.0 x16"| GPU
+                
+                PSU -->|"Conector ATX 24-Pines"| Motherboard_Group
+                PSU -->|"Conector EPS 8-Pines"| CPU
+                PSU -->|"Conector PCIe 8-Pines"| GPU
+                
+                classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
+                classDef psu fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
+                class PSU psu;
+           6000
+            </div>
+        </div>
+
+        <!-- ИНФОГРАФИКА -->
+        <div class="card">
+            <h2>Infografía Final: Capacidades Clave de la Workstation de $800 USD</h2>
+            <p style="color: var(--muted); margin-bottom: 20px;">Resumen visual de por qué esta configuración es la elección óptima para un investigador académico con recursos limitados.</p>
+            
+            <div class="infographic-grid">
+                <div class="info-box">
+                    <span class="icon">🧠</span>
+                    <h4>12 GB VRAM</h4>
+                    <p>Capacidad real para ejecutar LLMs de 7B/8B parámetros cuantizados localmente sin errores OOM.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">🛡️</span>
+                    <h4>Protección 80+ Bronze</h4>
+                    <p>Fuente MSI certificada con OVP/SCP. Regla de oro: nunca se sacrifica la seguridad eléctrica por ahorrar.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">⚡</span>
+                    <h4>32 GB RAM DDR4</h4>
+                    <p>Suficiente para mantener el SO, contenedores Docker y buffers de datos sin recurrir al archivo de paginación.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">🚀</span>
+                    <h4>NVMe de Baja Latencia</h4>
+                    <p>Kingston NV2 PCIe 4.0 asegura que la carga de pesos del modelo no sea el cuello de botella del sistema.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="part2.html" class="btn">← Parte 2: La Superautopista de los Datos</a>
+            <a href="resources.html" class="btn">Bibliografía y Recursos APA →</a>
         </div>
     </div>
 </body>
