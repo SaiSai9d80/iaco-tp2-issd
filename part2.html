@@ -6,12 +6,12 @@
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
         body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
-        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 10px; padding: 25px; margin-bottom: 20px; border: 1px solid #334155; }
-        h1, h2 { color: var(--accent); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
+        h1, h2, h3 { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
         th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
         th { background: #0f172a; color: var(--accent); }
     </style>
@@ -28,50 +28,54 @@
         <h1>Parte 2: La Superautopista de los Datos</h1>
         
         <div class="card">
-            <h2>1. La Analogía del Bus de Datos</h2>
-            <p><strong>SATA III:</strong> Equivale a una carretera de 2 carriles (~550 MB/s), estrangulando la carga de datasets masivos de IA.</p>
-            <p><strong>PCIe NVMe:</strong> Representa una autopista de alta velocidad de 8 a 16 carriles, permitiendo transferencias masivas hacia la VRAM sin saturar el sistema.</p>
+            <h2>2.1. La Analogía del Bus de Datos y el Impacto en Datasets</h2>
+            <p>En las cargas de trabajo de IA, el almacenamiento secundario deja de ser pasivo para convertirse en una tubería de alto rendimiento. Un investigador de seguridad necesita cargar datasets de entrenamiento de cientos de gigabytes en tiempo real[cite: 13].</p>
+            <ul>
+                <li><strong>Bus SATA III:</strong> Equivale a una carretera secundaria de dos carriles (~150-550 MB/s). Al transferir un dataset masivo, la carretera se congestiona, dejando a la CPU y GPU inactivas[cite: 14].</li>
+                <li><strong>Bus PCIe (NVMe):</strong> Representa una autopista de alta velocidad de 8 a 16 carriles expresos (hasta 7,500 - 14,000 MB/s). Los datos se transmiten en miles de colas paralelas directamente hacia la memoria[cite: 14].</li>
+            </ul>
         </div>
 
         <div class="card">
-            <h2>2. Comparativa de Velocidades</h2>
+            <h2>2.2. Tabla Comparativa de Rendimiento</h2>
             <table>
                 <tr>
                     <th>Tecnología</th>
-                    <th>Bus / Interfaz</th>
+                    <th>Interfaz y Bus</th>
                     <th>Lectura Secuencial</th>
-                    <th>Impacto en IA</th>
+                    <th>Impacto en Cargas de IA</th>
                 </tr>
                 <tr>
-                    <td>HDD 7200 RPM</td>
-                    <td>SATA III Mecánico</td>
+                    <td>HDD Tradicional (7200 RPM)</td>
+                    <td>SATA III / Mecánico</td>
                     <td>~150 MB/s</td>
-                    <td>Inviable</td>
+                    <td><strong>Inviable:</strong> Produce pausas severas en la inferencia[cite: 14].</td>
                 </tr>
                 <tr>
-                    <td>SSD SATA III</td>
-                    <td>SATA 6 Gbps</td>
+                    <td>SSD SATA III (2.5")</td>
+                    <td>SATA III 6 Gbps</td>
                     <td>~550 MB/s</td>
-                    <td>Limitado</td>
+                    <td><strong>Limitado:</strong> Estrangula la carga de modelos grandes[cite: 14].</td>
                 </tr>
                 <tr>
-                    <td>SSD NVMe PCIe 4.0</td>
+                    <td>SSD NVMe M.2 (PCIe 4.0)</td>
                     <td>PCIe 4.0 x4</td>
                     <td>~7,500 MB/s</td>
-                    <td>Óptimo</td>
+                    <td><strong>Óptimo:</strong> Carga un modelo de 50 GB en VRAM en segundos[cite: 14].</td>
                 </tr>
                 <tr>
-                    <td>SSD NVMe PCIe 5.0</td>
+                    <td>SSD NVMe M.2 (PCIe 5.0)</td>
                     <td>PCIe 5.0 x4</td>
                     <td>~14,000 MB/s</td>
-                    <td>Extremo</td>
+                    <td><strong>Vanguardia:</strong> Intercambio casi instantáneo de contextos[cite: 14].</td>
                 </tr>
             </table>
         </div>
 
         <div class="card">
-            <h2>3. Tecnologías Futuras: DirectStorage y PCIe 5.0</h2>
-            <p><strong>Microsoft DirectStorage:</strong> Transfiera datos comprimidos desde el SSD NVMe directamente a la VRAM mediante DMA (Direct Memory Access), omitiendo la CPU y reduciendo tiempos de carga a milisegundos.</p>
+            <h2>2.3. Mirando al Horizonte: DirectStorage y Tecnologías Post-Silicio</h2>
+            <p><strong>Microsoft DirectStorage:</strong> Permite transferir datos directamente desde el SSD NVMe hacia la VRAM de la GPU mediante Acceso Directo a Memoria (DMA), omitiendo a la CPU. Esto posibilita canalizar datasets masivos de <em>embeddings</em> directamente hacia los Tensor Cores[cite: 14].</p>
+            <p><strong>Tecnologías Post-Silicio:</strong> Más allá del PCIe 5.0, la industria explora el <em>Compute Express Link (CXL)</em> y el almacenamiento óptico 5D (nanovidrio), que prometen desafiar las limitaciones físicas del silicio tradicional en centros de datos de IA[cite: 14].</p>
         </div>
     </div>
 </body>
