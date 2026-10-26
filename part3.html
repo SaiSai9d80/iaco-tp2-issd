@@ -124,7 +124,6 @@
         .comparison-table th { background: #0f172a; color: #22d3ee; padding: 14px; }
         .comparison-table td { padding: 12px; border: 1px solid #334155; }
         .comparison-table tr:hover { background-color: #263345; }
-        .winner { background: rgba(34, 197, 94, 0.1); font-weight: bold; }
         
         .tradeoff-grid {
             display: grid;
@@ -172,6 +171,15 @@
             margin-left: 8px;
         }
         
+        .mermaid-diagram {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
         @media (max-width: 768px) {
             .tradeoff-grid { grid-template-columns: 1fr; }
         }
@@ -196,37 +204,21 @@
 
         <!-- СЕКЦИЯ: Философия дизайна -->
         <div class="expert-section">
-            <h2>🎓 Filosofía de Diseño: Dos Enfoques, Un Objetivo</h2>
-            <p>El diseño de workstations para IA no es simplemente "comprar lo más caro" o "ahorrar al máximo". Es un ejercicio de <strong>optimización estratégica</strong> basado en principios fundamentales:</p>
+            <h2>🎓 Cómo elegí los componentes</h2>
+            <p>Primero definí las tareas: ejecutar modelos pequeños, preparar preguntas de prueba y guardar resultados. Después revisé la memoria necesaria y la compatibilidad del software. Para comparar una estación profesional con una computadora doméstica, utilizo un presupuesto de referencia de <strong>1200 USD</strong>, según la aclaración del profesor durante la reunión por Zoom. La consigna escrita menciona 800 USD como referencia inicial.</p>
             
-            <h3>1. Identificación del Cuello de Botella Crítico</h3>
-            <p>Para un Investigador en Alineación y Seguridad de IA, el recurso más escaso es la <strong>VRAM</strong>. Sin VRAM suficiente, el modelo simplemente no cabe en memoria y la auditoría es imposible. Por ello:</p>
-            <ul>
-                <li>En la configuración "Money is No Object": 48 GB VRAM (RTX 6000 Ada) → Modelos 70B+ parámetros</li>
-                <li>En la configuración "$1,200": 12 GB VRAM (RTX 3060 V2 nueva) → Modelos hasta 13B parámetros</li>
-            </ul>
-            <p>Ambas priorizan VRAM sobre frecuencia de reloj, RGB, o estética.</p>
+            <p>El presupuesto doméstico obliga a elegir prioridades. En esta alternativa dedico la mayor parte del coste a una <strong>RTX 3060 de 12 GB</strong>. Para mantener el total cerca de 1200 USD, uso un Ryzen 5 5500, 16 GB de RAM y un NVMe de 500 GB. No presento esta computadora como equivalente a la estación profesional ni como la única combinación posible.</p>
             
-            <h3>2. La Realidad del Mercado Argentino (Octubre 2026)</h3>
-            <p>Los precios de componentes electrónicos en Argentina reflejan un sobreprecio significativo debido a:</p>
-            <ul>
-                <li><strong>Impuesto PAIS (30%)</strong> sobre compras de importación</li>
-                <li><strong>Aranceles aduaneros</strong> y costos logísticos</li>
-                <li><strong>Tipo de cambio oficial:</strong> 1 USD = 1,536.6 ARS (26 de octubre de 2026, fuente: Morningstar)</li>
-                <li><strong>Disponibilidad limitada</strong> de componentes específicos en Córdoba (CP 5000)</li>
-            </ul>
-            <p>El presupuesto de <strong>$1,200 USD</strong> fue acordado en reunión de Zoom con el profesor Galiotti como techo realista para el mercado argentino.</p>
-            
-            <h3>3. Compromisos Inteligentes (Trade-offs)</h3>
-            <p>Para mantenernos dentro del techo de $1,200 USD en el mercado argentino (verificado en tiendas locales, octubre 2026), aceptamos compromisos calculados:</p>
+            <h3>Compromisos Inteligentes (Trade-offs)</h3>
+            <p>Para mantenernos dentro del techo de ~1200 USD en el mercado argentino (verificado en tiendas locales, octubre 2026), aceptamos compromisos calculados:</p>
             <div class="tradeoff-grid">
                 <div class="tradeoff-card accept">
                     <h4>✅ Aceptamos:</h4>
                     <ul>
-                        <li><strong>CPU con PCIe 3.0:</strong> Ryzen 5 5500 en lugar de 5600 (ahorro de ~$85)</li>
-                        <li><strong>Placa base A520:</strong> En lugar de B550 (ahorro de ~$50)</li>
+                        <li><strong>CPU con PCIe 3.0:</strong> Ryzen 5 5500 en lugar de 5600</li>
+                        <li><strong>Placa base A520:</strong> En lugar de B550</li>
                         <li><strong>16 GB RAM en lugar de 32 GB:</strong> Suficiente para modelos de 7B-8B parámetros</li>
-                        <li><strong>SSD 512 GB en lugar de 1 TB:</strong> Capacidad mínima viable para sistema + modelos</li>
+                        <li><strong>SSD 500 GB en lugar de 1 TB:</strong> Capacidad mínima viable para sistema + modelos</li>
                     </ul>
                 </div>
                 <div class="tradeoff-card reject">
@@ -260,298 +252,299 @@
                     <p>Workstation Profesional Sin Límites: Threadripper PRO 7975WX + RTX 6000 Ada + Corsair AX1600i</p>
                 </div>
 
-                <p style="font-size: 0.95rem;">Estación de trabajo profesional orientada a la máxima capacidad de cómputo, <em>sandboxing</em> concurrente y protección absoluta contra la corrupción de datos<a href="resources.html#ref-amd-thread" class="citation">[1]</a>.</p>
+                <p style="font-size: 0.95rem;">Esta es una propuesta de diseño, no una computadora montada y probada. Antes de comprar, hay que confirmar la revisión de la placa, la versión de BIOS, la lista QVL de memoria y el espacio de los disipadores M.2.</p>
                 
                 <ul class="specs-list">
                     <li>
                         <strong>CPU: AMD Ryzen Threadripper PRO 7975WX (32C/64T)</strong>
-                        Proporciona 64 hilos para entornos aislados concurrentes y 128 carriles PCIe 5.0.
+                        Más recursos para preparación de datos y tareas simultáneas<a href="resources.html#ref-25" class="citation">[25]</a>.
                     </li>
                     <li>
-                        <strong>GPU: NVIDIA RTX 6000 Ada Generation (48 GB VRAM con ECC)</strong>
-                        Permite cargar modelos de más de 70B de parámetros sin cuantización agresiva<a href="resources.html#ref-nvidia-6000" class="citation">[2]</a>.
+                        <strong>Placa madre: ASUS Pro WS WRX90E-SAGE SE</strong>
+                        Plataforma WRX90 con ocho canales de memoria y cuatro M.2<a href="resources.html#ref-26" class="citation">[26]</a>.
                     </li>
                     <li>
-                        <strong>RAM: 256 GB DDR5-5600 MHz Registered ECC</strong>
-                        El Código de Corrección de Errores (ECC) evita la corrupción de datasets por interferencias térmicas o eléctricas.
+                        <strong>GPU: NVIDIA RTX 6000 Ada Generation (48 GB GDDR6 ECC)</strong>
+                        Más memoria para modelos cuantizados y cargas profesionales<a href="resources.html#ref-20" class="citation">[20]</a>.
                     </li>
                     <li>
-                        <strong>Almacenamiento: 2TB Crucial T700 (OS) + 8TB Corsair MP700 Pro (Datasets)</strong>
-                        PCIe 5.0 NVMe para lectura ultra rápida de hasta 12,400 MB/s.
+                        <strong>RAM: 256 GB (8×32 GB) Kingston KSM56R46BD8-32HA ECC RDIMM</strong>
+                        Un módulo por canal; módulos DDR5 5600, objetivo de operación de hasta 5200 MT/s según CPU<a href="resources.html#ref-25" class="citation">[25]</a>, <a href="resources.html#ref-27" class="citation">[27]</a>.
                     </li>
                     <li>
-                        <strong>PSU: Corsair AX1600i 1600W (80 PLUS Titanium)</strong>
-                        Ofrece un margen de seguridad operacional del ~47% (consumo estimado de 850W), operando en su zona de máxima eficiencia (>94%)<a href="resources.html#ref-corsair" class="citation">[3]</a>.
+                        <strong>SSD del sistema: Crucial T700 2 TB</strong>
+                        Sistema, programas y trabajo activo<a href="resources.html#ref-19" class="citation">[19]</a>.
+                    </li>
+                    <li>
+                        <strong>SSD de datos: 2× Corsair MP700 PRO 4 TB</strong>
+                        8 TB totales repartidos en dos unidades<a href="resources.html#ref-28" class="citation">[28]</a>.
+                    </li>
+                    <li>
+                        <strong>Refrigeración: Noctua NH-U14S TR5-SP6</strong>
+                        Montaje para sTR5; altura de 165 mm<a href="resources.html#ref-29" class="citation">[29]</a>.
+                    </li>
+                    <li>
+                        <strong>Fuente: Corsair AX1600i 1600 W</strong>
+                        Reserva para ampliaciones; capacidad superior a la necesaria para una sola GPU<a href="resources.html#ref-30" class="citation">[30]</a>.
+                    </li>
+                    <li>
+                        <strong>Gabinete: Fractal Design Define 7 XL</strong>
+                        Compatible con placas SSI EEB y disipadores grandes<a href="resources.html#ref-31" class="citation">[31]</a>.
                     </li>
                 </ul>
+                
+                <div class="highlight">
+                    <strong>⚠️ Limitaciones:</strong> La elección de 48 GB de VRAM busca aumentar el margen frente a una tarjeta de 24 GB. Un modelo de 70B a 4 bits puede ser un objetivo, según el formato y el contexto; no garantizo que cualquier versión funcione. La RAM ECC puede corregir determinados errores de memoria. No protege contra todo fallo de software, pérdida de datos o ataque. La fuente de 1600 W deja mucho margen para posibles ampliaciones. Con una sola RTX 6000 Ada no la considero un requisito mínimo ni prometo un punto fijo de eficiencia.
+                </div>
             </div>
 
-            <!-- СБОРКА 2: EL PUNTO DULCE $1,200 (ВАРИАНТ B) -->
+            <!-- СБОРКА 2: EL PUNTO DULCE $1,189.95 (ВАРИАНТ B) -->
             <div class="card">
                 <div class="build-header budget">
                     <h2>Configuración 2: "El Punto Dulce"</h2>
-                    <p style="margin: 0; color: var(--muted);">Presupuesto Inteligente (Hasta $1,200 USD en Argentina)</p>
+                    <p style="margin: 0; color: var(--muted);">Presupuesto Inteligente (~$1,189.95 USD en Argentina)</p>
                 </div>
 
                 <div class="build-image">
                     <img src="images/el-punto-dulce.jpg" 
                          alt="Workstation Presupuesto Inteligente: Ryzen 5 5500 + RTX 3060 V2">
-                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5500 + RTX 3060 V2 12GB (nueva) + ASRock A520M</p>
+                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5500 + ASUS Dual RTX 3060 V2 OC 12GB (nueva) + Gigabyte A520M K V2</p>
                 </div>
 
                 <div class="price-notice">
-                    <strong>📌 Nota sobre Precios Reales:</strong> Los precios reflejan el mercado argentino verificado en <strong>tiendas locales (GoldenTech, Amonpul, Qos Technologies, Córdoba, CP 5000, octubre 2026)</strong> con tipo de cambio <strong>1 USD = 1,536.6 ARS</strong> (26 de octubre de 2026). Presupuesto acordado en reunión de Zoom con el profesor Galiotti. Todos los componentes son <strong>nuevos con garantía</strong><a href="resources.html#ref-prices" class="citation">[C1-C7]</a>.
+                    <strong>📌 Nota sobre Precios Reales:</strong> Los precios reflejan el mercado argentino verificado en <strong>tiendas locales (GoldenTech, Amonpul, Qos Technologies, Córdoba, CP 5000, octubre 2026)</strong>. La conversión utiliza <strong>1560 ARS por USD</strong>, cotización de venta de billetes del Banco de la Nación Argentina (26 de octubre de 2026). Es una referencia para expresar el presupuesto, no una promesa de cambio de moneda. Los importes corresponden a los precios por transferencia de las fichas recuperadas, con impuestos. Presupuesto de referencia de 1200 USD según la aclaración del profesor en la reunión por Zoom<a href="resources.html#ref-32" class="citation">[32]</a>, <a href="resources.html#precio-C1" class="citation">[C1-C7]</a>.
                 </div>
 
-                <p style="font-size: 0.95rem;">Diseñada para maximizar la VRAM dentro de un presupuesto estricto de $1,200 USD, priorizando una GPU <strong>nueva con garantía</strong> sobre un CPU de mayor gama<a href="resources.html#ref-nvidia-3060" class="citation">[4]</a>.</p>
+                <p style="font-size: 0.95rem;">Diseñada para maximizar la VRAM dentro de un presupuesto estricto de ~1200 USD, priorizando una GPU <strong>nueva con garantía</strong> sobre un CPU de mayor gama<a href="resources.html#ref-34" class="citation">[34]</a>.</p>
 
                 <table>
                     <tr>
                         <th>Componente</th>
                         <th>Modelo</th>
-                        <th>Precio (USD)</th>
-                        <th>Justificación IA</th>
+                        <th>ARS</th>
+                        <th>USD</th>
+                        <th>Fuente</th>
                     </tr>
                     <tr>
-                        <td><strong>CPU</strong></td>
-                        <td>AMD Ryzen 5 5500 (6C/12T)</td>
-                        <td>$100</td>
-                        <td>Soporta 12 hilos para contenedores Docker. Limitación: PCIe 3.0 (no 4.0). Aceptable para esta configuración<a href="resources.html#ref-cpu-5500" class="citation">[C1]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td><strong>CPU y cooler</strong></td>
+                        <td>Ryzen 5 5500 BOX con Wraith Stealth</td>
+                        <td>173,965.90</td>
+                        <td>111.52</td>
+                        <td><a href="resources.html#precio-C1" class="citation">[C1]</a></td>
                     </tr>
                     <tr>
-                        <td><strong>GPU (Nueva)</strong></td>
-                        <td>NVIDIA RTX 3060 V2 12GB</td>
-                        <td>$300</td>
-                        <td>Prioridad Absoluta: 12 GB de VRAM para modelos de 7B/8B con CUDA. Nueva con garantía<a href="resources.html#ref-gpu-3060v2" class="citation">[C2]</a>.</td>
+                        <td><strong>GPU nueva</strong></td>
+                        <td>ASUS Dual RTX 3060 V2 OC 12 GB</td>
+                        <td>945,678.00</td>
+                        <td>606.20</td>
+                        <td><a href="resources.html#precio-C2" class="citation">[C2]</a></td>
                     </tr>
                     <tr>
-                        <td><strong>Placa Madre</strong></td>
-                        <td>ASRock A520M-HDV</td>
-                        <td>$65</td>
-                        <td>Socket AM4, soporte DDR4. Limitación: sin PCIe 4.0 ni overclocking<a href="resources.html#ref-mb-a520" class="citation">[C3]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td><strong>Placa madre</strong></td>
+                        <td>Gigabyte A520M K V2</td>
+                        <td>88,711.06</td>
+                        <td>56.87</td>
+                        <td><a href="resources.html#precio-C3" class="citation">[C3]</a></td>
                     </tr>
                     <tr>
                         <td><strong>RAM</strong></td>
-                        <td>16 GB (2x8GB) DDR4-3200</td>
-                        <td>$35</td>
-                        <td>Capacidad mínima para cargar modelos de 7B-8B parámetros en búfer<a href="resources.html#ref-ram-16gb" class="citation">[C4]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td>2× Hiksemi Hiker 8 GB DDR4 3200 UDIMM</td>
+                        <td>274,466.20</td>
+                        <td>175.94</td>
+                        <td><a href="resources.html#precio-C4" class="citation">[C4]</a> <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Almacenamiento</strong></td>
-                        <td>512GB NVMe PCIe 3.0</td>
-                        <td>$40</td>
-                        <td>Capacidad mínima viable para sistema + modelos. Velocidad ~3,500 MB/s<a href="resources.html#ref-ssd-512gb" class="citation">[C5]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td><strong>SSD</strong></td>
+                        <td>Kingston NV3 SNV3S/500G 500 GB</td>
+                        <td>187,963.15</td>
+                        <td>120.49</td>
+                        <td><a href="resources.html#precio-C5" class="citation">[C5]</a> <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
                         <td><strong>Fuente (PSU)</strong></td>
-                        <td>MSI MAG A550BN 550W</td>
-                        <td>$55</td>
-                        <td>Certificación 80+ Bronze con protecciones OVP, OPP, SCP. Suficiente para esta configuración<a href="resources.html#ref-psu-550w" class="citation">[C6]</a>.</td>
+                        <td>MSI MAG A650BN 650 W</td>
+                        <td>90,881.00</td>
+                        <td>58.26</td>
+                        <td><a href="resources.html#precio-C6" class="citation">[C6]</a></td>
                     </tr>
                     <tr>
                         <td><strong>Gabinete</strong></td>
-                        <td>DeepCool CC560 (4 fans)</td>
-                        <td>$55</td>
-                        <td>Flujo de aire óptimo para inferencia prolongada<a href="resources.html#ref-case-cc560" class="citation">[C7]</a>.</td>
+                        <td>Zer01 Orion con cuatro ventiladores</td>
+                        <td>54,657.91</td>
+                        <td>35.04</td>
+                        <td><a href="resources.html#precio-C7" class="citation">[C7]</a></td>
                     </tr>
-                    <tr>
+                    <tr style="background: #0f172a;">
+                        <td><strong>Subtotal</strong></td>
+                        <td colspan="2">Solo componentes</td>
+                        <td>1,816,323.22 ARS</td>
+                        <td>1,164.31 USD</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #0f172a;">
                         <td><strong>Reserva</strong></td>
-                        <td>Envíos / Fluctuaciones</td>
-                        <td>$40</td>
-                        <td>Previsión realista de costos logísticos y fluctuaciones del tipo de cambio.</td>
+                        <td colspan="2">Envíos y accesorios sin cotización cerrada</td>
+                        <td>40,000.00 ARS</td>
+                        <td>25.64 USD</td>
+                        <td></td>
                     </tr>
                     <tr style="background: #0f172a; font-weight: bold;">
-                        <td>TOTAL</td>
-                        <td colspan="2">$1,190 USD</td>
-                        <td>Maximiza VRAM sin sacrificar integridad. Todos los componentes nuevos con garantía.</td>
+                        <td>TOTAL PREVISTO</td>
+                        <td colspan="2">Componentes más reserva</td>
+                        <td>1,856,323.22 ARS</td>
+                        <td>1,189.95 USD</td>
+                        <td>Maximiza VRAM con componentes nuevos y garantía.</td>
                     </tr>
                 </table>
                 
                 <div class="highlight" style="margin-top: 20px;">
-                    <strong>📊 Análisis del Trade-off:</strong> Esta configuración sacrifica PCIe 4.0 (CPU y placa base) para obtener una <strong>GPU nueva con garantía</strong> en lugar de una usada. El impacto en rendimiento de IA es mínimo (~5% en transferencia de datos), pero la garantía y confiabilidad son críticas para un entorno académico.
+                    <strong>📊 Análisis del Trade-off:</strong> La referencia de 1200 USD equivale a 1,872,000 ARS con esta cotización. Después de los componentes quedan 55,676.78 ARS para envío y otros gastos. Reservo 40,000 ARS, pero no tengo una cotización de entrega al domicilio. Si los gastos adicionales superan 55,676.78 ARS, el total pasa de 1200 USD. Esto debe mostrarse de forma transparente, sin inventar una tarifa de envío. El presupuesto incluye solo la torre y presupone montaje propio. No incluye monitor, teclado, ratón, licencia de Windows ni servicio de armado.
                 </div>
             </div>
         </div>
 
-        <!-- СЕКЦИЯ: Сравнение двух сборок -->
+        <!-- СЕКЦИЯ: Сравнение двух сборок (по аудиту) -->
         <div class="expert-section">
-            <h2>📊 Comparación Directa: ¿Cuánto Rendimiento Real Ofrece Cada Build?</h2>
-            <p>Las especificaciones en papel cuentan una historia, pero los escenarios de uso real revelan el verdadero valor de cada inversión:</p>
+            <h2>📊 Comparación entre las dos propuestas</h2>
+            <p>Las dos configuraciones responden al mismo perfil profesional, pero con recursos muy diferentes. La siguiente tabla resume las diferencias clave sin afirmar rendimientos no medidos:</p>
             
             <table class="comparison-table">
                 <tr>
-                    <th>Escenario de Uso</th>
-                    <th>Money is No Object<br><small>(~$8,000+ USD)</small></th>
-                    <th>El Punto Dulce<br><small>($1,190 USD)</small></th>
-                    <th>Diferencia Real</th>
+                    <th>Criterio</th>
+                    <th>Estación profesional</th>
+                    <th>Configuración de estudio</th>
                 </tr>
                 <tr>
-                    <td><strong>Modelo máximo ejecutable</strong></td>
-                    <td class="winner">Llama 3 70B (sin cuantizar)</td>
-                    <td>Llama 3 8B (4-bit quant)</td>
-                    <td>9x más parámetros</td>
+                    <td><strong>VRAM</strong></td>
+                    <td>48 GB</td>
+                    <td>12 GB</td>
                 </tr>
                 <tr>
-                    <td><strong>Velocidad de inferencia (Llama 3 8B)</strong></td>
-                    <td class="winner">~120 tokens/seg</td>
-                    <td>~40 tokens/seg</td>
-                    <td>3x más rápido</td>
+                    <td><strong>RAM</strong></td>
+                    <td>256 GB ECC RDIMM</td>
+                    <td>16 GB DDR4</td>
                 </tr>
                 <tr>
-                    <td><strong>Sandboxes concurrentes</strong></td>
-                    <td class="winner">20+ VMs aisladas</td>
-                    <td>2-3 contenedores Docker</td>
-                    <td>7x más aislamiento</td>
+                    <td><strong>Objetivo</strong></td>
+                    <td>Modelos cuantizados mayores y más tareas simultáneas</td>
+                    <td>Aprendizaje con modelos pequeños y pocas tareas simultáneas</td>
                 </tr>
                 <tr>
-                    <td><strong>Fine-tuning de modelos 7B</strong></td>
-                    <td class="winner">Posible (QLoRA)</td>
-                    <td>Marginal (requiere optimización extrema)</td>
-                    <td>Factible vs. Limitado</td>
+                    <td><strong>Límite principal</strong></td>
+                    <td>Formato, contexto y VRAM siguen importando</td>
+                    <td>VRAM, RAM y capacidad del SSD</td>
                 </tr>
                 <tr>
-                    <td><strong>Garantía de componentes</strong></td>
-                    <td>Completa (1-3 años)</td>
-                    <td class="winner">Completa (1-3 años)</td>
-                    <td>Igual (ambos nuevos)</td>
-                </tr>
-                <tr>
-                    <td><strong>Consumo energético</strong></td>
-                    <td>~850W bajo carga</td>
-                    <td class="winner">~280W bajo carga</td>
-                    <td>67% más eficiente</td>
+                    <td><strong>Rendimiento medido en este trabajo</strong></td>
+                    <td>No medido</td>
+                    <td>No medido</td>
                 </tr>
             </table>
 
             <div class="highlight">
-                <strong>✓ Análisis del Experto:</strong> La build de $8,000 no es "3x mejor" que la de $1,190. Es <strong>cualitativamente diferente</strong>: permite investigar modelos que la build económica simplemente no puede ejecutar. Sin embargo, para un estudiante que audita modelos de 7B-8B parámetros, la build de $1,190 ofrece <strong>el 85% de la funcionalidad necesaria al 15% del costo</strong>, con la ventaja adicional de <strong>garantía completa en todos los componentes</strong>.
+                <strong>✓ Observación:</strong> La estación profesional ofrece más memoria y más recursos para trabajar en paralelo. Esto amplía las tareas posibles, pero no garantiza una velocidad fija ni seguridad absoluta. Las máquinas virtuales, los contenedores, las copias de seguridad y los permisos requieren una configuración adecuada.
             </div>
         </div>
 
-        <!-- СЕКЦИЯ: Анализ PCIe 3.0 vs 4.0 -->
+        <!-- СЕКЦИЯ: Почему选择了 эти компоненты альтернативы -->
         <div class="expert-section">
-            <h2>🔍 Análisis Técnico: Impacto de PCIe 3.0 en Rendimiento de IA</h2>
-            <p>La configuración "El Punto Dulce" utiliza CPU Ryzen 5 5500 y placa ASRock A520M, ambos limitados a <strong>PCIe 3.0</strong>. Analicemos el impacto real en cargas de trabajo de IA:</p>
+            <h2>🔍 Por qué elegí los componentes de la alternativa</h2>
             
             <div class="scenario-box">
-                <h4>Escenario A: PCIe 3.0 (Ryzen 5 5500 + A520M)</h4>
-                <ul>
-                    <li><strong>Ancho de banda GPU:</strong> ~32 GB/s (x16 lanes)</li>
-                    <li><strong>Ancho de banda NVMe:</strong> ~3.5 GB/s (x4 lanes)</li>
-                    <li><strong>Impacto en inferencia:</strong> ~5% más lento en carga de modelos grandes</li>
-                    <li><strong>Impacto en fine-tuning:</strong> ~3-5% más lento en transferencia de gradients</li>
-                    <li><strong>Beneficio:</strong> Ahorro de ~$135 USD, GPU nueva con garantía</li>
-                </ul>
+                <h4>Ryzen 5 5500</h4>
+                <p>El Ryzen 5 5500 tiene seis núcleos y doce hilos. Su versión BOX incluye un Wraith Stealth. Utiliza AM4, DDR4 y PCIe 3.0. No tiene gráficos integrados, por lo que el monitor debe conectarse a la tarjeta gráfica. Estas características permiten reducir el coste, aunque la plataforma ofrece menos margen que una estación moderna de gama alta<a href="resources.html#ref-33" class="citation">[33]</a>.</p>
             </div>
             
             <div class="scenario-box">
-                <h4>Escenario B: PCIe 4.0 (Ryzen 5 5600 + B550M)</h4>
-                <ul>
-                    <li><strong>Ancho de banda GPU:</strong> ~64 GB/s (x16 lanes)</li>
-                    <li><strong>Ancho de banda NVMe:</strong> ~7 GB/s (x4 lanes)</li>
-                    <li><strong>Impacto en inferencia:</strong> Referencia base</li>
-                    <li><strong>Impacto en fine-tuning:</strong> Referencia base</li>
-                    <li><strong>Costo adicional:</strong> ~$135 USD más (CPU + placa madre)</li>
-                </ul>
+                <h4>ASUS Dual RTX 3060 V2 OC 12 GB</h4>
+                <p>La ASUS Dual RTX 3060 V2 OC elegida tiene 12 GB GDDR6 y un conector de alimentación de ocho pines. ASUS indica una fuente recomendada de 650 W para su escenario de referencia, que incluye overclock. Elijo la MSI MAG A650BN de 650 W para respetar esa recomendación y disponer de margen. Esta potencia es la capacidad de la fuente, no el consumo medido del equipo<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>.</p>
+                <p>Los 12 GB de VRAM ofrecen más margen que una tarjeta de 8 GB. El objetivo principal son modelos de 7B–8B cuantizados y pruebas de tamaño moderado. Algunas versiones de 13B a 4 bits también pueden ser posibles, pero dependen del contexto, del programa y de la memoria adicional. No prometo que cualquier modelo de 13B funcione ni una velocidad fija de generación.</p>
             </div>
 
-            <h3>Veredicto Cuantitativo:</h3>
-            <p>La diferencia de PCIe 3.0 vs 4.0 en cargas de IA es <strong>mínima (3-5%)</strong>, porque el cuello de botella principal es la VRAM, no el bus. Para un investigador académico con presupuesto limitado, sacrificar PCIe 4.0 para obtener una <strong>GPU nueva con garantía</strong> es una decisión técnica sólida.</p>
-            
-            <div class="highlight">
-                <strong>✓ Conclusión:</strong> PCIe 3.0 no es un "defecto"; es un <strong>trade-off aceptable</strong> que permite mantener el presupuesto en $1,200 USD con componentes nuevos y garantizados. El impacto en productividad de IA es marginal comparado con el beneficio de tener garantía completa.
+            <div class="scenario-box">
+                <h4>Gigabyte A520M K V2</h4>
+                <p>La placa A520M K V2 tiene dos ranuras de RAM. Con dos módulos de 8 GB se utiliza doble canal, pero una ampliación a 32 GB requiere sustituir los módulos. Su ranura principal para GPU es PCIe 3.0 x16 y su único M.2 trabaja hasta PCIe 3.0 x4. Aunque la GPU y el SSD admiten PCIe 4.0, en esta plataforma usarán PCIe 3.0. Hay que confirmar la revisión recibida y su soporte de CPU<a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-36" class="citation">[36]</a>.</p>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Kingston NV3 SNV3S/500G 500 GB</h4>
+                <p>El Kingston NV3 elegido es el modelo SNV3S/500G de 500 GB y formato M.2 2280. Kingston declara hasta 5000 MB/s de lectura y 3000 MB/s de escritura en una plataforma PCIe 4.0 adecuada. La combinación Ryzen 5 5500 y A520 limita el enlace a PCIe 3.0 x4, por lo que no atribuyo a esta computadora una lectura real de 5000 MB/s. Los 500 GB también obligan a controlar el número de modelos guardados<a href="resources.html#ref-38" class="citation">[38]</a>.</p>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Zer01 Orion con cuatro ventiladores</h4>
+                <p>El gabinete y sus cuatro ventiladores se describen según la ficha del vendedor. No dispongo de una ficha técnica oficial independiente para verificar todos sus detalles. Antes del montaje hay que confirmar espacio, tornillos, conectores y control de ventiladores. La tarjeta ASUS mide 200 mm de largo según su fabricante<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#precio-C7" class="citation">[C7]</a>.</p>
             </div>
         </div>
 
-        <!-- ДИАГРАММА MERMAID -->
+        <!-- ДИАГРАММА MERMAID (исправленная) -->
         <div class="card">
-            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build $1,190)</h2>
+            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build ~$1,190)</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente. <strong>Nota:</strong> Esta configuración utiliza PCIe 3.0.</p>
-            <div class="mermaid" style="display: flex; justify-content: center;">
+            <div class="mermaid-diagram">
+                <pre class="mermaid">
 graph TD
-    subgraph PSU_Group [Suministro de Energía]
-        PSU["MSI MAG A550BN 550W 80+ Bronze"]
-    end
-    subgraph Motherboard_Group [Placa Base: ASRock A520M-HDV (PCIe 3.0)]
-        CPU["AMD Ryzen 5 5500 (6C/12T)"]
-        RAM["16 GB DDR4 3200 MHz (2x8GB)"]
-        NVMe["512GB NVMe PCIe 3.0 x4"]
-        GPU["NVIDIA RTX 3060 V2 12GB (Nueva)"]
+    subgraph PSU["Fuente: MSI MAG A650BN 650W"]
+        direction TB
+        PSU_ATX["ATX 24 pines"]
+        PSU_CPU["ATX 12V 8 pines"]
+        PSU_GPU["PCIe 8 pines"]
     end
     
-    CPU <-->|"Bus de Memoria Dual-Channel"| RAM
-    CPU <-->|"Bus PCIe 3.0 x4 (~3.5 GB/s)"| NVMe
-    CPU <-->|"Bus PCIe 3.0 x16 (~32 GB/s)"| GPU
+    subgraph MB["Placa Base: Gigabyte A520M K V2 (PCIe 3.0)"]
+        direction TB
+        CPU["AMD Ryzen 5 5500<br/>(6C/12T)"]
+        RAM["2×8 GB DDR4 3200<br/>(Doble canal)"]
+        M2["M.2: Kingston NV3 500GB<br/>(PCIe 3.0 x4)"]
+        GPU_SLOT["PCIe x16: RTX 3060 V2<br/>(PCIe 3.0 x16)"]
+    end
     
-    PSU -->|"Conector ATX 24-Pines"| Motherboard_Group
-    PSU -->|"Conector EPS 8-Pines"| CPU
-    PSU -->|"Conector PCIe 8-Pines"| GPU
+    subgraph PERIF["Periféricos"]
+        MON["Monitor<br/>(HDMI/DisplayPort)"]
+        COOLER["Wraith Stealth<br/>(CPU FAN)"]
+    end
+    
+    CPU <-->|"Doble canal DDR4 3200"| RAM
+    CPU -->|"PCIe 3.0 x4 — datos"| M2
+    CPU -->|"PCIe 3.0 x16"| GPU_SLOT
+    PSU_ATX --> MB
+    PSU_CPU --> MB
+    PSU_GPU --> GPU_SLOT
+    GPU_SLOT --> MON
+    MB --> COOLER
     
     classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
     classDef psu fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
     classDef pcie3 fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#f8fafc;
-    class NVMe,GPU pcie3;
     class PSU psu;
+    class M2,GPU_SLOT pcie3;
+                </pre>
             </div>
+            <p style="color: var(--muted); font-size: 0.85rem; font-style: italic; margin-top: 15px;">
+                <strong>Pie de figura:</strong> Esquema simplificado de la alternativa con Ryzen 5 5500. Los datos y la alimentación se muestran con colores diferentes. El NVMe recibe alimentación desde el conector M.2 de la placa y no necesita un cable de alimentación SATA. GPU y SSD funcionan con PCIe 3.0 por los límites de esta plataforma. Los ventiladores del gabinete deben conectarse según sus conectores y controlador<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>, <a href="resources.html#ref-38" class="citation">[38]</a>.
+            </p>
         </div>
 
-        <!-- СЕКЦИЯ: Путь апгрейда -->
+        <!-- СЕКЦИЯ: Posibles mejoras (вместо Ruta de Actualización) -->
         <div class="expert-section">
-            <h2> Ruta de Actualización: De $1,190 a $1,600</h2>
-            <p>Una de las ventajas de la build "El Punto Dulce" es su <strong>path de actualización claro</strong>. A medida que el investigador avanza en su carrera, puede mejorar componentes críticos sin reconstruir todo el sistema:</p>
-            
-            <table class="comparison-table">
-                <tr>
-                    <th>Fase</th>
-                    <th>Componente a Actualizar</th>
-                    <th>Costo Aproximado</th>
-                    <th>Beneficio Obtenido</th>
-                </tr>
-                <tr>
-                    <td><strong>Fase 1 (Actual)</strong></td>
-                    <td>Build completa</td>
-                    <td>$1,190</td>
-                    <td>Inferencia local de modelos 7B-8B con garantía completa</td>
-                </tr>
-                <tr>
-                    <td><strong>Fase 2 (6 meses)</strong></td>
-                    <td>CPU: Ryzen 5 5600 + Placa B550M</td>
-                    <td>+$135 (venta de 5500 + A520M)</td>
-                    <td>PCIe 4.0, +10% rendimiento en transferencia de datos</td>
-                </tr>
-                <tr>
-                    <td><strong>Fase 3 (12 meses)</strong></td>
-                    <td>RAM: 32 GB DDR4-3200 (2x16GB)</td>
-                    <td>+$35 (venta de 16 GB)</td>
-                    <td>Modelos más grandes, mejor multitarea</td>
-                </tr>
-                <tr>
-                    <td><strong>Fase 4 (18 meses)</strong></td>
-                    <td>SSD: 1TB NVMe PCIe 4.0</td>
-                    <td>+$40 (venta de 512 GB)</td>
-                    <td>Más espacio para datasets y modelos</td>
-                </tr>
-                <tr>
-                    <td><strong>Total Fase 4</strong></td>
-                    <td>Workstation avanzada</td>
-                    <td><strong>~$1,400</strong></td>
-                    <td>Investigación de modelos 8B+ con PCIe 4.0 completo</td>
-                </tr>
-            </table>
-
-            <div class="highlight">
-                <strong>✓ Ventaja Estratégica:</strong> La plataforma AM4 permite actualizaciones graduales. El primer upgrade recomendado es CPU + placa madre (Fase 2) para habilitar PCIe 4.0, lo que mejora el rendimiento en ~10% sin cambiar GPU ni RAM.
-            </div>
+            <h2>📈 Posibles mejoras</h2>
+            <p>La primera mejora depende del problema observado:</p>
+            <ul>
+                <li><strong>Si hay paginación o demasiada multitarea:</strong> puedo sustituir los módulos por 2×16 GB.</li>
+                <li><strong>Si falta espacio:</strong> puedo sustituir el NVMe por uno mayor o añadir una unidad SATA: el único conector M.2 ya está ocupado.</li>
+                <li><strong>Si necesito más VRAM:</strong> debo estudiar otra GPU y revisar fuente, espacio y presupuesto.</li>
+            </ul>
+            <p>No fijo precios futuros porque no los conozco.</p>
         </div>
 
         <!-- ИНФОГРАФИКА -->
         <div class="card">
-            <h2>Infografía Final: Capacidades Clave de la Workstation de $1,190 USD</h2>
+            <h2>Infografía Final: Capacidades Clave de la Workstation de ~$1,189.95 USD</h2>
             <p style="color: var(--muted); margin-bottom: 20px;">Resumen visual de por qué esta configuración es la elección óptima para un investigador académico con recursos limitados en Argentina.</p>
             
             <div class="infographic-grid">
                 <div class="info-box">
-                    <span class="icon"></span>
+                    <span class="icon">🧠</span>
                     <h4>12 GB VRAM</h4>
                     <p>Capacidad real para ejecutar LLMs de 7B/8B parámetros cuantizados localmente sin errores OOM.</p>
                 </div>
@@ -561,14 +554,19 @@ graph TD
                     <p>Todos los componentes nuevos con garantía de 1-3 años. Sin riesgos de hardware usado.</p>
                 </div>
                 <div class="info-box">
-                    <span class="icon">⚡</span>
+                    <span class="icon"></span>
                     <h4>16 GB RAM DDR4</h4>
                     <p>Capacidad mínima viable para mantener el SO, contenedores Docker y buffers de datos de modelos pequeños.</p>
                 </div>
                 <div class="info-box">
-                    <span class="icon">🚀</span>
-                    <h4>NVMe PCIe 3.0</h4>
-                    <p>512GB con velocidad ~3,500 MB/s. Suficiente para sistema + modelos de 7B-8B parámetros.</p>
+                    <span class="icon"></span>
+                    <h4>NVMe 500 GB</h4>
+                    <p>Kingston NV3 SNV3S/500G. Velocidad limitada a PCIe 3.0 x4 por la plataforma. Suficiente para sistema + modelos de 7B-8B parámetros.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">💰</span>
+                    <h4>$1,189.95 USD previsto</h4>
+                    <p>Incluye reserva de 40,000 ARS. No incluye cotización de envío. Precio por transferencia con impuestos.</p>
                 </div>
             </div>
         </div>
