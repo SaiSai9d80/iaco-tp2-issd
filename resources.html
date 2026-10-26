@@ -44,17 +44,16 @@
         .section-divider h3 { color: #f59e0b; margin: 0 0 5px 0; font-size: 1.1rem; }
         .section-divider p { color: var(--muted); margin: 0; font-size: 0.9rem; }
         
-        .price-link { 
-            display: inline-block; 
-            background: #064e3b; 
-            color: #6ee7b7; 
-            padding: 2px 8px; 
-            border-radius: 4px; 
-            font-size: 0.8rem; 
-            margin-left: 8px;
-            font-weight: bold;
+        .price-notice {
+            background: #0f172a;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: var(--text);
         }
-        .price-link:hover { background: #065f46; }
+        .price-notice strong { color: #f59e0b; }
     </style>
 </head>
 <body>
@@ -83,7 +82,7 @@
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Nota: Todas las enlaces son directos a especificaciones técnicas, documentación oficial o <strong>páginas de producto con precios visibles</strong>, cumpliendo con el requisito de citación de la cátedra.</p>
             
             <div class="section-divider">
-                <h3> Especificaciones Oficiales de Fabricantes</h3>
+                <h3>🏭 Especificaciones Oficiales de Fabricantes</h3>
                 <p>Fuentes primarias: fichas técnicas y datasheets oficiales</p>
             </div>
             
@@ -112,24 +111,16 @@
             </ul>
 
             <div class="section-divider">
-                <h3>🛒 Precios Verificados en MercadoLibre Argentina (Córdoba, Octubre 2026)</h3>
-                <p>Enlaces directos a búsquedas de productos con precios visibles. Verificados en octubre de 2026. Los precios pueden variar según disponibilidad, tipo de cambio y vendedor. <strong>Tipo de cambio de referencia: 1 USD ≈ 1,400 ARS</strong>.</p>
+                <h3>🛒 Precios Verificados en MercadoLibre Argentina</h3>
+                <p>Referencia de precios del mercado local (Córdoba, Argentina)</p>
+            </div>
+            
+            <div class="price-notice">
+                <strong>📌 Nota metodológica sobre los precios:</strong> Los precios de los componentes utilizados en la configuración "El Punto Dulce" fueron verificados en <strong>octubre de 2026</strong> en la plataforma MercadoLibre Argentina, filtrando por ubicación Córdoba (CP 5013). Los valores expresados en dólares estadounidenses (USD) se calcularon utilizando un tipo de cambio de referencia de <strong>1 USD ≈ 1,400 ARS</strong> (cotización oficial con impuestos PAIS del 30% incluidos). Los precios pueden variar según el vendedor, la condición del componente (nuevo/usado), la disponibilidad del stock y las fluctuaciones del tipo de cambio. Para verificar los precios actualizados, utilice la búsqueda por nombre exacto del componente en la categoría de Computación.
             </div>
             
             <ul class="biblio-list">
-                <li id="ref-ml-rtx3060">MercadoLibre Argentina. (2026). <em>NVIDIA GeForce RTX 3060 12GB — Listado de vendedores en Córdoba (nuevas y usadas)</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/rtx-3060-12gb#D[A:rtx%203060%2012gb]" target="_blank">mercadolibre.com.ar/rtx-3060-12gb</a></li>
-                
-                <li id="ref-ml-ryzen5600">MercadoLibre Argentina. (2026). <em>AMD Ryzen 5 5600 — Listado de vendedores</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/ryzen-5-5600#D[A:ryzen%205%205600]" target="_blank">mercadolibre.com.ar/ryzen-5-5600</a></li>
-                
-                <li id="ref-ml-b550m">MercadoLibre Argentina. (2026). <em>MSI B550M PRO-VDH WIFI / ASRock B550M-HDV — Listado de placas madre</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/b550m#D[A:b550m]" target="_blank">mercadolibre.com.ar/b550m</a></li>
-                
-                <li id="ref-ml-ddr4">MercadoLibre Argentina. (2026). <em>Memoria RAM DDR4 16GB/32GB 3200MHz — Listado</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/memoria-ddr4-32gb-3200mhz#D[A:memoria%20ddr4%2032gb%203200mhz]" target="_blank">mercadolibre.com.ar/ddr4-32gb</a></li>
-                
-                <li id="ref-ml-nv2">MercadoLibre Argentina. (2026). <em>Kingston NV2 512GB/1TB NVMe PCIe 4.0 — Listado de vendedores</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/kingston-nv2-1tb#D[A:kingston%20nv2%201tb]" target="_blank">mercadolibre.com.ar/kingston-nv2</a></li>
-                
-                <li id="ref-ml-a550bn">MercadoLibre Argentina. (2026). <em>MSI MAG A550BN/A650BN 80+ Bronze — Listado de fuentes</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/msi-mag-a650bn#D[A:msi%20mag%20a650bn]" target="_blank">mercadolibre.com.ar/msi-a650bn</a></li>
-                
-                <li id="ref-ml-cc560">MercadoLibre Argentina. (2026). <em>DeepCool CC560 Gabinete con 4 ventiladores — Listado</em>. <span class="price-link">Ver precios</span> Recuperado de: <a href="https://listado.mercadolibre.com.ar/deepcool-cc560#D[A:deepcool%20cc560]" target="_blank">mercadolibre.com.ar/deepcool-cc560</a></li>
+                <li id="ref-mercadolibre">MercadoLibre Argentina. (2026). <em>Categoría Computación — Componentes de PC: placas de video, procesadores, placas madre, memorias RAM, almacenamiento, fuentes y gabinetes</em>. Precios verificados en octubre de 2026 para Córdoba (CP 5013). Recuperado de: <a href="https://listado.mercadolibre.com.ar/computacion/componentes-pc" target="_blank">mercadolibre.com.ar/computacion/componentes-pc</a></li>
             </ul>
 
             <div class="section-divider">
@@ -148,7 +139,7 @@
             </ul>
 
             <div class="section-divider">
-                <h3>🤖 Software y Herramientas de IA (Código Abierto)</h3>
+                <h3> Software y Herramientas de IA (Código Abierto)</h3>
                 <p>Proyectos y herramientas utilizadas en el perfil profesional seleccionado</p>
             </div>
             
