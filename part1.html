@@ -310,7 +310,7 @@ graph TD
             </table>
         </div>
 
-       <!-- Галерея приложений -->
+     <!-- Галерея приложений -->
 <div class="card">
     <h2>1.5. Aplicaciones reales</h2>
     <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
@@ -320,7 +320,7 @@ graph TD
     <div class="app-grid">
         <div class="app-card">
             <div class="garak-badge" style="font-size: 0.9rem;">
-                <span style="color: #22d3ee;"></span> Stable Diffusion
+                <span style="color: #22d3ee;">🎨</span> Stable Diffusion
             </div>
             <h3>Stable Diffusion y GPU</h3>
             <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas de Puget Systems (2023) permiten observar cómo cambian los resultados según la tarjeta y el programa: 21,04 iteraciones/s con Automatic1111 en RTX 4090 vs 4,67 iteraciones/s en RX 7900 XTX, pero 20,76 iteraciones/s con SHARK en RX 7900 XTX.<a href="resources.html#ref-09" class="citation">[9]</a></p>
@@ -348,6 +348,22 @@ graph TD
             </div>
             <h3>garak y evaluación de modelos</h3>
             <p>Esta herramienta ejecuta pruebas para buscar determinados fallos en modelos de lenguaje. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores Docker pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
+        </div>
+        
+        <div class="app-card">
+            <div class="garak-badge" style="font-size: 0.9rem;">
+                <span style="color: #22d3ee;">⚡</span> vLLM
+            </div>
+            <h3>vLLM y inferencia de alta velocidad</h3>
+            <p>vLLM es un motor de inferencia optimizado para LLM. Utiliza PagedAttention para gestionar la memoria de forma eficiente y permite atender múltiples peticiones simultáneas. Requiere GPU compatible con CUDA y puede acelerar significativamente la generación de texto en comparación con implementaciones básicas.<a href="resources.html#ref-06" class="citation">[6]</a></p>
+        </div>
+        
+        <div class="app-card">
+            <div class="garak-badge" style="font-size: 0.9rem;">
+                <span style="color: #22d3ee;">🐳</span> Docker
+            </div>
+            <h3>Docker y aislamiento de entornos</h3>
+            <p>Docker permite crear contenedores aislados para ejecutar modelos y pruebas en entornos controlados. Esto es útil para reproducir experimentos y organizar dependencias. Los contenedores comparten el kernel del sistema operativo; no son máquinas virtuales completas y no eliminan todos los riesgos de seguridad.<a href="resources.html#ref-15" class="citation">[15]</a></p>
         </div>
     </div>
 </div>
