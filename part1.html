@@ -310,38 +310,47 @@ graph TD
             </table>
         </div>
 
-        <!-- Галерея приложений -->
-        <div class="card">
-            <h2>1.5. Aplicaciones reales</h2>
-            
-            <div class="app-grid">
-                <div class="app-card">
-                    <img src="images/stable-diffusion.png" alt="Stable Diffusion interface">
-                    <h3>Stable Diffusion y GPU</h3>
-                    <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas permiten observar cómo cambian los resultados según la tarjeta y el programa.<a href="resources.html#ref-09" class="citation">[9]</a></p>
-                </div>
-                
-                <div class="app-card">
-                    <img src="images/windows-studio.png" alt="Windows Studio Effects">
-                    <h3>Windows Studio Effects y NPU</h3>
-                    <p>Los efectos de cámara son un ejemplo de inferencia continua en un equipo compatible. La disponibilidad depende del dispositivo y de sus controladores.<a href="resources.html#ref-12" class="citation">[12]</a></p>
-                </div>
-                
-                <div class="app-card">
-                    <img src="images/ollama.png" alt="Ollama interface">
-                    <h3>Ollama o LM Studio y modelo local</h3>
-                    <p>Estas herramientas permiten trabajar con modelos descargados. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
-                </div>
-                
-                <div class="app-card">
-                    <div class="garak-badge">
-                        <span style="color: #22d3ee;">></span> garak
-                    </div>
-                    <h3>garak y evaluación de modelos</h3>
-                    <p>Esta herramienta ejecuta pruebas para buscar determinados fallos. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
-                </div>
+       <!-- Галерея приложений -->
+<div class="card">
+    <h2>1.5. Aplicaciones reales</h2>
+    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
+        Ejemplos concretos de cómo se utilizan los diferentes aceleradores en tareas de IA. Cada aplicación requiere una configuración específica y sus resultados dependen del hardware, el software y la versión utilizados.
+    </p>
+    
+    <div class="app-grid">
+        <div class="app-card">
+            <div class="garak-badge" style="font-size: 0.9rem;">
+                <span style="color: #22d3ee;"></span> Stable Diffusion
             </div>
+            <h3>Stable Diffusion y GPU</h3>
+            <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas de Puget Systems (2023) permiten observar cómo cambian los resultados según la tarjeta y el programa: 21,04 iteraciones/s con Automatic1111 en RTX 4090 vs 4,67 iteraciones/s en RX 7900 XTX, pero 20,76 iteraciones/s con SHARK en RX 7900 XTX.<a href="resources.html#ref-09" class="citation">[9]</a></p>
         </div>
+        
+        <div class="app-card">
+            <div class="garak-badge" style="font-size: 0.9rem;">
+                <span style="color: #22d3ee;">📹</span> Windows Studio Effects
+            </div>
+            <h3>Windows Studio Effects y NPU</h3>
+            <p>Los efectos de cámara (desenfoque de fondo, encuadre automático) son un ejemplo de inferencia continua en un equipo compatible. Intel declara soporte en el 285K, pero la disponibilidad depende del dispositivo, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
+        </div>
+        
+        <div class="app-card">
+            <div class="garak-badge" style="font-size: 0.9rem;">
+                <span style="color: #22d3ee;">🦙</span> Ollama / LM Studio
+            </div>
+            <h3>Ollama o LM Studio y modelo local</h3>
+            <p>Estas herramientas permiten trabajar con modelos descargados localmente. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles, y de que no se elijan servicios remotos. La GPU acelera la generación; la CPU y la RAM gestionan la carga del modelo.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
+        </div>
+        
+        <div class="app-card">
+            <div class="garak-badge">
+                <span style="color: #22d3ee;">></span> garak
+            </div>
+            <h3>garak y evaluación de modelos</h3>
+            <p>Esta herramienta ejecuta pruebas para buscar determinados fallos en modelos de lenguaje. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores Docker pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
+        </div>
+    </div>
+</div>
 
         <div class="nav-buttons">
             <a href="index.html" class="btn">← Volver al Inicio</a>
