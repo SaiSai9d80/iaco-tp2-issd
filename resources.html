@@ -24,7 +24,6 @@
         ul.biblio-list { padding-left: 20px; }
         ul.biblio-list li { margin-bottom: 15px; padding-left: 10px; border-left: 3px solid var(--accent); }
         
-        /* Стили для якорных ссылок и цитат */
         .citation { color: var(--accent); font-size: 0.8rem; vertical-align: super; text-decoration: none; font-weight: bold; }
         .citation:hover { text-decoration: underline; }
         
@@ -34,18 +33,28 @@
         .nav-buttons { display: flex; justify-content: center; margin-top: 30px; }
         .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
+        
+        .section-divider {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .section-divider h3 { color: #f59e0b; margin: 0 0 5px 0; font-size: 1.1rem; }
+        .section-divider p { color: var(--muted); margin: 0; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="part1.html">Parte 1: Cómputo</a>
-    <a href="part2.html">Parte 2: Almacenamiento</a>
-    <a href="part3.html">Parte 3: Workstations</a>
-    <a href="conclusions.html">Conclusiones</a>
-    <a href="resources.html">Recursos y APA</a>
-    <a href="prompts.html">Prompts e IA</a>
-</nav>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="conclusions.html">Conclusiones</a>
+        <a href="resources.html" style="color: #22d3ee;">Recursos y APA</a>
+        <a href="prompts.html">Prompts e IA</a>
+    </nav>
     
     <div class="container">
         <h1>Cierre Metodológico y Anexos Académicos</h1>
@@ -60,10 +69,18 @@
         <div class="card">
             <h2>4.2. Bibliografía y Recursos Consultados (Formato APA 7ª Edición)</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Nota: Todos los enlaces son directos a las especificaciones técnicas o documentación oficial, cumpliendo con el requisito de citación de la cátedra.</p>
+            
+            <div class="section-divider">
+                <h3>🏭 Especificaciones de Fabricantes</h3>
+                <p>Fuentes oficiales de los fabricantes de hardware</p>
+            </div>
+            
             <ul class="biblio-list">
                 <li id="ref-amd-thread">Advanced Micro Devices, Inc. (2024). <em>AMD Ryzen Threadripper PRO 7000 WX-Series Processors Specifications</em>. Recuperado de: <a href="https://www.amd.com/en/products/processors/workstation/ryzen-threadripper/7000-series/amd-ryzen-threadripper-pro-7975wx.html" target="_blank">amd.com</a></li>
                 
                 <li id="ref-amd-5600">Advanced Micro Devices, Inc. (2024). <em>AMD Ryzen 5 5600 Desktop Processors Specifications</em>. Recuperado de: <a href="https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5600.html" target="_blank">amd.com</a></li>
+                
+                <li id="ref-amd-gpu">Advanced Micro Devices, Inc. (2024). <em>AMD Radeon RX 7900 XTX Graphics Specifications</em>. Recuperado de: <a href="https://www.amd.com/en/products/graphics/radeon-rx-7900-xtx.html" target="_blank">amd.com</a></li>
                 
                 <li id="ref-intel">Intel Corporation. (2024). <em>Intel Core Ultra Processors Series 2 (Arrow Lake-S) Specifications</em>. Recuperado de: <a href="https://ark.intel.com/content/www/us/en/ark/products/series/237457/intel-core-ultra-processors-series-2.html" target="_blank">ark.intel.com</a></li>
                 
@@ -80,18 +97,57 @@
                 <li id="ref-corsair">Corsair. (2024). <em>AX1600i Digital ATX Power Supply — 80 PLUS Titanium Certified</em>. Recuperado de: <a href="https://www.corsair.com/us/en/p/psu/cp-9020140-na/ax-series-ax1600i-fully-modular-atx-power-supply-cp-9020140-na" target="_blank">corsair.com</a></li>
                 
                 <li id="ref-kingston">Kingston Technology. (2024). <em>NV2 M.2 NVMe PCIe SSD Datasheet</em>. Recuperado de: <a href="https://www.kingston.com/datasheets/NV2_m2_pcie_ssd_latam.pdf" target="_blank">kingston.com</a></li>
+            </ul>
+
+            <div class="section-divider">
+                <h3>🛒 Precios en el Mercado Argentino (Córdoba, Octubre 2026)</h3>
+                <p>Fuentes de precios reales en tiendas locales de Argentina. Los precios reflejan el mercado local con impuestos de importación (PAIS 30%) y aranceles aduaneros.</p>
+            </div>
+            
+            <ul class="biblio-list">
+                <li id="ref-mercadolibre">MercadoLibre Argentina. (2026). <em>Buscador de componentes de PC — RTX 3060, Ryzen 5 5600, MSI B550M</em>. Recuperado de: <a href="https://www.mercadolibre.com.ar" target="_blank">mercadolibre.com.ar</a></li>
                 
+                <li id="ref-venex">Venex Córdoba. (2026). <em>Tienda de hardware en Córdoba — Componentes de PC y periféricos</em>. Recuperado de: <a href="https://www.venex.com.ar" target="_blank">venex.com.ar</a></li>
+                
+                <li id="ref-compragamer">Compra Gamer. (2026). <em>Tienda online de hardware y gaming en Argentina</em>. Recuperado de: <a href="https://www.compragamer.com" target="_blank">compragamer.com</a></li>
+                
+                <li id="ref-hardstock">Hardstock. (2026). <em>Tienda de componentes de PC en Argentina</em>. Recuperado de: <a href="https://www.hardstock.com.ar" target="_blank">hardstock.com.ar</a></li>
+                
+                <li id="ref-nextron">Nextron. (2026). <em>Tienda de hardware y gaming en Argentina</em>. Recuperado de: <a href="https://www.nextron.com.ar" target="_blank">nextron.com.ar</a></li>
+                
+                <li id="ref-maximus">Maximus. (2026). <em>Tienda de componentes de PC en Argentina</em>. Recuperado de: <a href="https://www.maximus.com.ar" target="_blank">maximus.com.ar</a></li>
+            </ul>
+
+            <div class="section-divider">
+                <h3>📚 Documentación Técnica y Estándares</h3>
+                <p>Especificaciones técnicas, whitepapers y estándares de la industria</p>
+            </div>
+            
+            <ul class="biblio-list">
                 <li id="ref-microsoft">Microsoft Developer Network. (2024). <em>DirectStorage Overview and Architecture</em>. Recuperado de: <a href="https://learn.microsoft.com/en-us/windows/win32/directstorage/directstorage-overview" target="_blank">learn.microsoft.com</a></li>
                 
                 <li id="ref-pcisig">PCI-SIG. (2024). <em>PCI Express Base Specification Revision 5.0</em>. Recuperado de: <a href="https://pcisig.com/pci-express-50" target="_blank">pcisig.com</a></li>
                 
                 <li id="ref-storagereview">StorageReview. (2024). <em>PCIe 4.0 vs PCIe 5.0 NVMe SSD Performance Benchmarks</em>. Recuperado de: <a href="https://www.storagereview.com/review/best-m2-nvme-ssd" target="_blank">storagereview.com</a></li>
                 
+                <li id="ref-samsung">Samsung Semiconductor. (2024). <em>NVMe SSD Performance Whitepaper</em>. Recuperado de: <a href="https://semiconductor.samsung.com/consumer-storage/" target="_blank">samsung.com</a></li>
+            </ul>
+
+            <div class="section-divider">
+                <h3>🤖 Software y Herramientas de IA</h3>
+                <p>Proyectos de código abierto y herramientas utilizadas en el perfil profesional</p>
+            </div>
+            
+            <ul class="biblio-list">
                 <li id="ref-vllm">vLLM Project Team. (2024). <em>vLLM: High-throughput Inference Engine for LLMs</em>. Recuperado de: <a href="https://vllm.ai/" target="_blank">vllm.ai</a></li>
                 
                 <li id="ref-garak">Leonardo, G., et al. (2023). <em>Garak: A Framework for Auditing Large Language Models</em>. Recuperado de: <a href="https://github.com/leondz/garak" target="_blank">github.com/leondz/garak</a></li>
                 
                 <li id="ref-ollama">Ollama. (2024). <em>Run large language models locally</em>. Recuperado de: <a href="https://ollama.com/" target="_blank">ollama.com</a></li>
+                
+                <li id="ref-lmstudio">LM Studio. (2024). <em>Run LLMs locally on your computer</em>. Recuperado de: <a href="https://lmstudio.ai/" target="_blank">lmstudio.ai</a></li>
+                
+                <li id="ref-docker">Docker Inc. (2024). <em>Docker Desktop: Containerization Platform</em>. Recuperado de: <a href="https://www.docker.com/products/docker-desktop/" target="_blank">docker.com</a></li>
             </ul>
         </div>
 
@@ -133,7 +189,7 @@
                 <tr>
                     <td><strong>PR-05</strong></td>
                     <td>Especialista en Presupuesto</td>
-                    <td>Configuración "Punto Dulce" ($800) priorizando VRAM.</td>
+                    <td>Configuración "Punto Dulce" ($1,000) priorizando VRAM.</td>
                     <td>Sección 3.2: Tabla de componentes con PSU certificada.</td>
                 </tr>
                 <tr>
