@@ -147,50 +147,30 @@
             <h3>Virtualización y aislamiento</h3>
             <p>La virtualización permite crear entornos de trabajo separados. Sin embargo, más hilos no significan más aislamiento. AMD indica que SEV es una tecnología de sus procesadores EPYC y que no está disponible en Ryzen. Por eso no uso SEV como argumento a favor del Ryzen 9 9950X. Para evaluar el aislamiento hay que revisar el sistema operativo, el hipervisor, los permisos y la configuración.<a href="resources.html#ref-03" class="citation">[3]</a></p>
 
-            <!-- Схема Intel CPU -->
+            <!-- Схема Intel CPU (упрощённая) -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph TD
-    subgraph Intel["Intel Core Ultra 9 285K (Esquema simplificado)"]
-        direction TB
-        P_CORES["8 P-cores<br/>(Alto rendimiento)"]
-        E_CORES["16 E-cores<br/>(Eficiencia energética)"]
-        L3_CACHE["Caché L3: 36 MB"]
-        NPU["NPU Intel AI Boost<br/>(hasta 13 TOPS INT8)"]
-        MEMORY["Memoria DDR5"]
-    end
-    
-    P_CORES <--> L3_CACHE
-    E_CORES <--> L3_CACHE
-    L3_CACHE <--> MEMORY
-    NPU <--> MEMORY
-    
-    classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
-    classDef npu fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#f8fafc;
-    class NPU npu;
+    A[Intel Core Ultra 9 285K] --> B[8 P-cores]
+    A --> C[16 E-cores]
+    A --> D[Caché L3: 36 MB]
+    A --> E[NPU Intel AI Boost]
+    D --> F[Memoria DDR5]
+    E --> F
                 </pre>
                 <p class="diagram-caption">Esquema simplificado del Intel Core Ultra 9 285K. No representa el diseño físico exacto.<a href="resources.html#ref-01" class="citation">[1]</a></p>
             </div>
 
-            <!-- Схема AMD CPU -->
+            <!-- Схема AMD CPU (упрощённая) -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph TD
-    subgraph AMD["AMD Ryzen 9 9950X (Esquema simplificado)"]
-        direction TB
-        CCD1["CCD 1: 8 núcleos<br/>Caché L3: 32 MB"]
-        CCD2["CCD 2: 8 núcleos<br/>Caché L3: 32 MB"]
-        IO_DIE["I/O Die<br/>(Entrada/Salida)"]
-        MEMORY["Memoria DDR5"]
-    end
-    
-    CCD1 <--> IO_DIE
-    CCD2 <--> IO_DIE
-    IO_DIE <--> MEMORY
-    
-    classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
-    classDef ccd fill:#064e3b,stroke:#22c55e,stroke-width:2px,color:#f8fafc;
-    class CCD1,CCD2 ccd;
+    A[AMD Ryzen 9 9950X] --> B[CCD 1: 8 núcleos]
+    A --> C[CCD 2: 8 núcleos]
+    A --> D[I/O Die]
+    B --> D
+    C --> D
+    D --> E[Memoria DDR5]
                 </pre>
                 <p class="diagram-caption">Esquema simplificado del AMD Ryzen 9 9950X. Los 64 MB de L3 están distribuidos entre dos CCD, no son una única memoria.<a href="resources.html#ref-02" class="citation">[2]</a></p>
             </div>
@@ -205,27 +185,14 @@ graph TD
             
             <p>Windows Studio Effects es un ejemplo de aplicación de IA que puede utilizar una NPU. Intel declara soporte en el 285K, pero la disponibilidad de los efectos depende también de Windows, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
 
-            <!-- Схема NPU -->
+            <!-- Схема NPU (упрощённая) -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph LR
-    subgraph NPU["NPU (Esquema simplificado)"]
-        direction TB
-        DATA["Datos de entrada"]
-        LOCAL_MEM["Memoria local"]
-        MATRIX["Cálculos matriciales"]
-        ACTIVATIONS["Activaciones"]
-        RESULT["Resultado"]
-    end
-    
-    DATA --> LOCAL_MEM
-    LOCAL_MEM --> MATRIX
-    MATRIX --> ACTIVATIONS
-    ACTIVATIONS --> RESULT
-    
-    classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
-    classDef matrix fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#f8fafc;
-    class MATRIX matrix;
+    A[Datos de entrada] --> B[Memoria local]
+    B --> C[Cálculos matriciales]
+    C --> D[Activaciones]
+    D --> E[Resultado]
                 </pre>
                 <p class="diagram-caption">Esquema simplificado de una NPU. No representa el diseño físico exacto de Intel.<a href="resources.html#ref-01" class="citation">[1]</a></p>
             </div>
@@ -270,34 +237,22 @@ graph LR
             
             <p>Por eso una RTX 4090 de 24 GB no puede guardar completamente los pesos de un modelo denso de 70B a 4 bits. Una RTX 6000 Ada de 48 GB ofrece más margen para una versión cuantizada, pero no para 70B a 16 bits. Algunos programas, como llama.cpp, permiten repartir el trabajo entre CPU y GPU. Esto amplía las posibilidades, aunque puede reducir la velocidad.<a href="resources.html#ref-08" class="citation">[8]</a>, <a href="resources.html#ref-20" class="citation">[20]</a></p>
 
-            <!-- Схема GPU -->
+            <!-- Схема GPU (упрощённая) -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph TD
-    subgraph GPU["GPU (Esquema simplificado)"]
-        direction TB
-        SM1["SM 1"]
-        SM2["SM 2"]
-        SM_N["... SM N"]
-        CUDA["CUDA Cores"]
-        TENSOR["Tensor Cores"]
-        CACHE["Caché"]
-        VRAM["VRAM"]
-    end
-    
-    SM1 --> CUDA
-    SM1 --> TENSOR
-    SM2 --> CUDA
-    SM2 --> TENSOR
-    SM_N --> CUDA
-    SM_N --> TENSOR
-    CUDA --> CACHE
-    TENSOR --> CACHE
-    CACHE --> VRAM
-    
-    classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
-    classDef sm fill:#064e3b,stroke:#22c55e,stroke-width:2px,color:#f8fafc;
-    class SM1,SM2,SM_N sm;
+    A[GPU] --> B[SM 1]
+    A --> C[SM 2]
+    A --> D[SM N]
+    B --> E[CUDA Cores]
+    B --> F[Tensor Cores]
+    C --> E
+    C --> F
+    D --> E
+    D --> F
+    E --> G[Caché]
+    F --> G
+    G --> H[VRAM]
                 </pre>
                 <p class="diagram-caption">Esquema simplificado de una GPU. Múltiples SM contienen CUDA Cores y Tensor Cores. No representa el diseño físico exacto.<a href="resources.html#ref-04" class="citation">[4]</a></p>
             </div>
@@ -361,7 +316,7 @@ graph TD
             
             <div class="app-grid">
                 <div class="app-card">
-                    <img src="images/stable-diffusion.png" alt="Stable Diffusion">
+                    <img src="images/stable-diffusion.png" alt="Stable Diffusion interface">
                     <h3>Stable Diffusion y GPU</h3>
                     <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas permiten observar cómo cambian los resultados según la tarjeta y el programa.<a href="resources.html#ref-09" class="citation">[9]</a></p>
                 </div>
@@ -373,7 +328,7 @@ graph TD
                 </div>
                 
                 <div class="app-card">
-                    <img src="images/ollama.png" alt="Ollama">
+                    <img src="images/ollama.png" alt="Ollama interface">
                     <h3>Ollama o LM Studio y modelo local</h3>
                     <p>Estas herramientas permiten trabajar con modelos descargados. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
                 </div>
