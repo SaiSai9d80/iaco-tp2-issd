@@ -3,78 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conclusiones y Recomendaciones - TP2 ISSD</title>
+    <title>Conclusiones - TP2 ISSD</title>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; --muted: #94a3b8; }
         body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         nav a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav a:hover { color: #22d3ee; text-decoration: underline; }
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
         .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        h1, h2, h3 { color: var(--accent); margin-top: 0; }
+        h1, h2 { color: var(--accent); margin-top: 0; }
         h1 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
-        h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
-        h3 { font-size: 1.2rem; margin-bottom: 10px; color: #22d3ee; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 12px; }
+        h2 { font-size: 1.4rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        p { margin-bottom: 15px; }
         .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 20px; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
-        .highlight { background: #0f172a; padding: 20px; border-left: 4px solid var(--accent); border-radius: 4px; margin: 20px 0; }
-        .highlight strong { color: #22d3ee; }
+        .citation { color: var(--accent); font-size: 0.85rem; vertical-align: super; text-decoration: none; }
+        .citation:hover { text-decoration: underline; }
         .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
-        
-        .expert-section { 
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-            border: 2px solid var(--accent); 
-            border-radius: 12px; 
-            padding: 30px; 
-            margin: 30px 0; 
-        }
-        .expert-section h2 { color: #22d3ee; border-bottom: 2px solid #22d3ee; }
-        .expert-section strong { color: #06b6d4; }
-        
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        .profile-card {
-            background: #0f172a;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .profile-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .profile-card h3 { color: var(--accent); margin-bottom: 15px; }
-        .profile-card .budget { font-size: 1.5rem; font-weight: bold; color: #22d3ee; margin: 10px 0; }
-        .profile-card ul { padding-left: 20px; }
-        .profile-card li { margin-bottom: 8px; font-size: 0.95rem; }
-        
-        .trend-card {
-            background: #0f172a;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-            margin: 15px 0;
-        }
-        .trend-card h4 { color: #22d3ee; margin-bottom: 10px; }
-        .trend-card .timeframe { color: var(--muted); font-size: 0.85rem; font-style: italic; }
-        
-        .principle-box {
-            background: #0f172a;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px solid #334155;
-        }
-        .principle-box strong { color: var(--accent); }
-        
-        @media (max-width: 768px) {
-            .profile-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -89,165 +35,25 @@
     </nav>
     
     <div class="container">
-        <h1>Conclusiones y Recomendaciones Finales</h1>
-        <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 30px auto;">
-            Tras analizar exhaustivamente arquitecturas de CPU, GPU, almacenamiento y configuraciones de workstation, emergen conclusiones fundamentales para el perfil de <strong>Investigador en Alineación y Seguridad de IA</strong>.
-        </p>
-
-        <!-- СЕКЦИЯ 1: КЛЮЧЕВЫЕ ВЫВОДЫ -->
-        <div class="expert-section">
-            <h2>🎯 Hallazgos Clave de la Investigación</h2>
-            
-            <div class="principle-box">
-                <h3>1. La VRAM es el Recurso Más Crítico</h3>
-                <p>En inferencia local de <em>Large Language Models</em> (LLMs / большие языковые модели / large language models), la VRAM determina <strong>qué modelos pueden ejecutarse</strong>. Sin VRAM suficiente, la investigación es imposible. Por ello:</p>
-                <ul>
-                    <li><strong>Configuración profesional:</strong> 48 GB VRAM (RTX 6000 Ada) → Modelos 70B+ parámetros</li>
-                    <li><strong>Configuración académica:</strong> 12 GB VRAM (RTX 3060) → Modelos hasta 13B parámetros</li>
-                </ul>
-                <div class="highlight">
-                    <strong>✓ Regla de Oro:</strong> Nunca compres una GPU con menos de 12 GB de VRAM para investigación de IA en 2026. La VRAM es binaria: o el modelo cabe, o no cabe.
-                </div>
-            </div>
-
-            <div class="principle-box">
-                <h3>2. El Ecosistema CUDA es Innegociable</h3>
-                <p>Aunque AMD ofrece hardware competitivo en papel, la realidad del software de seguridad de IA (<em>vLLM</em>, <em>BitsAndBytes</em>, <em>FlashAttention-2</em>) está escrita para NVIDIA CUDA. Intentar usar ROCm resulta en:</p>
-                <ul>
-                    <li>Tiempo de debugging: +40% del tiempo total</li>
-                    <li>Compatibilidad: 60% de las herramientas requieren compilación manual</li>
-                    <li>Rendimiento real: 30-50% inferior al teórico</li>
-                </ul>
-                <div class="highlight">
-                    <strong>✓ Conclusión:</strong> NVIDIA no es un "lujo"; es un <strong>requisito técnico</strong> para productividad en investigación de IA.
-                </div>
-            </div>
-
-            <div class="principle-box">
-                <h3>3. NVMe No es Opcional</h3>
-                <p>La diferencia entre HDD y NVMe no es "velocidad"; es <strong>viabilidad del flujo de trabajo</strong>. Esperar 110 segundos para cargar un modelo vs. 2.5 segundos rompe la iteración rápida necesaria para auditorías efectivas. Como demostramos en la Parte 2, un investigador pierde <strong>9.3 horas mensuales</strong> con HDD vs. <strong>13 minutos</strong> con NVMe.</p>
-            </div>
-
-            <div class="principle-box">
-                <h3>4. La Seguridad Eléctrica No Se Negocia</h3>
-                <p>Una fuente genérica puede destruir $800+ en componentes. La regla de la cátedra es correcta: <strong>nunca sacrifiques la PSU</strong> (*Power Supply Unit* / блок питания / power supply unit). Una fuente certificada 80+ Bronze es el mínimo aceptable para proteger la inversión.</p>
-            </div>
-
-            <div class="principle-box">
-                <h3>5. La Virtualización Segura es la Verdadera Ventaja</h3>
-                <p>Para un Investigador en Alineación y Seguridad de IA, la tecnología AMD SEV (<em>Secure Encrypted Virtualization</em> / безопасная зашифрованная виртуализация / secure encrypted virtualization) vale más que una NPU integrada de baja potencia. El cifrado independiente de memoria por VM protege contra ataques de canal lateral (<em>side-channel attacks</em> / атаки по побочным каналам / side-channel attacks) durante auditorías de modelos maliciosos.</p>
-            </div>
-        </div>
-
-        <!-- СЕКЦИЯ 2: ТРЕНДЫ БУДУЩЕГО -->
+        <h1>Conclusiones</h1>
+        
         <div class="card">
-            <h2> Tendencias Futuras y Preparación Estratégica</h2>
-            <p>El campo de la IA evoluciona rápidamente. Basándonos en tendencias actuales (2024-2026), anticipamos los siguientes desarrollos que impactarán directamente el diseño de workstations:</p>
+            <p>La principal conclusión de este trabajo es que la elección de hardware depende de la tarea. Para ejecutar modelos localmente, primero debo conocer el tamaño del modelo, su formato y el contexto que necesito. Después puedo elegir la GPU y la memoria. Comparar solo el número de núcleos o los TOPS no es suficiente.</p>
             
-            <div class="trend-card">
-                <h4>Corto Plazo (2026-2027)</h4>
-                <p class="timeframe">Impacto inmediato en decisiones de compra actuales</p>
-                <ul>
-                    <li><strong>Modelos más grandes:</strong> Llama 4 y sus sucesores requerirán 20-30 GB VRAM mínimo para inferencia local</li>
-                    <li><strong>DirectStorage en IA:</strong> La transferencia directa SSD→GPU se volverá estándar en frameworks de inferencia</li>
-                    <li><strong>PCIe 5.0 mainstream:</strong> Precios bajarán, convirtiéndose en estándar recomendado para nuevas builds</li>
-                    <li><strong>NPUs más potentes:</strong> Intel y AMD integrarán NPUs de 50+ TOPS en CPUs de escritorio</li>
-                </ul>
-            </div>
-
-            <div class="trend-card">
-                <h4>Mediano Plazo (2027-2029)</h4>
-                <p class="timeframe">Revolución arquitectónica en trabajo de IA</p>
-                <ul>
-                    <li><strong>CXL (Compute Express Link):</strong> Permitirá <em>memory pooling</em> (пулинг памяти / memory pooling) entre múltiples GPUs, expandiendo VRAM efectiva a 100+ GB</li>
-                    <li><strong>Almacenamiento óptico 5D:</strong> Densidades de 360 TB por disco para archivar datasets masivos de entrenamiento</li>
-                    <li><strong>PCIe 6.0:</strong> Velocidades de 64 GB/s por lane, eliminando completamente el cuello de botella de almacenamiento</li>
-                    <li><strong>Chips especializados para IA:</strong> NPUs dedicadas de 200+ TOPS integradas en CPUs de consumo</li>
-                </ul>
-            </div>
-
-            <div class="trend-card">
-                <h4>Largo Plazo (2029-2032)</h4>
-                <p class="timeframe">Cambio de paradigma en computación de IA</p>
-                <ul>
-                    <li><strong>Computación neuromórfica:</strong> Chips inspirados en el cerebro humano para inferencia ultra-eficiente</li>
-                    <li><strong>Quantum-classical hybrid:</strong> Aceleradores cuánticos para tareas específicas de optimización de modelos</li>
-                    <li><strong>AI-native architectures:</strong> CPUs diseñadas desde cero para cargas de trabajo de IA, no adaptadas</li>
-                </ul>
-            </div>
-
-            <div class="highlight">
-                <strong>✓ Recomendación Estratégica:</strong> Invierte en plataformas con ruta de actualización clara (socket AM5, PCIe 5.0, DDR5) para evitar obsolescencia prematura. La build "El Punto Dulce" en plataforma AM4 es excelente para hoy, pero tendrá un techo de actualización en 2-3 años.
-            </div>
-        </div>
-
-        <!-- СЕКЦИЯ 3: РЕКОМЕНДАЦИИ ПО ПРОФИЛЯМ -->
-        <div class="expert-section">
-            <h2>📋 Recomendaciones Prácticas por Nivel de Inversión</h2>
-            <p>Basándonos en nuestro análisis, presentamos tres configuraciones recomendadas según el perfil del investigador y su presupuesto disponible:</p>
+            <p>La memoria es una limitación importante, pero no funciona como una regla absoluta de todo o nada. Es posible reducir la precisión o repartir algunas tareas entre CPU y GPU. Estas opciones tienen costes: pueden cambiar la calidad, aumentar el tiempo o necesitar más RAM. Por eso debo explicar qué versión del modelo quiero ejecutar.</p>
             
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <h3>🎓 Estudiante / Principiante</h3>
-                    <div class="budget">$800 - $1,200 USD</div>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Ideal para: Aprender inferencia local, auditar modelos de 7B-13B parámetros, proyectos académicos</p>
-                    <ul>
-                        <li><strong>GPU:</strong> RTX 3060 12GB (usada) o RTX 4060 Ti 16GB (nueva)</li>
-                        <li><strong>CPU:</strong> Ryzen 5 5600 o Ryzen 5 7600 (si usas AM5)</li>
-                        <li><strong>RAM:</strong> 32 GB mínimo, 64 GB recomendado</li>
-                        <li><strong>Almacenamiento:</strong> 1 TB NVMe PCIe 4.0 mínimo</li>
-                        <li><strong>PSU:</strong> 650W 80+ Bronze certificada</li>
-                        <li><strong>Capacidad:</strong> Modelos hasta 13B parámetros cuantizados</li>
-                    </ul>
-                </div>
-
-                <div class="profile-card">
-                    <h3> Investigador Académico</h3>
-                    <div class="budget">$2,000 - $3,500 USD</div>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Ideal para: Fine-tuning de modelos, auditorías de seguridad, investigación de alineación</p>
-                    <ul>
-                        <li><strong>GPU:</strong> RTX 4090 24GB o RTX 4080 Super 16GB</li>
-                        <li><strong>CPU:</strong> Ryzen 9 7950X o Intel Core i9-14900K</li>
-                        <li><strong>RAM:</strong> 64-128 GB DDR5</li>
-                        <li><strong>Almacenamiento:</strong> 2 TB NVMe PCIe 4.0 + 4 TB HDD para backups</li>
-                        <li><strong>PSU:</strong> 850W 80+ Gold certificada</li>
-                        <li><strong>Capacidad:</strong> Modelos hasta 30B parámetros, fine-tuning QLoRA</li>
-                    </ul>
-                </div>
-
-                <div class="profile-card">
-                    <h3>🏛️ Laboratorio / Institución</h3>
-                    <div class="budget">$8,000 - $15,000 USD</div>
-                    <p style="color: var(--muted); font-size: 0.9rem;">Ideal para: Investigación de vanguardia, modelos 70B+, sandboxes concurrentes</p>
-                    <ul>
-                        <li><strong>GPU:</strong> RTX 6000 Ada 48GB o múltiples RTX 4090</li>
-                        <li><strong>CPU:</strong> Threadripper PRO 7975WX o Xeon W9</li>
-                        <li><strong>RAM:</strong> 256-512 GB ECC</li>
-                        <li><strong>Almacenamiento:</strong> RAID 0 de NVMe PCIe 5.0 + almacenamiento óptico para archivos</li>
-                        <li><strong>PSU:</strong> 1600W 80+ Titanium</li>
-                        <li><strong>Capacidad:</strong> Modelos 70B+ sin cuantización, 20+ VMs concurrentes</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- СЕКЦИЯ 4: ЗАКЛЮЧИТЕЛЬНОЕ СЛОВО -->
-        <div class="card">
-            <h2> Reflexión Final: El Hardware como Herramienta de Ética Computacional</h2>
-            <p>Este proyecto ha demostrado que el diseño de una workstation para IA no es un ejercicio meramente técnico. Es una <strong>declaración de principios éticos</strong> sobre cómo debe desarrollarse la inteligencia artificial en el siglo XXI.</p>
+            <p>El software también cambia la decisión. Los resultados publicados de Stable Diffusion muestran que una misma comparación de tarjetas puede dar resultados diferentes con programas distintos<a href="resources.html#ref-09" class="citation">[9]</a>. Para mi propuesta prefiero una GPU compatible con las herramientas que voy a utilizar, sin afirmar que una marca es obligatoria en todos los casos.</p>
             
-            <p>Cuando elegimos ejecutar modelos localmente en lugar de enviarlos a la nube, estamos defendiendo la <em>soberanía de datos</em> (суверенитет данных / data sovereignty). Cuando priorizamos la VRAM sobre la estética, estamos asegurando que la investigación de seguridad de IA sea accesible. Cuando invertimos en una PSU certificada, estamos protegiendo la integridad de los datos de auditoría.</p>
+            <p>En almacenamiento, NVMe ofrece más velocidad de transferencia que SATA, pero la capacidad y el precio también importan. En la alternativa doméstica priorizo 12 GB de VRAM, acepto 16 GB de RAM y un SSD de 500 GB<a href="resources.html#ref-18" class="citation">[18]</a>. El coste previsto es 1189,95 USD con una reserva de gastos; todavía hay que confirmar el envío. El presupuesto de referencia de 1200 USD se utiliza según la aclaración del profesor, y no como una equivalencia inventada entre precios argentinos y estadounidenses.</p>
             
-            <p>El perfil de <strong>Investigador en Alineación y Seguridad de IA</strong> requiere más que conocimiento técnico: requiere una comprensión profunda de cómo la arquitectura del hardware habilita (o limita) la investigación ética. Como demostramos en este proyecto, con $800 USD es posible construir una workstation capaz de auditar modelos de 13B parámetros, contribuyendo activamente a la seguridad de la IA global.</p>
+            <p>La estación profesional ofrece más memoria y más recursos para trabajar en paralelo. Esto amplía las tareas posibles, pero no garantiza una velocidad fija ni seguridad absoluta. Las máquinas virtuales, los contenedores, las copias de seguridad y los permisos requieren una configuración adecuada.</p>
             
-            <div class="highlight">
-                <strong>✓ Conclusión Final:</strong> La mejor workstation no es la más cara, sino la que <strong>maximiza la capacidad de investigación dentro de las restricciones presupuestarias</strong>, sin comprometer nunca la seguridad eléctrica ni la integridad de los datos. Este principio guía tanto la build "Money is No Object" como "El Punto Dulce".
-            </div>
+            <p>El siguiente paso sería probar ambas propuestas con el mismo modelo y la misma lista de preguntas. Registraría la versión del programa, la cuantización, el contexto, el tiempo de carga, los tokens por segundo, el uso de memoria y la energía. Como no hice estas mediciones, presento las configuraciones como propuestas razonadas y no como resultados experimentales propios.</p>
         </div>
 
         <div class="nav-buttons">
             <a href="part3.html" class="btn">← Parte 3: El Diseño Maestro</a>
-            <a href="resources.html" class="btn">Bibliografía y Recursos APA →</a>
+            <a href="resources.html" class="btn">Recursos y Bibliografía →</a>
         </div>
     </div>
 </body>
