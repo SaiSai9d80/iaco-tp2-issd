@@ -203,7 +203,7 @@
             <p>Para un Investigador en Alineación y Seguridad de IA, el recurso más escaso es la <strong>VRAM</strong>. Sin VRAM suficiente, el modelo simplemente no cabe en memoria y la auditoría es imposible. Por ello:</p>
             <ul>
                 <li>En la configuración "Money is No Object": 48 GB VRAM (RTX 6000 Ada) → Modelos 70B+ parámetros</li>
-                <li>En la configuración "$1,200": 12 GB VRAM (RTX 3060 usada) → Modelos hasta 13B parámetros</li>
+                <li>En la configuración "$1,200": 12 GB VRAM (RTX 3060 V2 nueva) → Modelos hasta 13B parámetros</li>
             </ul>
             <p>Ambas priorizan VRAM sobre frecuencia de reloj, RGB, o estética.</p>
             
@@ -212,21 +212,21 @@
             <ul>
                 <li><strong>Impuesto PAIS (30%)</strong> sobre compras de importación</li>
                 <li><strong>Aranceles aduaneros</strong> y costos logísticos</li>
-                <li><strong>Tipo de cambio oficial:</strong> 1 USD = 1,535.60 ARS (26 de octubre de 2026, fuente: Morningstar)</li>
-                <li><strong>Disponibilidad limitada</strong> de componentes específicos en Córdoba (CP 5013)</li>
+                <li><strong>Tipo de cambio oficial:</strong> 1 USD = 1,536.6 ARS (26 de octubre de 2026, fuente: Morningstar)</li>
+                <li><strong>Disponibilidad limitada</strong> de componentes específicos en Córdoba (CP 5000)</li>
             </ul>
-            <p>Por ello, el presupuesto de <strong>$1,200 USD</strong> en Argentina equivale aproximadamente a <strong>$750-800 USD</strong> en el mercado estadounidense en términos de poder adquisitivo de componentes.</p>
+            <p>El presupuesto de <strong>$1,200 USD</strong> fue acordado en reunión de Zoom con el profesor Galiotti como techo realista para el mercado argentino.</p>
             
             <h3>3. Compromisos Inteligentes (Trade-offs)</h3>
-            <p>Para mantenernos dentro del techo de $1,200 USD en el mercado argentino (verificado en MercadoLibre, octubre 2026), aceptamos compromisos calculados:</p>
+            <p>Para mantenernos dentro del techo de $1,200 USD en el mercado argentino (verificado en tiendas locales, octubre 2026), aceptamos compromisos calculados:</p>
             <div class="tradeoff-grid">
                 <div class="tradeoff-card accept">
                     <h4>✅ Aceptamos:</h4>
                     <ul>
-                        <li><strong>GPU usada:</strong> RTX 3060 12GB de segunda mano (ahorro de ~$300 vs. nueva)</li>
+                        <li><strong>CPU con PCIe 3.0:</strong> Ryzen 5 5500 en lugar de 5600 (ahorro de ~$85)</li>
+                        <li><strong>Placa base A520:</strong> En lugar de B550 (ahorro de ~$50)</li>
                         <li><strong>16 GB RAM en lugar de 32 GB:</strong> Suficiente para modelos de 7B-8B parámetros</li>
                         <li><strong>SSD 512 GB en lugar de 1 TB:</strong> Capacidad mínima viable para sistema + modelos</li>
-                        <li><strong>Placa base económica:</strong> ASRock B550M-HDV en lugar de MSI B550M PRO-VDH</li>
                     </ul>
                 </div>
                 <div class="tradeoff-card reject">
@@ -286,7 +286,7 @@
                 </ul>
             </div>
 
-            <!-- СБОРКА 2: EL PUNTO DULCE $1,200 -->
+            <!-- СБОРКА 2: EL PUNTO DULCE $1,200 (ВАРИАНТ B) -->
             <div class="card">
                 <div class="build-header budget">
                     <h2>Configuración 2: "El Punto Dulce"</h2>
@@ -295,15 +295,15 @@
 
                 <div class="build-image">
                     <img src="images/el-punto-dulce.jpg" 
-                         alt="Workstation Presupuesto Inteligente: Ryzen 5 + RTX 3060">
-                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5600 + RTX 3060 12GB (usada) + ASRock B550M</p>
+                         alt="Workstation Presupuesto Inteligente: Ryzen 5 5500 + RTX 3060 V2">
+                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5500 + RTX 3060 V2 12GB (nueva) + ASRock A520M</p>
                 </div>
 
                 <div class="price-notice">
-                    <strong> Nota sobre Precios Reales:</strong> Los precios reflejan el mercado argentino verificado en <strong>MercadoLibre (Córdoba, CP 5013, octubre 2026)</strong> con tipo de cambio <strong>1 USD = 1,535.60 ARS</strong> (26 de octubre de 2026). Los componentes electrónicos en Argentina tienen un sobreprecio del 30-60% respecto al mercado estadounidense debido a impuestos de importación (PAIS 30%), aranceles aduaneros y costos logísticos. La GPU se adquiere en el mercado de segunda mano para mantener el presupuesto<a href="resources.html#ref-mercadolibre" class="citation">[8]</a>.
+                    <strong>📌 Nota sobre Precios Reales:</strong> Los precios reflejan el mercado argentino verificado en <strong>tiendas locales (GoldenTech, Amonpul, Qos Technologies, Córdoba, CP 5000, octubre 2026)</strong> con tipo de cambio <strong>1 USD = 1,536.6 ARS</strong> (26 de octubre de 2026). Presupuesto acordado en reunión de Zoom con el profesor Galiotti. Todos los componentes son <strong>nuevos con garantía</strong><a href="resources.html#ref-prices" class="citation">[C1-C7]</a>.
                 </div>
 
-                <p style="font-size: 0.95rem;">Diseñada para maximizar la VRAM dentro de un presupuesto estricto de $1,200 USD, cumpliendo con el techo presupuestario ajustado a la realidad del mercado argentino<a href="resources.html#ref-nvidia-3060" class="citation">[4]</a>.</p>
+                <p style="font-size: 0.95rem;">Diseñada para maximizar la VRAM dentro de un presupuesto estricto de $1,200 USD, priorizando una GPU <strong>nueva con garantía</strong> sobre un CPU de mayor gama<a href="resources.html#ref-nvidia-3060" class="citation">[4]</a>.</p>
 
                 <table>
                     <tr>
@@ -313,67 +313,62 @@
                         <th>Justificación IA</th>
                     </tr>
                     <tr>
-                        <td><strong>GPU (Usada)</strong></td>
-                        <td>RTX 3060 12GB</td>
-                        <td>$450</td>
-                        <td>Prioridad Absoluta: 12 GB de VRAM para modelos de 7B/8B con CUDA. Mercado de segunda mano en Argentina (~ARS 690,000)<a href="resources.html#ref-mercadolibre" class="citation">[8]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td><strong>CPU</strong></td>
+                        <td>AMD Ryzen 5 5500 (6C/12T)</td>
+                        <td>$100</td>
+                        <td>Soporta 12 hilos para contenedores Docker. Limitación: PCIe 3.0 (no 4.0). Aceptable para esta configuración<a href="resources.html#ref-cpu-5500" class="citation">[C1]</a>. <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
-                        <td><strong>CPU</strong></td>
-                        <td>Ryzen 5 5600 (6C/12T)</td>
-                        <td>$183</td>
-                        <td>Gestiona contenedores Docker sin restringir a la GPU (~ARS 280,654)<a href="resources.html#ref-mercadolibre" class="citation">[8]</a>.</td>
+                        <td><strong>GPU (Nueva)</strong></td>
+                        <td>NVIDIA RTX 3060 V2 12GB</td>
+                        <td>$300</td>
+                        <td>Prioridad Absoluta: 12 GB de VRAM para modelos de 7B/8B con CUDA. Nueva con garantía<a href="resources.html#ref-gpu-3060v2" class="citation">[C2]</a>.</td>
                     </tr>
                     <tr>
                         <td><strong>Placa Madre</strong></td>
-                        <td>ASRock B550M-HDV</td>
-                        <td>$115</td>
-                        <td>Soporte nativo PCIe 4.0, socket AM4. Alternativa económica (~ARS 176,500)<a href="resources.html#ref-mercadolibre" class="citation">[8]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td>ASRock A520M-HDV</td>
+                        <td>$65</td>
+                        <td>Socket AM4, soporte DDR4. Limitación: sin PCIe 4.0 ni overclocking<a href="resources.html#ref-mb-a520" class="citation">[C3]</a>. <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
                         <td><strong>RAM</strong></td>
                         <td>16 GB (2x8GB) DDR4-3200</td>
-                        <td>$180</td>
-                        <td>Capacidad mínima para cargar modelos de 7B-8B parámetros en búfer (~ARS 276,000). <span class="compromise-badge">COMPROMISO</span></td>
+                        <td>$35</td>
+                        <td>Capacidad mínima para cargar modelos de 7B-8B parámetros en búfer<a href="resources.html#ref-ram-16gb" class="citation">[C4]</a>. <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
                         <td><strong>Almacenamiento</strong></td>
-                        <td>512GB Kingston NV2 PCIe 4.0</td>
-                        <td>$130</td>
-                        <td>3,500 MB/s para baja latencia en carga de modelos. Capacidad reducida (~ARS 200,000)<a href="resources.html#ref-mercadolibre" class="citation">[8]</a>. <span class="compromise-badge">COMPROMISO</span></td>
+                        <td>512GB NVMe PCIe 3.0</td>
+                        <td>$40</td>
+                        <td>Capacidad mínima viable para sistema + modelos. Velocidad ~3,500 MB/s<a href="resources.html#ref-ssd-512gb" class="citation">[C5]</a>. <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
                         <td><strong>Fuente (PSU)</strong></td>
                         <td>MSI MAG A550BN 550W</td>
-                        <td>$62</td>
-                        <td>Certificación 80+ Bronze con protecciones OVP, OPP, SCP. Suficiente para esta configuración (~ARS 95,200).</td>
+                        <td>$55</td>
+                        <td>Certificación 80+ Bronze con protecciones OVP, OPP, SCP. Suficiente para esta configuración<a href="resources.html#ref-psu-550w" class="citation">[C6]</a>.</td>
                     </tr>
                     <tr>
                         <td><strong>Gabinete</strong></td>
                         <td>DeepCool CC560 (4 fans)</td>
-                        <td>$57</td>
-                        <td>Flujo de aire óptimo para inferencia prolongada (~ARS 87,027)<a href="resources.html#ref-mercadolibre" class="citation">[8]</a>.</td>
+                        <td>$55</td>
+                        <td>Flujo de aire óptimo para inferencia prolongada<a href="resources.html#ref-case-cc560" class="citation">[C7]</a>.</td>
                     </tr>
                     <tr>
                         <td><strong>Reserva</strong></td>
                         <td>Envíos / Fluctuaciones</td>
-                        <td>$23</td>
+                        <td>$40</td>
                         <td>Previsión realista de costos logísticos y fluctuaciones del tipo de cambio.</td>
                     </tr>
                     <tr style="background: #0f172a; font-weight: bold;">
                         <td>TOTAL</td>
-                        <td colspan="2">$1,200 USD</td>
-                        <td>Maximiza VRAM sin sacrificar integridad. Precios reales verificados en MercadoLibre (octubre 2026).</td>
+                        <td colspan="2">$1,190 USD</td>
+                        <td>Maximiza VRAM sin sacrificar integridad. Todos los componentes nuevos con garantía.</td>
                     </tr>
                 </table>
                 
                 <div class="highlight" style="margin-top: 20px;">
-                    <strong>📊 Estrategia de Ajuste:</strong> El total de $1,200 USD representa el presupuesto máximo ajustado a la realidad del mercado argentino (tipo de cambio 1,535.60 ARS/USD). Para reducir el costo:
-                    <ul style="margin-top: 10px;">
-                        <li>Negociar el precio de la GPU usada (objetivo: $420 USD / ARS 645,000)</li>
-                        <li>Buscar ofertas en RAM durante eventos de venta (Hot Sale, Black Friday)</li>
-                        <li>Considerar un gabinete más económico (~$40-45 USD)</li>
-                    </ul>
+                    <strong>📊 Análisis del Trade-off:</strong> Esta configuración sacrifica PCIe 4.0 (CPU y placa base) para obtener una <strong>GPU nueva con garantía</strong> en lugar de una usada. El impacto en rendimiento de IA es mínimo (~5% en transferencia de datos), pero la garantía y confiabilidad son críticas para un entorno académico.
                 </div>
             </div>
         </div>
@@ -387,7 +382,7 @@
                 <tr>
                     <th>Escenario de Uso</th>
                     <th>Money is No Object<br><small>(~$8,000+ USD)</small></th>
-                    <th>El Punto Dulce<br><small>($1,200 USD)</small></th>
+                    <th>El Punto Dulce<br><small>($1,190 USD)</small></th>
                     <th>Diferencia Real</th>
                 </tr>
                 <tr>
@@ -415,10 +410,10 @@
                     <td>Factible vs. Limitado</td>
                 </tr>
                 <tr>
-                    <td><strong>Auditoría de seguridad automatizada</strong></td>
-                    <td class="winner">1000 pruebas en ~3 horas</td>
-                    <td>1000 pruebas en ~10 horas</td>
-                    <td>3.3x más productivo</td>
+                    <td><strong>Garantía de componentes</strong></td>
+                    <td>Completa (1-3 años)</td>
+                    <td class="winner">Completa (1-3 años)</td>
+                    <td>Igual (ambos nuevos)</td>
                 </tr>
                 <tr>
                     <td><strong>Consumo energético</strong></td>
@@ -429,65 +424,64 @@
             </table>
 
             <div class="highlight">
-                <strong>✓ Análisis del Experto:</strong> La build de $8,000 no es "3x mejor" que la de $1,200. Es <strong>cualitativamente diferente</strong>: permite investigar modelos que la build económica simplemente no puede ejecutar. Sin embargo, para un estudiante que audita modelos de 7B-8B parámetros, la build de $1,200 ofrece <strong>el 85% de la funcionalidad necesaria al 15% del costo</strong>.
+                <strong>✓ Análisis del Experto:</strong> La build de $8,000 no es "3x mejor" que la de $1,190. Es <strong>cualitativamente diferente</strong>: permite investigar modelos que la build económica simplemente no puede ejecutar. Sin embargo, para un estudiante que audita modelos de 7B-8B parámetros, la build de $1,190 ofrece <strong>el 85% de la funcionalidad necesaria al 15% del costo</strong>, con la ventaja adicional de <strong>garantía completa en todos los componentes</strong>.
             </div>
         </div>
 
-        <!-- СЕКЦИЯ: Анализ RTX 3060 б/у vs новая -->
+        <!-- СЕКЦИЯ: Анализ PCIe 3.0 vs 4.0 -->
         <div class="expert-section">
-            <h2>🔍 Análisis Costo-Beneficio: RTX 3060 Usada vs. Nueva en Argentina</h2>
-            <p>Esta es la decisión más crítica en la build de $1,200. El mercado argentino presenta una realidad única: los componentes nuevos tienen un sobreprecio significativo, mientras que el mercado de segunda mano ofrece oportunidades estratégicas.</p>
+            <h2>🔍 Análisis Técnico: Impacto de PCIe 3.0 en Rendimiento de IA</h2>
+            <p>La configuración "El Punto Dulce" utiliza CPU Ryzen 5 5500 y placa ASRock A520M, ambos limitados a <strong>PCIe 3.0</strong>. Analicemos el impacto real en cargas de trabajo de IA:</p>
             
             <div class="scenario-box">
-                <h4>Escenario A: RTX 3060 12GB Usada (~$450 USD en Argentina)</h4>
+                <h4>Escenario A: PCIe 3.0 (Ryzen 5 5500 + A520M)</h4>
                 <ul>
-                    <li><strong>Precio:</strong> ~ARS 690,000 (tipo de cambio 1,535.60)</li>
-                    <li><strong>VRAM:</strong> 12 GB → Modelos hasta 13B parámetros (cuantizados 4-bit)</li>
-                    <li><strong>Rendimiento:</strong> ~40 tokens/segundo en Llama 3 8B</li>
-                    <li><strong>Riesgo:</strong> Garantía limitada, posible desgaste de ventiladores, necesidad de verificar historial de minería</li>
-                    <li><strong>Beneficio:</strong> Acceso inmediato a inferencia local de calidad dentro del presupuesto</li>
-                    <li><strong>Verificación recomendada:</strong> Prueba de estrés con FurMark, verificación de temperaturas, revisión de sellos de garantía</li>
+                    <li><strong>Ancho de banda GPU:</strong> ~32 GB/s (x16 lanes)</li>
+                    <li><strong>Ancho de banda NVMe:</strong> ~3.5 GB/s (x4 lanes)</li>
+                    <li><strong>Impacto en inferencia:</strong> ~5% más lento en carga de modelos grandes</li>
+                    <li><strong>Impacto en fine-tuning:</strong> ~3-5% más lento en transferencia de gradients</li>
+                    <li><strong>Beneficio:</strong> Ahorro de ~$135 USD, GPU nueva con garantía</li>
                 </ul>
             </div>
             
             <div class="scenario-box">
-                <h4>Escenario B: RTX 3060 12GB Nueva (~$713-952 USD en Argentina)</h4>
+                <h4>Escenario B: PCIe 4.0 (Ryzen 5 5600 + B550M)</h4>
                 <ul>
-                    <li><strong>Precio:</strong> ARS 1,094,499 - 1,462,046 (MercadoLibre, octubre 2026)</li>
-                    <li><strong>VRAM:</strong> 12 GB → Mismos modelos que la usada</li>
-                    <li><strong>Rendimiento:</strong> ~42 tokens/segundo (5% más rápido por clocks de fábrica)</li>
-                    <li><strong>Riesgo:</strong> Mínimo (garantía completa de 1-3 años)</li>
-                    <li><strong>Problema crítico:</strong> <strong>Excede el presupuesto en $263-502 USD</strong>, imposibilitando la construcción del resto del sistema</li>
+                    <li><strong>Ancho de banda GPU:</strong> ~64 GB/s (x16 lanes)</li>
+                    <li><strong>Ancho de banda NVMe:</strong> ~7 GB/s (x4 lanes)</li>
+                    <li><strong>Impacto en inferencia:</strong> Referencia base</li>
+                    <li><strong>Impacto en fine-tuning:</strong> Referencia base</li>
+                    <li><strong>Costo adicional:</strong> ~$135 USD más (CPU + placa madre)</li>
                 </ul>
             </div>
 
             <h3>Veredicto Cuantitativo:</h3>
-            <p>La RTX 3060 nueva cuesta <strong>58-112% más</strong> que la usada en el mercado argentino, pero ofrece solo <strong>5% más de rendimiento</strong>. En IA, la VRAM es binaria: o el modelo cabe, o no cabe. No existe "cabe parcialmente".</p>
+            <p>La diferencia de PCIe 3.0 vs 4.0 en cargas de IA es <strong>mínima (3-5%)</strong>, porque el cuello de botella principal es la VRAM, no el bus. Para un investigador académico con presupuesto limitado, sacrificar PCIe 4.0 para obtener una <strong>GPU nueva con garantía</strong> es una decisión técnica sólida.</p>
             
             <div class="highlight">
-                <strong>✓ Conclusión:</strong> La RTX 3060 usada no es una "opción barata"; es la <strong>única opción viable</strong> para un investigador académico con $1,200 USD en Argentina. El ahorro de $263-502 USD se traduce en la posibilidad de construir el resto del sistema (CPU, RAM, SSD, PSU, gabinete).
+                <strong>✓ Conclusión:</strong> PCIe 3.0 no es un "defecto"; es un <strong>trade-off aceptable</strong> que permite mantener el presupuesto en $1,200 USD con componentes nuevos y garantizados. El impacto en productividad de IA es marginal comparado con el beneficio de tener garantía completa.
             </div>
         </div>
 
         <!-- ДИАГРАММА MERMAID -->
         <div class="card">
-            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build $1,200)</h2>
-            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente.</p>
+            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build $1,190)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente. <strong>Nota:</strong> Esta configuración utiliza PCIe 3.0.</p>
             <div class="mermaid" style="display: flex; justify-content: center;">
 graph TD
     subgraph PSU_Group [Suministro de Energía]
         PSU["MSI MAG A550BN 550W 80+ Bronze"]
     end
-    subgraph Motherboard_Group [Placa Base: ASRock B550M-HDV]
-        CPU["AMD Ryzen 5 5600 (6C/12T)"]
+    subgraph Motherboard_Group [Placa Base: ASRock A520M-HDV (PCIe 3.0)]
+        CPU["AMD Ryzen 5 5500 (6C/12T)"]
         RAM["16 GB DDR4 3200 MHz (2x8GB)"]
-        NVMe["512GB Kingston NV2 PCIe 4.0 x4"]
-        GPU["NVIDIA RTX 3060 12GB (Mercado Usado)"]
+        NVMe["512GB NVMe PCIe 3.0 x4"]
+        GPU["NVIDIA RTX 3060 V2 12GB (Nueva)"]
     end
     
     CPU <-->|"Bus de Memoria Dual-Channel"| RAM
-    CPU <-->|"Bus PCIe 4.0 x4 (3,500 MB/s)"| NVMe
-    CPU <-->|"Bus PCIe 4.0 x16"| GPU
+    CPU <-->|"Bus PCIe 3.0 x4 (~3.5 GB/s)"| NVMe
+    CPU <-->|"Bus PCIe 3.0 x16 (~32 GB/s)"| GPU
     
     PSU -->|"Conector ATX 24-Pines"| Motherboard_Group
     PSU -->|"Conector EPS 8-Pines"| CPU
@@ -495,13 +489,15 @@ graph TD
     
     classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
     classDef psu fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
+    classDef pcie3 fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#f8fafc;
+    class NVMe,GPU pcie3;
     class PSU psu;
             </div>
         </div>
 
         <!-- СЕКЦИЯ: Путь апгрейда -->
         <div class="expert-section">
-            <h2>📈 Ruta de Actualización: De $1,200 a $1,600</h2>
+            <h2> Ruta de Actualización: De $1,190 a $1,600</h2>
             <p>Una de las ventajas de la build "El Punto Dulce" es su <strong>path de actualización claro</strong>. A medida que el investigador avanza en su carrera, puede mejorar componentes críticos sin reconstruir todo el sistema:</p>
             
             <table class="comparison-table">
@@ -514,55 +510,55 @@ graph TD
                 <tr>
                     <td><strong>Fase 1 (Actual)</strong></td>
                     <td>Build completa</td>
-                    <td>$1,200</td>
-                    <td>Inferencia local de modelos 7B-8B</td>
+                    <td>$1,190</td>
+                    <td>Inferencia local de modelos 7B-8B con garantía completa</td>
                 </tr>
                 <tr>
                     <td><strong>Fase 2 (6 meses)</strong></td>
-                    <td>RAM: 32 GB DDR4-3200 (2x16GB)</td>
-                    <td>+$100 (venta de 16 GB)</td>
-                    <td>Modelos más grandes, mejor multitarea</td>
+                    <td>CPU: Ryzen 5 5600 + Placa B550M</td>
+                    <td>+$135 (venta de 5500 + A520M)</td>
+                    <td>PCIe 4.0, +10% rendimiento en transferencia de datos</td>
                 </tr>
                 <tr>
                     <td><strong>Fase 3 (12 meses)</strong></td>
-                    <td>SSD: 1TB NVMe PCIe 4.0</td>
-                    <td>+$100 (venta de 512 GB)</td>
-                    <td>Más espacio para datasets y modelos</td>
+                    <td>RAM: 32 GB DDR4-3200 (2x16GB)</td>
+                    <td>+$35 (venta de 16 GB)</td>
+                    <td>Modelos más grandes, mejor multitarea</td>
                 </tr>
                 <tr>
                     <td><strong>Fase 4 (18 meses)</strong></td>
-                    <td>GPU: RTX 4060 Ti 16GB (usada)</td>
-                    <td>+$400 (venta de RTX 3060)</td>
-                    <td>Modelos hasta 13B, fine-tuning QLoRA</td>
+                    <td>SSD: 1TB NVMe PCIe 4.0</td>
+                    <td>+$40 (venta de 512 GB)</td>
+                    <td>Más espacio para datasets y modelos</td>
                 </tr>
                 <tr>
                     <td><strong>Total Fase 4</strong></td>
                     <td>Workstation avanzada</td>
-                    <td><strong>~$1,800</strong></td>
-                    <td>Investigación de modelos 13B+</td>
+                    <td><strong>~$1,400</strong></td>
+                    <td>Investigación de modelos 8B+ con PCIe 4.0 completo</td>
                 </tr>
             </table>
 
             <div class="highlight">
-                <strong>✓ Ventaja Estratégica:</strong> La plataforma AM4 (ASRock B550M) permite actualizaciones graduales sin cambiar placa madre. Esto es <strong>imposible</strong> en builds que sacrifican la placa madre por ahorrar $20-30 iniciales.
+                <strong>✓ Ventaja Estratégica:</strong> La plataforma AM4 permite actualizaciones graduales. El primer upgrade recomendado es CPU + placa madre (Fase 2) para habilitar PCIe 4.0, lo que mejora el rendimiento en ~10% sin cambiar GPU ni RAM.
             </div>
         </div>
 
         <!-- ИНФОГРАФИКА -->
         <div class="card">
-            <h2>Infografía Final: Capacidades Clave de la Workstation de $1,200 USD</h2>
+            <h2>Infografía Final: Capacidades Clave de la Workstation de $1,190 USD</h2>
             <p style="color: var(--muted); margin-bottom: 20px;">Resumen visual de por qué esta configuración es la elección óptima para un investigador académico con recursos limitados en Argentina.</p>
             
             <div class="infographic-grid">
                 <div class="info-box">
-                    <span class="icon">🧠</span>
+                    <span class="icon"></span>
                     <h4>12 GB VRAM</h4>
                     <p>Capacidad real para ejecutar LLMs de 7B/8B parámetros cuantizados localmente sin errores OOM.</p>
                 </div>
                 <div class="info-box">
                     <span class="icon">🛡️</span>
-                    <h4>Protección 80+ Bronze</h4>
-                    <p>Fuente MSI certificada con OVP/SCP. Regla de oro: nunca se sacrifica la seguridad eléctrica por ahorrar.</p>
+                    <h4>Garantía Completa</h4>
+                    <p>Todos los componentes nuevos con garantía de 1-3 años. Sin riesgos de hardware usado.</p>
                 </div>
                 <div class="info-box">
                     <span class="icon">⚡</span>
@@ -570,9 +566,9 @@ graph TD
                     <p>Capacidad mínima viable para mantener el SO, contenedores Docker y buffers de datos de modelos pequeños.</p>
                 </div>
                 <div class="info-box">
-                    <span class="icon"></span>
-                    <h4>NVMe de Baja Latencia</h4>
-                    <p>Kingston NV2 PCIe 4.0 (512GB) asegura que la carga de pesos del modelo no sea el cuello de botella del sistema.</p>
+                    <span class="icon">🚀</span>
+                    <h4>NVMe PCIe 3.0</h4>
+                    <p>512GB con velocidad ~3,500 MB/s. Suficiente para sistema + modelos de 7B-8B parámetros.</p>
                 </div>
             </div>
         </div>
