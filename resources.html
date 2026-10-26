@@ -2,21 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bibliografía y Recursos - TP2 ISSD</title>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; --muted: #94a3b8; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         nav { background: #020617; padding: 1rem; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
-        nav a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; }
-        h1, h2 { color: var(--accent); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; }
-        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
-        th { background: #0f172a; color: var(--accent); }
-        a { color: var(--accent); }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        nav a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #22d3ee; text-decoration: underline; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        h1, h2 { color: var(--accent); margin-top: 0; }
+        h1 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+        h2 { font-size: 1.4rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95rem; }
+        th, td { border: 1px solid #334155; padding: 14px; text-align: left; vertical-align: top; }
+        th { background: #0f172a; color: var(--accent); font-weight: 600; }
+        tr:hover { background-color: #263345; }
+        
+        ul.biblio-list { padding-left: 20px; }
+        ul.biblio-list li { margin-bottom: 15px; padding-left: 10px; border-left: 3px solid var(--accent); }
+        
+        /* Стили для якорных ссылок и цитат */
+        .citation { color: var(--accent); font-size: 0.8rem; vertical-align: super; text-decoration: none; font-weight: bold; }
+        .citation:hover { text-decoration: underline; }
+        
+        a { color: var(--accent); text-decoration: none; word-break: break-all; }
+        a:hover { text-decoration: underline; }
+
+        .nav-buttons { display: flex; justify-content: center; margin-top: 30px; }
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -25,80 +42,116 @@
         <a href="part1.html">Parte 1: Cómputo</a>
         <a href="part2.html">Parte 2: Almacenamiento</a>
         <a href="part3.html">Parte 3: Workstations</a>
-        <a href="resources.html">Recursos y APA</a>
+        <a href="resources.html" style="color: #22d3ee;">Recursos y APA</a>
+        <a href="prompts.html">Prompts e IA</a>
     </nav>
+    
     <div class="container">
         <h1>Cierre Metodológico y Anexos Académicos</h1>
         
+        <!-- 4.1 DISCLAIMER -->
         <div class="card">
             <h2>4.1. Descargo de Responsabilidad (Disclaimer)</h2>
-            <p>El presente documento y el sitio web derivado han sido desarrollados con fines estrictamente académicos e investigativos en el marco de la asignatura <strong>Introducción a la Arquitectura de Computadoras (IACO 2026)</strong> del Instituto Superior Santo Domingo (ISSD). Las especificaciones de hardware, comparativas de rendimiento y precios de mercado se basan en datos públicos de fabricantes y benchmarks vigentes. Los autores y el ISSD no asumen responsabilidad legal por el uso indebido de las configuraciones propuestas ni por las fluctuaciones en el mercado informático[cite: 14].</p>
+            <p>El presente documento y el sitio web derivado han sido desarrollados con fines estrictamente académicos e investigativos en el marco de <em>Introducción a la Arquitectura de Computadoras (IACO 2026)</em> del Instituto Superior Santo Domingo (ISSD). Las especificaciones de hardware, comparativas de rendimiento y precios de mercado se basan en hojas de datos públicas de los fabricantes y benchmarks vigentes. Los autores y el ISSD no asumen responsabilidad legal por el uso indebido de las configuraciones propuestas, ni por las fluctuaciones en el mercado informático o la disponibilidad de componentes.</p>
         </div>
 
+        <!-- 4.2 BIBLIOGRAFÍA -->
         <div class="card">
             <h2>4.2. Bibliografía y Recursos Consultados (Formato APA 7ª Edición)</h2>
-            <ul>
-                <li>Advanced Micro Devices, Inc. (2026). <em>AMD Ryzen Threadripper PRO 7000 WX-Series Specifications</em>. Recuperado de: <a href="https://www.amd.com" target="_blank">https://www.amd.com</a>[cite: 13]</li>
-                <li>Intel Corporation. (2026). <em>Intel Core Ultra Processors Series 2 Whitepaper</em>. Recuperado de: <a href="https://ark.intel.com" target="_blank">https://ark.intel.com</a>[cite: 13]</li>
-                <li>Microsoft Developer Network. (2025). <em>DirectStorage Overview and Architecture</em>. Recuperado de: <a href="https://learn.microsoft.com" target="_blank">https://learn.microsoft.com</a>[cite: 14]</li>
-                <li>NVIDIA Corporation. (2026). *NVIDIA GeForce RTX 4090 & RTX 6000 Ada Architecture Overview*. Recuperado de: <a href="https://www.nvidia.com" target="_blank">https://www.nvidia.com</a>[cite: 14]</li>
-                <li>PCI-SIG. (2026). <em>PCI Express Base Specification Revision 5.0</em>. Recuperado de: <a href="https://pcisig.com" target="_blank">https://pcisig.com</a>[cite: 14]</li>
-                <li>vLLM Project Team. (2025). <em>vLLM: High-throughput Inference Engine for LLMs</em>. Recuperado de: <a href="https://vllm.ai/" target="_blank">https://vllm.ai/</a>[cite: 14]</li>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Nota: Todos los enlaces son directos a las especificaciones técnicas o documentación oficial, cumpliendo con el requisito de citación de la cátedra.</p>
+            <ul class="biblio-list">
+                <li id="ref-amd-thread">Advanced Micro Devices, Inc. (2024). <em>AMD Ryzen Threadripper PRO 7000 WX-Series Processors Specifications</em>. Recuperado de: <a href="https://www.amd.com/en/products/processors/workstation/ryzen-threadripper/7000-series/amd-ryzen-threadripper-pro-7975wx.html" target="_blank">amd.com</a></li>
+                
+                <li id="ref-amd-5600">Advanced Micro Devices, Inc. (2024). <em>AMD Ryzen 5 5600 Desktop Processors Specifications</em>. Recuperado de: <a href="https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5600.html" target="_blank">amd.com</a></li>
+                
+                <li id="ref-intel">Intel Corporation. (2024). <em>Intel Core Ultra Processors Series 2 (Arrow Lake-S) Specifications</em>. Recuperado de: <a href="https://ark.intel.com/content/www/us/en/ark/products/series/237457/intel-core-ultra-processors-series-2.html" target="_blank">ark.intel.com</a></li>
+                
+                <li id="ref-nvidia-4090">NVIDIA Corporation. (2024). <em>NVIDIA GeForce RTX 4090 Architecture Overview</em>. Recuperado de: <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/" target="_blank">nvidia.com</a></li>
+                
+                <li id="ref-nvidia-6000">NVIDIA Corporation. (2024). <em>NVIDIA RTX 6000 Ada Generation Architecture Datasheet</em>. Recuperado de: <a href="https://www.nvidia.com/en-us/design-visualization/rtx-6000/" target="_blank">nvidia.com</a></li>
+                
+                <li id="ref-nvidia-3060">NVIDIA Corporation. (2024). <em>NVIDIA GeForce RTX 3060 12GB Specifications</em>. Recuperado de: <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060/" target="_blank">nvidia.com</a></li>
+                
+                <li id="ref-msi-mobo">MSI. (2024). <em>MSI B550M PRO-VDH WIFI Motherboard Specifications</em>. Recuperado de: <a href="https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI" target="_blank">msi.com</a></li>
+                
+                <li id="ref-msi-psu">MSI. (2024). <em>MAG A650BN 650W 80 PLUS Bronze Power Supply Specifications</em>. Recuperado de: <a href="https://www.msi.com/Power-Supply/MAG-A650BN" target="_blank">msi.com</a></li>
+                
+                <li id="ref-corsair">Corsair. (2024). <em>AX1600i Digital ATX Power Supply — 80 PLUS Titanium Certified</em>. Recuperado de: <a href="https://www.corsair.com/us/en/p/psu/cp-9020140-na/ax-series-ax1600i-fully-modular-atx-power-supply-cp-9020140-na" target="_blank">corsair.com</a></li>
+                
+                <li id="ref-kingston">Kingston Technology. (2024). <em>NV2 M.2 NVMe PCIe SSD Datasheet</em>. Recuperado de: <a href="https://www.kingston.com/datasheets/NV2_m2_pcie_ssd_latam.pdf" target="_blank">kingston.com</a></li>
+                
+                <li id="ref-microsoft">Microsoft Developer Network. (2024). <em>DirectStorage Overview and Architecture</em>. Recuperado de: <a href="https://learn.microsoft.com/en-us/windows/win32/directstorage/directstorage-overview" target="_blank">learn.microsoft.com</a></li>
+                
+                <li id="ref-pcisig">PCI-SIG. (2024). <em>PCI Express Base Specification Revision 5.0</em>. Recuperado de: <a href="https://pcisig.com/pci-express-50" target="_blank">pcisig.com</a></li>
+                
+                <li id="ref-storagereview">StorageReview. (2024). <em>PCIe 4.0 vs PCIe 5.0 NVMe SSD Performance Benchmarks</em>. Recuperado de: <a href="https://www.storagereview.com/review/best-m2-nvme-ssd" target="_blank">storagereview.com</a></li>
+                
+                <li id="ref-vllm">vLLM Project Team. (2024). <em>vLLM: High-throughput Inference Engine for LLMs</em>. Recuperado de: <a href="https://vllm.ai/" target="_blank">vllm.ai</a></li>
+                
+                <li id="ref-garak">Leonardo, G., et al. (2023). <em>Garak: A Framework for Auditing Large Language Models</em>. Recuperado de: <a href="https://github.com/leondz/garak" target="_blank">github.com/leondz/garak</a></li>
+                
+                <li id="ref-ollama">Ollama. (2024). <em>Run large language models locally</em>. Recuperado de: <a href="https://ollama.com/" target="_blank">ollama.com</a></li>
             </ul>
         </div>
 
+        <!-- 4.3 TABLA DE PROMPTS -->
         <div class="card">
             <h2>4.3. Tabla de Trazabilidad de Prompts (Apéndice de Interacción con IA)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Para garantizar la transparencia metodológica en la utilización de asistentes de IA, se documenta la secuencia de interacción realizada durante el desarrollo del proyecto.</p>
             <table>
                 <tr>
-                    <th>Código</th>
-                    <th>Rol Asignado a la IA</th>
-                    <th>Propósito Técnico</th>
-                    <th>Resultado Integrado en el Trabajo</th>
+                    <th style="width: 10%;">Código</th>
+                    <th style="width: 25%;">Rol Asignado a la IA</th>
+                    <th style="width: 35%;">Propósito Técnico</th>
+                    <th style="width: 30%;">Resultado Integrado en el Trabajo</th>
                 </tr>
                 <tr>
                     <td><strong>PR-01</strong></td>
                     <td>Experto en Arquitectura</td>
                     <td>Análisis de CPUs con NPU y virtualización.</td>
-                    <td>Sección 1.1: Tabla de CPUs y justificación SEV[cite: 14].</td>
+                    <td>Sección 1.1: Tabla de CPUs y justificación SEV.</td>
                 </tr>
                 <tr>
                     <td><strong>PR-02</strong></td>
                     <td>Ingeniero de ML y Hardware</td>
                     <td>Comparativa de GPUs y ecosistema CUDA.</td>
-                    <td>Sección 1.2: Análisis de VRAM y Tensor Cores[cite: 14].</td>
+                    <td>Sección 1.2: Análisis de VRAM y Tensor Cores.</td>
                 </tr>
                 <tr>
                     <td><strong>PR-03</strong></td>
                     <td>Arquitecto de Almacenamiento</td>
                     <td>Buses de datos, DirectStorage y PCIe 5.0.</td>
-                    <td>Sección 2.1 - 2.3: Analogía y rendimiento[cite: 14].</td>
+                    <td>Sección 2.1 - 2.3: Analogía y rendimiento.</td>
                 </tr>
                 <tr>
                     <td><strong>PR-04</strong></td>
                     <td>Ingeniero Senior (High-End)</td>
                     <td>Diseño "Money is No Object" y PSU Titanium.</td>
-                    <td>Sección 3.1: Configuración absoluta y balance energético[cite: 14].</td>
+                    <td>Sección 3.1: Configuración absoluta y balance energético.</td>
                 </tr>
                 <tr>
                     <td><strong>PR-05</strong></td>
                     <td>Especialista en Presupuesto</td>
                     <td>Configuración "Punto Dulce" ($800) priorizando VRAM.</td>
-                    <td>Sección 3.2: Tabla de componentes con PSU certificada[cite: 14].</td>
+                    <td>Sección 3.2: Tabla de componentes con PSU certificada.</td>
                 </tr>
                 <tr>
                     <td><strong>PR-06</strong></td>
                     <td>Desarrollador Web / UI/UX</td>
                     <td>Diagrama Mermaid.js y directrices para GitHub Pages.</td>
-                    <td>Sección 3.3: Código Mermaid y maquetación web[cite: 14].</td>
+                    <td>Sección 3.3: Código Mermaid y maquetación web.</td>
                 </tr>
                 <tr>
                     <td><strong>PR-07</strong></td>
                     <td>Consultor de Metodología</td>
                     <td>Redacción de disclaimer, APA y trazabilidad.</td>
-                    <td>Sección 4.1 - 4.3: Anexos finales y bibliografía[cite: 14].</td>
+                    <td>Sección 4.1 - 4.3: Anexos finales y bibliografía.</td>
                 </tr>
             </table>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">← Volver al Inicio del Proyecto</a>
         </div>
     </div>
 </body>
