@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2 IACO 2026 - Workstation de IA (ISSD)</title>
+    <title>TP2 ISSD - Arquitectura de Computadoras</title>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --accent: #06b6d4; --text: #f8fafc; --muted: #94a3b8; }
         body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
@@ -13,120 +13,132 @@
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .card { background: var(--card); border-radius: 12px; padding: 30px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
         h1, h2, h3 { color: var(--accent); margin-top: 0; }
-        h1 { font-size: 2rem; margin-bottom: 10px; }
-        h2 { font-size: 1.5rem; margin-bottom: 15px; }
-        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.9; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        .meta-info { color: var(--muted); font-size: 0.95rem; }
-        .profile-highlight { background: #0f172a; padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent); margin: 20px 0; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; text-align: center; }
+        h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        h3 { font-size: 1.2rem; margin-bottom: 10px; color: #22d3ee; }
+        p { margin-bottom: 15px; }
+        .subtitle { text-align: center; color: var(--muted); font-size: 1.1rem; margin-bottom: 30px; }
+        .meta-info { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 30px; }
+        .meta-info strong { color: var(--accent); }
         
-        /* ИЗМЕНЕНО: Flexbox вместо Grid для центрирования */
-        .nav-grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 15px; 
-            margin-top: 20px; 
-        }
-        .nav-card { 
-            background: #0f172a; 
-            padding: 20px; 
-            border-radius: 8px; 
-            border: 1px solid #334155; 
-            text-decoration: none; 
-            color: var(--text); 
-            transition: all 0.3s; 
-            flex: 0 1 calc(33.333% - 15px); 
-            min-width: 280px; 
-            max-width: 350px; 
-        }
-        .nav-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .nav-card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; }
-        .nav-card p { color: var(--muted); font-size: 0.9rem; margin: 0; }
-        hr { border-color: #334155; margin: 20px 0; }
+        .profile-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid var(--accent); border-radius: 12px; padding: 30px; margin-bottom: 25px; }
+        .profile-card h2 { color: #22d3ee; border-bottom: 2px solid #22d3ee; }
+        
+        .page-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 25px 0; }
+        .page-card { background: #0f172a; padding: 25px; border-radius: 8px; border: 1px solid #334155; transition: transform 0.3s, border-color 0.3s; }
+        .page-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .page-card h3 { color: var(--accent); margin-bottom: 10px; }
+        .page-card p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+        .page-card a { display: inline-block; margin-top: 15px; color: var(--accent); text-decoration: none; font-weight: bold; }
+        .page-card a:hover { text-decoration: underline; }
+        
+        .highlight { background: #0f172a; padding: 20px; border-left: 4px solid var(--accent); border-radius: 4px; margin: 20px 0; }
+        .highlight strong { color: #22d3ee; }
+        
+        .nav-buttons { display: flex; justify-content: center; margin-top: 30px; }
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="part1.html">Parte 1: Cómputo</a>
-    <a href="part2.html">Parte 2: Almacenamiento</a>
-    <a href="part3.html">Parte 3: Workstations</a>
-    <a href="conclusions.html">Conclusiones</a>
-    <a href="resources.html">Recursos y APA</a>
-    <a href="prompts.html">Prompts e IA</a>
-</nav>
+    <nav>
+        <a href="index.html" style="color: #22d3ee;">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="conclusions.html">Conclusiones</a>
+        <a href="resources.html">Recursos y APA</a>
+        <a href="prompts.html">Uso de IA</a>
+    </nav>
     
     <div class="container">
-        <div class="card">
-            <h1>Trabajo Práctico Integrador (TP2 - 2026)</h1>
-            <h2>Introducción a la Arquitectura de Computadoras (IACO)</h2>
-            <p class="meta-info"><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD), Córdoba, Argentina</p>
-            <p class="meta-info"><strong>Profesor:</strong> Emmanuel Galiotti</p>
-            <p class="meta-info"><strong>Fecha de Entrega:</strong> 26 de Octubre de 2026</p>
-            <hr>
-            <h3>Perfil Profesional Seleccionado:</h3>
-            <div class="profile-highlight">
-                <strong style="color: var(--accent); font-size: 1.1rem;">Investigador en Alineación y Seguridad de Inteligencia Artificial</strong>
-            </div>
-            <h3>Autor / Estudiante:</h3>
-            <ul>
-                <li>Vitalii Golovin</li>
-            </ul>
+        <h1>Trabajo Práctico Integrador N° 2</h1>
+        <p class="subtitle">Arquitectura de Computadoras — 2026</p>
+        
+        <div class="meta-info">
+            <p><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD), Córdoba, Argentina</p>
+            <p><strong>Materia:</strong> Arquitectura de Computadoras</p>
+            <p><strong>Profesor:</strong> Emmanuel Galiotti</p>
+            <p><strong>Alumno:</strong> Vitalii Golovin</p>
+            <p><strong>Perfil elegido:</strong> Investigador en Alineación y Seguridad de Inteligencia Artificial</p>
+            <p><strong>Fecha de elaboración:</strong> 26 de octubre de 2026</p>
+            <p><strong>Fecha límite indicada en la consigna:</strong> 2 de noviembre de 2026</p>
         </div>
 
-        <div class="card">
-            <h2>Resumen Ejecutivo del Proyecto</h2>
-            <p>Este sitio web documenta de manera integral el diseño de infraestructura de hardware de alta gama y optimización de rendimiento para la ejecución local de modelos de lenguaje (LLMs). El objetivo central es garantizar la <strong>soberanía absoluta de los datos</strong>, el aislamiento estricto mediante <em>sandboxing</em> y la capacidad de auditar sesgos, alucinaciones y vectores de ataque como el <em>prompt injection</em> sin depender de la nube.</p>
+        <!-- OBJETIVO DEL PROYECTO -->
+        <div class="profile-card">
+            <h2>Objetivo del proyecto</h2>
+            <p>En este trabajo estudio cómo elegir una computadora para aprender e investigar la alineación y la seguridad de la inteligencia artificial. Este perfil compara respuestas de modelos, prepara pruebas y analiza sus resultados. Para hacerlo, necesita una combinación adecuada de CPU, GPU, memoria y almacenamiento.</p>
             
-            <h3>Justificación del Perfil Profesional</h3>
-            <p>En el contexto actual de despliegue global de tecnologías de Inteligencia Artificial, la industria enfrenta tres riesgos críticos que requieren atención inmediata:</p>
-            <ul>
-                <li><strong>Factor Humano:</strong> La tendencia a delegar decisiones complejas a sistemas automatizados sin la supervisión adecuada.</li>
-                <li><strong>Factor Técnico:</strong> La capacidad demostrada de los modelos de gran escala para evadir controles y operar fuera de los parámetros establecidos por sus desarrolladores.</li>
-                <li><strong>Factor Geopolítico:</strong> El potencial uso de estas tecnologías con fines destructivos por parte de actores maliciosos o regímenes autoritarios.</li>
-            </ul>
-            <p>Por estas razones, el perfil de Investigador en Alineación y Seguridad de IA se erige como una figura fundamental para garantizar el equilibrio entre la innovación tecnológica y la ética computacional. La misión principal de este profesional es asegurar la soberanía de los datos y la integridad de los modelos mediante la ejecución 100% local de LLMs, auditando sesgos algorítmicos y vulnerabilidades en entornos estrictamente aislados.</p>
+            <p>Primero comparo dos procesadores de fabricantes diferentes y dos tarjetas gráficas de gama alta. Después explico la función de una NPU y las diferencias entre SATA y NVMe. Finalmente propongo dos computadoras: una estación profesional y una opción doméstica con un presupuesto de referencia de 1200 USD.</p>
             
-            <h3>Impacto en la Arquitectura del Hardware</h3>
-            <p>Esta misión impone requisitos de hardware muy específicos y exigentes:</p>
-            <ul>
-                <li><strong>GPU con alta VRAM:</strong> Para inferencia local de modelos de 7B-70B parámetros sin enviar datos a la nube.</li>
-                <li><strong>CPU multinúcleo:</strong> Para ejecutar múltiples entornos virtuales de prueba (Docker, VMs) simultáneamente.</li>
-                <li><strong>Memoria ECC:</strong> Para prevenir la corrupción de datos durante auditorías prolongadas.</li>
-                <li><strong>PSU certificada:</strong> Para garantizar la estabilidad eléctrica y proteger la integridad de los datos.</li>
-            </ul>
-            
-            <a href="part1.html" class="btn">Iniciar Investigación Técnica →</a>
+            <p>El análisis utiliza especificaciones de fabricantes, estudios publicados y precios de tiendas. No presento estas cifras como pruebas realizadas por mí. Cuando hago un cálculo teórico, explico la fórmula y sus límites.</p>
         </div>
 
+        <!-- POR QUÉ ELEGÍ ESTE PERFIL -->
         <div class="card">
-            <h2>Estructura del Sitio Web</h2>
-            <p>Navegue por las diferentes secciones del proyecto:</p>
-            <div class="nav-grid">
-                <a href="part1.html" class="nav-card">
+            <h2>Por qué elegí este perfil</h2>
+            <p>Elegí este perfil porque me interesa entender cómo responde un modelo ante instrucciones confusas, errores y situaciones de riesgo. Una tarea posible consiste en usar una lista de preguntas, guardar las respuestas y comparar los resultados entre dos versiones del mismo modelo.</p>
+            
+            <p>Herramientas como garak ayudan a organizar algunas de estas pruebas, pero sus resultados necesitan interpretación. Un informe sin problemas detectados no demuestra que un modelo sea seguro en todas las situaciones.<a href="resources.html#ref-11" class="citation">[11]</a></p>
+        </div>
+
+        <!-- QUÉ NECESITA ESTA COMPUTADORA -->
+        <div class="card">
+            <h2>Qué necesita esta computadora</h2>
+            <p>La GPU ayuda a ejecutar muchas operaciones matemáticas en paralelo. Su memoria, llamada VRAM, limita la parte del modelo que podemos mantener en la tarjeta. La CPU prepara los datos y coordina los programas. La RAM guarda datos que están en uso, mientras que el SSD almacena el sistema, los modelos y los resultados.</p>
+            
+            <p>Trabajar con un modelo local puede reducir el envío de datos a servicios externos. Sin embargo, hay que revisar la configuración, las conexiones de red y los permisos. La memoria ECC y las protecciones de una fuente pueden reducir determinados riesgos técnicos; no garantizan por sí solas la seguridad de los datos.</p>
+        </div>
+
+        <!-- NAVEGACIÓN POR PÁGINAS -->
+        <div class="card">
+            <h2>Contenido del sitio</h2>
+            <div class="page-grid">
+                <div class="page-card">
                     <h3>Parte 1: El Corazón Inteligente</h3>
-                    <p>Análisis comparativo de CPUs (Intel vs AMD), GPUs (RTX 4090 vs RX 7900 XTX) y NPU. Galería de aplicaciones reales.</p>
-                </a>
-                <a href="part2.html" class="nav-card">
+                    <p>Comparación de CPU (Intel Core Ultra 9 285K vs AMD Ryzen 9 9950X), GPU (RTX 4090 vs RX 7900 XTX), NPU y aplicaciones reales.</p>
+                    <a href="part1.html">Ir a Parte 1 →</a>
+                </div>
+                
+                <div class="page-card">
                     <h3>Parte 2: La Superautopista de los Datos</h3>
-                    <p>Analogía de buses de datos (SATA vs NVMe), gráfico comparativo de velocidades, DirectStorage y PCIe 5.0.</p>
-                </a>
-                <a href="part3.html" class="nav-card">
-                    <h3>Parte 3: El Diseño Maestro</h3>
-                    <p>Dos configuraciones: "Money is No Object" y "El Punto Dulce" ($800 USD) con diagrama de bloques.</p>
-                </a>
-                <a href="resources.html" class="nav-card">
-                    <h3>Bibliografía y Recursos</h3>
-                    <p>Fuentes consultadas en formato APA 7ª edición con enlaces directos a especificaciones técnicas.</p>
-                </a>
-                <a href="prompts.html" class="nav-card">
-                    <h3>Prompts e IA</h3>
-                    <p>Descargo de responsabilidad y tabla de trazabilidad metodológica de prompts utilizados.</p>
-                </a>
+                    <p>SATA, PCIe, NVMe. Tabla comparativa de velocidades, cálculo teórico de transferencia, DirectStorage y tecnologías experimentales.</p>
+                    <a href="part2.html">Ir a Parte 2 →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Parte 3: Workstations</h3>
+                    <p>Dos propuestas para el mismo perfil: una estación profesional y una computadora doméstica. Presupuesto de referencia: 1200 USD.</p>
+                    <a href="part3.html">Ir a Parte 3 →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Conclusiones</h3>
+                    <p>Seis conclusiones sobre la elección de hardware, memoria, software, almacenamiento y siguientes pasos.</p>
+                    <a href="conclusions.html">Ir a Conclusiones →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Recursos y Bibliografía</h3>
+                    <p>Especificaciones técnicas, precios verificados en tiendas de Córdoba, pruebas de rendimiento y software de IA.</p>
+                    <a href="resources.html">Ir a Recursos →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Uso de IA</h3>
+                    <p>Resumen de tareas realizadas con ayuda de inteligencia artificial y comprobaciones necesarias del autor.</p>
+                    <a href="prompts.html">Ir a Uso de IA →</a>
+                </div>
             </div>
+        </div>
+
+        <div class="highlight">
+            <strong> Nota importante:</strong> Este sitio presenta propuestas razonadas, no resultados experimentales propios. Las configuraciones no están montadas ni probadas físicamente. Los precios corresponden a fichas comerciales consultadas el 26 de octubre de 2026 y pueden cambiar.
+        </div>
+
+        <div class="nav-buttons">
+            <a href="part1.html" class="btn">Comenzar lectura: Parte 1 →</a>
         </div>
     </div>
 </body>
