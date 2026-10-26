@@ -18,6 +18,7 @@
         h1, h2, h3 { color: var(--accent); margin-top: 0; }
         h1 { font-size: 2rem; margin-bottom: 10px; text-align: center; }
         h2 { font-size: 1.4rem; margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+        h3 { font-size: 1.2rem; margin-bottom: 10px; color: #22d3ee; }
         
         .card { background: var(--card); border-radius: 12px; padding: 25px; margin-bottom: 25px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
         
@@ -104,6 +105,56 @@
         .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
         .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
+        
+        /* Стили для экспертных секций */
+        .expert-section { 
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            border: 2px solid var(--accent); 
+            border-radius: 12px; 
+            padding: 30px; 
+            margin: 30px 0; 
+        }
+        .expert-section h2 { color: #22d3ee; border-bottom: 2px solid #22d3ee; }
+        .expert-section ul li { margin-bottom: 15px; }
+        .expert-section strong { color: #06b6d4; }
+        
+        .highlight { background: #0f172a; padding: 20px; border-left: 4px solid var(--accent); border-radius: 4px; margin: 20px 0; }
+        .highlight strong { color: #22d3ee; }
+        
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .comparison-table th { background: #0f172a; color: #22d3ee; padding: 14px; }
+        .comparison-table td { padding: 12px; border: 1px solid #334155; }
+        .comparison-table tr:hover { background-color: #263345; }
+        .winner { background: rgba(34, 197, 94, 0.1); font-weight: bold; }
+        
+        .tradeoff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .tradeoff-card {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .tradeoff-card.accept { border-left: 4px solid #22c55e; }
+        .tradeoff-card.reject { border-left: 4px solid #ef4444; }
+        .tradeoff-card h4 { color: var(--accent); margin-bottom: 10px; }
+        
+        .scenario-box {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+        .scenario-box h4 { color: #22d3ee; margin-bottom: 10px; }
+        
+        @media (max-width: 768px) {
+            .tradeoff-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -121,6 +172,47 @@
         <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 30px auto;">
             A continuación, se presentan dos enfoques de ingeniería para el perfil de Investigador en Alineación y Seguridad de IA: la capacidad absoluta sin límites, y la optimización estratégica de recursos.
         </p>
+
+        <!-- НОВАЯ ЭКСПЕРТНАЯ СЕКЦИЯ: Философия дизайна -->
+        <div class="expert-section">
+            <h2>🎓 Filosofía de Diseño: Dos Enfoques, Un Objetivo</h2>
+            <p>El diseño de workstations para IA no es simplemente "comprar lo más caro" o "ahorrar al máximo". Es un ejercicio de <strong>optimización estratégica</strong> basado en principios fundamentales:</p>
+            
+            <h3>1. Identificación del Cuello de Botella Crítico</h3>
+            <p>Para un Investigador en Alineación y Seguridad de IA, el recurso más escaso es la <strong>VRAM</strong>. Sin VRAM suficiente, el modelo simplemente no cabe en memoria y la auditoría es imposible. Por ello:</p>
+            <ul>
+                <li>En la configuración "Money is No Object": 48 GB VRAM (RTX 6000 Ada) → Modelos 70B+ parámetros</li>
+                <li>En la configuración "$800": 12 GB VRAM (RTX 3060) → Modelos hasta 13B parámetros</li>
+            </ul>
+            <p>Ambas priorizan VRAM sobre frecuencia de reloj, RGB, o estética.</p>
+            
+            <h3>2. Compromisos Inteligentes (Trade-offs)</h3>
+            <p>En la build de $800, aceptamos compromisos calculados:</p>
+            <div class="tradeoff-grid">
+                <div class="tradeoff-card accept">
+                    <h4>✅ Aceptamos:</h4>
+                    <ul>
+                        <li><strong>GPU usada:</strong> Riesgo controlado (RTX 3060 es confiable) vs. beneficio masivo (12 GB VRAM)</li>
+                        <li><strong>DDR4 en lugar de DDR5:</strong> Ahorro de $40 con pérdida de rendimiento &lt; 5% en IA</li>
+                        <li><strong>PCIe 4.0 en lugar de 5.0:</strong> Diferencia imperceptible en cargas reales</li>
+                        <li><strong>Placa micro-ATX:</strong> Menos slots de expansión, pero suficiente para esta build</li>
+                    </ul>
+                </div>
+                <div class="tradeoff-card reject">
+                    <h4> NO Aceptamos:</h4>
+                    <ul>
+                        <li><strong>Fuente genérica:</strong> Riesgo de daño permanente a todos los componentes</li>
+                        <li><strong>Menos de 32 GB RAM:</strong> Paginación en disco = muerte del rendimiento</li>
+                        <li><strong>Sin NVMe:</strong> Cuello de botella en carga de modelos</li>
+                        <li><strong>GPU con &lt; 12 GB VRAM:</strong> Imposibilidad de ejecutar modelos modernos</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <strong>✓ Principio de Diseño:</strong> "Nunca comprometas la integridad del sistema ni el recurso crítico (VRAM). Todo lo demás es negociable."
+            </div>
+        </div>
 
         <div class="comparison-grid">
             
@@ -242,6 +334,94 @@
             </div>
         </div>
 
+        <!-- НОВАЯ ЭКСПЕРТНАЯ СЕКЦИЯ: Сравнение двух сборок -->
+        <div class="expert-section">
+            <h2>️ Comparación Directa: ¿Cuánto Rendimiento Real Ofrece Cada Build?</h2>
+            <p>Las especificaciones en papel cuentan una historia, pero los escenarios de uso real revelan el verdadero valor de cada inversión:</p>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Escenario de Uso</th>
+                    <th>Money is No Object<br><small>($8,000+ USD)</small></th>
+                    <th>El Punto Dulce<br><small>($800 USD)</small></th>
+                    <th>Diferencia Real</th>
+                </tr>
+                <tr>
+                    <td><strong>Modelo máximo ejecutable</strong></td>
+                    <td class="winner">Llama 3 70B (sin cuantizar)</td>
+                    <td>Llama 3 8B (4-bit quant)</td>
+                    <td>9x más parámetros</td>
+                </tr>
+                <tr>
+                    <td><strong>Velocidad de inferencia (Llama 3 8B)</strong></td>
+                    <td class="winner">~120 tokens/seg</td>
+                    <td>~45 tokens/seg</td>
+                    <td>2.7x más rápido</td>
+                </tr>
+                <tr>
+                    <td><strong>Sandboxes concurrentes</strong></td>
+                    <td class="winner">20+ VMs aisladas</td>
+                    <td>3-4 contenedores Docker</td>
+                    <td>5x más aislamiento</td>
+                </tr>
+                <tr>
+                    <td><strong>Fine-tuning de modelos 7B</strong></td>
+                    <td class="winner">Posible (QLoRA)</td>
+                    <td>Marginal (requiere optimización extrema)</td>
+                    <td>Factible vs. Limitado</td>
+                </tr>
+                <tr>
+                    <td><strong>Auditoría de seguridad automatizada</strong></td>
+                    <td class="winner">1000 pruebas en ~3 horas</td>
+                    <td>1000 pruebas en ~8 horas</td>
+                    <td>2.7x más productivo</td>
+                </tr>
+                <tr>
+                    <td><strong>Consumo energético</strong></td>
+                    <td>~850W bajo carga</td>
+                    <td class="winner">~350W bajo carga</td>
+                    <td>59% más eficiente</td>
+                </tr>
+            </table>
+
+            <div class="highlight">
+                <strong>✓ Análisis del Experto:</strong> La build de $8,000 no es "2.7x mejor" que la de $800. Es <strong>cualitativamente diferente</strong>: permite investigar modelos que la build económica simplemente no puede ejecutar. Sin embargo, para un estudiante que audita modelos de 7B-13B parámetros, la build de $800 ofrece <strong>el 90% de la funcionalidad necesaria al 10% del costo</strong>.
+            </div>
+        </div>
+
+        <!-- НОВАЯ ЭКСПЕРТНАЯ СЕКЦИЯ: Анализ RTX 3060 vs RTX 4060 -->
+        <div class="expert-section">
+            <h2>🔍 Análisis Costo-Beneficio Profundo: ¿Por Qué RTX 3060 Usada y No RTX 4060 Nueva?</h2>
+            <p>Esta es la decisión más crítica en la build de $800. Muchos estudiantes cometen el error de comprar una GPU "más nueva" con menos VRAM. Analicemos por qué esto es un error fatal para IA:</p>
+            
+            <div class="scenario-box">
+                <h4>Escenario A: RTX 3060 12GB Usada ($220)</h4>
+                <ul>
+                    <li><strong>VRAM:</strong> 12 GB → Modelos hasta 13B parámetros (cuantizados 4-bit)</li>
+                    <li><strong>Rendimiento:</strong> ~40 tokens/segundo en Llama 3 8B</li>
+                    <li><strong>Riesgo:</strong> Garantía limitada, posible desgaste de ventiladores</li>
+                    <li><strong>Beneficio:</strong> Acceso inmediato a inferencia local de calidad</li>
+                </ul>
+            </div>
+            
+            <div class="scenario-box">
+                <h4>Escenario B: RTX 4060 8GB Nueva ($300)</h4>
+                <ul>
+                    <li><strong>VRAM:</strong> 8 GB → Modelos hasta 7B parámetros (cuantizados 4-bit)</li>
+                    <li><strong>Rendimiento:</strong> ~50 tokens/segundo (25% más rápido)</li>
+                    <li><strong>Riesgo:</strong> Mínimo (garantía completa)</li>
+                    <li><strong>Problema crítico:</strong> <strong>No cabe Llama 3 13B</strong> ni Mistral 7B con contexto largo</li>
+                </ul>
+            </div>
+
+            <h3>Veredicto Cuantitativo:</h3>
+            <p>Por $80 adicionales, la RTX 4060 ofrece 25% más de velocidad pero <strong>33% menos de VRAM</strong>. En IA, la VRAM es binaria: o el modelo cabe, o no cabe. No existe "cabe parcialmente".</p>
+            
+            <div class="highlight">
+                <strong>✓ Conclusión:</strong> La RTX 3060 usada no es una "opción barata"; es la <strong>única opción viable</strong> para un investigador académico con $800 que necesita auditar modelos de 13B parámetros. El ahorro de $80 se traduce en capacidad de investigación real.
+            </div>
+        </div>
+
         <!-- ДИАГРАММА MERMAID -->
         <div class="card">
             <h2>Diagrama de Bloques Esquemático (Conexiones de la Build $800)</h2>
@@ -269,6 +449,55 @@ graph TD
     classDef default fill:#1e293b,stroke:#06b6d4,stroke-width:2px,color:#f8fafc;
     classDef psu fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
     class PSU psu;
+            </div>
+        </div>
+
+        <!-- НОВАЯ ЭКСПЕРТНАЯ СЕКЦИЯ: Путь апгрейда -->
+        <div class="expert-section">
+            <h2> Ruta de Actualización: De $800 a $2,000</h2>
+            <p>Una de las ventajas de la build "El Punto Dulce" es su <strong>path de actualización claro</strong>. A medida que el investigador avanza en su carrera, puede mejorar componentes críticos sin reconstruir todo el sistema:</p>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Fase</th>
+                    <th>Componente a Actualizar</th>
+                    <th>Costo Aproximado</th>
+                    <th>Beneficio Obtenido</th>
+                </tr>
+                <tr>
+                    <td><strong>Fase 1 (Actual)</strong></td>
+                    <td>Build completa</td>
+                    <td>$800</td>
+                    <td>Inferencia local de modelos 7B-13B</td>
+                </tr>
+                <tr>
+                    <td><strong>Fase 2 (6 meses)</strong></td>
+                    <td>GPU: RTX 4070 Ti Super 16GB</td>
+                    <td>+$500 (venta de RTX 3060)</td>
+                    <td>Modelos hasta 30B, fine-tuning QLoRA</td>
+                </tr>
+                <tr>
+                    <td><strong>Fase 3 (12 meses)</strong></td>
+                    <td>CPU: Ryzen 7 5800X3D</td>
+                    <td>+$200 (venta de Ryzen 5 5600)</td>
+                    <td>+40% rendimiento en multitarea</td>
+                </tr>
+                <tr>
+                    <td><strong>Fase 4 (18 meses)</strong></td>
+                    <td>RAM: 64 GB DDR4-3600</td>
+                    <td>+$80 (venta de 32 GB)</td>
+                    <td>Datasets más grandes sin paginación</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Fase 4</strong></td>
+                    <td>Workstation avanzada</td>
+                    <td><strong>~$1,580</strong></td>
+                    <td>Investigación de modelos 30B+</td>
+                </tr>
+            </table>
+
+            <div class="highlight">
+                <strong>✓ Ventaja Estratégica:</strong> La plataforma AM4 (MSI B550M) permite actualizaciones graduales sin cambiar placa madre. Esto es <strong>imposible</strong> en builds que sacrifican la placa madre por ahorrar $20-30 iniciales.
             </div>
         </div>
 
