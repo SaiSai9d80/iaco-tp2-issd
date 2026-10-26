@@ -81,4 +81,164 @@
                 </div>
                 <div>
                     <div class="image-container">
-                        <img
+                        <img src="images/AMD Ryzen 9 9950X.png" alt="AMD Ryzen 9 9950X">
+                    </div>
+                    <p class="image-caption">AMD Ryzen 9 9950X (Zen 5)</p>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Especificación Técnica</th>
+                    <th>Intel Core Ultra 9 285K<a href="resources.html#ref-intel" class="citation">[2]</a></th>
+                    <th>AMD Ryzen 9 9950X<a href="resources.html#ref-amd" class="citation">[1]</a></th>
+                </tr>
+                <tr>
+                    <td>Arquitectura de Núcleos</td>
+                    <td>Híbrida: 8 P-Cores + 16 E-Cores</td>
+                    <td>Monolítica / Chiplet: 16 Cores Zen 5</td>
+                </tr>
+                <tr>
+                    <td>Núcleos e Hilos</td>
+                    <td>24 Núcleos / 24 Hilos (Sin Hyper-Threading)</td>
+                    <td>16 Núcleos / 32 Hilos (Con SMT completo)</td>
+                </tr>
+                <tr>
+                    <td>Memoria Caché L3</td>
+                    <td>36 MB (Compartida)</td>
+                    <td>64 MB (Distribuida en CCDs)</td>
+                </tr>
+                <tr>
+                    <td>NPU Integrada</td>
+                    <td>Intel AI Boost (~13 TOPS INT8)</td>
+                    <td>No integrada en escritorio (Requiere GPU o APU móvil)</td>
+                </tr>
+                <tr>
+                    <td>Aislamiento y Seguridad</td>
+                    <td>Intel VT-x, VT-d, TME</td>
+                    <td>AMD-V, AMD-Vi, Secure Encrypted Virtualization (SEV)</td>
+                </tr>
+            </table>
+
+            <div class="expert-box">
+                <h3>🔍 Reflexión Técnica: ¿Por qué la Arquitectura Importa para la Seguridad de IA?</h3>
+                <p>La elección entre estos procesadores no es solo una cuestión de especificaciones numéricas, sino de <strong>filosofía arquitectónica</strong> aplicada a cargas de trabajo específicas:</p>
+                <ul>
+                    <li><strong>El Dilema de la NPU:</strong> 13 TOPS son adecuados para tareas auxiliares (cancelación de ruido, seguimiento ocular), pero son completamente insuficientes para la inferencia de LLMs. Un modelo Llama 3 8B cuantizado a 4 bits requiere operaciones matriciales masivas que superan por mucho la capacidad de una NPU integrada.</li>
+                    <li><strong>Aislamiento de Memoria Crítico:</strong> La tecnología AMD SEV (<em>Secure Encrypted Virtualization</em>) permite cifrar la memoria de cada máquina virtual con claves únicas generadas por hardware. Esto es vital cuando se auditan modelos que podrían intentar exfiltrar datos mediante ataques de canal lateral (<em>side-channel attacks</em>).</li>
+                    <li><strong>Paralelismo Real:</strong> Los 32 hilos del Ryzen 9 9950X permiten ejecutar simultáneamente: (1) el modelo principal en la GPU, (2) contenedores Docker de prueba, (3) herramientas de monitoreo, y (4) análisis de logs en tiempo real, sin degradación perceptible.</li>
+                </ul>
+                <div class="highlight">
+                    <strong>✓ Veredicto del Experto:</strong> Para el perfil de Investigador en Alineación y Seguridad de IA, <strong>la virtualización masiva y el aislamiento seguro son más valiosos que una NPU de baja potencia</strong>. El Ryzen 9 9950X es arquitectónicamente superior para un sandboxing estricto.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1.2. Rendimiento en el Mundo Real: La GPU como Motor de IA</h2>
+            <p>El procesamiento pesado (entrenamiento, <em>fine-tuning</em> e inferencia masiva) requiere una GPU de gama alta. Para auditar modelos abiertos como Llama 3 o Mistral, la elección del acelerador determina el tamaño máximo del modelo local<a href="resources.html#ref-nvidia-4090" class="citation">[3]</a>.</p>
+
+            <div class="image-pair">
+                <div>
+                    <div class="image-container">
+                        <img src="images/NVIDIA GeForce RTX 4090.png" alt="NVIDIA GeForce RTX 4090">
+                    </div>
+                    <p class="image-caption">NVIDIA GeForce RTX 4090 (24 GB VRAM)</p>
+                </div>
+                <div>
+                    <div class="image-container">
+                        <img src="images/AMD Radeon RX 7900 XTX.png" alt="AMD Radeon RX 7900 XTX">
+                    </div>
+                    <p class="image-caption">AMD Radeon RX 7900 XTX (24 GB VRAM)</p>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Especificación</th>
+                    <th>NVIDIA GeForce RTX 4090<a href="resources.html#ref-nvidia-4090" class="citation">[3]</a></th>
+                    <th>AMD Radeon RX 7900 XTX<a href="resources.html#ref-amd-gpu" class="citation">[4]</a></th>
+                </tr>
+                <tr>
+                    <td>Memoria VRAM</td>
+                    <td>24 GB GDDR6X</td>
+                    <td>24 GB GDDR6</td>
+                </tr>
+                <tr>
+                    <td>Ancho de Banda</td>
+                    <td>1,008 GB/s</td>
+                    <td>960 GB/s</td>
+                </tr>
+                <tr>
+                    <td>Ecosistema Software</td>
+                    <td>NVIDIA CUDA / TensorRT / FlashAttention-2</td>
+                    <td>AMD ROCm / HIP Framework</td>
+                </tr>
+                <tr>
+                    <td>Compatibilidad</td>
+                    <td>Nativa en PyTorch, vLLM, Unsloth</td>
+                    <td>Secundaria / Requiere compilación manual</td>
+                </tr>
+            </table>
+
+            <div class="expert-box">
+                <h3>🎯 Caso Práctico: Auditoría de un Modelo Llama 3 70B</h3>
+                <p>Imaginemos un escenario real de investigación: debemos auditar un modelo Llama 3 70B en busca de vulnerabilidades a <em>prompt injection</em> y sesgos éticos.</p>
+                <div class="case-study">
+                    <h4 style="color: var(--accent); margin-top: 0;">Con NVIDIA RTX 4090 (24 GB VRAM):</h4>
+                    <ul>
+                        <li><strong>Carga del modelo:</strong> Cuantizado a 4 bits (EXL2) ocupa ~18 GB VRAM.</li>
+                        <li><strong>Contexto disponible:</strong> ~6 GB restantes para una ventana de 8K-16K tokens.</li>
+                        <li><strong>Tasa de inferencia:</strong> ~45-60 tokens/segundo gracias a FlashAttention-2.</li>
+                        <li><strong>Tiempo para 1000 pruebas automatizadas:</strong> ~3-4 horas.</li>
+                    </ul>
+                </div>
+                <div class="case-study" style="margin-top: 15px;">
+                    <h4 style="color: #ef4444; margin-top: 0;">Con AMD RX 7900 XTX (24 GB VRAM):</h4>
+                    <ul>
+                        <li><strong>Carga del modelo:</strong> Posible, pero inestable debido a limitaciones de memoria en ROCm.</li>
+                        <li><strong>Problema crítico:</strong> vLLM y FlashAttention-2 no están optimizados nativamente para ROCm.</li>
+                        <li><strong>Tasa de inferencia:</strong> ~20-30 tokens/segundo (con compilación manual de kernels).</li>
+                        <li><strong>Tiempo para 1000 pruebas:</strong> ~8-12 horas + debugging constante del entorno.</li>
+                    </ul>
+                </div>
+                <div class="highlight">
+                    <strong>✓ Veredicto Práctico:</strong> La RTX 4090 no es un "lujo"; es una <strong>herramienta de productividad esencial</strong>. El tiempo ahorrado justifica la inversión en un entorno académico donde se auditan decenas de modelos mensualmente. El ecosistema CUDA es innegociable para la investigación seria de IA.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1.3. Galería de Aplicaciones Reales</h2>
+            <p>Estas son las herramientas fundamentales que nuestro perfil profesional utilizará en la workstation diseñada:</p>
+            
+            <div class="app-grid">
+                <div class="app-card">
+                    <img src="images/ollama.png" alt="Ollama">
+                    <h3>LM Studio / Ollama</h3>
+                    <p>Permiten desplegar LLMs de forma 100% offline, asegurando que ningún dato salga de la workstation<a href="resources.html#ref-ollama" class="citation">[6]</a>.</p>
+                </div>
+                
+                <div class="app-card">
+                    <div class="garak-badge">
+                        <span style="color: #22d3ee;">></span> garak
+                    </div>
+                    <h3>Garak Scanner</h3>
+                    <p>Escáner de código abierto para evaluar vulnerabilidades, alucinaciones y sesgos éticos en modelos locales<a href="resources.html#ref-garak" class="citation">[7]</a>.</p>
+                </div>
+                
+                <div class="app-card">
+                    <img src="images/docker-logo.png" alt="Docker">
+                    <h3>Docker Desktop</h3>
+                    <p>Infraestructura de virtualización indispensable para crear entornos aislados (sandboxes) donde probar agentes de IA maliciosos sin riesgo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">← Volver al Inicio</a>
+            <a href="part2.html" class="btn">Parte 2: La Superautopista de los Datos →</a>
+        </div>
+    </div>
+</body>
+</html>
