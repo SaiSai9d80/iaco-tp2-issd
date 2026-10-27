@@ -1,20 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2 ISSD - Arquitectura de Computadoras</title>
+    <title>Parte 3: Workstations - TP2 ISSD</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
 </head>
 <body>
     <nav>
         <a href="index.html">Inicio</a>
         <a href="part1.html">Parte 1: Cómputo</a>
         <a href="part2.html">Parte 2: Almacenamiento</a>
-        <a href="part3.html" style="color: #22d3ee;">Parte 3: Workstations</a>
+        <a href="part3.html" class="active">Parte 3: Workstations</a>
         <a href="conclusions.html">Conclusiones</a>
         <a href="resources.html">Recursos</a>
-        <a href="prompts.html">Prompts e IA</a>
+        <a href="prompts.html">Uso de IA</a>
     </nav>
     
     <div class="container">
@@ -23,7 +28,7 @@
             A continuación, se presentan dos enfoques de ingeniería para el perfil de Investigador en Alineación y Seguridad de IA: la capacidad absoluta sin límites, y la optimización estratégica de recursos dentro de un presupuesto ajustado.
         </p>
 
-        <!-- СЕКЦИЯ: Философия дизайна -->
+        <!-- СЕКЦИЯ: Как я выбирал компоненты -->
         <div class="expert-section">
             <h2>🎓 Cómo elegí los componentes</h2>
             <p>Primero definí las tareas: ejecutar modelos pequeños, preparar preguntas de prueba y guardar resultados. Después revisé la memoria necesaria y la compatibilidad del software. Para comparar una estación profesional con una computadora doméstica, utilizo un presupuesto de referencia de <strong>1200 USD</strong>, según la aclaración del profesor durante la reunión por Zoom. La consigna escrita menciona 800 USD como referencia inicial.</p>
@@ -58,6 +63,7 @@
             </div>
         </div>
 
+        <!-- ДВЕ СБОРКИ -->
         <div class="comparison-grid">
             
             <!-- СБОРКА 1: MONEY IS NO OBJECT -->
@@ -119,7 +125,7 @@
                 </div>
             </div>
 
-            <!-- СБОРКА 2: EL PUNTO DULCE $1,189.95 (ВАРИАНТ B) -->
+            <!-- СБОРКА 2: EL PUNTO DULCE $1,189.95 -->
             <div class="card">
                 <div class="build-header budget">
                     <h2>Configuración 2: "El Punto Dulce"</h2>
@@ -129,7 +135,7 @@
                 <div class="build-image">
                     <img src="images/el-punto-dulce.jpg" 
                          alt="Workstation Presupuesto Inteligente: Ryzen 5 5500 + RTX 3060 V2">
-                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5500 + ASUS Dual RTX 3060 V2 OC 12GB (nueva) + Gigabyte A520M K V2</p>
+                    <p>Workstation de Presupuesto Inteligente: Ryzen 5 5500 + ASUS Dual RTX 3060 V2 OC 12GB (nueva) + Gigabyte A520M</p>
                 </div>
 
                 <div class="price-notice">
@@ -149,84 +155,84 @@
                     <tr>
                         <td><strong>CPU y cooler</strong></td>
                         <td>Ryzen 5 5500 BOX con Wraith Stealth</td>
-                        <td>173,965.90</td>
-                        <td>111.52</td>
+                        <td>173.965,90</td>
+                        <td>111,52</td>
                         <td><a href="resources.html#precio-C1" class="citation">[C1]</a></td>
                     </tr>
                     <tr>
                         <td><strong>GPU nueva</strong></td>
                         <td>ASUS Dual RTX 3060 V2 OC 12 GB</td>
-                        <td>945,678.00</td>
-                        <td>606.20</td>
+                        <td>945.678,00</td>
+                        <td>606,20</td>
                         <td><a href="resources.html#precio-C2" class="citation">[C2]</a></td>
                     </tr>
                     <tr>
                         <td><strong>Placa madre</strong></td>
                         <td>Gigabyte A520M K V2</td>
-                        <td>88,711.06</td>
-                        <td>56.87</td>
+                        <td>88.711,06</td>
+                        <td>56,87</td>
                         <td><a href="resources.html#precio-C3" class="citation">[C3]</a></td>
                     </tr>
                     <tr>
                         <td><strong>RAM</strong></td>
                         <td>2× Hiksemi Hiker 8 GB DDR4 3200 UDIMM</td>
-                        <td>274,466.20</td>
-                        <td>175.94</td>
+                        <td>274.466,20</td>
+                        <td>175,94</td>
                         <td><a href="resources.html#precio-C4" class="citation">[C4]</a> <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
                         <td><strong>SSD</strong></td>
                         <td>Kingston NV3 SNV3S/500G 500 GB</td>
-                        <td>187,963.15</td>
-                        <td>120.49</td>
+                        <td>187.963,15</td>
+                        <td>120,49</td>
                         <td><a href="resources.html#precio-C5" class="citation">[C5]</a> <span class="compromise-badge">COMPROMISO</span></td>
                     </tr>
                     <tr>
                         <td><strong>Fuente (PSU)</strong></td>
                         <td>MSI MAG A650BN 650 W</td>
-                        <td>90,881.00</td>
-                        <td>58.26</td>
+                        <td>90.881,00</td>
+                        <td>58,26</td>
                         <td><a href="resources.html#precio-C6" class="citation">[C6]</a></td>
                     </tr>
                     <tr>
                         <td><strong>Gabinete</strong></td>
                         <td>Zer01 Orion con cuatro ventiladores</td>
-                        <td>54,657.91</td>
-                        <td>35.04</td>
+                        <td>54.657,91</td>
+                        <td>35,04</td>
                         <td><a href="resources.html#precio-C7" class="citation">[C7]</a></td>
                     </tr>
                     <tr style="background: #0f172a;">
                         <td><strong>Subtotal</strong></td>
                         <td colspan="2">Solo componentes</td>
-                        <td>1,816,323.22 ARS</td>
-                        <td>1,164.31 USD</td>
+                        <td>1.816.323,22 ARS</td>
+                        <td>1.164,31 USD</td>
                         <td></td>
                     </tr>
                     <tr style="background: #0f172a;">
                         <td><strong>Reserva</strong></td>
                         <td colspan="2">Envíos y accesorios sin cotización cerrada</td>
-                        <td>40,000.00 ARS</td>
-                        <td>25.64 USD</td>
+                        <td>40.000,00 ARS</td>
+                        <td>25,64 USD</td>
                         <td></td>
                     </tr>
                     <tr style="background: #0f172a; font-weight: bold;">
                         <td>TOTAL PREVISTO</td>
                         <td colspan="2">Componentes más reserva</td>
-                        <td>1,856,323.22 ARS</td>
-                        <td>1,189.95 USD</td>
+                        <td>1.856.323,22 ARS</td>
+                        <td>1.189,95 USD</td>
                         <td>Maximiza VRAM con componentes nuevos y garantía.</td>
                     </tr>
                 </table>
                 
                 <div class="highlight" style="margin-top: 20px;">
-                    <strong>📊 Análisis del Trade-off:</strong> La referencia de 1200 USD equivale a 1,872,000 ARS con esta cotización. Después de los componentes quedan 55,676.78 ARS para envío y otros gastos. Reservo 40,000 ARS, pero no tengo una cotización de entrega al domicilio. Si los gastos adicionales superan 55,676.78 ARS, el total pasa de 1200 USD. Esto debe mostrarse de forma transparente, sin inventar una tarifa de envío. El presupuesto incluye solo la torre y presupone montaje propio. No incluye monitor, teclado, ratón, licencia de Windows ni servicio de armado.
+                    <strong>📊 Análisis del Trade-off:</strong> La referencia de 1200 USD equivale a 1.872.000 ARS con esta cotización. Después de los componentes quedan 55.676,78 ARS para envío y otros gastos. Reservo 40.000 ARS, pero no tengo una cotización de entrega al domicilio. Si los gastos adicionales superan 55.676,78 ARS, el total pasa de 1200 USD. Esto debe mostrarse de forma transparente, sin inventar una tarifa de envío. El presupuesto incluye solo la torre y presupone montaje propio. No incluye monitor, teclado, ratón, licencia de Windows ni servicio de armado.
                 </div>
             </div>
         </div>
 
-        <!-- СЕКЦИЯ: Сравнение двух сборок (по аудиту) -->
+        <!-- СЕКЦИЯ: Сравнение двух сборок -->
         <div class="expert-section">
-            <h2>📊 Comparación entre las dos propuestas</h2>
+            <h2> Comparación entre las dos propuestas</h2>
             <p>Las dos configuraciones responden al mismo perfil profesional, pero con recursos muy diferentes. La siguiente tabla resume las diferencias clave sin afirmar rendimientos no medidos:</p>
             
             <table class="comparison-table">
@@ -267,7 +273,7 @@
             </div>
         </div>
 
-        <!-- СЕКЦИЯ: Почему选择了 эти компоненты альтернативы -->
+        <!-- СЕКЦИЯ: Почему выбрал эти компоненты -->
         <div class="expert-section">
             <h2>🔍 Por qué elegí los componentes de la alternativa</h2>
             
@@ -298,7 +304,7 @@
             </div>
         </div>
 
-        <!-- ДИАГРАММА MERMAID (исправленная) -->
+        <!-- ДИАГРАММА MERMAID -->
         <div class="card">
             <h2>Diagrama de Bloques Esquemático (Conexiones de la Build ~$1,190)</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente. <strong>Nota:</strong> Esta configuración utiliza PCIe 3.0.</p>
@@ -314,15 +320,15 @@ graph TD
     
     subgraph MB["Placa Base: Gigabyte A520M K V2 (PCIe 3.0)"]
         direction TB
-        CPU["AMD Ryzen 5 5500<br/>(6C/12T)"]
-        RAM["2×8 GB DDR4 3200<br/>(Doble canal)"]
-        M2["M.2: Kingston NV3 500GB<br/>(PCIe 3.0 x4)"]
-        GPU_SLOT["PCIe x16: RTX 3060 V2<br/>(PCIe 3.0 x16)"]
+        CPU["AMD Ryzen 5 5500 (6C/12T)"]
+        RAM["2×8 GB DDR4 3200 (Doble canal)"]
+        M2["M.2: Kingston NV3 500GB (PCIe 3.0 x4)"]
+        GPU_SLOT["PCIe x16: RTX 3060 V2 (PCIe 3.0 x16)"]
     end
     
     subgraph PERIF["Periféricos"]
-        MON["Monitor<br/>(HDMI/DisplayPort)"]
-        COOLER["Wraith Stealth<br/>(CPU FAN)"]
+        MON["Monitor (HDMI/DisplayPort)"]
+        COOLER["Wraith Stealth (CPU FAN)"]
     end
     
     CPU <-->|"Doble canal DDR4 3200"| RAM
@@ -341,12 +347,10 @@ graph TD
     class M2,GPU_SLOT pcie3;
                 </pre>
             </div>
-            <p style="color: var(--muted); font-size: 0.85rem; font-style: italic; margin-top: 15px;">
-                <strong>Pie de figura:</strong> Esquema simplificado de la alternativa con Ryzen 5 5500. Los datos y la alimentación se muestran con colores diferentes. El NVMe recibe alimentación desde el conector M.2 de la placa y no necesita un cable de alimentación SATA. GPU y SSD funcionan con PCIe 3.0 por los límites de esta plataforma. Los ventiladores del gabinete deben conectarse según sus conectores y controlador<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>, <a href="resources.html#ref-38" class="citation">[38]</a>.
-            </p>
+            <p class="diagram-caption">Esquema simplificado de la alternativa con Ryzen 5 5500. Los datos y la alimentación se muestran con colores diferentes. El NVMe recibe alimentación desde el conector M.2 de la placa y no necesita un cable de alimentación SATA. GPU y SSD funcionan con PCIe 3.0 por los límites de esta plataforma. Los ventiladores del gabinete deben conectarse según sus conectores y controlador<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>, <a href="resources.html#ref-38" class="citation">[38]</a>.</p>
         </div>
 
-        <!-- СЕКЦИЯ: Posibles mejoras (вместо Ruta de Actualización) -->
+        <!-- СЕКЦИЯ: Posibles mejoras -->
         <div class="expert-section">
             <h2>📈 Posibles mejoras</h2>
             <p>La primera mejora depende del problema observado:</p>
@@ -365,7 +369,7 @@ graph TD
             
             <div class="infographic-grid">
                 <div class="info-box">
-                    <span class="icon">🧠</span>
+                    <span class="icon"></span>
                     <h4>12 GB VRAM</h4>
                     <p>Capacidad real para ejecutar LLMs de 7B/8B parámetros cuantizados localmente sin errores OOM.</p>
                 </div>
@@ -375,19 +379,19 @@ graph TD
                     <p>Todos los componentes nuevos con garantía de 1-3 años. Sin riesgos de hardware usado.</p>
                 </div>
                 <div class="info-box">
-                    <span class="icon"></span>
+                    <span class="icon">⚡</span>
                     <h4>16 GB RAM DDR4</h4>
                     <p>Capacidad mínima viable para mantener el SO, contenedores Docker y buffers de datos de modelos pequeños.</p>
                 </div>
                 <div class="info-box">
-                    <span class="icon"></span>
+                    <span class="icon">🚀</span>
                     <h4>NVMe 500 GB</h4>
                     <p>Kingston NV3 SNV3S/500G. Velocidad limitada a PCIe 3.0 x4 por la plataforma. Suficiente para sistema + modelos de 7B-8B parámetros.</p>
                 </div>
                 <div class="info-box">
                     <span class="icon">💰</span>
                     <h4>$1,189.95 USD previsto</h4>
-                    <p>Incluye reserva de 40,000 ARS. No incluye cotización de envío. Precio por transferencia con impuestos.</p>
+                    <p>Incluye reserva de 40.000 ARS. No incluye cotización de envío. Precio por transferencia con impuestos.</p>
                 </div>
             </div>
         </div>
