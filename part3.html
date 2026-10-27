@@ -188,10 +188,10 @@
                 <div class="tradeoff-card reject">
                     <h4>❌ NO Aceptamos:</h4>
                     <ul>
-                        <li><strong>Fuente genérica:</strong> Riesgo de daño permanente a todos los componentes</li>
-                        <li><strong>GPU con menos de 12 GB VRAM:</strong> Imposibilidad de ejecutar modelos modernos</li>
-                        <li><strong>Sin SSD NVMe:</strong> Cuello de botella crítico en carga de modelos</li>
-                        <li><strong>Menos de 16 GB RAM:</strong> Paginación en disco = muerte del rendimiento</li>
+                        <li><strong>GPU con menos de 12 GB VRAM:</strong> Una GPU con menos de 12 GB también puede ejecutar algunos modelos modernos. Elegimos 12 GB para tener más espacio para los pesos y el contexto.</li>
+                        <li><strong>Sin SSD NVMe:</strong> Un SSD SATA también permite trabajar con modelos locales. Elegimos NVMe para reducir los tiempos de carga cuando el almacenamiento limita la tarea.</li>
+                        <li><strong>Menos de 16 GB RAM:</strong> Si la RAM disponible no alcanza, el sistema puede usar el disco y trabajar más lentamente. Por eso proponemos 16 GB como punto de partida para esta configuración.</li>
+                        <li><strong>Fuente genérica:</strong> Riesgo de daño permanente a todos los componentes.</li>
                     </ul>
                 </div>
             </div>
@@ -271,8 +271,9 @@
                 </div>
 
                 <div class="build-image">
+                    <!-- ЗАМЕНИТЕ НА ИЗОБРАЖЕНИЕ ASUS DUAL RTX 3060 V2 -->
                     <img src="images/el-punto-dulce.jpg" 
-                         alt="Workstation Presupuesto Inteligente: Ryzen 5 5500 + RTX 3060 V2">
+                         alt="Workstation Presupuesto Inteligente: Ryzen 5 5500 + ASUS Dual RTX 3060 V2 OC 12GB (nueva) + Gigabyte A520M">
                     <p>Workstation de Presupuesto Inteligente: Ryzen 5 5500 + ASUS Dual RTX 3060 V2 OC 12GB (nueva) + Gigabyte A520M</p>
                 </div>
 
@@ -485,12 +486,12 @@ graph TD
     class M2,GPU_SLOT pcie3;
                 </div>
             </div>
-            <p class="diagram-caption">Esquema simplificado de la alternativa con Ryzen 5 5500. Los datos y la alimentación se muestran con colores diferentes. El NVMe recibe alimentación desde el conector M.2 de la placa y no necesita un cable de alimentación SATA. GPU y SSD funcionan con PCIe 3.0 por los límites de esta plataforma. Los ventiladores del gabinete deben conectarse según sus conectores y controlador<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>, <a href="resources.html#ref-38" class="citation">[38]</a>.</p>
+            <p class="diagram-caption">Esquema simplificado de la alternativa con Ryzen 5 5500. El NVMe recibe alimentación desde el conector M.2 de la placa y no necesita un cable de alimentación SATA. GPU y SSD funcionan con PCIe 3.0 por los límites de esta plataforma. Los ventiladores del gabinete deben conectarse según sus conectores y controlador<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>, <a href="resources.html#ref-38" class="citation">[38]</a>.</p>
         </div>
 
         <!-- СЕКЦИЯ: Posibles mejoras -->
         <div class="expert-section">
-            <h2> Posibles mejoras</h2>
+            <h2>📈 Posibles mejoras</h2>
             <p>La primera mejora depende del problema observado:</p>
             <ul>
                 <li><strong>Si hay paginación o demasiada multitarea:</strong> puedo sustituir los módulos por 2×16 GB.</li>
@@ -500,26 +501,26 @@ graph TD
             <p>No fijo precios futuros porque no los conozco.</p>
         </div>
 
-        <!-- ИНФОГРАФИКА -->
+        <!-- ИНФОГРАФИКА (ИСПРАВЛЕНА ПО АУДИТУ) -->
         <div class="card">
             <h2>Infografía Final: Capacidades Clave de la Workstation de ~$1,189.95 USD</h2>
-            <p style="color: var(--muted); margin-bottom: 20px;">Resumen visual de por qué esta configuración es la elección óptima para un investigador académico con recursos limitados en Argentina.</p>
+            <p style="color: var(--muted); margin-bottom: 20px;">Resumen visual de por qué esta configuración es una propuesta razonada para un investigador académico con recursos limitados en Argentina.</p>
             
             <div class="infographic-grid">
                 <div class="info-box">
                     <span class="icon">🧠</span>
                     <h4>12 GB VRAM</h4>
-                    <p>Capacidad real para ejecutar LLMs de 7B/8B parámetros cuantizados localmente sin errores OOM.</p>
+                    <p>Los 12 GB de VRAM permiten ejecutar muchos modelos de 7B/8B cuantizados. El resultado depende del formato, del contexto y del programa; todavía pueden producirse errores por falta de memoria.</p>
                 </div>
                 <div class="info-box">
                     <span class="icon">🛡️</span>
-                    <h4>Garantía Completa</h4>
-                    <p>Todos los componentes nuevos con garantía de 1-3 años. Sin riesgos de hardware usado.</p>
+                    <h4>Componentes Nuevos</h4>
+                    <p>Se proponen componentes nuevos. El plazo y las condiciones de garantía deben comprobarse para cada producto y vendedor individualmente.</p>
                 </div>
                 <div class="info-box">
                     <span class="icon">⚡</span>
                     <h4>16 GB RAM DDR4</h4>
-                    <p>Capacidad mínima viable para mantener el SO, contenedores Docker y buffers de datos de modelos pequeños.</p>
+                    <p>Punto de partida viable para mantener el SO, contenedores Docker y buffers de datos de modelos pequeños sin paginación excesiva.</p>
                 </div>
                 <div class="info-box">
                     <span class="icon">🚀</span>
@@ -529,7 +530,7 @@ graph TD
                 <div class="info-box">
                     <span class="icon">💰</span>
                     <h4>$1,189.95 USD previsto</h4>
-                    <p>Incluye reserva de 40.000 ARS. No incluye cotización de envío. Precio por transferencia con impuestos.</p>
+                    <p>Una propuesta razonada. Incluye reserva de 40.000 ARS. No incluye cotización de envío. Precio por transferencia con impuestos.</p>
                 </div>
             </div>
         </div>
