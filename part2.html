@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2 ISSD - Arquitectura de Computadoras</title>
+    <title>Parte 2: Almacenamiento - TP2 ISSD</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav>
         <a href="index.html">Inicio</a>
         <a href="part1.html">Parte 1: Cómputo</a>
-        <a href="part2.html" style="color: #22d3ee;">Parte 2: Almacenamiento</a>
+        <a href="part2.html" class="active">Parte 2: Almacenamiento</a>
         <a href="part3.html">Parte 3: Workstations</a>
         <a href="conclusions.html">Conclusiones</a>
         <a href="resources.html">Recursos</a>
-        <a href="prompts.html">Prompts e IA</a>
+        <a href="prompts.html">Uso de IA</a>
     </nav>
     
     <div class="container">
         <h1>Parte 2: La Superautopista de los Datos</h1>
         
+        <!-- СЕКЦИЯ 2.1: SATA, PCIe, NVMe -->
         <div class="card">
             <h2>2.1. SATA, PCIe y NVMe</h2>
             <p>Podemos comparar el almacenamiento con una carretera. SATA es una vía con menos capacidad de transferencia; PCIe permite enlaces más rápidos. NVMe es el protocolo que muchos SSD utilizan sobre PCIe. M.2 describe un formato físico: un SSD M.2 puede usar SATA o PCIe, según el modelo y la placa.<a href="resources.html#ref-16" class="citation">[16]</a>, <a href="resources.html#ref-17" class="citation">[17]</a>, <a href="resources.html#ref-18" class="citation">[18]</a></p>
@@ -42,6 +44,7 @@
             <p>En IA, un disco más rápido puede reducir el tiempo de lectura de modelos y datasets. Sin embargo, después de cargar el modelo en RAM o VRAM, la velocidad de generación puede depender principalmente de CPU, GPU y memoria. Un SSD SATA no hace imposible aprender inferencia local.</p>
         </div>
 
+        <!-- СЕКЦИЯ 2.2: Таблица скоростей -->
         <div class="card">
             <h2>2.2. Tabla comparativa de velocidades</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;">
@@ -81,7 +84,7 @@
                 </tr>
             </table>
 
-            <!-- Два графика рядом -->
+            <!-- Два графика -->
             <div class="charts-grid">
                 <div class="chart-container">
                     <canvas id="readChart"></canvas>
@@ -96,7 +99,7 @@
             </p>
         </div>
 
-        <!-- СЕКЦИЯ: Теоретический расчёт времени -->
+        <!-- СЕКЦИЯ 2.3: Теоретический расчёт -->
         <div class="card">
             <h2>2.3. Un cálculo teórico de transferencia</h2>
             <p>Para un archivo de 16 GB decimales, uso 16 000 MB y la fórmula <strong>tiempo = tamaño / velocidad</strong>.</p>
@@ -118,6 +121,7 @@
             </div>
         </div>
 
+        <!-- СЕКЦИЯ 2.4: PCIe 5.0 и DirectStorage -->
         <div class="card">
             <h2>2.4. PCIe 5.0 y DirectStorage</h2>
             
@@ -130,6 +134,7 @@
             <p>Tampoco es correcto dibujar siempre una ruta SSD → VRAM que elimina toda intervención de CPU y RAM. La documentación de DirectStorage 1.1 describe una ruta que puede utilizar memoria del sistema antes de la descompresión en GPU. En este trabajo no dispongo de una prueba de DirectStorage con Llama 70B; por eso no atribuyo a esta API una reducción concreta del tiempo de auditoría.<a href="resources.html#ref-21" class="citation">[21]</a></p>
         </div>
 
+        <!-- СЕКЦИЯ 2.5: Экспериментальные технологии -->
         <div class="card">
             <h2>2.5. Tecnologías experimentales y nuevas conexiones</h2>
             
@@ -149,123 +154,64 @@
         </div>
     </div>
 
+    <!-- Скрипт для графиков -->
     <script>
-        // Общие настройки для графиков
         const chartOptions = {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 title: {
                     display: true,
                     color: '#06b6d4',
                     font: { size: 16, weight: 'bold' }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return context.parsed.y + ' MB/s';
-                        }
-                    }
                 }
             },
             scales: {
                 y: {
                     beginAtZero: true,
                     max: 14000,
-                    ticks: {
-                        color: '#94a3b8',
-                        callback: function(value) {
-                            return value + ' MB/s';
-                        }
-                    },
-                    grid: {
-                        color: '#334155'
-                    }
+                    ticks: { color: '#94a3b8' },
+                    grid: { color: '#334155' }
                 },
                 x: {
-                    ticks: {
-                        color: '#94a3b8',
-                        font: { size: 11 }
-                    },
-                    grid: {
-                        color: '#334155'
-                    }
+                    ticks: { color: '#94a3b8', font: { size: 11 } },
+                    grid: { color: '#334155' }
                 }
             }
         };
 
-        // График скорости чтения
         const readCtx = document.getElementById('readChart').getContext('2d');
         new Chart(readCtx, {
             type: 'bar',
             data: {
                 labels: ['Seagate BarraCuda Pro 10 TB', 'Samsung 870 EVO', 'Kingston NV2 500 GB', 'Crucial T700 2 TB'],
                 datasets: [{
-                    label: 'Velocidad de Lectura (MB/s)',
+                    label: 'Lectura MB/s',
                     data: [213.09, 560, 3500, 12400],
-                    backgroundColor: [
-                        'rgba(239, 68, 68, 0.8)',
-                        'rgba(245, 158, 11, 0.8)',
-                        'rgba(34, 197, 94, 0.8)',
-                        'rgba(6, 182, 212, 0.8)'
-                    ],
-                    borderColor: [
-                        'rgb(239, 68, 68)',
-                        'rgb(245, 158, 11)',
-                        'rgb(34, 197, 94)',
-                        'rgb(6, 182, 212)'
-                    ],
-                    borderWidth: 2
+                    backgroundColor: ['rgba(239,68,68,0.8)', 'rgba(245,158,11,0.8)', 'rgba(34,197,94,0.8)', 'rgba(6,182,212,0.8)']
                 }]
             },
             options: {
                 ...chartOptions,
-                plugins: {
-                    ...chartOptions.plugins,
-                    title: {
-                        ...chartOptions.plugins.title,
-                        text: 'Velocidad de Lectura (MB/s)'
-                    }
-                }
+                plugins: { ...chartOptions.plugins, title: { ...chartOptions.plugins.title, text: 'Velocidad de Lectura (MB/s)' } }
             }
         });
 
-        // График скорости записи
         const writeCtx = document.getElementById('writeChart').getContext('2d');
         new Chart(writeCtx, {
             type: 'bar',
             data: {
                 labels: ['Seagate BarraCuda Pro 10 TB', 'Samsung 870 EVO', 'Kingston NV2 500 GB', 'Crucial T700 2 TB'],
                 datasets: [{
-                    label: 'Velocidad de Escritura (MB/s)',
+                    label: 'Escritura MB/s',
                     data: [210.70, 530, 2100, 11800],
-                    backgroundColor: [
-                        'rgba(239, 68, 68, 0.6)',
-                        'rgba(245, 158, 11, 0.6)',
-                        'rgba(34, 197, 94, 0.6)',
-                        'rgba(6, 182, 212, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgb(239, 68, 68)',
-                        'rgb(245, 158, 11)',
-                        'rgb(34, 197, 94)',
-                        'rgb(6, 182, 212)'
-                    ],
-                    borderWidth: 2
+                    backgroundColor: ['rgba(239,68,68,0.6)', 'rgba(245,158,11,0.6)', 'rgba(34,197,94,0.6)', 'rgba(6,182,212,0.6)']
                 }]
             },
             options: {
                 ...chartOptions,
-                plugins: {
-                    ...chartOptions.plugins,
-                    title: {
-                        ...chartOptions.plugins.title,
-                        text: 'Velocidad de Escritura (MB/s)'
-                    }
-                }
+                plugins: { ...chartOptions.plugins, title: { ...chartOptions.plugins.title, text: 'Velocidad de Escritura (MB/s)' } }
             }
         });
     </script>
