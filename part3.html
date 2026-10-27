@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +9,52 @@
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark' });
     </script>
+    <style>
+        /* Дополнительные стили для part3 */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+            align-items: stretch;
+        }
+        
+        .comparison-grid > .card {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .build-image img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .specs-list {
+            flex-grow: 1;
+        }
+        
+        .mermaid-diagram {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            min-height: 300px;
+        }
+        
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        
+        @media (max-width: 900px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -275,7 +320,7 @@
 
         <!-- СЕКЦИЯ: Почему выбрал эти компоненты -->
         <div class="expert-section">
-            <h2>🔍 Por qué elegí los componentes de la alternativa</h2>
+            <h2> Por qué elegí los componentes de la alternativa</h2>
             
             <div class="scenario-box">
                 <h4>Ryzen 5 5500</h4>
@@ -309,7 +354,7 @@
             <h2>Diagrama de Bloques Esquemático (Conexiones de la Build ~$1,190)</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente. <strong>Nota:</strong> Esta configuración utiliza PCIe 3.0.</p>
             <div class="mermaid-diagram">
-                <pre class="mermaid">
+                <div class="mermaid">
 graph TD
     subgraph PSU["Fuente: MSI MAG A650BN 650W"]
         direction TB
@@ -345,7 +390,7 @@ graph TD
     classDef pcie3 fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#f8fafc;
     class PSU psu;
     class M2,GPU_SLOT pcie3;
-                </pre>
+                </div>
             </div>
             <p class="diagram-caption">Esquema simplificado de la alternativa con Ryzen 5 5500. Los datos y la alimentación se muestran con colores diferentes. El NVMe recibe alimentación desde el conector M.2 de la placa y no necesita un cable de alimentación SATA. GPU y SSD funcionan con PCIe 3.0 por los límites de esta plataforma. Los ventiladores del gabinete deben conectarse según sus conectores y controlador<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>, <a href="resources.html#ref-38" class="citation">[38]</a>.</p>
         </div>
@@ -369,7 +414,7 @@ graph TD
             
             <div class="infographic-grid">
                 <div class="info-box">
-                    <span class="icon"></span>
+                    <span class="icon">🧠</span>
                     <h4>12 GB VRAM</h4>
                     <p>Capacidad real para ejecutar LLMs de 7B/8B parámetros cuantizados localmente sin errores OOM.</p>
                 </div>
