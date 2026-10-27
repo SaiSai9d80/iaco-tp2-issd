@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2 ISSD - Arquitectura de Computadoras</title>
+    <title>Parte 1: Cómputo - TP2 ISSD</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
 </head>
 <body>
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="part1.html" style="color: #22d3ee;">Parte 1: Cómputo</a>
+        <a href="part1.html" class="active">Parte 1: Cómputo</a>
         <a href="part2.html">Parte 2: Almacenamiento</a>
         <a href="part3.html">Parte 3: Workstations</a>
         <a href="conclusions.html">Conclusiones</a>
         <a href="resources.html">Recursos</a>
-        <a href="prompts.html">Prompts e IA</a>
+        <a href="prompts.html">Uso de IA</a>
     </nav>
     
     <div class="container">
         <h1>Parte 1: El Corazón Inteligente de la Máquina</h1>
         
+        <!-- СЕКЦИЯ 1.1: CPU -->
         <div class="card">
             <h2>1.1. Comparación de CPU: Intel Core Ultra 9 285K vs AMD Ryzen 9 9950X</h2>
             <p>Comparo el Intel Core Ultra 9 285K y el AMD Ryzen 9 9950X. Son modelos de gama alta de su generación. Mi objetivo es entender sus diferencias, no afirmar que uno es mejor en todas las tareas. Para investigar IA también importan la GPU, la RAM y el programa que utilizamos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-02" class="citation">[2]</a></p>
@@ -84,7 +89,7 @@
             <h3>Virtualización y aislamiento</h3>
             <p>La virtualización permite crear entornos de trabajo separados. Sin embargo, más hilos no significan más aislamiento. AMD indica que SEV es una tecnología de sus procesadores EPYC y que no está disponible en Ryzen. Por eso no uso SEV como argumento a favor del Ryzen 9 9950X. Para evaluar el aislamiento hay que revisar el sistema operativo, el hipervisor, los permisos y la configuración.<a href="resources.html#ref-03" class="citation">[3]</a></p>
 
-            <!-- Схема Intel CPU (упрощённая) -->
+            <!-- Схема Intel CPU -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph TD
@@ -98,7 +103,7 @@ graph TD
                 <p class="diagram-caption">Esquema simplificado del Intel Core Ultra 9 285K. No representa el diseño físico exacto.<a href="resources.html#ref-01" class="citation">[1]</a></p>
             </div>
 
-            <!-- Схема AMD CPU (упрощённая) -->
+            <!-- Схема AMD CPU -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph TD
@@ -113,7 +118,7 @@ graph TD
             </div>
         </div>
 
-        <!-- Секция NPU -->
+        <!-- СЕКЦИЯ 1.2: NPU -->
         <div class="card">
             <h2>1.2. La NPU y sus límites</h2>
             <p>Una NPU es una unidad especializada en operaciones de redes neuronales. Estas redes usan muchas multiplicaciones y sumas con matrices. La NPU dispone de recursos dedicados para estas operaciones y utiliza memoria cercana para reducir movimientos de datos. El programa debe convertir o preparar el modelo para un formato compatible.</p>
@@ -122,7 +127,7 @@ graph TD
             
             <p>Windows Studio Effects es un ejemplo de aplicación de IA que puede utilizar una NPU. Intel declara soporte en el 285K, pero la disponibilidad de los efectos depende también de Windows, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
 
-            <!-- Схема NPU (упрощённая) -->
+            <!-- Схема NPU -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph LR
@@ -135,7 +140,7 @@ graph LR
             </div>
         </div>
 
-        <!-- Секция GPU -->
+        <!-- СЕКЦИЯ 1.3: GPU -->
         <div class="card">
             <h2>1.3. La GPU para el cálculo paralelo</h2>
             <table>
@@ -174,7 +179,7 @@ graph LR
             
             <p>Por eso una RTX 4090 de 24 GB no puede guardar completamente los pesos de un modelo denso de 70B a 4 bits. Una RTX 6000 Ada de 48 GB ofrece más margen para una versión cuantizada, pero no para 70B a 16 bits. Algunos programas, como llama.cpp, permiten repartir el trabajo entre CPU y GPU. Esto amplía las posibilidades, aunque puede reducir la velocidad.<a href="resources.html#ref-08" class="citation">[8]</a>, <a href="resources.html#ref-20" class="citation">[20]</a></p>
 
-            <!-- Схема GPU (упрощённая) -->
+            <!-- Схема GPU -->
             <div class="mermaid-diagram">
                 <pre class="mermaid">
 graph TD
@@ -195,7 +200,7 @@ graph TD
             </div>
         </div>
 
-        <!-- Секция реальных тестов -->
+        <!-- СЕКЦИЯ 1.4: Тесты -->
         <div class="card">
             <h2>1.4. Qué muestran las pruebas publicadas</h2>
             
@@ -247,63 +252,63 @@ graph TD
             </table>
         </div>
 
-     <!-- Галерея приложений -->
-<div class="card">
-    <h2>1.5. Aplicaciones reales</h2>
-    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
-        Ejemplos concretos de cómo se utilizan los diferentes aceleradores en tareas de IA. Cada aplicación requiere una configuración específica y sus resultados dependen del hardware, el software y la versión utilizados.
-    </p>
-    
-    <div class="app-grid">
-        <div class="app-card">
-            <div class="garak-badge" style="font-size: 0.9rem;">
-                <span style="color: #22d3ee;">🎨</span> Stable Diffusion
+        <!-- СЕКЦИЯ 1.5: Приложения -->
+        <div class="card">
+            <h2>1.5. Aplicaciones reales</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
+                Ejemplos concretos de cómo se utilizan los diferentes aceleradores en tareas de IA. Cada aplicación requiere una configuración específica y sus resultados dependen del hardware, el software y la versión utilizados.
+            </p>
+            
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="garak-badge" style="font-size: 0.9rem;">
+                        <span style="color: #22d3ee;">🎨</span> Stable Diffusion
+                    </div>
+                    <h3>Stable Diffusion y GPU</h3>
+                    <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas de Puget Systems (2023) permiten observar cómo cambian los resultados según la tarjeta y el programa: 21,04 iteraciones/s con Automatic1111 en RTX 4090 vs 4,67 iteraciones/s en RX 7900 XTX, pero 20,76 iteraciones/s con SHARK en RX 7900 XTX.<a href="resources.html#ref-09" class="citation">[9]</a></p>
+                </div>
+                
+                <div class="app-card">
+                    <div class="garak-badge" style="font-size: 0.9rem;">
+                        <span style="color: #22d3ee;">📹</span> Windows Studio Effects
+                    </div>
+                    <h3>Windows Studio Effects y NPU</h3>
+                    <p>Los efectos de cámara (desenfoque de fondo, encuadre automático) son un ejemplo de inferencia continua en un equipo compatible. Intel declara soporte en el 285K, pero la disponibilidad depende del dispositivo, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
+                </div>
+                
+                <div class="app-card">
+                    <div class="garak-badge" style="font-size: 0.9rem;">
+                        <span style="color: #22d3ee;">🦙</span> Ollama / LM Studio
+                    </div>
+                    <h3>Ollama o LM Studio y modelo local</h3>
+                    <p>Estas herramientas permiten trabajar con modelos descargados localmente. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles, y de que no se elijan servicios remotos. La GPU acelera la generación; la CPU y la RAM gestionan la carga del modelo.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
+                </div>
+                
+                <div class="app-card">
+                    <div class="garak-badge">
+                        <span style="color: #22d3ee;">></span> garak
+                    </div>
+                    <h3>garak y evaluación de modelos</h3>
+                    <p>Esta herramienta ejecuta pruebas para buscar determinados fallos en modelos de lenguaje. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores Docker pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
+                </div>
+
+                <div class="app-card">
+                    <div class="garak-badge" style="font-size: 0.9rem;">
+                        <span style="color: #22d3ee;">⚡</span> vLLM
+                    </div>
+                    <h3>vLLM y inferencia de alta velocidad</h3>
+                    <p>vLLM es un motor de inferencia optimizado para LLM. Utiliza PagedAttention para gestionar la memoria de forma eficiente y permite atender múltiples peticiones simultáneas. Requiere GPU compatible con CUDA y puede acelerar significativamente la generación de texto en comparación con implementaciones básicas.<a href="resources.html#ref-06" class="citation">[6]</a></p>
+                </div>
+                
+                <div class="app-card">
+                    <div class="garak-badge" style="font-size: 0.9rem;">
+                        <span style="color: #22d3ee;">🐳</span> Docker
+                    </div>
+                    <h3>Docker y aislamiento de entornos</h3>
+                    <p>Docker permite crear contenedores aislados para ejecutar modelos y pruebas en entornos controlados. Esto es útil para reproducir experimentos y organizar dependencias. Los contenedores comparten el kernel del sistema operativo; no son máquinas virtuales completas y no eliminan todos los riesgos de seguridad.<a href="resources.html#ref-15" class="citation">[15]</a></p>
+                </div>
             </div>
-            <h3>Stable Diffusion y GPU</h3>
-            <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas de Puget Systems (2023) permiten observar cómo cambian los resultados según la tarjeta y el programa: 21,04 iteraciones/s con Automatic1111 en RTX 4090 vs 4,67 iteraciones/s en RX 7900 XTX, pero 20,76 iteraciones/s con SHARK en RX 7900 XTX.<a href="resources.html#ref-09" class="citation">[9]</a></p>
         </div>
-        
-        <div class="app-card">
-            <div class="garak-badge" style="font-size: 0.9rem;">
-                <span style="color: #22d3ee;">📹</span> Windows Studio Effects
-            </div>
-            <h3>Windows Studio Effects y NPU</h3>
-            <p>Los efectos de cámara (desenfoque de fondo, encuadre automático) son un ejemplo de inferencia continua en un equipo compatible. Intel declara soporte en el 285K, pero la disponibilidad depende del dispositivo, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
-        </div>
-        
-        <div class="app-card">
-            <div class="garak-badge" style="font-size: 0.9rem;">
-                <span style="color: #22d3ee;">🦙</span> Ollama / LM Studio
-            </div>
-            <h3>Ollama o LM Studio y modelo local</h3>
-            <p>Estas herramientas permiten trabajar con modelos descargados localmente. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles, y de que no se elijan servicios remotos. La GPU acelera la generación; la CPU y la RAM gestionan la carga del modelo.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
-        </div>
-        
-        <div class="app-card">
-            <div class="garak-badge">
-                <span style="color: #22d3ee;">></span> garak
-            </div>
-            <h3>garak y evaluación de modelos</h3>
-            <p>Esta herramienta ejecuta pruebas para buscar determinados fallos en modelos de lenguaje. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores Docker pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
-        </div>
-        
-        <div class="app-card">
-            <div class="garak-badge" style="font-size: 0.9rem;">
-                <span style="color: #22d3ee;">⚡</span> vLLM
-            </div>
-            <h3>vLLM y inferencia de alta velocidad</h3>
-            <p>vLLM es un motor de inferencia optimizado para LLM. Utiliza PagedAttention para gestionar la memoria de forma eficiente y permite atender múltiples peticiones simultáneas. Requiere GPU compatible con CUDA y puede acelerar significativamente la generación de texto en comparación con implementaciones básicas.<a href="resources.html#ref-06" class="citation">[6]</a></p>
-        </div>
-        
-        <div class="app-card">
-            <div class="garak-badge" style="font-size: 0.9rem;">
-                <span style="color: #22d3ee;">🐳</span> Docker
-            </div>
-            <h3>Docker y aislamiento de entornos</h3>
-            <p>Docker permite crear contenedores aislados para ejecutar modelos y pruebas en entornos controlados. Esto es útil para reproducir experimentos y organizar dependencias. Los contenedores comparten el kernel del sistema operativo; no son máquinas virtuales completas y no eliminan todos los riesgos de seguridad.<a href="resources.html#ref-15" class="citation">[15]</a></p>
-        </div>
-    </div>
-</div>
 
         <div class="nav-buttons">
             <a href="index.html" class="btn">← Volver al Inicio</a>
