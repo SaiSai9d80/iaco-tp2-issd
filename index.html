@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 ISSD - Arquitectura de Computadoras</title>
+    <link rel="stylesheet" href="styles.css">
+<meta name="description" content="Investigación académica de arquitectura de computadoras: CPU, GPU, NPU, almacenamiento y dos propuestas para estudiar inteligencia artificial.">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header">
+        <h1>Trabajo Práctico Integrador N° 2</h1>
+        <p class="subtitle">Arquitectura de Computadoras — 2026</p>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active" aria-current="page">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="conclusions.html">Conclusiones</a>
+        <a href="resources.html">Recursos</a>
+        <a href="prompts.html">Uso de IA</a>
+    </nav>
+    
+    <main class="container" id="contenido">
+        <div class="card meta-info">
+            <p><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD), Córdoba, Argentina</p>
+            <p><strong>Materia:</strong> Arquitectura de Computadoras</p>
+            <p><strong>Profesor:</strong> Emmanuel Galiotti</p>
+            <p><strong>Alumno:</strong> Vitalii Golovin</p>
+            <p><strong>Perfil elegido:</strong> Investigador en Alineación y Seguridad de Inteligencia Artificial</p>
+            <p><strong>Fecha de elaboración:</strong> 26 de octubre de 2026</p>
+            <p><strong>Fecha límite indicada en la consigna:</strong> 2 de noviembre de 2026</p>
+        </div>
+
+        <div class="profile-card">
+            <h2>Objetivo del proyecto</h2>
+            <p>En este trabajo estudio cómo elegir una computadora para aprender e investigar la alineación y la seguridad de la inteligencia artificial. Este perfil compara respuestas de modelos, prepara pruebas y analiza sus resultados. Para hacerlo, necesita una combinación adecuada de CPU, GPU, memoria y almacenamiento.</p>
+            
+            <p>Primero comparo dos procesadores de fabricantes diferentes y dos tarjetas gráficas de gama alta. Después explico la función de una NPU y las diferencias entre SATA y NVMe. Finalmente propongo dos computadoras: una estación profesional y una opción doméstica con un presupuesto de referencia de 1200 USD.</p>
+            
+            <p>El análisis utiliza especificaciones de fabricantes, estudios publicados y precios de tiendas. No presento estas cifras como pruebas realizadas por mí. Cuando hago un cálculo teórico, explico la fórmula y sus límites.</p>
+        </div>
+
+        <div class="card">
+            <h2>Por qué elegí este perfil</h2>
+            <p>Elegí este perfil porque me interesa entender cómo responde un modelo ante instrucciones confusas, errores y situaciones de riesgo. Una tarea posible consiste en usar una lista de preguntas, guardar las respuestas y comparar los resultados entre dos versiones del mismo modelo.</p>
+            
+            <p>Herramientas como garak ayudan a organizar algunas de estas pruebas, pero sus resultados necesitan interpretación. Un informe sin problemas detectados no demuestra que un modelo sea seguro en todas las situaciones.<a href="resources.html#ref-11" class="citation">[11]</a></p>
+        </div>
+
+        <div class="card">
+            <h2>Qué necesita esta computadora</h2>
+            <p>La GPU ayuda a ejecutar muchas operaciones matemáticas en paralelo. Su memoria, llamada VRAM, limita la parte del modelo que podemos mantener en la tarjeta. La CPU prepara los datos y coordina los programas. La RAM guarda datos que están en uso, mientras que el SSD almacena el sistema, los modelos y los resultados.</p>
+            
+            <p>Trabajar con un modelo local puede reducir el envío de datos a servicios externos. Sin embargo, hay que revisar la configuración, las conexiones de red y los permisos. La memoria ECC y las protecciones de una fuente pueden reducir determinados riesgos técnicos; no garantizan por sí solas la seguridad de los datos.</p>
+        </div>
+
+        <div class="card">
+            <h2>Contenido del sitio</h2>
+            <div class="page-grid">
+                <div class="page-card">
+                    <h3>Parte 1: El Corazón Inteligente</h3>
+                    <p>Comparación de CPU, GPU, función de la NPU y aplicaciones reales con sus limitaciones.</p>
+                    <a href="part1.html">Ir a Parte 1 →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Parte 2: La Superautopista de los Datos</h3>
+                    <p>SATA, PCIe, NVMe. Tabla comparativa de velocidades, cálculo teórico de transferencia y tecnologías experimentales.</p>
+                    <a href="part2.html">Ir a Parte 2 →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Parte 3: Workstations</h3>
+                    <p>Dos propuestas para el mismo perfil: una estación profesional y una computadora doméstica. El presupuesto de referencia de la opción doméstica es de 1200 USD.</p>
+                    <a href="part3.html">Ir a Parte 3 →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Conclusiones</h3>
+                    <p>Conclusiones vinculadas al estudio, con limitaciones formuladas de manera honesta y sin generalizaciones.</p>
+                    <a href="conclusions.html">Ir a Conclusiones →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Recursos</h3>
+                    <p>Especificaciones técnicas, ofertas comerciales utilizadas para estimar el presupuesto, pruebas de rendimiento y software de IA.</p>
+                    <a href="resources.html">Ir a Recursos →</a>
+                </div>
+                
+                <div class="page-card">
+                    <h3>Uso de IA</h3>
+                    <p>Resumen de tareas realizadas con ayuda de inteligencia artificial y comprobaciones necesarias del autor.</p>
+                    <a href="prompts.html">Ir a Uso de IA →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <strong>⚠️ Nota importante:</strong> Este sitio presenta propuestas razonadas, no resultados experimentales propios. Las configuraciones no están montadas ni probadas físicamente. Los precios corresponden a fichas comerciales consultadas el 26 de octubre de 2026 y pueden cambiar. El presupuesto de 1200 USD se utiliza según la aclaración del profesor en la reunión por Zoom, como referencia académica para comparar las dos propuestas.
+        </div>
+
+        <div class="nav-buttons" style="justify-content: center;">
+            <a href="part1.html" class="btn">Comenzar lectura: Parte 1 →</a>
+        </div>
+    </main>
+<footer class="site-footer">Vitalii Golovin · ISSD · Arquitectura de Computadoras · Revisión: 27 de octubre de 2026</footer>
+</body>
+</html>

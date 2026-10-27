@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 3: Workstations - TP2 ISSD</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Исправления для part3 */
+        .comparison-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 25px;
+            margin: 30px 0;
+            align-items: stretch;
+        }
+        
+        .comparison-grid > .card {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 0;
+            overflow: hidden;
+        }
+        
+        .build-header {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .build-header h2 {
+            font-size: 1.2rem;
+            margin: 0 0 10px 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .build-image {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .build-image img {
+            width: 100%;
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+        }
+        
+        .build-image p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .specs-list {
+            flex-grow: 1;
+        }
+        
+        .specs-list li {
+            font-size: 0.9rem;
+        }
+        
+        .price-notice {
+            font-size: 0.85rem;
+        }
+        
+        table {
+            font-size: 0.85rem;
+            width: 100%;
+        }
+        
+        table th, table td {
+            padding: 8px;
+            word-break: break-word;
+        }
+        
+        .mermaid-diagram {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            min-height: 300px;
+        }
+        
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .info-box:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent); 
+        }
+        
+        .info-box .icon { 
+            font-size: 2rem; 
+            margin-bottom: 10px; 
+            display: block; 
+        }
+        
+        .info-box h4 { 
+            color: var(--accent); 
+            margin: 0 0 10px 0; 
+            font-size: 1rem; 
+        }
+        
+        .info-box p { 
+            color: var(--muted); 
+            font-size: 0.85rem; 
+            margin: 0; 
+        }
+        
+        @media (max-width: 900px) {
+            .comparison-grid { 
+                grid-template-columns: 1fr !important; 
+            }
+        }
+    </style>
+<meta name="description" content="Investigación académica de arquitectura de computadoras: CPU, GPU, NPU, almacenamiento y dos propuestas para estudiar inteligencia artificial.">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a><nav>
+        <a href="index.html">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html">Parte 2: Almacenamiento</a>
+        <a href="part3.html" class="active" aria-current="page">Parte 3: Workstations</a>
+        <a href="conclusions.html">Conclusiones</a>
+        <a href="resources.html">Recursos</a>
+        <a href="prompts.html">Uso de IA</a>
+    </nav>
+    
+    <main class="container" id="contenido">
+        <h1>Parte 3: Dos propuestas de workstation para investigar IA</h1>
+        <p>Comparo dos propuestas para el mismo perfil: una estación profesional con más recursos y una computadora doméstica para aprender. La diferencia está en la capacidad, el coste y las tareas posibles. Ninguna de las dos elimina todos los límites del hardware.</p>
+<div class="expert-section">
+            <h2>🎓 Cómo elegí los componentes</h2>
+            <p>Primero definí las tareas: ejecutar modelos pequeños, preparar preguntas de prueba y guardar resultados. Después revisé la memoria necesaria y la compatibilidad del software. Para comparar una estación profesional con una computadora doméstica, utilizo un presupuesto de referencia de <strong>1200 USD</strong>, según la aclaración del profesor durante la reunión por Zoom. La consigna escrita menciona 800 USD como referencia inicial.</p>
+            
+            <p>El presupuesto doméstico obliga a elegir prioridades. En esta alternativa dedico la mayor parte del coste a una <strong>RTX 3060 de 12 GB</strong>. Para mantener el total cerca de 1200 USD, uso un Ryzen 5 5500, 16 GB de RAM y un NVMe de 500 GB. No presento esta computadora como equivalente a la estación profesional ni como la única combinación posible.</p>
+            
+            <h3>Prioridades y compromisos</h3>
+            <p>Para acercarme al presupuesto de 1200 USD, priorizo la memoria de la GPU y acepto menos RAM y almacenamiento. Estas son decisiones para esta propuesta, no requisitos universales de la inteligencia artificial:</p>
+<div class="tradeoff-grid">
+<div class="tradeoff-card accept">
+<h4>Qué acepto</h4>
+<ul>
+<li>Ryzen 5 5500 y plataforma A520 con PCIe 3.0.</li>
+<li>16 GB de RAM para empezar con modelos pequeños cuantizados y poca multitarea.</li>
+<li>500 GB de SSD, con un número limitado de modelos y datasets.</li>
+</ul>
+</div>
+<div class="tradeoff-card">
+<h4>Qué priorizo</h4>
+<ul>
+<li>12 GB de VRAM para disponer de más margen. Una GPU de menor memoria también puede ejecutar modelos más pequeños.</li>
+<li>Una fuente de modelo conocido, con potencia, conectores y protecciones adecuados.</li>
+<li>Un SSD NVMe por su velocidad de carga. Un SSD SATA también permite trabajar con IA local.</li>
+</ul>
+</div>
+</div>
+<div class="highlight">
+<strong>Criterio de decisión:</strong> primero defino la tarea; después compruebo compatibilidad, memoria y presupuesto. Si la memoria no alcanza, reduzco el modelo o el contexto, cierro otras aplicaciones o reviso la configuración.</div>
+</div>
+
+        <div class="builds-stack">
+            
+            <div class="card">
+                <div class="build-header premium">
+                    <h2>Configuración 1: "Money is No Object"</h2>
+                    <p style="margin: 0; color: var(--muted);">Estación profesional sin un límite de presupuesto fijado</p>
+                </div>
+                
+                <div class="build-image">
+                    <img src="images/rtx6000.jpg" alt="NVIDIA RTX 6000 Ada" decoding="async">
+                    <p>NVIDIA RTX 6000 Ada: imagen del fabricante. Representa solo la GPU de la propuesta, no una computadora montada. <a class="citation" href="resources.html#ref-20">[20]</a></p>
+</div>
+
+                <p style="font-size: 0.9rem;">Esta es una propuesta de diseño, no una computadora montada y probada. Antes de comprar, hay que confirmar la revisión de la placa, la versión de BIOS, la lista QVL de memoria y el espacio de los disipadores M.2.</p>
+                
+                <ul class="specs-list">
+                    <li>
+                        <strong>CPU: AMD Ryzen Threadripper PRO 7975WX (32C/64T)</strong>
+                        Más recursos para preparación de datos y tareas simultáneas<a href="resources.html#ref-25" class="citation">[25]</a>.
+                    </li>
+                    <li>
+                        <strong>Placa madre: ASUS Pro WS WRX90E-SAGE SE</strong>
+                        Plataforma WRX90 con ocho canales de memoria y cuatro M.2<a href="resources.html#ref-26" class="citation">[26]</a>.
+                    </li>
+                    <li>
+                        <strong>GPU: NVIDIA RTX 6000 Ada Generation (48 GB GDDR6 ECC)</strong>
+                        Más memoria para modelos cuantizados y cargas profesionales<a href="resources.html#ref-20" class="citation">[20]</a>.
+                    </li>
+                    <li>
+                        <strong>RAM: 256 GB (8×32 GB) Kingston KSM56R46BD8-32HA ECC RDIMM</strong>
+                        Un módulo por canal; módulos DDR5 5600, objetivo de operación de hasta 5200 MT/s según CPU<a href="resources.html#ref-25" class="citation">[25]</a>, <a href="resources.html#ref-27" class="citation">[27]</a>.
+                    </li>
+                    <li>
+                        <strong>SSD del sistema: Crucial T700 2 TB</strong>
+                        Sistema, programas y trabajo activo<a href="resources.html#ref-19" class="citation">[19]</a>.
+                    </li>
+                    <li>
+                        <strong>SSD de datos: 2× Corsair MP700 PRO 4 TB</strong>
+                        8 TB totales repartidos en dos unidades<a href="resources.html#ref-28" class="citation">[28]</a>.
+                    </li>
+                    <li>
+                        <strong>Refrigeración: Noctua NH-U14S TR5-SP6</strong>
+                        Montaje para sTR5; altura de 165 mm<a href="resources.html#ref-29" class="citation">[29]</a>.
+                    </li>
+                    <li>
+                        <strong>Fuente: Corsair AX1600i 1600 W</strong>
+                        Reserva para ampliaciones; capacidad superior a la necesaria para una sola GPU<a href="resources.html#ref-30" class="citation">[30]</a>.
+                    </li>
+                    <li>
+                        <strong>Gabinete: Fractal Design Define 7 XL</strong>
+                        Compatible con placas SSI EEB y disipadores grandes<a href="resources.html#ref-31" class="citation">[31]</a>.
+                    </li>
+                </ul>
+                
+                <div class="highlight">
+                    <strong>⚠️ Limitaciones:</strong> La elección de 48 GB de VRAM busca aumentar el margen frente a una tarjeta de 24 GB. Un modelo de 70B a 4 bits puede ser un objetivo, según el formato y el contexto; no garantizo que cualquier versión funcione. La RAM ECC puede corregir determinados errores de memoria. No protege contra todo fallo de software, pérdida de datos o ataque. La fuente de 1600 W deja mucho margen para posibles ampliaciones. Con una sola RTX 6000 Ada no la considero un requisito mínimo ni prometo un punto fijo de eficiencia.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="build-header budget">
+                    <h2>Configuración 2: "El Punto Dulce"</h2>
+                    <p style="margin: 0; color: var(--muted);">Presupuesto Inteligente (~$1,189.95 USD en Argentina)</p>
+                </div>
+
+                <div class="build-image">
+                    <img src="images/asus-rtx3060.webp" alt="ASUS Dual RTX 3060 OC V2 de 12 GB" decoding="async">
+                    <p>ASUS Dual RTX 3060 OC V2 de 12 GB: imagen de la ficha comercial de Amonpul. Representa solo la GPU seleccionada. <a href="resources.html#precio-C2">[C2]</a></p>
+</div>
+
+                <div class="price-notice">
+                    <strong>📌 Nota sobre Precios Reales:</strong> Los precios reflejan el mercado argentino verificado en <strong>tiendas locales (GoldenTech, Amonpul, Qos Technologies, Córdoba, CP 5000, octubre 2026)</strong>. La conversión utiliza <strong>1560 ARS por USD</strong>, cotización de venta de billetes del Banco de la Nación Argentina (26 de octubre de 2026). Es una referencia para expresar el presupuesto, no una promesa de cambio de moneda. Los importes corresponden a los precios por transferencia de las fichas recuperadas, con impuestos. Presupuesto de referencia de 1200 USD según la aclaración del profesor en la reunión por Zoom<a href="resources.html#ref-32" class="citation">[32]</a>, <a href="resources.html#precio-C1" class="citation">[C1-C7]</a>.
+                </div>
+
+                <p style="font-size: 0.9rem;">Diseñada para maximizar la VRAM dentro de un presupuesto estricto de ~1200 USD, priorizando una GPU <strong>nueva con garantía</strong> sobre un CPU de mayor gama<a href="resources.html#ref-34" class="citation">[34]</a>.</p>
+
+                <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Modelo</th>
+                        <th>ARS</th>
+                        <th>USD</th>
+                        <th>Fuente</th>
+                    </tr>
+                    <tr>
+                        <td><strong>CPU y cooler</strong></td>
+                        <td>Ryzen 5 5500 BOX con Wraith Stealth</td>
+                        <td>173.965,90</td>
+                        <td>111,52</td>
+                        <td><a href="resources.html#precio-C1" class="citation">[C1]</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>GPU nueva</strong></td>
+                        <td>ASUS Dual RTX 3060 V2 OC 12 GB</td>
+                        <td>945.678,00</td>
+                        <td>606,20</td>
+                        <td><a href="resources.html#precio-C2" class="citation">[C2]</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Placa madre</strong></td>
+                        <td>Gigabyte A520M K V2</td>
+                        <td>88.711,06</td>
+                        <td>56,87</td>
+                        <td><a href="resources.html#precio-C3" class="citation">[C3]</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RAM</strong></td>
+                        <td>2× Hiksemi Hiker 8 GB DDR4 3200 UDIMM</td>
+                        <td>274.466,20</td>
+                        <td>175,94</td>
+                        <td>
+<a href="resources.html#precio-C4" class="citation">[C4]</a> <span class="compromise-badge">COMPROMISO</span>
+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SSD</strong></td>
+                        <td>Kingston NV3 SNV3S/500G 500 GB</td>
+                        <td>187.963,15</td>
+                        <td>120,49</td>
+                        <td>
+<a href="resources.html#precio-C5" class="citation">[C5]</a> <span class="compromise-badge">COMPROMISO</span>
+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fuente (PSU)</strong></td>
+                        <td>MSI MAG A650BN 650 W</td>
+                        <td>90.881,00</td>
+                        <td>58,26</td>
+                        <td><a href="resources.html#precio-C6" class="citation">[C6]</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gabinete</strong></td>
+                        <td>Zer01 Orion con cuatro ventiladores</td>
+                        <td>54.657,91</td>
+                        <td>35,04</td>
+                        <td><a href="resources.html#precio-C7" class="citation">[C7]</a></td>
+                    </tr>
+                    <tr style="background: #0f172a;">
+                        <td><strong>Subtotal</strong></td>
+                        <td colspan="2">Solo componentes</td>
+                        <td>1.816.323,22 ARS</td>
+                        <td>1.164,31 USD</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #0f172a;">
+                        <td><strong>Reserva</strong></td>
+                        <td colspan="2">Envíos y accesorios sin cotización cerrada</td>
+                        <td>40.000,00 ARS</td>
+                        <td>25,64 USD</td>
+                        <td></td>
+                    </tr>
+                    <tr style="background: #0f172a; font-weight: bold;">
+                        <td>TOTAL PREVISTO</td>
+                        <td colspan="2">Componentes más reserva</td>
+                        <td>1.856.323,22 ARS</td>
+                        <td>1.189,95 USD</td>
+                        <td>Prioriza 12 GB de VRAM con componentes anunciados como nuevos.</td>
+                    </tr>
+                </table>
+                
+                </div>
+<div class="highlight" style="margin-top: 20px;">
+                    <strong>📊 Análisis del Trade-off:</strong> La referencia de 1200 USD equivale a 1.872.000 ARS con esta cotización. Después de los componentes quedan 55.676,78 ARS para envío y otros gastos. Reservo 40.000 ARS, pero no tengo una cotización de entrega al domicilio. Si los gastos adicionales superan 55.676,78 ARS, el total pasa de 1200 USD. Esto debe mostrarse de forma transparente, sin inventar una tarifa de envío. El presupuesto incluye solo la torre y presupone montaje propio. No incluye monitor, teclado, ratón, licencia de Windows ni servicio de armado.
+                </div>
+            </div>
+        </div>
+
+        <section class="card"><h2>Galería de componentes de la propuesta doméstica</h2>
+<p>Imágenes de las fichas comerciales citadas. No muestran un equipo montado. La revisión y el código de producto deben comprobarse al comprar.</p>
+<div class="component-gallery">
+<figure><a href="images/component-C1.jpg"><img src="images/component-C1.jpg" alt="Ryzen 5 5500 BOX" loading="lazy" decoding="async"></a><figcaption>Ryzen 5 5500 BOX <a href="resources.html#precio-C1">[C1]</a></figcaption></figure><figure><a href="images/asus-rtx3060.webp"><img src="images/asus-rtx3060.webp" alt="ASUS Dual RTX 3060 OC V2 12 GB" loading="lazy" decoding="async"></a><figcaption>ASUS Dual RTX 3060 OC V2 12 GB <a href="resources.html#precio-C2">[C2]</a></figcaption></figure><figure><a href="images/component-C3.jpg"><img src="images/component-C3.jpg" alt="Gigabyte A520M K V2" loading="lazy" decoding="async"></a><figcaption>Gigabyte A520M K V2 <a href="resources.html#precio-C3">[C3]</a></figcaption></figure><figure><a href="images/component-C4.jpg"><img src="images/component-C4.jpg" alt="Hiksemi Hiker 8 GB DDR4 (se proponen dos módulos)" loading="lazy" decoding="async"></a><figcaption>Hiksemi Hiker 8 GB DDR4 (se proponen dos módulos) <a href="resources.html#precio-C4">[C4]</a></figcaption></figure><figure><a href="images/component-C5.jpg"><img src="images/component-C5.jpg" alt="Kingston NV3 500 GB" loading="lazy" decoding="async"></a><figcaption>Kingston NV3 500 GB <a href="resources.html#precio-C5">[C5]</a></figcaption></figure><figure><a href="images/component-C6.webp"><img src="images/component-C6.webp" alt="MSI MAG A650BN 650 W" loading="lazy" decoding="async"></a><figcaption>MSI MAG A650BN 650 W <a href="resources.html#precio-C6">[C6]</a></figcaption></figure><figure><a href="images/component-C7.jpg"><img src="images/component-C7.jpg" alt="Zer01 Orion" loading="lazy" decoding="async"></a><figcaption>Zer01 Orion <a href="resources.html#precio-C7">[C7]</a></figcaption></figure>
+</div></section><section class="card"><h2>Por qué la propuesta profesional usa otros componentes</h2>
+<p>Los CPU de la Parte 1 sirven para estudiar dos arquitecturas de escritorio. Para la estación profesional priorizo más memoria y más recursos para tareas simultáneas. El Threadripper PRO 7975WX ofrece 32 núcleos y 64 hilos; la plataforma WRX90 permite ocho canales de memoria. Esto puede ayudar a preparar datasets y ejecutar varios procesos, pero no demuestra una aceleración fija. <a class="citation" href="resources.html#ref-25">[25]</a> <a class="citation" href="resources.html#ref-26">[26]</a></p>
+<p>Los ocho módulos de 32 GB permiten distribuir 256 GB entre los ocho canales. Elijo ECC RDIMM para esta plataforma; no es la misma memoria DDR4 de la propuesta doméstica. La ficha del módulo no sustituye la lista QVL de la placa. Antes de comprar debo confirmar soporte, revisión y velocidad con los ocho módulos instalados. <a class="citation" href="resources.html#ref-27">[27]</a></p>
+<p>La RTX 6000 Ada se elige principalmente por sus 48 GB de VRAM. Ese espacio permite estudiar modelos o contextos que pueden superar una GPU doméstica de 12 GB. La ventaja principal que justifico aquí es la capacidad de memoria, no un resultado de velocidad medido por mí. <a class="citation" href="resources.html#ref-20">[20]</a></p>
+<p>Separar el SSD del sistema de los dos SSD de datos facilita la organización de modelos, datasets y resultados. Dos unidades de 4 TB suman 8 TB de capacidad nominal; no se plantea un RAID ni una copia de seguridad automática. Los SSD necesitan disipación y una copia externa de los datos importantes. <a class="citation" href="resources.html#ref-19">[19]</a> <a class="citation" href="resources.html#ref-28">[28]</a></p>
+<p>El Noctua tiene un montaje específico para sTR5, y el Define 7 XL admite el formato SSI EEB de la placa. La refrigeración depende también del flujo de aire y de la carga sostenida. La AX1600i aporta capacidad para ampliaciones, pero sus 1600 W no son el consumo del equipo. Hay que comprobar el montaje, los cables y todos los conectores de alimentación indicados por el manual de la placa. <a class="citation" href="resources.html#ref-26">[26]</a> <a class="citation" href="resources.html#ref-29">[29]</a> <a class="citation" href="resources.html#ref-30">[30]</a> <a class="citation" href="resources.html#ref-31">[31]</a></p>
+<p>Ninguna de estas dos propuestas se elige por una NPU integrada. La NPU del Intel 285K se estudia en la Parte 1 como ejemplo de otro tipo de acelerador.</p></section><div class="expert-section">
+            <h2>📊 Comparación entre las dos propuestas</h2>
+            <p>Las dos configuraciones responden al mismo perfil profesional, pero con recursos muy diferentes. La siguiente tabla resume las diferencias clave sin afirmar rendimientos no medidos:</p>
+            
+            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table class="comparison-table">
+                <tr>
+                    <th>Criterio</th>
+                    <th>Estación profesional</th>
+                    <th>Configuración de estudio</th>
+                </tr>
+                <tr>
+                    <td><strong>VRAM</strong></td>
+                    <td>48 GB</td>
+                    <td>12 GB</td>
+                </tr>
+                <tr>
+                    <td><strong>RAM</strong></td>
+                    <td>256 GB ECC RDIMM</td>
+                    <td>16 GB DDR4</td>
+                </tr>
+                <tr>
+                    <td><strong>Objetivo</strong></td>
+                    <td>Modelos cuantizados mayores y más tareas simultáneas</td>
+                    <td>Aprendizaje con modelos pequeños y pocas tareas simultáneas</td>
+                </tr>
+                <tr>
+                    <td><strong>Límite principal</strong></td>
+                    <td>Formato, contexto y VRAM siguen importando</td>
+                    <td>VRAM, RAM y capacidad del SSD</td>
+                </tr>
+                <tr>
+                    <td><strong>Rendimiento medido en este trabajo</strong></td>
+                    <td>No medido</td>
+                    <td>No medido</td>
+                </tr>
+            </table>
+
+            </div>
+<div class="highlight">
+                <strong>✓ Observación:</strong> La estación profesional ofrece más memoria y más recursos para trabajar en paralelo. Esto amplía las tareas posibles, pero no garantiza una velocidad fija ni seguridad absoluta. Las máquinas virtuales, los contenedores, las copias de seguridad y los permisos requieren una configuración adecuada.
+            </div>
+        </div>
+
+        <div class="expert-section">
+            <h2>🔍 Por qué elegí los componentes de la alternativa</h2>
+            
+            <div class="scenario-box">
+                <h4>Ryzen 5 5500</h4>
+                <p>El Ryzen 5 5500 tiene seis núcleos y doce hilos. Su versión BOX incluye un Wraith Stealth. Utiliza AM4, DDR4 y PCIe 3.0. No tiene gráficos integrados, por lo que el monitor debe conectarse a la tarjeta gráfica. Estas características permiten reducir el coste, aunque la plataforma ofrece menos margen que una estación moderna de gama alta<a href="resources.html#ref-33" class="citation">[33]</a>.</p>
+            </div>
+            
+            <div class="scenario-box">
+                <h4>ASUS Dual RTX 3060 V2 OC 12 GB</h4>
+                <p>La ASUS Dual RTX 3060 V2 OC elegida tiene 12 GB GDDR6 y un conector de alimentación de ocho pines. ASUS indica una fuente recomendada de 650 W para su escenario de referencia, que incluye overclock. Elijo la MSI MAG A650BN de 650 W para respetar esa recomendación y disponer de margen. Esta potencia es la capacidad de la fuente, no el consumo medido del equipo<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#ref-37" class="citation">[37]</a>.</p>
+                <p>Los 12 GB de VRAM ofrecen más margen que una tarjeta de 8 GB. El objetivo principal son modelos de 7B–8B cuantizados y pruebas de tamaño moderado. Algunas versiones de 13B a 4 bits también pueden ser posibles, pero dependen del contexto, del programa y de la memoria adicional. No prometo que cualquier modelo de 13B funcione ni una velocidad fija de generación.</p>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Gigabyte A520M K V2</h4>
+                <p>La placa A520M K V2 tiene dos ranuras de RAM. Con dos módulos de 8 GB se utiliza doble canal, pero una ampliación a 32 GB requiere sustituir los módulos. Su ranura principal para GPU es PCIe 3.0 x16 y su único M.2 trabaja hasta PCIe 3.0 x4. Aunque la GPU y el SSD admiten PCIe 4.0, en esta plataforma usarán PCIe 3.0. Hay que confirmar la revisión recibida y su soporte de CPU<a href="resources.html#ref-35" class="citation">[35]</a>, <a href="resources.html#ref-36" class="citation">[36]</a>.</p>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Kingston NV3 SNV3S/500G 500 GB</h4>
+                <p>El Kingston NV3 elegido es el modelo SNV3S/500G de 500 GB y formato M.2 2280. Kingston declara hasta 5000 MB/s de lectura y 3000 MB/s de escritura en una plataforma PCIe 4.0 adecuada. La combinación Ryzen 5 5500 y A520 limita el enlace a PCIe 3.0 x4, por lo que no atribuyo a esta computadora una lectura real de 5000 MB/s. Los 500 GB también obligan a controlar el número de modelos guardados<a href="resources.html#ref-38" class="citation">[38]</a>.</p>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Zer01 Orion con cuatro ventiladores</h4>
+                <p>El gabinete y sus cuatro ventiladores se describen según la ficha del vendedor. No dispongo de una ficha técnica oficial independiente para verificar todos sus detalles. Antes del montaje hay que confirmar espacio, tornillos, conectores y control de ventiladores. La tarjeta ASUS mide 200 mm de largo según su fabricante<a href="resources.html#ref-34" class="citation">[34]</a>, <a href="resources.html#precio-C7" class="citation">[C7]</a>.</p>
+            <p>Para este presupuesto considero Linux sin coste de licencia y conexión por Ethernet. La propuesta no incluye un adaptador Wi-Fi ni un servicio de instalación. Windows Studio Effects es un ejemplo de la sección de NPU; no se atribuye a esta computadora con Ryzen 5 5500.</p>
+<p>La placa tiene un conector para el ventilador de CPU y otro para el sistema. Antes de conectar cuatro ventiladores hay que comprobar sus conectores, el controlador o distribuidor necesario y sus límites eléctricos. La reserva de la tabla no equivale a una lista de accesorios ya cotizada. <a class="citation" href="resources.html#ref-35">[35]</a></p>
+</div>
+        </div>
+
+        <div class="card">
+            <h2>Diagrama de Bloques Esquemático (Conexiones de la Build ~$1,190)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Representación visual de la interconexión física y de buses de datos de la configuración de presupuesto inteligente. <strong>Nota:</strong> Esta configuración utiliza PCIe 3.0.</p>
+            <div class="mermaid-diagram">
+                <div>
+<h3>Datos y señal de vídeo</h3>
+<a title="Abrir el esquema a tamaño completo" href="images/build-data.svg"><img class="architecture" src="images/build-data.svg" alt="CPU conectada a RAM, SSD y GPU; monitor conectado a la GPU" decoding="async"></a><h3>Alimentación eléctrica</h3>
+<a title="Abrir el esquema a tamaño completo" href="images/build-power.svg"><img class="architecture" src="images/build-power.svg" alt="Fuente conectada a la placa, a su conector de CPU y a la GPU; SSD alimentado por M.2" decoding="async"></a>
+</div>
+</div>
+            <p>Esquemas de la propuesta con Ryzen 5 5500. El azul representa datos y el amarillo alimentación. Son conexiones funcionales, no un plano de montaje. La placa también suministra parte de la alimentación de la GPU a través de la ranura PCIe. El SSD recibe energía del conector M.2 y no necesita un cable SATA. Los ventiladores del gabinete requieren comprobar conectores y controlador. <a class="citation" href="resources.html#ref-34">[34]</a> <a class="citation" href="resources.html#ref-35">[35]</a> <a class="citation" href="resources.html#ref-37">[37]</a> <a class="citation" href="resources.html#ref-38">[38]</a></p>
+</div>
+
+        <div class="expert-section">
+            <h2> Posibles mejoras</h2>
+            <p>La primera mejora depende del problema observado:</p>
+            <ul>
+                <li>
+<strong>Si hay paginación o demasiada multitarea:</strong> puedo sustituir los módulos por 2×16 GB.</li>
+                <li>
+<strong>Si falta espacio:</strong> puedo sustituir el NVMe por uno mayor o añadir una unidad SATA: el único conector M.2 ya está ocupado.</li>
+                <li>
+<strong>Si necesito más VRAM:</strong> debo estudiar otra GPU y revisar fuente, espacio y presupuesto.</li>
+            </ul>
+            <p>No fijo precios futuros porque no los conozco.</p>
+        </div>
+
+        <div class="card">
+            <h2>Infografía Final: Capacidades Clave de la Workstation de ~$1,189.95 USD</h2>
+            <p style="color: var(--muted); margin-bottom: 20px;">Resumen de las prioridades y los límites de esta propuesta doméstica.</p>
+            
+            <div class="infographic-grid">
+                <div class="info-box">
+                    <span class="icon">🧠</span>
+                    <h4>12 GB VRAM</h4>
+                    <p>Objetivo: modelos de 7B–8B cuantizados. El contexto y la memoria adicional pueden causar errores por falta de memoria (OOM).</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">🛡️</span>
+                    <h4>Compra nueva</h4>
+                    <p>Las fichas corresponden a productos nuevos. Hay que confirmar factura, plazo y condiciones de garantía de cada vendedor.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">⚡</span>
+                    <h4>16 GB RAM DDR4</h4>
+                    <p>Punto de partida para estudiar. La RAM disponible depende del sistema, el modelo y los programas abiertos.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">🚀</span>
+                    <h4>NVMe 500 GB</h4>
+                    <p>Kingston NV3 SNV3S/500G. Velocidad limitada a PCIe 3.0 x4 por la plataforma. Permite guardar el sistema y una selección limitada de modelos; hay que controlar el espacio libre.</p>
+                </div>
+                <div class="info-box">
+                    <span class="icon">💰</span>
+                    <h4>$1,189.95 USD previsto</h4>
+                    <p>Incluye reserva de 40.000 ARS. La entrega aún no tiene una cotización cerrada. Precio por transferencia con impuestos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="part2.html" class="btn">← Parte 2: La Superautopista de los Datos</a>
+            <a href="conclusions.html" class="btn">Conclusiones y Recomendaciones →</a>
+        </div>
+    </main>
+<footer class="site-footer">Vitalii Golovin · ISSD · Arquitectura de Computadoras · Revisión: 27 de octubre de 2026</footer>
+</body>
+</html>
