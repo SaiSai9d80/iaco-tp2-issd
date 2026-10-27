@@ -24,7 +24,7 @@
     <div class="container">
         <h1>Parte 1: El Corazón Inteligente de la Máquina</h1>
         
-        <!-- СЕКЦИЯ 1.1: CPU -->
+        <!-- 1.1 COMPARACIÓN DE CPU -->
         <div class="card">
             <h2>1.1. Comparación de CPU: Intel Core Ultra 9 285K vs AMD Ryzen 9 9950X</h2>
             <p>Comparo el Intel Core Ultra 9 285K y el AMD Ryzen 9 9950X. Son modelos de gama alta de su generación. Mi objetivo es entender sus diferencias, no afirmar que uno es mejor en todas las tareas. Para investigar IA también importan la GPU, la RAM y el programa que utilizamos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-02" class="citation">[2]</a></p>
@@ -118,7 +118,7 @@ graph TD
             </div>
         </div>
 
-        <!-- СЕКЦИЯ 1.2: NPU -->
+        <!-- 1.2 NPU -->
         <div class="card">
             <h2>1.2. La NPU y sus límites</h2>
             <p>Una NPU es una unidad especializada en operaciones de redes neuronales. Estas redes usan muchas multiplicaciones y sumas con matrices. La NPU dispone de recursos dedicados para estas operaciones y utiliza memoria cercana para reducir movimientos de datos. El programa debe convertir o preparar el modelo para un formato compatible.</p>
@@ -140,7 +140,7 @@ graph LR
             </div>
         </div>
 
-        <!-- СЕКЦИЯ 1.3: GPU -->
+        <!-- 1.3 GPU -->
         <div class="card">
             <h2>1.3. La GPU para el cálculo paralelo</h2>
             <table>
@@ -173,7 +173,7 @@ graph LR
 
             <p>La RTX 4090 utiliza la arquitectura Ada Lovelace. Sus bloques de procesamiento incluyen núcleos CUDA y Tensor Cores de cuarta generación. Los Tensor Cores aceleran operaciones matriciales con formatos admitidos por el hardware y el software. No equivalen a núcleos de CPU. Los RT Cores tienen otra función principal: acelerar el trazado de rayos.<a href="resources.html#ref-04" class="citation">[4]</a></p>
             
-            <p>Las dos tarjetas tienen 24 GB de memoria, pero usan ecosistemas diferentes. CUDA puede facilitar el uso de muchas herramientas de IA. Aun así, AMD también dispone de ROCm y existen implementaciones compatibles de vLLM y FlashAttention. La compatibilidad debe comprobarse para cada combinación de GPU, sistema y versión. No es correcto afirmar que AMD siempre necesita compilación manual o que NVIDIA es obligatoria para toda investigación.<a href="resources.html#ref-06" class="citation">[6]</a>, <a href="resources.html#ref-07" class="citation">[7]</a></p>
+            <p>Las dos tarjetas tienen 24 GB de memoria, pero usan ecosistemas diferentes. CUDA puede facilitar el uso de muchas herramientas de IA. Aun así, AMD también dispone de ROCm y existen implementaciones compatibles de vLLM y FlashAttention. La compatibilidad debe comprobarse para cada combinación de GPU, sistema y versión. No es correcto afirmar que AMD siempre necesita compilación manual o que NVIDIA es obligatoria para toda investigación.<a href="resources.html#ref-05" class="citation">[5]</a>, <a href="resources.html#ref-06" class="citation">[6]</a>, <a href="resources.html#ref-07" class="citation">[7]</a></p>
             
             <p>Para estimar la memoria mínima de los pesos, multiplico el número de parámetros por los bits usados y divido entre ocho. Un modelo de 70 mil millones de parámetros necesita aproximadamente 35 GB a 4 bits, 70 GB a 8 bits o 140 GB a 16 bits. Son GB decimales y solo incluyen los pesos. El programa necesita memoria adicional para otras estructuras y para el contexto.</p>
             
@@ -200,7 +200,7 @@ graph TD
             </div>
         </div>
 
-        <!-- СЕКЦИЯ 1.4: Тесты -->
+        <!-- 1.4 PRUEBAS PUBLICADAS -->
         <div class="card">
             <h2>1.4. Qué muestran las pruebas publicadas</h2>
             
@@ -252,7 +252,7 @@ graph TD
             </table>
         </div>
 
-        <!-- СЕКЦИЯ 1.5: Приложения -->
+        <!-- 1.5 APLICACIONES REALES -->
         <div class="card">
             <h2>1.5. Aplicaciones reales</h2>
             <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
@@ -261,35 +261,31 @@ graph TD
             
             <div class="app-grid">
                 <div class="app-card">
-                    <div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">🎨</span> Stable Diffusion
-                    </div>
+                    <!-- ЗАМЕНИТЕ src НА РЕАЛЬНЫЙ СКРИНШОТ ИНТЕРФЕЙСА -->
+                    <img src="images/app-sd.png" alt="Interfaz de Stable Diffusion" style="max-width: 100%; border-radius: 8px; margin-bottom: 10px; background: white; padding: 5px;">
                     <h3>Stable Diffusion y GPU</h3>
-                    <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas de Puget Systems (2023) permiten observar cómo cambian los resultados según la tarjeta y el programa: 21,04 iteraciones/s con Automatic1111 en RTX 4090 vs 4,67 iteraciones/s en RX 7900 XTX, pero 20,76 iteraciones/s con SHARK en RX 7900 XTX.<a href="resources.html#ref-09" class="citation">[9]</a></p>
+                    <p>Generar imágenes requiere muchas operaciones en paralelo. Las pruebas publicadas permiten observar cómo cambian los resultados según la tarjeta y el programa.<a href="resources.html#ref-09" class="citation">[9]</a></p>
                 </div>
                 
                 <div class="app-card">
-                    <div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">📹</span> Windows Studio Effects
-                    </div>
+                    <!-- ЗАМЕНИТЕ src НА РЕАЛЬНЫЙ СКРИНШОТ ПАНЕЛИ WINDOWS -->
+                    <img src="images/app-studio.png" alt="Panel de Windows Studio Effects" style="max-width: 100%; border-radius: 8px; margin-bottom: 10px; background: white; padding: 5px;">
                     <h3>Windows Studio Effects y NPU</h3>
-                    <p>Los efectos de cámara (desenfoque de fondo, encuadre automático) son un ejemplo de inferencia continua en un equipo compatible. Intel declara soporte en el 285K, pero la disponibilidad depende del dispositivo, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
+                    <p>Los efectos de cámara son un ejemplo de inferencia continua en un equipo compatible. La disponibilidad depende del dispositivo y de sus controladores.<a href="resources.html#ref-12" class="citation">[12]</a></p>
                 </div>
                 
                 <div class="app-card">
-                    <div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">🦙</span> Ollama / LM Studio
-                    </div>
+                    <!-- ЗАМЕНИТЕ src НА РЕАЛЬНЫЙ СКРИНШОТ OLLAMA / LM STUDIO -->
+                    <img src="images/app-ollama.png" alt="Interfaz de Ollama o LM Studio" style="max-width: 100%; border-radius: 8px; margin-bottom: 10px; background: white; padding: 5px;">
                     <h3>Ollama o LM Studio y modelo local</h3>
-                    <p>Estas herramientas permiten trabajar con modelos descargados localmente. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles, y de que no se elijan servicios remotos. La GPU acelera la generación; la CPU y la RAM gestionan la carga del modelo.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
+                    <p>Estas herramientas permiten trabajar con modelos descargados. El uso sin conexión depende de que el modelo y los archivos necesarios estén disponibles, y de que no se elijan servicios remotos.<a href="resources.html#ref-13" class="citation">[13]</a>, <a href="resources.html#ref-14" class="citation">[14]</a></p>
                 </div>
                 
                 <div class="app-card">
-                    <div class="garak-badge">
-                        <span style="color: #22d3ee;">></span> garak
-                    </div>
+                    <!-- ЗАМЕНИТЕ src НА РЕАЛЬНЫЙ СКРИНШОТ ОТЧЕТА GARAK -->
+                    <img src="images/app-garak.png" alt="Informe de garak" style="max-width: 100%; border-radius: 8px; margin-bottom: 10px; background: white; padding: 5px;">
                     <h3>garak y evaluación de modelos</h3>
-                    <p>Esta herramienta ejecuta pruebas para buscar determinados fallos en modelos de lenguaje. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores Docker pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
+                    <p>Esta herramienta ejecuta pruebas para buscar determinados fallos. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
                 </div>
 
                 <div class="app-card">
@@ -297,7 +293,7 @@ graph TD
                         <span style="color: #22d3ee;">⚡</span> vLLM
                     </div>
                     <h3>vLLM y inferencia de alta velocidad</h3>
-                    <p>vLLM es un motor de inferencia optimizado para LLM. Utiliza PagedAttention para gestionar la memoria de forma eficiente y permite atender múltiples peticiones simultáneas. Requiere GPU compatible con CUDA y puede acelerar significativamente la generación de texto en comparación con implementaciones básicas.<a href="resources.html#ref-06" class="citation">[6]</a></p>
+                    <p>vLLM puede utilizar GPU NVIDIA con CUDA y determinadas GPU AMD con ROCm. La compatibilidad depende del modelo de GPU, del sistema operativo y de la versión del programa.<a href="resources.html#ref-06" class="citation">[6]</a></p>
                 </div>
                 
                 <div class="app-card">
