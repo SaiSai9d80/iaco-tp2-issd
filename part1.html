@@ -1,303 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parte 1: Cómputo - TP2 ISSD</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Investigación académica de arquitectura de computadoras: CPU, GPU, NPU, almacenamiento y dos propuestas para estudiar inteligencia artificial.">
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Comparación de CPU, GPU y NPU: arquitectura, pruebas publicadas y aplicaciones de inteligencia artificial. Trabajo práctico de Arquitectura de Computadoras, ISSD, 2026.">
+  <meta name="author" content="Vitalii Golovin">
+  <title>Parte 1: Cómputo | TP 2 · ISSD</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0f172a;--card:#1e293b;--ink:#f1f5f9;--muted:#b8c6d9;--accent:#22d3ee;--border:#40516a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 Arial,Helvetica,sans-serif}
+    a{color:var(--accent);text-underline-offset:3px}a:hover{color:#a5f3fc}
+    a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #fbbf24;outline-offset:5px}
+    .skip{position:fixed;top:-100px;left:16px;z-index:20;background:#fff;color:#111;padding:10px}.skip:focus{top:8px}
+    .site-nav{position:sticky;top:0;z-index:10;background:#020617;border-bottom:1px solid var(--border);padding:12px 16px}
+    .site-nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+    .site-nav a{display:block;padding:7px 12px;border:1px solid #06b6d4;border-radius:6px;text-decoration:none;font-size:.85rem;font-weight:bold}
+    .site-nav a[aria-current="page"]{background:#06b6d4;color:#02131d}
+    main{max-width:1080px;margin:auto;padding:30px 20px 48px}
+    h1,h2,h3{line-height:1.3}h1{font-size:clamp(1.65rem,4vw,2.25rem);text-align:center;margin:12px 0 30px;color:var(--accent)}
+    h2{font-size:1.45rem;color:var(--accent);margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    h3{font-size:1.1rem;color:#a5f3fc;margin:28px 0 12px}p{margin:0 0 17px}li{margin-bottom:9px}
+    section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 4px 10px #0002}
+    .questions a{text-decoration:none}.questions li{padding-left:3px}
+    .table-scroll{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;min-width:600px;font-size:.94rem}
+    caption{text-align:left;color:var(--muted);padding:0 0 10px;font-size:.9rem}
+    th,td{border:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top}thead th{background:#101a2c;color:#67e8f9}tbody th{font-weight:normal}
+    .note{background:#111d30;border-left:3px solid #22d3ee;padding:16px 20px;margin:22px 0}.note p:last-child{margin-bottom:0}
+    .small,figcaption{font-size:.88rem;color:var(--muted)}.ref{font-size:.8em;white-space:nowrap}
+    figure{margin:24px 0;background:#101a2c;border:1px solid var(--border);border-radius:10px;padding:18px}
+    figcaption{margin-top:12px;line-height:1.55}svg{display:block;width:100%;height:auto}svg text{fill:#edf5ff;font-family:Arial,Helvetica,sans-serif;font-size:17px}
+    svg .label{fill:#67e8f9;font-weight:bold;font-size:18px}svg .box{fill:#183447;stroke:#22d3ee;stroke-width:1.5}svg .soft{fill:#1e293b;stroke:#64748b}
+    svg .wire{fill:none;stroke:#67e8f9;stroke-width:2}svg .group{fill:none;stroke:#64748b;stroke-dasharray:6 5}svg .axis{stroke:#94a3b8;fill:none}
+    .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery figure{margin:0;padding:14px}.gallery img{display:block;width:100%;height:170px;object-fit:contain;background:#0b1220;border-radius:5px}
+    .gallery h3{margin:16px 0 10px}.gallery p{font-size:.94rem}.gallery figcaption{border-top:1px solid var(--border);padding-top:10px}
+    details{margin:20px 0;padding:15px 18px;background:#111d30;border:1px solid var(--border);border-radius:8px}summary{cursor:pointer;color:#a5f3fc;font-weight:bold}details[open] summary{margin-bottom:15px}
+    .sources li{padding-left:4px;margin-bottom:13px;overflow-wrap:anywhere}.sources:target{scroll-margin-top:120px}li[id^="fuente-"]:target{background:#164e63;outline:5px solid #164e63}
+    .page-next{text-align:right;margin-top:25px}.site-footer{background:#020617;border-top:1px solid var(--border);text-align:center;padding:28px 20px;color:var(--muted);font-size:.9rem}.site-footer p{margin:3px 0}.site-footer strong{color:var(--ink)}
+    @media(max-width:740px){.site-nav{position:static}.site-nav a{font-size:.75rem;padding:6px 9px}html{scroll-padding-top:18px}main{padding:22px 12px}section{padding:20px 16px}.gallery{grid-template-columns:1fr}.gallery img{height:auto;max-height:330px}figure{padding:10px}.diagram{overflow:auto}.diagram svg{min-width:620px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{body{background:white;color:#111;font-size:11pt}.site-nav,.skip,.page-next{display:none}main{max-width:none;padding:0}section{background:white;box-shadow:none;border:1px solid #ccc;break-inside:auto}h1,h2,h3,a{color:#164e63}p,td,th,figcaption,.small{color:#111}thead th,.note,details{background:#eee}figure{break-inside:avoid;background:#101a2c}.table-scroll{overflow:visible}table{min-width:0}.site-footer{background:white;color:#111}.site-footer strong{color:#111}}
+  </style>
+<script type="text/javascript" nonce="68260d350d6040e2a8a90d29cf6" src="//injections.adguard.org?ts=1793195865260&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000a69c820ea5c49c3c99ddabf7%26fn%3Dpart1.html%26cd%3Dattachment%26ts%3D498110%26p%3Dfs%26cid%3D1%26sig%3Da8920a779cd2fcb940bb25223010ed1e989cac5f4b78bb1bbe1dde16a4f090be%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="68260d350d6040e2a8a90d29cf6" src="//injections.adguard.org?ts=1793195865260&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head>
 <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a><nav>
-        <a href="index.html">Inicio</a>
-        <a href="part1.html" class="active" aria-current="page">Parte 1: Cómputo</a>
-        <a href="part2.html">Parte 2: Almacenamiento</a>
-        <a href="part3.html">Parte 3: Workstations</a>
-        <a href="conclusions.html">Conclusiones</a>
-        <a href="resources.html">Recursos</a>
-        <a href="prompts.html">Uso de IA</a>
-    </nav>
-    
-    <main class="container" id="contenido">
-        <section class="card"><h2>Cómo se relaciona esta parte con las configuraciones de 2026</h2><p>El Core Ultra 9 285K y el Ryzen 9 9950X son referencias de 2024; RTX 4090 y RX 7900 XTX pertenecen a la generación de 2022. Sirven para comparar arquitecturas y estudios publicados, no para afirmar que son las últimas novedades. La parte 3 utiliza Ryzen 5 5600 + RTX 3060 y Ryzen 9 9950X3D2 + RTX 5080. No traslado los resultados de estas pruebas a las nuevas configuraciones.</p></section><h1>Parte 1: El Corazón Inteligente de la Máquina</h1>
-        
-        <div class="card">
-            <h2>1.1. Comparación de CPU: Intel Core Ultra 9 285K vs AMD Ryzen 9 9950X</h2>
-            <p>Comparo el Intel Core Ultra 9 285K y el AMD Ryzen 9 9950X. Son modelos de gama alta de su generación. Mi objetivo es entender sus diferencias, no afirmar que uno es mejor en todas las tareas. Para investigar IA también importan la GPU, la RAM y el programa que utilizamos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-02" class="citation">[2]</a></p>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<nav class="site-nav" aria-label="Navegación principal"><ul>
+  <li><a href="index.html">Inicio</a></li><li><a href="part1.html" aria-current="page">Parte 1: Cómputo</a></li>
+  <li><a href="part2.html">Parte 2: Almacenamiento</a></li><li><a href="part3.html">Parte 3: Workstations</a></li>
+  <li><a href="conclusions.html">Conclusiones</a></li><li><a href="resources.html">Recursos</a></li><li><a href="prompts.html">Uso de IA</a></li>
+</ul></nav>
+<main id="contenido">
+<h1>Parte 1: El corazón inteligente de la máquina</h1>
 
-            <div class="image-grid">
-                <div>
-                    <div class="image-container">
-                        <img src="images/intel-core-ultra-9-285k.png" alt="Intel Core Ultra 9 285K" decoding="async">
-                    </div>
-                    <p class="image-caption">Intel Core Ultra 9 285K (Arrow Lake-S)<a href="resources.html#ref-01" class="citation">[1]</a></p>
-                </div>
-                <div>
-                    <div class="image-container">
-                        <img src="images/AMD%20Ryzen%209%209950X.png" alt="AMD Ryzen 9 9950X" decoding="async">
-                    </div>
-                    <p class="image-caption">AMD Ryzen 9 9950X (Zen 5)<a href="resources.html#ref-02" class="citation">[2]</a></p>
-                </div>
-            </div>
+<section aria-labelledby="preguntas">
+  <h2 id="preguntas">¿Qué pide esta parte del trabajo?</h2>
+  <p>En esta sección investigo los siguientes puntos de la consigna:</p>
+  <ol class="questions">
+    <li><a href="#cpu">Comparar dos CPUs de fabricantes rivales y explicar sus núcleos, hilos y caché.</a></li>
+    <li><a href="#gpu">Analizar una GPU de gama alta: cálculo paralelo, Tensor Cores y memoria de video.</a></li>
+    <li><a href="#npu">Estudiar las NPU integradas en las CPUs elegidas y explicar qué las hace especiales.</a></li>
+    <li><a href="#pruebas">Usar pruebas publicadas para analizar el entrenamiento con GPU y la inferencia con NPU.</a></li>
+    <li><a href="#aplicaciones">Mostrar aplicaciones reales con imágenes y una breve explicación.</a></li>
+  </ol>
+  <p class="small">Resumen de los requisitos de la Parte 1 de la consigna IACO 2026. Los diagramas acompañan la explicación de las arquitecturas.</p>
+</section>
 
-            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
-<table>
-                <tr>
-                    <th>Característica</th>
-                    <th>Intel Core Ultra 9 285K<a href="resources.html#ref-01" class="citation">[1]</a>
-</th>
-                    <th>AMD Ryzen 9 9950X<a href="resources.html#ref-02" class="citation">[2]</a>
-</th>
-                </tr>
-                <tr>
-                    <td>Arquitectura</td>
-                    <td>Arrow Lake S; 8 P-cores y 16 E-cores</td>
-                    <td>Zen 5; dos CCD de cómputo y un chip de entrada y salida</td>
-                </tr>
-                <tr>
-                    <td>Núcleos e hilos</td>
-                    <td>24 núcleos y 24 hilos; sin Hyper-Threading</td>
-                    <td>16 núcleos y 32 hilos; SMT</td>
-                </tr>
-                <tr>
-                    <td>Caché L3</td>
-                    <td>36 MB</td>
-                    <td>64 MB en total, distribuidos entre los CCD</td>
-                </tr>
-                <tr>
-                    <td>NPU</td>
-                    <td>Intel AI Boost; hasta 13 TOPS INT8</td>
-                    <td>Este modelo no integra una NPU</td>
-                </tr>
-                <tr>
-                    <td>Interpretación</td>
-                    <td>Combina dos tipos de núcleo y una unidad de IA dedicada</td>
-                    <td>Ofrece dos hilos por núcleo y una arquitectura de chiplets</td>
-                </tr>
-            </table>
+<section aria-labelledby="cpu">
+  <h2 id="cpu">1.1. CPU: organizar y preparar el trabajo</h2>
+  <p>La CPU ejecuta el sistema operativo y los programas. En un proyecto de IA también prepara los datos, abre archivos y coordina el trabajo de los aceleradores. Por eso sigue siendo importante, incluso cuando la GPU hace los cálculos más pesados.</p>
+  <p>Elegí el <strong>Intel Core Ultra X9 388H</strong> y el <strong>AMD Ryzen AI 9 HX 475</strong>, dos modelos de 2026 con NPU integrada. Son plataformas móviles; aquí las estudio para comparar arquitecturas. La selección de piezas para las estaciones de escritorio se desarrolla en la parte 3. <a class="ref" href="#fuente-1" aria-label="Fuente 1">[1]</a> <a class="ref" href="#fuente-2" aria-label="Fuente 2">[2]</a></p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Comparación de CPUs">
+  <table><caption>Características oficiales de los dos procesadores. Fuentes: Intel y AMD.</caption>
+    <thead><tr><th scope="col">Característica</th><th scope="col">Intel Core Ultra X9 388H</th><th scope="col">AMD Ryzen AI 9 HX 475</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Familia</th><td>Panther Lake</td><td>Gorgon Point</td></tr>
+      <tr><th scope="row">Organización de CPU</th><td>4 P-cores + 8 E-cores + 4 LP E-cores</td><td>4 Zen 5 + 8 Zen 5c</td></tr>
+      <tr><th scope="row">Núcleos / hilos</th><td>16 / 16</td><td>12 / 24, con SMT</td></tr>
+      <tr><th scope="row">Frecuencia máxima</th><td>Hasta 5,1 GHz</td><td>Hasta 5,2 GHz</td></tr>
+      <tr><th scope="row">Caché publicada</th><td>18 MB Intel Smart Cache</td><td>12 MB L2 + 24 MB L3</td></tr>
+      <tr><th scope="row">Gráficos integrados</th><td>Intel Arc B390</td><td>AMD Radeon 890M</td></tr>
+      <tr><th scope="row">NPU</th><td>Intel AI Boost: hasta 50 TOPS INT8</td><td>AMD XDNA 2: hasta 60 TOPS</td></tr>
+    </tbody>
+  </table></div>
+  <h3>¿Qué significan los núcleos y los hilos?</h3>
+  <p>Un <strong>núcleo</strong> es una unidad física que ejecuta instrucciones. Un <strong>hilo</strong> es una secuencia de instrucciones que el procesador puede atender. Tener más núcleos ayuda cuando el programa puede repartir el trabajo, por ejemplo al preparar muchos archivos.</p>
+  <p>Intel combina núcleos con distintas prioridades. Los <strong>P-cores</strong> buscan un alto rendimiento por núcleo. Los <strong>E-cores</strong> permiten hacer trabajo paralelo de forma eficiente. Los <strong>LP E-cores</strong> se orientan al bajo consumo. El sistema operativo distribuye las tareas; un E-core también puede realizar trabajo exigente.</p>
+  <p>AMD combina <strong>Zen 5 y Zen 5c</strong>. Zen 5c tiene un diseño más compacto y funciona a frecuencias más bajas en este modelo. Ambos tipos admiten SMT: cada núcleo puede atender dos hilos. Así, 12 núcleos ofrecen 24 hilos, aunque comparten los recursos físicos del núcleo. <a class="ref" href="#fuente-2" aria-label="Fuente 2">[2]</a></p>
+  <h3>¿Por qué importa la caché?</h3>
+  <p>La caché guarda cerca del procesador datos e instrucciones que se usan con frecuencia. <strong>L1</strong> es muy pequeña y rápida; <strong>L2</strong> tiene más capacidad; <strong>L3</strong> permite compartir datos entre grupos de núcleos. Si el dato ya está en caché, la CPU evita esperar a la RAM.</p>
+  <p>En IA esto ayuda, por ejemplo, al preparar datos y repetir operaciones sobre ellos. Pero la caché de la CPU y la VRAM de la GPU tienen funciones diferentes. En la tabla también separo L2 y L3: sumar ambas y llamar al resultado «L3» sería incorrecto.</p>
+  <figure class="diagram" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 390" role="img" aria-labelledby="cpu-title cpu-desc"><title id="cpu-title">Dos formas de organizar un procesador</title><desc id="cpu-desc">Intel: 4 P, 8 E, 4 LP E y NPU. AMD: 4 Zen 5, 8 Zen 5c y NPU. Cada plataforma comunica sus bloques con la memoria del sistema.</desc><text class="label" x="210" y="30" text-anchor="middle">Intel Core Ultra X9 388H</text><text class="label" x="630" y="30" text-anchor="middle">AMD Ryzen AI 9 HX 475</text><rect class="box " x="20" y="55" width="120" height="70" rx="10"/><text x="80.0" y="96.0" text-anchor="middle">4 P-cores</text><rect class="box " x="150" y="55" width="120" height="70" rx="10"/><text x="210.0" y="96.0" text-anchor="middle">8 E-cores</text><rect class="box " x="280" y="55" width="120" height="70" rx="10"/><text x="340.0" y="96.0" text-anchor="middle">4 LP E</text><rect class="box " x="440" y="55" width="180" height="70" rx="10"/><text x="530.0" y="96.0" text-anchor="middle">4 Zen 5</text><rect class="box " x="640" y="55" width="180" height="70" rx="10"/><text x="730.0" y="96.0" text-anchor="middle">8 Zen 5c</text><path class="wire" d="M80,125 L80,147"/><path class="wire" d="M210,125 L210,147"/><path class="wire" d="M340,125 L340,147"/><path class="wire" d="M530,125 L530,147"/><path class="wire" d="M730,125 L730,147"/><rect class="box soft" x="20" y="147" width="380" height="60" rx="10"/><text x="210.0" y="172.0" text-anchor="middle">16 núcleos · 16 hilos</text><text x="210.0" y="194.0" text-anchor="middle">18 MB Smart Cache</text><rect class="box soft" x="440" y="147" width="380" height="60" rx="10"/><text x="630.0" y="172.0" text-anchor="middle">12 núcleos · 24 hilos (SMT)</text><text x="630.0" y="194.0" text-anchor="middle">12 MB L2 + 24 MB L3</text><path class="wire" d="M20,185 H8 V345 H20 M440,185 H428 V345 H440"/><rect class="box " x="20" y="220" width="180" height="65" rx="10"/><text x="110.0" y="247.5" text-anchor="middle">GPU integrada</text><text x="110.0" y="269.5" text-anchor="middle">Arc B390</text><rect class="box " x="220" y="220" width="180" height="65" rx="10"/><text x="310.0" y="247.5" text-anchor="middle">NPU</text><text x="310.0" y="269.5" text-anchor="middle">Intel AI Boost</text><rect class="box " x="440" y="220" width="180" height="65" rx="10"/><text x="530.0" y="247.5" text-anchor="middle">GPU integrada</text><text x="530.0" y="269.5" text-anchor="middle">Radeon 890M</text><rect class="box " x="640" y="220" width="180" height="65" rx="10"/><text x="730.0" y="247.5" text-anchor="middle">NPU</text><text x="730.0" y="269.5" text-anchor="middle">AMD XDNA 2</text><path class="wire" d="M110,285 L110,320"/><path class="wire" d="M310,285 L310,320"/><path class="wire" d="M530,285 L530,320"/><path class="wire" d="M730,285 L730,320"/><rect class="box soft" x="20" y="320" width="380" height="50" rx="10"/><text x="210.0" y="351.0" text-anchor="middle">Interconexión y memoria del sistema</text><rect class="box soft" x="440" y="320" width="380" height="50" rx="10"/><text x="630.0" y="351.0" text-anchor="middle">Interconexión y memoria del sistema</text></svg><figcaption>Figura 1. Esquema funcional simplificado de las dos plataformas. Los bloques no representan su posición física ni la distribución completa de cachés. Elaboración para este trabajo a partir de Intel y AMD. <a class="ref" href="#fuente-1" aria-label="Fuente 1">[1]</a> <a class="ref" href="#fuente-2" aria-label="Fuente 2">[2]</a></figcaption></figure>
+  <div class="note"><p><strong>Mi interpretación:</strong> Intel tiene más núcleos físicos y AMD ofrece más hilos. Estos datos explican cómo pueden repartir tareas, pero para elegir entre ellos también miraría el programa que voy a usar. Para mis primeros proyectos de IA me interesa que la CPU prepare los datos sin frenar al resto del equipo.</p></div>
+</section>
 
-            </div>
-<h3>Qué significan estos datos</h3>
-            <p>Un núcleo ejecuta instrucciones. Un hilo es una secuencia de trabajo que el procesador puede gestionar. Los P-cores de Intel priorizan el rendimiento por núcleo; los E-cores buscan un uso eficiente del espacio y de la energía. Esto no significa que los E-cores solo hagan tareas pequeñas. El sistema operativo distribuye el trabajo según la carga.</p>
-            
-            <p>El Ryzen usa SMT: cada núcleo puede gestionar dos hilos. Esto puede mejorar el uso de sus recursos, pero no duplica siempre el rendimiento. Tampoco permite calcular directamente cuántas máquinas virtuales funcionan bien. Esa cantidad depende de la RAM, los programas y los recursos asignados.</p>
-            
-            <p>La caché es una memoria pequeña y rápida dentro del procesador. L1 está cerca de las unidades de ejecución; L2 guarda más datos; L3 ayuda a compartir o reutilizar información. Tener más caché puede reducir algunos accesos a RAM. Sin embargo, la caché no sustituye la VRAM de la GPU ni permite cargar por sí sola un modelo grande.</p>
-            
-            <p>En el 9950X los núcleos están repartidos entre dos chiplets de cómputo. Por eso, sus 64 MB de L3 no deben dibujarse como una única memoria igual de cercana a todos los núcleos. En el 285K también hay varios bloques físicos conectados dentro del encapsulado. Las fotos comerciales no muestran estas relaciones.</p>
+<section aria-labelledby="gpu">
+  <h2 id="gpu">1.2. GPU: hacer muchos cálculos a la vez</h2>
+  <p>Elegí la <strong>NVIDIA GeForce RTX 4090</strong>, una GPU de gama alta de la generación Ada Lovelace. La consigna incluye la serie RTX 40 entre los ejemplos posibles. Además, hay pruebas públicas de entrenamiento que permiten estudiar su comportamiento.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Especificaciones de GPU"><table>
+    <caption>RTX 4090: características relevantes para este análisis. <a class="ref" href="#fuente-5" aria-label="Fuente 5">[5]</a> <a class="ref" href="#fuente-6" aria-label="Fuente 6">[6]</a></caption>
+    <thead><tr><th scope="col">Característica</th><th scope="col">Dato</th><th scope="col">Importancia</th></tr></thead><tbody>
+      <tr><th scope="row">CUDA Cores</th><td>16.384</td><td>Ejecutan numerosas operaciones en paralelo.</td></tr>
+      <tr><th scope="row">Tensor Cores</th><td>4.ª generación</td><td>Aceleran operaciones con matrices en formatos compatibles.</td></tr>
+      <tr><th scope="row">VRAM</th><td>24 GB GDDR6X</td><td>Guarda el modelo y los datos de trabajo de la GPU.</td></tr>
+      <tr><th scope="row">Ancho de banda</th><td>1.008 GB/s</td><td>Indica la capacidad teórica de transferencia de su memoria.</td></tr>
+    </tbody></table></div>
+  <h3>CUDA Cores y Tensor Cores</h3>
+  <p>Una red neuronal realiza muchas multiplicaciones y sumas. La GPU reparte operaciones entre numerosos bloques llamados <strong>SM</strong> o multiprocesadores. Dentro de ellos, los CUDA Cores realizan cálculos generales y los Tensor Cores se especializan en matrices.</p>
+  <p>Por ejemplo, una capa de una red multiplica una matriz de datos por otra de pesos. Los Tensor Cores trabajan con bloques de estas matrices y acumulan los resultados. El programa debe usar operaciones y formatos compatibles para aprovecharlos. Los RT Cores tienen otra función: acelerar el trazado de rayos en gráficos. <a class="ref" href="#fuente-6" aria-label="Fuente 6">[6]</a></p>
+  <figure class="diagram" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 415" role="img" aria-labelledby="gpu-title gpu-desc"><title id="gpu-title">Organización funcional de una GPU Ada</title><desc id="gpu-desc">Muchos multiprocesadores SM trabajan en paralelo. Un SM contiene unidades CUDA, Tensor, registros y memoria compartida. La caché L2 y la VRAM sirven a la GPU.</desc><rect class="group" x="20" y="20" width="800" height="230" rx="12"/><text class="label" x="420" y="50" text-anchor="middle">Un SM representativo · la GPU contiene muchos SM</text><rect class="box " x="45" y="75" width="220" height="65" rx="10"/><text x="155.0" y="102.5" text-anchor="middle">CUDA Cores</text><text x="155.0" y="124.5" text-anchor="middle">Operaciones generales</text><rect class="box " x="310" y="75" width="220" height="65" rx="10"/><text x="420.0" y="102.5" text-anchor="middle">Tensor Cores</text><text x="420.0" y="124.5" text-anchor="middle">Matrices</text><rect class="box " x="575" y="75" width="220" height="65" rx="10"/><text x="685.0" y="102.5" text-anchor="middle">RT Cores</text><text x="685.0" y="124.5" text-anchor="middle">Trazado de rayos</text><path class="wire" d="M155,140 L155,175"/><path class="wire" d="M420,140 L420,175"/><rect class="box soft" x="45" y="175" width="485" height="50" rx="10"/><text x="287.5" y="206.0" text-anchor="middle">Registros · memoria compartida / L1</text><path class="wire" d="M420,250 L420,275"/><rect class="box soft" x="220" y="275" width="400" height="45" rx="10"/><text x="420.0" y="303.5" text-anchor="middle">Caché L2 de la GPU</text><path class="wire" d="M420,320 L420,345"/><rect class="box soft" x="220" y="345" width="400" height="50" rx="10"/><text x="420.0" y="376.0" text-anchor="middle">Controladores y VRAM: 24 GB</text></svg><figcaption>Figura 2. Organización funcional simplificada de Ada. Se muestra un SM representativo y la memoria a escala de toda la GPU. Los CUDA Cores no equivalen a núcleos completos de CPU. <a class="ref" href="#fuente-6" aria-label="Fuente 6">[6]</a></figcaption></figure>
+  <h3>Capacidad y velocidad de la memoria</h3>
+  <p>La <strong>capacidad de VRAM</strong> indica cuánto puede guardar la GPU. El <strong>ancho de banda</strong> indica cuántos datos puede mover por segundo. Una GPU puede calcular muy rápido y aun así quedar limitada si el modelo no entra en su memoria.</p>
+  <p>Como ejemplo sencillo, 8.000 millones de parámetros guardados a 4 bits ocupan unos <strong>4 GB solo para los pesos</strong>: 8.000 millones × 4 ÷ 8. El programa necesita memoria adicional para el contexto y los datos temporales. Esta cuenta ayuda a entender por qué mirar solo la potencia de cálculo no alcanza.</p>
+  <div class="note"><p><strong>Para mi perfil:</strong> daría prioridad a la VRAM y a la compatibilidad del software. Me interesa ejecutar modelos pequeños, comparar sus respuestas y guardar los resultados. La velocidad ayuda a repetir pruebas, pero debo revisar yo mismo la calidad de las respuestas.</p></div>
+</section>
 
-            <h3>Virtualización y aislamiento</h3>
-            <p>La virtualización permite crear entornos de trabajo separados. Sin embargo, más hilos no significan más aislamiento. AMD indica que SEV es una tecnología de sus procesadores EPYC y que no está disponible en Ryzen. Por eso no uso SEV como argumento a favor del Ryzen 9 9950X. Para evaluar el aislamiento hay que revisar el sistema operativo, el hipervisor, los permisos y la configuración.<a href="resources.html#ref-03" class="citation">[3]</a></p>
+<section aria-labelledby="npu">
+  <h2 id="npu">1.3. NPU: un bloque especializado para IA</h2>
+  <p>Una <strong>NPU</strong> es un procesador especializado en operaciones de redes neuronales. En los equipos estudiados está integrada junto a la CPU y la GPU. Su uso principal es la <strong>inferencia</strong>: ejecutar un modelo ya entrenado para obtener un resultado.</p>
+  <p>Por ejemplo, una aplicación de cámara puede analizar cada imagen para separar a la persona del fondo. Como esta tarea se repite continuamente, importa tanto la rapidez como la energía utilizada.</p>
+  <h3>¿Qué tiene de especial por dentro?</h3>
+  <p>La operación básica es multiplicar y acumular, llamada <strong>MAC</strong>. La NPU reúne muchas unidades para estas operaciones y utiliza memoria cercana al cálculo. Reutilizar los datos reduce movimientos de memoria, que también consumen tiempo y energía.</p>
+  <p><strong>Intel NPU 5</strong> organiza el trabajo en tres motores de cómputo neuronal. La presentación de Panther Lake describe mejoras en las matrices MAC, la conversión de datos y el soporte de FP8. <a class="ref" href="#fuente-3" aria-label="Fuente 3">[3]</a></p>
+  <p><strong>AMD XDNA 2</strong> utiliza una organización de bloques o <em>tiles</em>. La arquitectura XDNA combina cálculo vectorial, control y memoria local, con conexiones entre bloques. Esto permite que los datos avancen por las operaciones de la red sin volver siempre a la memoria principal. <a class="ref" href="#fuente-4" aria-label="Fuente 4">[4]</a> <a class="ref" href="#fuente-13" aria-label="Fuente 13">[13]</a></p>
+  <figure class="diagram" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 390" role="img" aria-labelledby="npu-title npu-desc"><title id="npu-title">Dos organizaciones de NPU</title><desc id="npu-desc">Intel NPU 5 agrupa tres motores de cómputo neuronal. AMD XDNA utiliza una matriz de tiles con cálculo y memoria local. El dibujo ilustra el flujo, no la disposición física ni el número de tiles AMD.</desc><text class="label" x="205" y="30" text-anchor="middle">Intel · NPU 5</text><text class="label" x="625" y="30" text-anchor="middle">AMD · XDNA 2</text><rect class="box soft" x="20" y="55" width="370" height="45" rx="10"/><text x="205.0" y="83.5" text-anchor="middle">Datos y modelo preparado</text><rect class="box soft" x="450" y="55" width="350" height="45" rx="10"/><text x="625.0" y="83.5" text-anchor="middle">Datos y modelo preparado</text><path class="wire" d="M205,100 V112 H77 V125 M205,112 H332 V125 M205,112 V125 M625,100 V112 H532 V125 M625,112 H717 V125"/><rect class="box " x="20" y="125" width="115" height="90" rx="10"/><text x="77.5" y="165.0" text-anchor="middle">Motor 1</text><text x="77.5" y="187.0" text-anchor="middle">Cálculo</text><rect class="box " x="147" y="125" width="115" height="90" rx="10"/><text x="204.5" y="165.0" text-anchor="middle">Motor 2</text><text x="204.5" y="187.0" text-anchor="middle">Cálculo</text><rect class="box " x="275" y="125" width="115" height="90" rx="10"/><text x="332.5" y="165.0" text-anchor="middle">Motor 3</text><text x="332.5" y="187.0" text-anchor="middle">Cálculo</text><rect class="box " x="450" y="125" width="165" height="70" rx="10"/><text x="532.5" y="155.0" text-anchor="middle">Tile: cálculo</text><text x="532.5" y="177.0" text-anchor="middle">+ memoria</text><rect class="box " x="635" y="125" width="165" height="70" rx="10"/><text x="717.5" y="155.0" text-anchor="middle">Tile: cálculo</text><text x="717.5" y="177.0" text-anchor="middle">+ memoria</text><rect class="box " x="450" y="215" width="165" height="70" rx="10"/><text x="532.5" y="245.0" text-anchor="middle">Tile: cálculo</text><text x="532.5" y="267.0" text-anchor="middle">+ memoria</text><rect class="box " x="635" y="215" width="165" height="70" rx="10"/><text x="717.5" y="245.0" text-anchor="middle">Tile: cálculo</text><text x="717.5" y="267.0" text-anchor="middle">+ memoria</text><path class="wire" d="M615,160 L635,160"/><path class="wire" d="M615,250 L635,250"/><path class="wire" d="M532,195 L532,215"/><path class="wire" d="M717,195 L717,215"/><rect class="box soft" x="20" y="240" width="370" height="45" rx="10"/><text x="205.0" y="268.5" text-anchor="middle">Memoria y movimiento de datos</text><path class="wire" d="M77,215 V228 H332 V215 M205,215 V240 M205,285 V315 M532,285 V300 H717 V285 M625,300 V315"/><rect class="box soft" x="20" y="315" width="370" height="50" rx="10"/><text x="205.0" y="346.0" text-anchor="middle">Resultado de la inferencia</text><rect class="box soft" x="450" y="315" width="350" height="50" rx="10"/><text x="625.0" y="346.0" text-anchor="middle">Resultado de la inferencia</text></svg><figcaption>Figura 3. Comparación conceptual de las NPU. En AMD se dibuja una muestra de tiles, no su cantidad real. Las líneas muestran relaciones funcionales; el software prepara y distribuye el trabajo. <a class="ref" href="#fuente-3" aria-label="Fuente 3">[3]</a> <a class="ref" href="#fuente-4" aria-label="Fuente 4">[4]</a></figcaption></figure>
+  <h3>Cómo interpretar los TOPS</h3>
+  <p>TOPS significa billones de operaciones por segundo: <strong>10<sup>12</sup> operaciones/s</strong>. Es una medida de capacidad máxima bajo ciertas condiciones. También importan el formato numérico, el modelo y el programa. Por eso, comparar 50 y 60 TOPS no permite afirmar que una aplicación será exactamente un 20 % más rápida.</p>
+  <h3>¿Cuáles son sus límites?</h3>
+  <ul>
+    <li><strong>Compatibilidad:</strong> el software debe poder ejecutar las operaciones del modelo en esa NPU.</li>
+    <li><strong>Memoria:</strong> disponer de NPU no elimina los límites de RAM ni la necesidad de preparar el modelo.</li>
+    <li><strong>Tipo de tarea:</strong> las NPU de estos equipos se orientan a inferencia; el entrenamiento general suele tener más herramientas disponibles en GPU.</li>
+    <li><strong>Trabajo pequeño:</strong> enviar una tarea al acelerador también lleva tiempo. Para operaciones muy breves, la CPU puede ser suficiente.</li>
+  </ul>
+  <div class="note"><p><strong>Lo que aprendí:</strong> CPU, GPU y NPU se complementan. La CPU coordina, la GPU ofrece mucho cálculo paralelo y la NPU puede encargarse de una tarea de IA continua. Para una estación doméstica elegiría primero las aplicaciones y después comprobaría qué componentes aprovechan.</p></div>
+</section>
 
-            <div class="mermaid-diagram">
-                <a title="Abrir el esquema a tamaño completo" href="images/cpu-intel.svg"><img class="architecture" src="images/cpu-intel.svg" alt="cpu intel: esquema funcional simplificado" loading="lazy" decoding="async"></a><p class="diagram-caption">Esquema simplificado del Intel Core Ultra 9 285K. No representa el diseño físico exacto.<a href="resources.html#ref-01" class="citation">[1]</a></p>
-            </div>
+<section aria-labelledby="pruebas">
+  <h2 id="pruebas">1.4. ¿Qué muestran las pruebas publicadas?</h2>
+  <p><strong>Entrenar</strong> significa ajustar los pesos de una red a partir de ejemplos y errores. <strong>Inferir</strong> significa usar esos pesos para producir una respuesta. El entrenamiento también calcula gradientes y actualiza parámetros, por lo que sus necesidades de cálculo y memoria son distintas. <a class="ref" href="#fuente-14" aria-label="Fuente 14">[14]</a></p>
+  <p>Los siguientes resultados proceden de sus autores. No son mediciones realizadas con mis dos configuraciones de la parte 3.</p>
+  <h3>A. Entrenamiento: RTX 3090 y RTX 4090</h3>
+  <p>Lambda publicó una prueba con PyTorch NGC 22.09 en 2022, actualizada en 2023. Seleccioné ResNet50, una red de visión. TF32 y FP16 son formatos numéricos con distinta precisión; FP16 utiliza 16 bits. Para comparar con claridad, calculé un índice donde la RTX 3090 vale 100 en cada formato. <a class="ref" href="#fuente-7" aria-label="Fuente 7">[7]</a></p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Resultados de entrenamiento"><table>
+    <caption>Rendimiento relativo de entrenamiento de ResNet50. Un valor mayor es mejor.</caption>
+    <thead><tr><th scope="col">Formato</th><th scope="col">RTX 3090</th><th scope="col">RTX 4090</th><th scope="col">Cálculo a partir de Lambda</th></tr></thead><tbody>
+      <tr><th scope="row">TF32</th><td>100</td><td>155,6</td><td>224 ÷ 144 × 100</td></tr>
+      <tr><th scope="row">FP16</th><td>100</td><td>160,6</td><td>379 ÷ 236 × 100</td></tr>
+    </tbody></table></div>
+  <p><strong>Mi lectura:</strong> en esta prueba, la RTX 4090 procesa aproximadamente un 56–61 % más trabajo por segundo. La diferencia cambia con el formato. El ejemplo muestra que también importa cómo el software utiliza la GPU.</p>
+  <p>Para entrenar redes con muchas operaciones paralelas, elegiría una GPU compatible con el programa. Esta tabla compara dos GPU; la ventaja frente a una CPU depende del modelo y requeriría una prueba específica.</p>
 
-            <div class="mermaid-diagram">
-                <a title="Abrir el esquema a tamaño completo" href="images/cpu-amd.svg"><img class="architecture" src="images/cpu-amd.svg" alt="cpu amd: esquema funcional simplificado" loading="lazy" decoding="async"></a><p class="diagram-caption">Esquema simplificado del AMD Ryzen 9 9950X. Los 64 MB de L3 están distribuidos entre dos CCD, no son una única memoria.<a href="resources.html#ref-02" class="citation">[2]</a></p>
-            </div>
-        </div>
+  <h3>B. Inferencia de texto: estudio NITRO</h3>
+  <p>Fei y Abdelfattah estudiaron una plataforma Intel Meteor Lake en 2024, con 96 GB de RAM, Ubuntu 22.04 y OpenVINO 2024.4. La tabla muestra la generación de Llama 3.2-3B con su configuración estática. Es un caso de una generación anterior, no un test del 388H o del HX 475. <a class="ref" href="#fuente-8" aria-label="Fuente 8">[8]</a></p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Resultados NITRO"><table>
+    <caption>Tiempo medio de generación por token: menor es mejor. Fuente: NITRO, tabla 1.</caption>
+    <thead><tr><th scope="col">Dispositivo</th><th scope="col">Tiempo</th><th scope="col">Interpretación</th></tr></thead><tbody>
+      <tr><th scope="row">CPU</th><td>267,2 ms/token</td><td>Referencia de la comparación.</td></tr>
+      <tr><th scope="row">NPU</th><td>156,1 ms/token</td><td>Aproximadamente un 41,6 % menos de tiempo por token.</td></tr>
+    </tbody></table></div>
+  <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 245" role="img" aria-labelledby="latencia-title latencia-desc"><title id="latencia-title">NITRO: tiempo por token</title><desc id="latencia-desc">CPU: 267,2 milisegundos por token. NPU: 156,1. Un valor menor significa menos tiempo de espera.</desc><text class="label" x="30" y="30">Llama 3.2-3B · milisegundos por token · menor es mejor</text><text x="30" y="91">CPU</text><rect x="120" y="60" width="534.4" height="48" rx="6" fill="#94a3b8"/><text x="675" y="91">267,2</text><text x="30" y="161">NPU</text><rect x="120" y="130" width="312.2" height="48" rx="6" fill="#22d3ee"/><text x="453" y="161">156,1</text><path class="axis" d="M120,190 H720"/><text x="120" y="220" text-anchor="middle">0</text><text x="320" y="220" text-anchor="middle">100</text><text x="520" y="220" text-anchor="middle">200</text><text x="720" y="220" text-anchor="middle">300 ms</text></svg><figcaption>Figura 4. Gráfico elaborado con los datos de NITRO. Cálculo de la reducción: (267,2 − 156,1) ÷ 267,2 × 100. <a class="ref" href="#fuente-8" aria-label="Fuente 8">[8]</a></figcaption></figure>
+  <p><strong>Mi lectura:</strong> la NPU puede acelerar un modelo de lenguaje cuando el software está preparado para ella. El estudio también encontró problemas de compatibilidad. No incluyo su resultado de GPU porque los autores informan respuestas incorrectas. Esta prueba mide velocidad, no ahorro de energía.</p>
 
-        <div class="card">
-            <h2>1.2. La NPU y sus límites</h2>
-            <p>Una NPU es una unidad especializada en operaciones de redes neuronales. Estas redes usan muchas multiplicaciones y sumas con matrices. La NPU dispone de recursos dedicados para estas operaciones y utiliza memoria cercana para reducir movimientos de datos. El programa debe convertir o preparar el modelo para un formato compatible.</p>
-            
-            <p>Intel declara hasta 13 TOPS INT8 para la NPU del 285K. TOPS indica operaciones por segundo bajo condiciones concretas; no es una medida directa de tokens por segundo. La precisión, el tamaño del modelo, la memoria y el soporte del programa también influyen. Por eso, 13 TOPS no demuestran que todos los LLM sean imposibles en una NPU.<a href="resources.html#ref-01" class="citation">[1]</a></p>
-            
-            <p>Windows Studio Effects es un ejemplo de aplicación de IA que puede utilizar una NPU. Intel declara soporte en el 285K, pero la disponibilidad de los efectos depende también de Windows, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
+  <h3>C. Velocidad y energía: no son lo mismo</h3>
+  <p>Como ejemplo complementario, el repositorio público <em>npu-benchmark</em> compara ResNet50 en Intel Meteor Lake con OpenVINO. Publica el código y una prueba de carga sostenida. <a class="ref" href="#fuente-9" aria-label="Fuente 9">[9]</a></p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Energía por inferencia"><table>
+    <caption>Resultados publicados del experimento comunitario: ResNet50 y medición Intel RAPL.</caption>
+    <thead><tr><th scope="col">Dispositivo utilizado</th><th scope="col">Inferencias/s ↑</th><th scope="col">Potencia del paquete</th><th scope="col">Energía/inferencia ↓</th></tr></thead><tbody>
+      <tr><th scope="row">CPU</th><td>48</td><td>28,02 W</td><td>584,7 mJ</td></tr>
+      <tr><th scope="row">GPU integrada</th><td>333</td><td>27,99 W</td><td>83,9 mJ</td></tr>
+      <tr><th scope="row">NPU</th><td>294</td><td>22,87 W</td><td>77,8 mJ</td></tr>
+    </tbody></table></div>
+  <p><strong>Mi lectura:</strong> aquí la GPU es más rápida, mientras que la NPU usa menos energía por resultado. Esto explica su interés para una aplicación que funciona continuamente.</p>
+  <details><summary>Alcance de este ejemplo</summary><p>Es un experimento comunitario, no un estudio revisado por pares. No identifica el modelo exacto de CPU. RAPL mide el paquete compartido por CPU, GPU y NPU, no el consumo aislado de cada bloque ni el equipo completo en el enchufe. Por eso lo uso como ejemplo orientativo, no como prueba de superioridad entre fabricantes. Los valores de energía se reproducen del autor; el rendimiento está redondeado.</p></details>
+  <div class="note"><p><strong>Respuesta a la consigna:</strong> una GPU resulta apropiada para entrenar redes con mucho cálculo paralelo. Una NPU puede acelerar inferencia y mejorar la energía por resultado en aplicaciones compatibles. Para elegir conviene comprobar las dos cosas: cuánto tarda la tarea y cuánta energía utiliza.</p></div>
+</section>
 
-            <div class="mermaid-diagram">
-                <a title="Abrir el esquema a tamaño completo" href="images/npu.svg"><img class="architecture" src="images/npu.svg" alt="npu: esquema funcional simplificado" loading="lazy" decoding="async"></a><p class="diagram-caption">Esquema simplificado de una NPU. No representa el diseño físico exacto de Intel.<a href="resources.html#ref-01" class="citation">[1]</a></p>
-            </div>
-        </div>
+<section aria-labelledby="aplicaciones">
+  <h2 id="aplicaciones">1.5. Galería de aplicaciones reales</h2>
+  <p>Estas aplicaciones muestran usos diferentes del hardware. Las imágenes son capturas de sus proyectos o documentación, no pruebas realizadas por mí.</p>
+  <div class="gallery">
+    <figure><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui"><img src="https://saisai9d80.github.io/iaco-tp2-issd/images/stable-diffusion.png" alt="Interfaz de Stable Diffusion web UI con controles de generación de imágenes" loading="lazy" width="600" height="360"></a>
+      <h3>Stable Diffusion web UI</h3><p><strong>GPU:</strong> genera imágenes a partir de texto. La resolución, el modelo y la cantidad de imágenes influyen en el uso de VRAM.</p><p>Me serviría para estudiar cómo cambian los resultados al modificar una instrucción.</p><figcaption>Captura publicada por AUTOMATIC1111. <a class="ref" href="#fuente-10" aria-label="Fuente 10">[10]</a></figcaption></figure>
+    <figure><a href="https://learn.microsoft.com/en-us/windows/apps/develop/windows-integration/studio-effects"><img src="https://saisai9d80.github.io/iaco-tp2-issd/images/studio-effects.png" alt="Opciones de Windows Studio Effects para efectos de cámara" loading="lazy" width="600" height="360"></a>
+      <h3>Windows Studio Effects</h3><p><strong>NPU:</strong> aplica efectos como desenfoque de fondo y encuadre automático en equipos compatibles.</p><p>Es un ejemplo de inferencia continua. Las funciones disponibles dependen de Windows, los controladores y el fabricante del equipo.</p><figcaption>Imagen de la documentación de Microsoft. <a class="ref" href="#fuente-11" aria-label="Fuente 11">[11]</a></figcaption></figure>
+    <figure><a href="https://lmstudio.ai/docs/app"><img src="https://saisai9d80.github.io/iaco-tp2-issd/images/lmstudio.png" alt="Interfaz de LM Studio para conversar con modelos de lenguaje locales" loading="lazy" width="600" height="360"></a>
+      <h3>LM Studio</h3><p><strong>CPU y GPU:</strong> permite ejecutar modelos de lenguaje locales. La aceleración depende del motor, del modelo y del equipo.</p><p>Lo usaría para comparar respuestas a las mismas preguntas y registrar errores o contradicciones.</p><figcaption>Captura de la guía de LM Studio. <a class="ref" href="#fuente-12" aria-label="Fuente 12">[12]</a></figcaption></figure>
+  </div>
+</section>
 
-        <div class="card">
-            <h2>1.3. La GPU para el cálculo paralelo</h2>
-            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
-<table>
-                <tr>
-                    <th>Característica</th>
-                    <th>NVIDIA RTX 4090<a href="resources.html#ref-04" class="citation">[4]</a>
-</th>
-                    <th>AMD RX 7900 XTX<a href="resources.html#ref-05" class="citation">[5]</a>
-</th>
-                </tr>
-                <tr>
-                    <td>VRAM</td>
-                    <td>24 GB GDDR6X</td>
-                    <td>24 GB GDDR6</td>
-                </tr>
-                <tr>
-                    <td>Ancho de banda de memoria</td>
-                    <td>1008 GB/s</td>
-                    <td>960 GB/s</td>
-                </tr>
-                <tr>
-                    <td>Software</td>
-                    <td>CUDA y herramientas compatibles</td>
-                    <td>ROCm y herramientas compatibles</td>
-                </tr>
-                <tr>
-                    <td>Criterio de elección</td>
-                    <td>Verificar programa, versión y sistema operativo</td>
-                    <td>Verificar programa, versión y sistema operativo</td>
-                </tr>
-            </table>
+<section aria-labelledby="conclusion">
+  <h2 id="conclusion">1.6. Mi conclusión para una estación doméstica</h2>
+  <p>Al principio es fácil pensar que el mejor equipo es el que tiene más núcleos o más TOPS. Después de comparar las arquitecturas, entiendo que cada componente resuelve una parte del trabajo.</p>
+  <p>Para comenzar a investigar alineación y seguridad de IA, me interesa ejecutar modelos pequeños, hacer preguntas y revisar sus respuestas. Por eso priorizaría una GPU con memoria suficiente y herramientas compatibles. También necesito una CPU equilibrada y RAM para preparar datos y trabajar con los resultados.</p>
+  <p>La NPU me parece útil para aplicaciones locales que trabajan de forma continua. Sin embargo, su importancia en mi estación dependerá del software que realmente vaya a utilizar. Esta relación entre tareas y componentes es la base de las dos propuestas de la parte 3.</p>
+</section>
 
-            </div>
-<p>La RTX 4090 utiliza la arquitectura Ada Lovelace. Sus bloques de procesamiento incluyen núcleos CUDA y Tensor Cores de cuarta generación. Los Tensor Cores aceleran operaciones matriciales con formatos admitidos por el hardware y el software. No equivalen a núcleos de CPU. Los RT Cores tienen otra función principal: acelerar el trazado de rayos.<a href="resources.html#ref-04" class="citation">[4]</a></p>
-            
-            <p>Las dos tarjetas tienen 24 GB de memoria, pero usan ecosistemas diferentes. CUDA puede facilitar el uso de muchas herramientas de IA. Aun así, AMD también dispone de ROCm y existen implementaciones compatibles de vLLM y FlashAttention. La compatibilidad debe comprobarse para cada combinación de GPU, sistema y versión. No es correcto afirmar que AMD siempre necesita compilación manual o que NVIDIA es obligatoria para toda investigación.<a href="resources.html#ref-06" class="citation">[6]</a>, <a href="resources.html#ref-07" class="citation">[7]</a></p>
-            
-            <p>Para estimar la memoria mínima de los pesos, multiplico el número de parámetros por los bits usados y divido entre ocho. Un modelo de 70 mil millones de parámetros necesita aproximadamente 35 GB a 4 bits, 70 GB a 8 bits o 140 GB a 16 bits. Son GB decimales y solo incluyen los pesos. El programa necesita memoria adicional para otras estructuras y para el contexto.</p>
-            
-            <p>Por eso una RTX 4090 de 24 GB no puede guardar completamente los pesos de un modelo denso de 70B a 4 bits. Una RTX 6000 Ada de 48 GB ofrece más margen para una versión cuantizada, pero no para 70B a 16 bits. Algunos programas, como llama.cpp, permiten repartir el trabajo entre CPU y GPU. Esto amplía las posibilidades, aunque puede reducir la velocidad.<a href="resources.html#ref-08" class="citation">[8]</a>, <a href="resources.html#ref-20" class="citation">[20]</a></p>
-
-            <div class="mermaid-diagram">
-                <a title="Abrir el esquema a tamaño completo" href="images/gpu-ada.svg"><img class="architecture" src="images/gpu-ada.svg" alt="gpu ada: esquema funcional simplificado" loading="lazy" decoding="async"></a><p class="diagram-caption">Esquema funcional de NVIDIA Ada. Las unidades dibujadas pertenecen a un SM representativo; cada SM tiene sus propios recursos. La caché L2 y la VRAM se muestran a escala de GPU. No describe la arquitectura AMD ni el diseño físico exacto.<a href="resources.html#ref-04" class="citation">[4]</a></p>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>1.4. Qué muestran las pruebas publicadas</h2>
-            
-            <h3>Prueba de Puget Systems de 2023</h3>
-            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
-<table>
-                <tr>
-                    <th>Prueba</th>
-                    <th>RTX 4090<a href="resources.html#ref-09" class="citation">[9]</a>
-</th>
-                    <th>RX 7900 XTX<a href="resources.html#ref-09" class="citation">[9]</a>
-</th>
-                </tr>
-                <tr>
-                    <td>Stable Diffusion con Automatic1111</td>
-                    <td>21,04 iteraciones/s</td>
-                    <td>4,67 iteraciones/s</td>
-                </tr>
-                <tr>
-                    <td>Stable Diffusion con SHARK</td>
-                    <td>15,24 iteraciones/s</td>
-                    <td>20,76 iteraciones/s</td>
-                </tr>
-            </table>
-            </div>
-<p>Estos resultados históricos muestran que el programa cambia mucho el resultado. Automatic1111 y SHARK usaron configuraciones y versiones de modelos diferentes. No debemos comparar sus filas como si fueran una sola prueba. Tampoco representan el rendimiento actual de todos los LLM. La conclusión útil es que hay que elegir y probar el software, además de comparar el hardware.<a href="resources.html#ref-09" class="citation">[9]</a></p>
-
-            <section class="study"><h3>Entrenamiento en GPU: un ejemplo publicado</h3>
-<p>Entrenar significa calcular una predicción, medir el error, calcular gradientes y actualizar los pesos. En inferencia utilizo los pesos ya preparados para producir una respuesta. Por eso sus requisitos de memoria y sus métricas son diferentes. <a class="citation" href="resources.html#ref-45">[45]</a></p>
-<p>Lambda publicó en 2022 una comparación de RTX 3090 y RTX 4090, actualizada en 2023, con el contenedor PyTorch NGC <code>22.09-py3</code>. Para ResNet50, la tabla informa estos valores de rendimiento de entrenamiento. Presento el cociente dentro de cada precisión; no convierto estos datos en tokens por segundo. <a class="citation" href="resources.html#ref-44">[44]</a></p>
-<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario"><table>
-<caption>ResNet50: rendimiento relativo calculado a partir de Lambda</caption>
-<tr>
-<th>Precisión</th>
-<th>RTX 3090 (base)</th>
-<th>RTX 4090 / RTX 3090</th>
-</tr>
-<tr>
-<td>TF32</td>
-<td>1,00×</td>
-<td>224 / 144 ≈ 1,56×</td>
-</tr>
-<tr>
-<td>FP16</td>
-<td>1,00×</td>
-<td>379 / 236 ≈ 1,61×</td>
-</tr>
-</table></div>
-<p>El resultado apoya el uso de GPU para esta tarea de entrenamiento. No prueba una ventaja igual en todos los modelos. Tampoco es una comparación directa con la NPU de NITRO: cambian el modelo, la tarea y la métrica. La RTX 3090 aparece solo como referencia del estudio publicado.</p></section><h3>Estudio NITRO de 2024</h3>
-            <p>El estudio NITRO de 2024 probó inferencia en una NPU de una plataforma Intel Meteor Lake. Para Llama 3.2 de 3B, informó 267,2 ms por token en CPU y 156,1 ms en NPU. Un valor menor indica menos tiempo. El estudio usó OpenVINO 2024.4 y una configuración específica; no es una medición del 285K. Además, una mejora de tiempo no demuestra por sí sola una mejora de energía. Para esto hay que medir también el consumo.<a href="resources.html#ref-10" class="citation">[10]</a></p>
-
-            <h3>Resumen de tareas y limitaciones</h3>
-            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
-<table>
-                <tr>
-                    <th>Tarea</th>
-                    <th>Elección razonada</th>
-                    <th>Límite de la conclusión</th>
-                </tr>
-                <tr>
-                    <td>Entrenar o ajustar una red</td>
-                    <td>Una GPU compatible ofrece paralelismo y herramientas para calcular gradientes</td>
-                    <td>La memoria y el tamaño del modelo pueden impedir un entrenamiento completo</td>
-                </tr>
-                <tr>
-                    <td>Inferencia continua de un modelo compatible</td>
-                    <td>Una NPU puede descargar trabajo de CPU y GPU</td>
-                    <td>Comparar latencia, precisión y energía con el mismo modelo</td>
-                </tr>
-                <tr>
-                    <td>Preparar datos y coordinar programas</td>
-                    <td>La CPU sigue siendo necesaria</td>
-                    <td>Más núcleos no aceleran todas las tareas por igual</td>
-                </tr>
-            </table>
-        </div>
-</div>
-
-        <div class="card">
-            <h2>1.5. Aplicaciones reales</h2>
-            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">
-                Ejemplos concretos de cómo se utilizan los diferentes aceleradores en tareas de IA. Cada aplicación requiere una configuración específica y sus resultados dependen del hardware, el software y la versión utilizados.
-            </p>
-            
-            <div class="app-grid">
-                <div class="app-card">
-                    <figure class="app-figure"><a href="images/stable-diffusion.png"><img src="images/stable-diffusion.png" alt="Captura publicada por el proyecto AUTOMATIC1111. Ejemplo de interfaz; no es una prueba realizada en este trabajo." loading="lazy" decoding="async"></a><figcaption>Captura publicada por el proyecto AUTOMATIC1111. Ejemplo de interfaz; no es una prueba realizada en este trabajo. <a class="citation" href="resources.html#ref-46">[46]</a></figcaption></figure><div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">🎨</span> Stable Diffusion
-                    </div>
-                    <h3>Stable Diffusion y GPU</h3>
-                    <p>Stable Diffusion genera imágenes a partir de instrucciones. Esta tarea utiliza muchas operaciones paralelas y puede ejecutarse en una GPU compatible. La comparación de Puget Systems muestra que el programa influye en el resultado. Sus pruebas corresponden a generación de imágenes, no al entrenamiento del modelo. <a class="citation" href="resources.html#ref-09">[9]</a> <a class="citation" href="resources.html#ref-46">[46]</a></p>
-</div>
-                
-                <div class="app-card">
-                    <figure class="app-figure"><a href="images/studio-effects.png"><img src="images/studio-effects.png" alt="Captura de la documentación de Microsoft. Los efectos disponibles varían según el dispositivo." loading="lazy" decoding="async"></a><figcaption>Captura de la documentación de Microsoft. Los efectos disponibles varían según el dispositivo. <a class="citation" href="resources.html#ref-12">[12]</a></figcaption></figure><div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">📹</span> Windows Studio Effects
-                    </div>
-                    <h3>Windows Studio Effects y NPU</h3>
-                    <p>Los efectos de cámara (desenfoque de fondo, encuadre automático) son un ejemplo de inferencia continua en un equipo compatible. Intel declara soporte en el 285K, pero la disponibilidad depende del dispositivo, los controladores y la configuración del fabricante. No todos los efectos están disponibles en todos los equipos.<a href="resources.html#ref-01" class="citation">[1]</a>, <a href="resources.html#ref-12" class="citation">[12]</a></p>
-                </div>
-                
-                <div class="app-card">
-                    <figure class="app-figure"><a href="images/lmstudio.png"><img src="images/lmstudio.png" alt="Captura de la guía de LM Studio. Muestra la interfaz; no demuestra la velocidad ni el hardware utilizado." loading="lazy" decoding="async"></a><figcaption>Captura de la guía de LM Studio. Muestra la interfaz; no demuestra la velocidad ni el hardware utilizado. <a class="citation" href="resources.html#ref-47">[47]</a></figcaption></figure><div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">🦙</span> Ollama / LM Studio
-                    </div>
-                    <h3>CPU y GPU: Ollama o LM Studio</h3>
-                    <p>Ollama y LM Studio permiten trabajar con modelos locales. La CPU puede ejecutar inferencia; una GPU compatible puede acelerar parte del trabajo. La RAM sigue siendo necesaria. Para trabajar sin conexión debo descargar antes los archivos y evitar funciones que usen servicios remotos. <a class="citation" href="resources.html#ref-08">[8]</a> <a class="citation" href="resources.html#ref-13">[13]</a> <a class="citation" href="resources.html#ref-14">[14]</a></p>
-</div>
-                
-                <div class="app-card">
-                    <div class="garak-badge">
-                        <span style="color: #22d3ee;">&gt;</span> garak
-                    </div>
-                    <h3>garak y evaluación de modelos</h3>
-                    <p>Esta herramienta ejecuta pruebas para buscar determinados fallos en modelos de lenguaje. Sus resultados ayudan a comparar modelos, pero necesitan revisión humana. Los contenedores Docker pueden organizar el entorno; no equivalen a una máquina virtual ni eliminan todos los riesgos.<a href="resources.html#ref-11" class="citation">[11]</a>, <a href="resources.html#ref-15" class="citation">[15]</a></p>
-                </div>
-
-                <div class="app-card">
-                    <div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">⚡</span> vLLM
-                    </div>
-                    <h3>vLLM y servicio de modelos</h3>
-                    <p>vLLM es un motor de inferencia y servicio de modelos. Su documentación incluye distintas plataformas, entre ellas GPU NVIDIA, GPU AMD compatibles y CPU. Por eso CUDA no es un requisito universal. Debo comprobar la combinación de hardware, versión, sistema y modelo antes de elegirlo. <a class="citation" href="resources.html#ref-43">[43]</a></p>
-</div>
-                
-                <div class="app-card">
-                    <div class="garak-badge" style="font-size: 0.9rem;">
-                        <span style="color: #22d3ee;">🐳</span> Docker
-                    </div>
-                    <h3>Docker y aislamiento de entornos</h3>
-                    <p>Docker permite crear contenedores aislados para ejecutar modelos y pruebas en entornos controlados. Esto es útil para reproducir experimentos y organizar dependencias. Los contenedores comparten el kernel del sistema operativo; no son máquinas virtuales completas y no eliminan todos los riesgos de seguridad.<a href="resources.html#ref-15" class="citation">[15]</a></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="nav-buttons">
-            <a href="index.html" class="btn">← Volver al Inicio</a>
-            <a href="part2.html" class="btn">Parte 2: La Superautopista de los Datos →</a>
-        </div>
-    </main>
-<footer class="site-footer">Vitalii Golovin · ISSD · Arquitectura de Computadoras · Revisión: 27 de octubre de 2026</footer>
+<section aria-labelledby="fuentes">
+  <h2 id="fuentes">Fuentes de esta página</h2>
+  <p class="small">Consulta: 28 de octubre de 2026. Las especificaciones proceden de fabricantes; las pruebas se atribuyen a sus autores. Los esquemas y el gráfico son elaboraciones para este trabajo. El uso de asistencia de IA se documenta en <a href="prompts.html">Uso de IA</a>.</p>
+  <ol class="sources"><li id="fuente-1"><a href="https://www.intel.com/content/www/us/en/products/sku/245526/intel-core-ultra-x9-processor-388h-18m-cache-up-to-5-10-ghz/specifications.html">Intel — Core Ultra X9 388H: especificaciones</a></li>
+<li id="fuente-2"><a href="https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-9-hx-475.html">AMD — Ryzen AI 9 HX 475: especificaciones</a></li>
+<li id="fuente-3"><a href="https://cdrdv2-public.intel.com/866361/ITT_2025_Panther_Lake_Recap1.pdf">Intel — Panther Lake, presentación de arquitectura (2025), diapositiva 20: NPU</a></li>
+<li id="fuente-4"><a href="https://www.amd.com/en/technologies/xdna.html">AMD — Arquitectura XDNA</a></li>
+<li id="fuente-5"><a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/">NVIDIA — GeForce RTX 4090: especificaciones</a></li>
+<li id="fuente-6"><a href="https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf">NVIDIA — Ada GPU Architecture, documento técnico</a></li>
+<li id="fuente-7"><a href="https://lambda.ai/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark">Lambda — RTX 4090 vs. RTX 3090: Deep Learning Benchmark (2022; actualizado en 2023)</a></li>
+<li id="fuente-8"><a href="https://arxiv.org/html/2412.11053v1">Fei y Abdelfattah — NITRO: LLM Inference on Intel Laptop NPUs (2024), tabla 1</a></li>
+<li id="fuente-9"><a href="https://github.com/matosparreira/npu-benchmark">matosparreira — npu-benchmark: experimento público y código</a></li>
+<li id="fuente-10"><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">AUTOMATIC1111 — Stable Diffusion web UI: proyecto y captura de interfaz</a></li>
+<li id="fuente-11"><a href="https://learn.microsoft.com/en-us/windows/apps/develop/windows-integration/studio-effects">Microsoft — Windows Studio Effects: funciones y requisitos</a></li>
+<li id="fuente-12"><a href="https://lmstudio.ai/docs/app">LM Studio — Documentación de la aplicación</a></li>
+<li id="fuente-13"><a href="https://ir.amd.com/news-events/press-releases/detail/1270/amd-expands-ai-leadership-across-client-graphics-and-software-with-new-ryzen-ryzen-ai-and-amd-rocm-announcements-at-ces-2026">AMD — Presentación de Ryzen AI 400 y XDNA 2 en CES 2026</a></li>
+<li id="fuente-14"><a href="https://docs.pytorch.org/tutorials/beginner/introyt/trainingyt.html">PyTorch — The Training Loop: entrenamiento de una red neuronal</a></li></ol>
+  <p class="small">La bibliografía general del trabajo está en <a href="resources.html">Recursos</a>.</p>
+</section>
+<p class="page-next"><a href="part2.html">Continuar con Parte 2: Almacenamiento →</a></p>
+</main>
+<footer class="site-footer">
+  <p><strong>Instituto Superior Santo Domingo (ISSD)</strong></p>
+  <p>Córdoba, Argentina</p>
+  <p>Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2</p>
+  <p>Autor: Vitalii Golovin · Año 2026</p>
+  <p><a href="resources.html">Recursos y bibliografía</a> · <a href="prompts.html">Uso de IA</a></p>
+</footer>
 </body>
 </html>
