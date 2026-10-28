@@ -3,132 +3,828 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP2 ISSD - Arquitectura de Computadoras</title>
-    <script type="text/javascript" nonce="68260d350d6040e2a8a90d29cf6" src="//injections.adguard.org?ts=1793190471054&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000be6c820e9a10de2c55c4fbf7%26fn%3Dindex.html%26cd%3Dattachment%26ts%3D498108%26p%3Dfs%26cid%3D1%26sig%3D8a24f08c13b5c119f04a47c15be762df6b821800ad58290996a1f7eb93526f8d%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="68260d350d6040e2a8a90d29cf6" src="//injections.adguard.org?ts=1793190471054&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="stylesheet" href="styles.css">
+
+    <meta
+        name="description"
+        content="Trabajo Práctico Integrador N.º 2 de Arquitectura de Computadoras. Investigación sobre CPU, GPU, NPU, almacenamiento y dos configuraciones domésticas para estudiar inteligencia artificial."
+    >
+
+    <title>TP2 — Arquitectura de Computadoras | Vitalii Golovin</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Ajustes específicos de la página de inicio */
+
+        .intro-section p,
+        .intro-section li {
+            line-height: 1.75;
+        }
+
+        .intro-section p + p {
+            margin-top: 1rem;
+        }
+
+        .intro-section ul,
+        .intro-section ol {
+            padding-left: 1.5rem;
+        }
+
+        .intro-section li + li {
+            margin-top: 0.65rem;
+        }
+
+        .intro-note {
+            margin-top: 1.25rem;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid var(--accent, #06b6d4);
+            border-radius: 0 8px 8px 0;
+            background: rgba(6, 182, 212, 0.07);
+        }
+
+        .intro-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1.25rem;
+        }
+
+        .intro-table {
+            width: 100%;
+            min-width: 560px;
+            border-collapse: collapse;
+        }
+
+        .intro-table th,
+        .intro-table td {
+            padding: 1rem;
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.6;
+            border: 1px solid #334155;
+        }
+
+        .intro-table th {
+            color: var(--accent, #06b6d4);
+            background: #0f172a;
+        }
+
+        .intro-table caption {
+            padding-bottom: 0.75rem;
+            text-align: left;
+            color: var(--muted, #94a3b8);
+            font-size: 0.9rem;
+        }
+
+        .intro-page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .intro-page-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.25rem;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            background: #0f172a;
+        }
+
+        .intro-page-card h3 {
+            margin-top: 0;
+            color: var(--accent, #06b6d4);
+        }
+
+        .intro-page-card p {
+            flex-grow: 1;
+        }
+
+        .intro-page-card a {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-weight: 600;
+        }
+
+        .intro-reading-link {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .academic-footer {
+            margin-top: 3rem;
+            padding: 2rem 1rem;
+            border-top: 1px solid #334155;
+            background: #020617;
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        .academic-footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .academic-footer p {
+            margin: 0.4rem 0;
+            line-height: 1.6;
+        }
+
+        .academic-footer .institution-name {
+            color: #f1f5f9;
+            font-weight: 700;
+        }
+
+        .academic-footer .footer-detail {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .academic-footer a {
+            color: #22d3ee;
+        }
+
+        .academic-footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .home-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            background: #06b6d4;
+            color: #020617;
+            font-weight: 700;
+        }
+
+        .home-skip-link:focus {
+            top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .intro-page-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-table th,
+            .intro-table td {
+                padding: 0.75rem;
+            }
+
+            .academic-footer {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <a class="home-skip-link" href="#contenido">
+        Saltar al contenido
+    </a>
+
     <header class="site-header">
-        <h1>Trabajo Práctico Integrador N° 2</h1>
-        <p class="subtitle">Arquitectura de Computadoras — 2026</p>
+        <h1>Trabajo Práctico Integrador N.º 2</h1>
+        <p class="subtitle">
+            Arquitectura de Computadoras — 2026
+        </p>
     </header>
 
-    <nav>
-        <a href="index.html" class="active" aria-current="page">Inicio</a>
-        <a href="part1.html">Parte 1: Cómputo</a>
-        <a href="part2.html">Parte 2: Almacenamiento</a>
-        <a href="part3.html">Parte 3: Workstations</a>
-        <a href="conclusions.html">Conclusiones</a>
-        <a href="resources.html">Recursos</a>
-        <a href="prompts.html">Uso de IA</a>
+    <nav aria-label="Navegación principal">
+        <a href="index.html" class="active" aria-current="page">
+            Inicio
+        </a>
+        <a href="part1.html">
+            Parte 1: Cómputo
+        </a>
+        <a href="part2.html">
+            Parte 2: Almacenamiento
+        </a>
+        <a href="part3.html">
+            Parte 3: Workstations
+        </a>
+        <a href="conclusions.html">
+            Conclusiones
+        </a>
+        <a href="resources.html">
+            Recursos
+        </a>
+        <a href="prompts.html">
+            Uso de IA
+        </a>
     </nav>
-    
+
     <main class="container" id="contenido">
-        <!-- МЕТАДАННЫЕ -->
-        <div class="card meta-info">
-            <p><strong>Institución:</strong> Instituto Superior Santo Domingo (ISSD), Córdoba, Argentina</p>
-            <p><strong>Materia:</strong> Arquitectura de Computadoras</p>
-            <p><strong>Profesor:</strong> Emmanuel Galiotti</p>
-            <p><strong>Alumno:</strong> Vitalii Golovin</p>
-            <p><strong>Perfil elegido:</strong> Investigador en Alineación y Seguridad de Inteligencia Artificial</p>
-            <p><strong>Fecha de elaboración:</strong> 26 de octubre de 2026</p>
-            <p><strong>Fecha límite indicada en la consigna:</strong> 2 de noviembre de 2026</p>
-        </div>
 
-        <!-- OBJETIVO DEL PROYECTO -->
-        <div class="profile-card">
-            <h2>Objetivo del proyecto</h2>
-            <p>En este trabajo estudio cómo elegir una computadora doméstica para aprender e investigar la alineación y la seguridad de la inteligencia artificial. Este perfil compara respuestas de modelos, prepara pruebas y analiza sus resultados. Para hacerlo, necesita una combinación adecuada de CPU, GPU, memoria y almacenamiento.</p>
-            
-            <p>Primero comparo dos procesadores de fabricantes diferentes y dos tarjetas gráficas de gama alta. Después explico la función de una NPU y las diferencias entre SATA y NVMe. Finalmente propongo y justifico dos configuraciones domésticas para el mismo perfil: una económica, con un límite de 800 USD, y otra de gama alta. Comparo sus posibilidades y sus limitaciones según las tareas del usuario.</p>
-            
-            <p>El análisis utiliza especificaciones de fabricantes, estudios publicados y precios de tiendas. No presento estas cifras como pruebas realizadas por mí. Cuando hago un cálculo teórico, explico la fórmula y sus límites.</p>
-        </div>
+        <!-- INFORMACIÓN ACADÉMICA -->
 
-        <!-- TAREAS DEL TRABAJO -->
-        <section class="card">
-            <h2>Tareas del trabajo</h2>
-            <ul>
-                <li>Comparar dos CPU de fabricantes diferentes y explicar sus núcleos, hilos y memoria caché.</li>
-                <li>Comparar dos GPU y analizar la importancia de la VRAM y del cálculo en paralelo para la inteligencia artificial.</li>
-                <li>Explicar qué es una NPU, para qué se utiliza y cuáles son sus limitaciones.</li>
-                <li>Estudiar SATA, PCIe y NVMe, comparar datos de almacenamiento y explicar su relación con la carga de modelos.</li>
-                <li>Seleccionar los componentes de dos computadoras domésticas y justificar su compatibilidad, coste y utilidad para el perfil elegido.</li>
-                <li>Presentar conclusiones, citar las fuentes y explicar cómo se utilizó la inteligencia artificial durante el trabajo.</li>
-            </ul>
+        <section class="card meta-info intro-section"
+                 aria-labelledby="datos-trabajo">
+            <h2 id="datos-trabajo">Datos del trabajo</h2>
+
+            <p>
+                <strong>Institución:</strong>
+                Instituto Superior Santo Domingo (ISSD),
+                Córdoba, Argentina.
+            </p>
+
+            <p>
+                <strong>Materia:</strong>
+                Arquitectura de Computadoras.
+            </p>
+
+            <p>
+                <strong>Profesor:</strong>
+                Emmanuel Galiotti.
+            </p>
+
+            <p>
+                <strong>Alumno:</strong>
+                Vitalii Golovin.
+            </p>
+
+            <p>
+                <strong>Perfil profesional seleccionado:</strong>
+                Investigador en Alineación y Seguridad de
+                Inteligencia Artificial.
+            </p>
+
+            <p>
+                <strong>Fecha de entrega:</strong>
+                2 de noviembre de 2026.
+            </p>
         </section>
 
-        <section class="card">
-            <h2>Qué significa el perfil elegido</h2>
-            <p>Un investigador en alineación y seguridad de inteligencia artificial estudia cómo se comportan los modelos y en qué situaciones pueden fallar. La alineación busca que sus respuestas y acciones sean coherentes con los objetivos y las instrucciones humanas. La seguridad analiza los riesgos y las formas de reducir posibles daños.</p>
-            <p>En este trabajo, el perfil se aplica a tareas de aprendizaje e investigación a pequeña escala: preparar preguntas, ejecutar pruebas con modelos, guardar sus respuestas y comparar los resultados. Por ejemplo, puedo estudiar si un modelo sigue una instrucción, reconoce que no sabe una respuesta o produce información incorrecta.</p>
-            <p>El objetivo no es desarrollar una inteligencia artificial desde cero, sino elegir una computadora que permita realizar y documentar estas pruebas. Una mayor potencia puede facilitar el trabajo, pero no demuestra por sí sola que un modelo sea más seguro.</p>
+        <!-- OBJETIVO -->
+
+        <section class="profile-card intro-section"
+                 aria-labelledby="objetivo">
+            <h2 id="objetivo">Objetivo del proyecto</h2>
+
+            <p>
+                En este trabajo estudio cómo los componentes de una
+                computadora participan en las tareas de inteligencia
+                artificial. Comparo procesadores, explico la función
+                de la GPU y de la NPU, y analizo la importancia de la
+                memoria y del almacenamiento.
+            </p>
+
+            <p>
+                Después aplico lo aprendido al diseño de dos
+                computadoras domésticas para el mismo perfil:
+                una configuración económica y otra de gama alta.
+                El objetivo es justificar cada elección según
+                las tareas que quiero realizar y los recursos
+                disponibles.
+            </p>
+
+            <p>
+                Para mí, esta práctica también es un paso en mi
+                formación como futuro investigador. Me permite
+                relacionar los conceptos del curso con una pregunta
+                concreta: ¿qué equipo necesito para comenzar a
+                estudiar el comportamiento de los modelos de IA?
+            </p>
         </section>
 
-        <!-- POR QUÉ ELEGÍ ESTE PERFIL -->
-        <div class="card">
-            <h2>Por qué elegí este perfil</h2>
-            <p>Elegí este perfil porque me interesa entender cómo responde un modelo ante instrucciones confusas, errores y situaciones de riesgo. Una tarea posible consiste en usar una lista de preguntas, guardar las respuestas y comparar los resultados entre dos versiones del mismo modelo.</p>
-            
-            <p>Herramientas como garak ayudan a organizar algunas de estas pruebas, pero sus resultados necesitan interpretación. Un informe sin problemas detectados no demuestra que un modelo sea seguro en todas las situaciones.<a href="resources.html#ref-11" class="citation">[11]</a></p>
-        </div>
+        <!-- MOTIVACIÓN PERSONAL -->
 
-        <!-- QUÉ NECESITA ESTA COMPUTADORA -->
-        <div class="card">
-            <h2>Qué necesita esta computadora</h2>
-            <p>La GPU ayuda a ejecutar muchas operaciones matemáticas en paralelo. Su memoria, llamada VRAM, limita la parte del modelo que podemos mantener en la tarjeta. La CPU prepara los datos y coordina los programas. La RAM guarda datos que están en uso, mientras que el SSD almacena el sistema, los modelos y los resultados.</p>
-            
-            <p>Trabajar con un modelo local puede reducir el envío de datos a servicios externos. Sin embargo, hay que revisar la configuración, las conexiones de red y los permisos. Ejecutar un modelo en casa no garantiza por sí solo la privacidad ni la seguridad de los datos.</p>
-        </div>
+        <section class="card intro-section"
+                 aria-labelledby="motivacion">
+            <h2 id="motivacion">Por qué elegí este perfil</h2>
 
-        <!-- NAVEGACIÓN POR PÁGINAS -->
-        <div class="card">
-            <h2>Contenido del sitio</h2>
-            <div class="page-grid">
-                <div class="page-card">
-                    <h3>Parte 1: El Corazón Inteligente</h3>
-                    <p>Comparación de CPU, GPU, función de la NPU y aplicaciones reales con sus limitaciones.</p>
-                    <a href="part1.html">Ir a Parte 1 →</a>
-                </div>
-                
-                <div class="page-card">
-                    <h3>Parte 2: La Superautopista de los Datos</h3>
-                    <p>SATA, PCIe, NVMe. Tabla comparativa de velocidades, cálculo teórico de transferencia y tecnologías experimentales.</p>
-                    <a href="part2.html">Ir a Parte 2 →</a>
-                </div>
-                
-                <div class="page-card">
-                    <h3>Parte 3: Workstations</h3>
-                    <p>Selección y justificación de dos configuraciones domésticas para el perfil elegido, con comparación de componentes, presupuesto y compatibilidad.</p>
-                    <a href="part3.html">Ir a Parte 3 →</a>
-                </div>
-                
-                <div class="page-card">
-                    <h3>Conclusiones</h3>
-                    <p>Conclusiones vinculadas al estudio, con limitaciones formuladas de manera honesta y sin generalizaciones.</p>
-                    <a href="conclusions.html">Ir a Conclusiones →</a>
-                </div>
-                
-                <div class="page-card">
-                    <h3>Recursos</h3>
-                    <p>Especificaciones técnicas, ofertas comerciales utilizadas para estimar el presupuesto, pruebas de rendimiento y software de IA.</p>
-                    <a href="resources.html">Ir a Recursos →</a>
-                </div>
-                
-                <div class="page-card">
-                    <h3>Uso de IA</h3>
-                    <p>Resumen de tareas realizadas con ayuda de inteligencia artificial y comprobaciones necesarias del autor.</p>
-                    <a href="prompts.html">Ir a Uso de IA →</a>
-                </div>
+            <p>
+                Me interesa conocer las posibilidades de la
+                inteligencia artificial, pero también entender
+                sus errores y sus límites. Me preocupa que una
+                persona pueda aceptar una respuesta sin comprobarla
+                o dejar una decisión importante en manos de un
+                sistema sin suficiente supervisión.
+            </p>
+
+            <p>
+                Por eso quiero aprender cómo evaluar las respuestas
+                de un modelo: observar si sigue las instrucciones,
+                si presenta información incorrecta y si reconoce
+                cuando no tiene una respuesta suficiente. También
+                me interesa cómo mantener el control humano y
+                favorecer un uso responsable de estas tecnologías.
+            </p>
+
+            <p>
+                Pienso que el desarrollo de la IA puede dar lugar
+                a nuevas especializaciones y transformar las que
+                ya existen. Imagino, por ejemplo, funciones más
+                específicas relacionadas con la evaluación de
+                respuestas, la seguridad de los sistemas y la
+                supervisión humana.
+            </p>
+
+            <p>
+                Dentro de este interés, elegí el perfil de
+                <strong>Investigador en Alineación y Seguridad
+                de Inteligencia Artificial</strong>. Lo considero
+                una dirección para mi aprendizaje. En esta práctica
+                doy un primer paso: estudiar el hardware que
+                permitiría realizar pequeñas investigaciones
+                desde casa.
+            </p>
+        </section>
+
+        <!-- SIGNIFICADO DEL PERFIL -->
+
+        <section class="card intro-section"
+                 aria-labelledby="perfil">
+            <h2 id="perfil">Qué significa el perfil elegido</h2>
+
+            <p>
+                En este trabajo, entiendo la
+                <strong>alineación</strong> como el estudio de
+                cómo conseguir que el comportamiento de un
+                sistema de IA sea coherente con los objetivos
+                humanos y las instrucciones que debe seguir.
+            </p>
+
+            <p>
+                La <strong>seguridad</strong> se relaciona con
+                identificar fallos, estudiar sus consecuencias
+                y buscar formas de reducir los riesgos. Para
+                comenzar, me concentraría en observar respuestas,
+                comparar resultados y documentar los problemas
+                encontrados.
+            </p>
+
+            <p>
+                Mi propuesta tiene una escala de aprendizaje:
+                trabajar con modelos que pueda ejecutar en una
+                computadora doméstica y con pruebas que pueda
+                comprender, repetir y explicar.
+            </p>
+        </section>
+
+        <!-- ACTIVIDADES CONCRETAS -->
+
+        <section class="card intro-section"
+                 aria-labelledby="investigacion-domestica">
+            <h2 id="investigacion-domestica">
+                Qué investigaría con una computadora doméstica
+            </h2>
+
+            <p>
+                Una primera investigación podría consistir en
+                comparar las respuestas de dos modelos ante
+                una misma lista de preguntas. Organizaría el
+                trabajo de la siguiente manera:
+            </p>
+
+            <ol>
+                <li>
+                    Elegir un modelo pequeño que pueda ejecutarse
+                    en el equipo y registrar su versión.
+                </li>
+                <li>
+                    Preparar preguntas e instrucciones con un
+                    objetivo claro para cada prueba.
+                </li>
+                <li>
+                    Guardar las respuestas y observar si el modelo
+                    sigue las instrucciones o presenta errores.
+                </li>
+                <li>
+                    Repetir las preguntas con otra formulación
+                    o con otro modelo.
+                </li>
+                <li>
+                    Comparar los resultados y explicar las
+                    diferencias encontradas.
+                </li>
+            </ol>
+
+            <div class="intro-note">
+                <p>
+                    <strong>Un ejemplo de prueba:</strong>
+                    pedir al modelo que resuma un documento
+                    preparado por mí. Dentro del documento podría
+                    aparecer una frase que intenta cambiar la tarea.
+                    Observaría si el modelo la trata como parte
+                    del texto o si la sigue como una nueva orden.
+                    Este ejemplo permite introducir el problema
+                    de la <em>inyección de instrucciones</em>,
+                    también llamado <em>prompt injection</em>.
+                </p>
             </div>
+
+            <p>
+                Comenzaría con textos de prueba sin datos personales
+                y sin dar al modelo acceso a archivos importantes
+                o servicios externos. Herramientas como
+                <strong>garak</strong> pueden ayudar a organizar
+                evaluaciones, pero los resultados requieren
+                interpretación y revisión.
+                <a href="resources.html#ref-11"
+                   class="citation"
+                   aria-label="Fuente 11: garak">[11]</a>
+            </p>
+        </section>
+
+        <!-- ELECCIÓN DEL TRABAJO LOCAL -->
+
+        <section class="card intro-section"
+                 aria-labelledby="trabajo-local">
+            <h2 id="trabajo-local">
+                Por qué propongo trabajar con modelos locales
+            </h2>
+
+            <p>
+                Para este proyecto prefiero ejecutar los modelos
+                en mi propia computadora. Así puedo conservar
+                los archivos de las pruebas, elegir la versión
+                del modelo y repetir el trabajo con una
+                configuración conocida.
+            </p>
+
+            <p>
+                También me interesa poder trabajar sin enviar
+                el contenido de cada prueba a un servicio
+                externo. Por ejemplo, LM Studio permite utilizar
+                modelos sin conexión después de descargar los
+                archivos necesarios.
+                <a href="resources.html#ref-14"
+                   class="citation"
+                   aria-label="Fuente 14: funcionamiento local de LM Studio">
+                    [14]
+                </a>
+            </p>
+
+            <p>
+                Esta es una elección para mi proyecto, no una
+                condición de toda investigación sobre IA.
+                Para mantener el trabajo local también tendría
+                que revisar las funciones de red y los permisos
+                de los programas utilizados.
+            </p>
+        </section>
+
+        <!-- RELACIÓN ENTRE TAREAS Y HARDWARE -->
+
+        <section class="card intro-section"
+                 aria-labelledby="hardware">
+            <h2 id="hardware">
+                Cómo estas tareas orientan la elección del hardware
+            </h2>
+
+            <p>
+                Antes de elegir modelos de componentes, necesito
+                relacionar cada tarea con los recursos que utiliza.
+                Esta relación será la base de las configuraciones
+                presentadas en la parte 3.
+            </p>
+
+            <div class="intro-table-wrapper">
+                <table class="intro-table">
+                    <caption>
+                        Relación entre las actividades propuestas
+                        y los componentes del equipo.
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Actividad</th>
+                            <th scope="col">Recurso importante</th>
+                            <th scope="col">Motivo de la elección</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                Ejecutar un modelo local con
+                                aceleración gráfica.
+                            </td>
+                            <td>
+                                GPU y memoria de video
+                                (<abbr title="Video Random Access Memory">VRAM</abbr>).
+                            </td>
+                            <td>
+                                La GPU realiza operaciones en
+                                paralelo. Su memoria condiciona
+                                qué modelos y configuraciones
+                                puedo utilizar.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Preparar preguntas, organizar
+                                archivos y analizar resultados.
+                            </td>
+                            <td>CPU.</td>
+                            <td>
+                                Ejecuta los programas y coordina
+                                las tareas del sistema.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Mantener los programas y los
+                                datos en uso.
+                            </td>
+                            <td>Memoria RAM.</td>
+                            <td>
+                                Debe tener capacidad suficiente
+                                para la carga de trabajo y las
+                                aplicaciones abiertas.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Guardar modelos, preguntas
+                                y resultados.
+                            </td>
+                            <td>Almacenamiento SSD.</td>
+                            <td>
+                                La capacidad determina cuánto
+                                puedo conservar. La velocidad
+                                influye en la lectura y carga
+                                de los archivos.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Realizar series prolongadas
+                                de pruebas.
+                            </td>
+                            <td>
+                                Refrigeración y fuente
+                                de alimentación.
+                            </td>
+                            <td>
+                                El equipo necesita refrigeración
+                                adecuada y una fuente compatible
+                                con la potencia y los conectores
+                                de sus componentes.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Organizar un entorno de prueba
+                                separado.
+                            </td>
+                            <td>
+                                Configuración del software,
+                                permisos y recursos disponibles.
+                            </td>
+                            <td>
+                                La separación depende de cómo
+                                se configura el entorno.
+                                Si utilizo una máquina virtual,
+                                debo reservar RAM, almacenamiento
+                                y recursos de CPU.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                La configuración económica estará orientada a
+                comenzar con modelos pequeños y pruebas
+                consecutivas. La de gama alta ofrecerá más
+                recursos para ampliar el trabajo. En ambos casos,
+                justificaré qué aporta cada componente al
+                objetivo del proyecto.
+            </p>
+        </section>
+
+        <!-- ORGANIZACIÓN SEGÚN LA CONSIGNA -->
+
+        <section class="card intro-section"
+                 aria-labelledby="tareas">
+            <h2 id="tareas">Tareas de la práctica</h2>
+
+            <p>
+                El trabajo se organiza en las tres partes
+                propuestas en la consigna.
+            </p>
+
+            <h3>Parte 1: El Corazón Inteligente de la Máquina</h3>
+
+            <ul>
+                <li>
+                    Investigar dos CPU de fabricantes rivales,
+                    una GPU de gama alta y una NPU integrada.
+                </li>
+                <li>
+                    Explicar su arquitectura con palabras propias
+                    y diagramas: núcleos, hilos, caché y unidades
+                    especializadas en operaciones de IA.
+                </li>
+                <li>
+                    Analizar benchmarks y casos de uso para
+                    comprender el entrenamiento en GPU y la
+                    inferencia en NPU.
+                </li>
+                <li>
+                    Presentar una galería de aplicaciones reales
+                    con imágenes y descripciones.
+                </li>
+            </ul>
+
+            <h3>Parte 2: La Superautopista de los Datos</h3>
+
+            <ul>
+                <li>
+                    Explicar las diferencias entre SATA y NVMe,
+                    su relación con PCIe y su importancia para
+                    cargar grandes conjuntos de datos.
+                </li>
+                <li>
+                    Investigar PCIe 5.0, DirectStorage y
+                    tecnologías experimentales de almacenamiento.
+                </li>
+                <li>
+                    Comparar visualmente las velocidades de
+                    lectura y escritura de HDD, SSD SATA
+                    y SSD NVMe.
+                </li>
+            </ul>
+
+            <h3>Parte 3: El Diseño Maestro</h3>
+
+            <ul>
+                <li>
+                    Diseñar dos configuraciones para el perfil
+                    seleccionado y justificar sus componentes.
+                </li>
+                <li>
+                    Respetar el límite de 800 USD de la propuesta
+                    económica y explicar dónde se puede ahorrar.
+                </li>
+                <li>
+                    Presentar las configuraciones con imágenes,
+                    un esquema de conexiones y una síntesis
+                    visual de sus capacidades.
+                </li>
+            </ul>
+
+            <p>
+                Las fuentes consultadas se reúnen en
+                <a href="resources.html">Bibliografía y Recursos</a>.
+                La ayuda recibida de herramientas de inteligencia
+                artificial se explica en
+                <a href="prompts.html">Uso de IA</a>.
+            </p>
+        </section>
+
+        <!-- ACCESO A LOS CONTENIDOS -->
+
+        <section class="card intro-section"
+                 aria-labelledby="contenido-sitio">
+            <h2 id="contenido-sitio">Contenido del sitio</h2>
+
+            <div class="intro-page-grid">
+
+                <article class="intro-page-card">
+                    <h3>Parte 1: Cómputo</h3>
+                    <p>
+                        CPU, GPU y NPU: arquitectura,
+                        aplicaciones y resultados publicados.
+                    </p>
+                    <a href="part1.html">
+                        Leer la parte 1 →
+                    </a>
+                </article>
+
+                <article class="intro-page-card">
+                    <h3>Parte 2: Almacenamiento</h3>
+                    <p>
+                        Interfaces, velocidades y tecnologías
+                        para almacenar y acceder a los datos.
+                    </p>
+                    <a href="part2.html">
+                        Leer la parte 2 →
+                    </a>
+                </article>
+
+                <article class="intro-page-card">
+                    <h3>Parte 3: Workstations</h3>
+                    <p>
+                        Dos configuraciones domésticas:
+                        componentes, compatibilidad,
+                        presupuesto y justificación.
+                    </p>
+                    <a href="part3.html">
+                        Leer la parte 3 →
+                    </a>
+                </article>
+
+                <article class="intro-page-card">
+                    <h3>Conclusiones</h3>
+                    <p>
+                        Lo aprendido y las decisiones que
+                        surgen de la comparación.
+                    </p>
+                    <a href="conclusions.html">
+                        Leer las conclusiones →
+                    </a>
+                </article>
+
+                <article class="intro-page-card">
+                    <h3>Bibliografía y Recursos</h3>
+                    <p>
+                        Documentación técnica, estudios,
+                        herramientas y fuentes de precios.
+                    </p>
+                    <a href="resources.html">
+                        Consultar las fuentes →
+                    </a>
+                </article>
+
+                <article class="intro-page-card">
+                    <h3>Uso de IA</h3>
+                    <p>
+                        Cómo utilicé la asistencia de IA
+                        para preparar y revisar el trabajo.
+                    </p>
+                    <a href="prompts.html">
+                        Ver el proceso →
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ALCANCE ACADÉMICO -->
+
+        <aside class="highlight intro-section"
+               aria-label="Alcance de la investigación">
+            <p>
+                <strong>Alcance del trabajo:</strong>
+                Esta investigación se basa en documentación
+                técnica, estudios publicados y cálculos
+                explicados en el texto. Las computadoras son
+                propuestas de configuración; no se realizaron
+                pruebas físicas propias.
+            </p>
+        </aside>
+
+        <div class="intro-reading-link">
+            <a href="part1.html" class="btn">
+                Comenzar lectura: Parte 1 →
+            </a>
         </div>
 
-        <div class="highlight">
-            <strong>Alcance del trabajo:</strong> Esta investigación se basa en documentación técnica, estudios publicados y cálculos explicados en el texto. Las configuraciones son propuestas académicas; no se realizaron pruebas físicas propias.
-        </div>
-
-        <div class="nav-buttons" style="justify-content: center;">
-            <a href="part1.html" class="btn">Comenzar lectura: Parte 1 →</a>
-        </div>
     </main>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer class="academic-footer">
+        <div class="academic-footer-inner">
+
+            <p class="institution-name">
+                Instituto Superior Santo Domingo (ISSD)
+            </p>
+
+            <p>Córdoba, Argentina</p>
+
+            <p>
+                Arquitectura de Computadoras
+                · Trabajo Práctico Integrador N.º 2
+            </p>
+
+            <p>
+                <strong>Autor:</strong> Vitalii Golovin
+                · <strong>Año:</strong> 2026
+            </p>
+
+            <p class="footer-detail">
+                Proyecto académico de estudiante.
+            </p>
+
+            <div class="academic-footer-links">
+                <a href="resources.html">
+                    Bibliografía y Recursos
+                </a>
+
+                <a href="prompts.html">
+                    Uso de IA
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
 </body>
 </html>
