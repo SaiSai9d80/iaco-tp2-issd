@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 2: Almacenamiento - TP2 ISSD</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Investigación académica de arquitectura de computadoras: CPU, GPU, NPU, almacenamiento y dos propuestas para estudiar inteligencia artificial.">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a><nav>
+        <a href="index.html">Inicio</a>
+        <a href="part1.html">Parte 1: Cómputo</a>
+        <a href="part2.html" class="active" aria-current="page">Parte 2: Almacenamiento</a>
+        <a href="part3.html">Parte 3: Workstations</a>
+        <a href="conclusions.html">Conclusiones</a>
+        <a href="resources.html">Recursos</a>
+        <a href="prompts.html">Uso de IA</a>
+    </nav>
+    
+    <main class="container" id="contenido">
+        <section class="card"><h2>Aplicación a las dos propuestas</h2><p>En la opción de hasta 800 USD selecciono un SSD SATA ADATA SU650 de 256 GB por su coste. En la opción de gama alta utilizo un ADATA LEGEND 900 PRO NVMe de 2 TB. Los discos de la tabla histórica de esta página son ejemplos para estudiar interfaces; no forman parte del presupuesto nuevo. No atribuyo a los SSD elegidos las mediciones de esos otros modelos.</p></section><h1>Parte 2: La Superautopista de los Datos</h1>
+        
+        <div class="card">
+            <h2>2.1. SATA, PCIe y NVMe</h2>
+            <p>Podemos comparar el almacenamiento con una carretera. SATA es una vía con menos capacidad de transferencia; PCIe permite enlaces más rápidos. NVMe es el protocolo que muchos SSD utilizan sobre PCIe. M.2 describe un formato físico: un SSD M.2 puede usar SATA o PCIe, según el modelo y la placa.<a href="resources.html#ref-16" class="citation">[16]</a>, <a href="resources.html#ref-17" class="citation">[17]</a>, <a href="resources.html#ref-18" class="citation">[18]</a></p>
+            
+            <div class="analogy-container">
+                <div class="analogy-card sata">
+                    <h3>🛣️ SATA</h3>
+                    <p><strong>Vía con menos capacidad</strong></p>
+                    <p style="font-size: 1.2rem; color: var(--accent); margin: 10px 0;">~213-560 MB/s</p>
+                    <p>La imagen de una carretera de dos carriles ayuda a entender la diferencia, pero no describe literalmente todos los conectores. En IA, un disco SATA puede funcionar para aprender inferencia local, aunque la carga del modelo sea más lenta.<a href="resources.html#ref-16" class="citation">[16]</a>, <a href="resources.html#ref-17" class="citation">[17]</a></p>
+                </div>
+                <div class="analogy-card pcie">
+                    <h3>🚀 PCIe con NVMe</h3>
+                    <p><strong>Vía con más capacidad</strong></p>
+                    <p style="font-size: 1.2rem; color: var(--accent); margin: 10px 0;">Ejemplos de lectura: 3500–12400 MB/s</p>
+                    <p>Muchos SSD NVMe M.2 usan cuatro líneas PCIe, llamadas x4. Además, un SSD PCIe 4.0 no alcanza siempre la misma velocidad que otro: importan el controlador, la memoria y la capacidad del modelo.<a href="resources.html#ref-18" class="citation">[18]</a>, <a href="resources.html#ref-19" class="citation">[19]</a></p>
+                </div>
+            </div>
+            
+            <p>En IA, un disco más rápido puede reducir el tiempo de lectura de modelos y datasets. Sin embargo, después de cargar el modelo en RAM o VRAM, la velocidad de generación puede depender principalmente de CPU, GPU y memoria. Un SSD SATA no hace imposible aprender inferencia local.</p>
+        </div>
+
+        <div class="card">
+            <h2>2.2. Tabla comparativa de velocidades</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;">
+                Comparación orientativa. HDD: resultado medido por StorageReview. SSD: máximos anunciados por el fabricante. No son mediciones realizadas en el mismo equipo ni pruebas propias.
+            </p>
+            
+            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
+<table>
+                <tr>
+                    <th>Unidad y capacidad</th>
+                    <th>Lectura MB/s</th>
+                    <th>Escritura MB/s</th>
+                    <th>Tipo de dato</th>
+                </tr>
+                <tr>
+                    <td>Seagate BarraCuda Pro 10 TB<a href="resources.html#ref-16" class="citation">[16]</a>
+</td>
+                    <td>213,09</td>
+                    <td>210,70</td>
+                    <td>IOMeter secuencial 2 MB; prueba de 2016</td>
+                </tr>
+                <tr>
+                    <td>Samsung 870 EVO<a href="resources.html#ref-17" class="citation">[17]</a>
+</td>
+                    <td>560</td>
+                    <td>530</td>
+                    <td>Máximos secuenciales de ficha técnica</td>
+                </tr>
+                <tr>
+                    <td>Kingston NV2 500 GB<a href="resources.html#ref-18" class="citation">[18]</a>
+</td>
+                    <td>3500</td>
+                    <td>2100</td>
+                    <td>Máximos de esta capacidad</td>
+                </tr>
+                <tr>
+                    <td>Crucial T700 2 TB<a href="resources.html#ref-19" class="citation">[19]</a>
+</td>
+                    <td>12400</td>
+                    <td>11800</td>
+                    <td>Máximos de esta capacidad</td>
+                </tr>
+            </table>
+
+            </div>
+<div class="storage-charts">
+<figure class="bar-chart"><figcaption>Lectura secuencial (MB/s)</figcaption><p class="source-note">Escala común: 0–14 000 MB/s</p>
+<div class="bar-row">
+<span>BarraCuda Pro 10 TB: <strong>213,09 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:1.52207%"></div></div>
+</div>
+<div class="bar-row">
+<span>Samsung 870 EVO: <strong>560 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:4.00000%"></div></div>
+</div>
+<div class="bar-row">
+<span>Kingston NV2 500 GB: <strong>3500 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:25.00000%"></div></div>
+</div>
+<div class="bar-row">
+<span>Crucial T700 2 TB: <strong>12400 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:88.57143%"></div></div>
+</div></figure><figure class="bar-chart"><figcaption>Escritura secuencial (MB/s)</figcaption><p class="source-note">Escala común: 0–14 000 MB/s</p>
+<div class="bar-row">
+<span>BarraCuda Pro 10 TB: <strong>210,7 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:1.50500%"></div></div>
+</div>
+<div class="bar-row">
+<span>Samsung 870 EVO: <strong>530 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:3.78571%"></div></div>
+</div>
+<div class="bar-row">
+<span>Kingston NV2 500 GB: <strong>2100 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:15.00000%"></div></div>
+</div>
+<div class="bar-row">
+<span>Crucial T700 2 TB: <strong>11800 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:84.28571%"></div></div>
+</div></figure>
+</div>
+<p style="color: var(--muted); font-size: 0.85rem; font-style: italic; text-align: center; margin-top: 10px;">
+                HDD: medición de StorageReview (2016). SSD: máximos declarados por el fabricante. No son pruebas propias ni mediciones en el mismo equipo.<a href="resources.html#ref-16" class="citation">[16]</a>-<a href="resources.html#ref-19" class="citation">[19]</a>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>2.3. Un cálculo teórico de transferencia</h2>
+            <p>Para un archivo de 16 GB decimales, uso 16 000 MB y la fórmula <strong>tiempo = tamaño / velocidad</strong>.</p>
+            
+            <div class="scenario-box">
+                <h4>Con SSD SATA (560 MB/s)</h4>
+                <p>16 000 MB / 560 MB/s = <strong>28,6 segundos</strong> (ideal)</p>
+            </div>
+            
+            <div class="scenario-box">
+                <h4>Con NVMe PCIe 4.0 (3500 MB/s)</h4>
+                <p>16 000 MB / 3500 MB/s = <strong>4,6 segundos</strong> (ideal)</p>
+            </div>
+            
+            <p>Esta diferencia ayuda a entender el papel del SSD, pero <strong>no es el tiempo real de inicio de un modelo</strong>. El tiempo real también incluye abrir archivos, preparar memoria, procesar el formato y transferir datos a la GPU. La velocidad puede cambiar con la temperatura, la caché y el espacio libre del SSD. Para medir el inicio de un modelo habría que utilizar el mismo archivo, equipo y programa, y repetir la prueba.</p>
+            
+            <div class="highlight">
+                <strong>✓ Observación:</strong> Este cálculo es teórico. No representa una medición propia ni garantiza tiempos reales de carga de modelos.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2.4. PCIe 5.0 y DirectStorage</h2>
+            
+            <h3>PCIe 5.0</h3>
+            <p>PCIe 5.0 duplica la tasa de transferencia por línea frente a PCIe 4.0. Esto permite SSD con mayor velocidad secuencial, como el T700 de 2 TB de la tabla. La mejora resulta útil cuando la aplicación mueve muchos datos y el almacenamiento es realmente el límite. No elimina todos los tiempos de espera.<a href="resources.html#ref-19" class="citation">[19]</a></p>
+            
+            <h3>DirectStorage</h3>
+            <p>DirectStorage es una API de Microsoft. La versión 1.1 incorpora descompresión en GPU para aplicaciones compatibles. La aplicación debe integrar esta tecnología. No basta con instalar un SSD NVMe para que todos los programas de IA la utilicen.<a href="resources.html#ref-21" class="citation">[21]</a></p>
+            
+            <p>Tampoco es correcto dibujar siempre una ruta SSD → VRAM que elimina toda intervención de CPU y RAM. La documentación de DirectStorage 1.1 describe una ruta que puede utilizar memoria del sistema antes de la descompresión en GPU. En este trabajo no dispongo de una prueba de DirectStorage con Llama 70B; por eso no atribuyo a esta API una reducción concreta del tiempo de auditoría.<a href="resources.html#ref-21" class="citation">[21]</a></p>
+        </div>
+
+        <div class="card">
+            <h2>2.5. Tecnologías experimentales y nuevas conexiones</h2>
+            
+            <h3>CXL (Compute Express Link)</h3>
+            <p>CXL es una tecnología de interconexión entre procesadores, memoria y aceleradores. Puede permitir expansión y agrupación de memoria en sistemas compatibles. No es un nuevo material de almacenamiento ni convierte automáticamente la RAM adicional en VRAM de una tarjeta doméstica.<a href="resources.html#ref-22" class="citation">[22]</a></p>
+            
+            <h3>Almacenamiento óptico 5D</h3>
+            <p>El almacenamiento óptico 5D investigado en la Universidad de Southampton utiliza estructuras dentro de vidrio de sílice. Es una línea de investigación orientada al archivo duradero. La universidad describe capacidades potenciales de hasta 360 TB para determinados formatos. No equivale a un SSD comercial ni ofrece capacidad o velocidad ilimitadas. Además, el vidrio de sílice contiene silicio: se trata de una alternativa al almacenamiento electrónico convencional, no de la desaparición del elemento químico.<a href="resources.html#ref-23" class="citation">[23]</a></p>
+            
+            <h3>PCIe 6.0</h3>
+            <p>PCIe 6.0 especifica 64 GT/s por línea. GT/s significa transferencias por segundo y no debe confundirse con GB/s. El valor de 256 GB/s se refiere al ancho de banda agregado en ambas direcciones de un enlace x16. No es la velocidad de un SSD M.2 x4. No uso este estándar para prometer una velocidad futura concreta de la computadora propuesta.<a href="resources.html#ref-24" class="citation">[24]</a></p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="part1.html" class="btn">← Parte 1: El Corazón Inteligente</a>
+            <a href="part3.html" class="btn">Parte 3: El Diseño Maestro →</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">Vitalii Golovin · ISSD · Arquitectura de Computadoras · Revisión: 27 de octubre de 2026</footer>
+</body>
+</html>
