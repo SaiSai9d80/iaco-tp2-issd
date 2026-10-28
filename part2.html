@@ -1,177 +1,153 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parte 2: Almacenamiento - TP2 ISSD</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Investigación académica de arquitectura de computadoras: CPU, GPU, NPU, almacenamiento y dos propuestas para estudiar inteligencia artificial.">
-</head>
-<body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a><nav>
-        <a href="index.html">Inicio</a>
-        <a href="part1.html">Parte 1: Cómputo</a>
-        <a href="part2.html" class="active" aria-current="page">Parte 2: Almacenamiento</a>
-        <a href="part3.html">Parte 3: Workstations</a>
-        <a href="conclusions.html">Conclusiones</a>
-        <a href="resources.html">Recursos</a>
-        <a href="prompts.html">Uso de IA</a>
-    </nav>
-    
-    <main class="container" id="contenido">
-        <section class="card"><h2>Aplicación a las dos propuestas</h2><p>En la opción de hasta 800 USD selecciono un SSD SATA ADATA SU650 de 256 GB por su coste. En la opción de gama alta utilizo un ADATA LEGEND 900 PRO NVMe de 2 TB. Los discos de la tabla histórica de esta página son ejemplos para estudiar interfaces; no forman parte del presupuesto nuevo. No atribuyo a los SSD elegidos las mediciones de esos otros modelos.</p></section><h1>Parte 2: La Superautopista de los Datos</h1>
-        
-        <div class="card">
-            <h2>2.1. SATA, PCIe y NVMe</h2>
-            <p>Podemos comparar el almacenamiento con una carretera. SATA es una vía con menos capacidad de transferencia; PCIe permite enlaces más rápidos. NVMe es el protocolo que muchos SSD utilizan sobre PCIe. M.2 describe un formato físico: un SSD M.2 puede usar SATA o PCIe, según el modelo y la placa.<a href="resources.html#ref-16" class="citation">[16]</a>, <a href="resources.html#ref-17" class="citation">[17]</a>, <a href="resources.html#ref-18" class="citation">[18]</a></p>
-            
-            <div class="analogy-container">
-                <div class="analogy-card sata">
-                    <h3>🛣️ SATA</h3>
-                    <p><strong>Vía con menos capacidad</strong></p>
-                    <p style="font-size: 1.2rem; color: var(--accent); margin: 10px 0;">~213-560 MB/s</p>
-                    <p>La imagen de una carretera de dos carriles ayuda a entender la diferencia, pero no describe literalmente todos los conectores. En IA, un disco SATA puede funcionar para aprender inferencia local, aunque la carga del modelo sea más lenta.<a href="resources.html#ref-16" class="citation">[16]</a>, <a href="resources.html#ref-17" class="citation">[17]</a></p>
-                </div>
-                <div class="analogy-card pcie">
-                    <h3>🚀 PCIe con NVMe</h3>
-                    <p><strong>Vía con más capacidad</strong></p>
-                    <p style="font-size: 1.2rem; color: var(--accent); margin: 10px 0;">Ejemplos de lectura: 3500–12400 MB/s</p>
-                    <p>Muchos SSD NVMe M.2 usan cuatro líneas PCIe, llamadas x4. Además, un SSD PCIe 4.0 no alcanza siempre la misma velocidad que otro: importan el controlador, la memoria y la capacidad del modelo.<a href="resources.html#ref-18" class="citation">[18]</a>, <a href="resources.html#ref-19" class="citation">[19]</a></p>
-                </div>
-            </div>
-            
-            <p>En IA, un disco más rápido puede reducir el tiempo de lectura de modelos y datasets. Sin embargo, después de cargar el modelo en RAM o VRAM, la velocidad de generación puede depender principalmente de CPU, GPU y memoria. Un SSD SATA no hace imposible aprender inferencia local.</p>
-        </div>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author" content="Vitalii Golovin"><meta name="description" content="HDD, SSD SATA y NVMe: velocidades, datasets, PCIe 5.0, DirectStorage y almacenamiento óptico. Trabajo práctico de Arquitectura de Computadoras, ISSD 2026."><title>Parte 2: Almacenamiento | TP 2 · ISSD</title><style>
+    :root{color-scheme:dark;--bg:#0f172a;--card:#1e293b;--ink:#f1f5f9;--muted:#b8c6d9;--accent:#22d3ee;--border:#40516a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{margin:0;backgrouфnd:var(--bg);color:var(--ink);font:16px/1.75 Arial,Helvetica,sans-serif}
+    a{color:var(--accent);text-underline-offset:3px}a:hover{color:#a5f3fc}
+    a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #fbbf24;outline-offset:5px}
+    .skip{position:fixed;top:-100px;left:16px;z-index:20;background:#fff;color:#111;padding:10px}.skip:focus{top:8px}
+    .site-nav{position:sticky;top:0;z-index:10;background:#020617;border-bottom:1px solid var(--border);padding:12px 16px}
+    .site-nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+    .site-nav a{display:block;padding:7px 12px;border:1px solid #06b6d4;border-radius:6px;text-decoration:none;font-size:.85rem;font-weight:bold}
+    .site-nav a[aria-current="page"]{background:#06b6d4;color:#02131d}
+    main{max-width:1080px;margin:auto;padding:30px 20px 48px}
+    h1,h2,h3{line-height:1.3}h1{font-size:clamp(1.65rem,4vw,2.25rem);text-align:center;margin:12px 0 30px;color:var(--accent)}
+    h2{font-size:1.45rem;color:var(--accent);margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    h3{font-size:1.1rem;color:#a5f3fc;margin:28px 0 12px}p{margin:0 0 17px}li{margin-bottom:9px}
+    section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 4px 10px #0002}
+    .questions a{text-decoration:none}.questions li{padding-left:3px}
+    .table-scroll{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;min-width:600px;font-size:.94rem}
+    caption{text-align:left;color:var(--muted);padding:0 0 10px;font-size:.9rem}
+    th,td{border:1px solid var(--border);padding:12px 14px;text-align:left;vertical-align:top}thead th{background:#101a2c;color:#67e8f9}tbody th{font-weight:normal}
+    .note{background:#111d30;border-left:3px solid #22d3ee;padding:16px 20px;margin:22px 0}.note p:last-child{margin-bottom:0}
+    .small,figcaption{font-size:.88rem;color:var(--muted)}.ref{font-size:.8em;white-space:nowrap}
+    figure{margin:24px 0;background:#101a2c;border:1px solid var(--border);border-radius:10px;padding:18px}
+    figcaption{margin-top:12px;line-height:1.55}svg{display:block;width:100%;height:auto}svg text{fill:#edf5ff;font-family:Arial,Helvetica,sans-serif;font-size:17px}
+    svg .label{fill:#67e8f9;font-weight:bold;font-size:18px}svg .box{fill:#183447;stroke:#22d3ee;stroke-width:1.5}svg .soft{fill:#1e293b;stroke:#64748b}
+    svg .wire{fill:none;stroke:#67e8f9;stroke-width:2}svg .group{fill:none;stroke:#64748b;stroke-dasharray:6 5}svg .axis{stroke:#94a3b8;fill:none}
+    .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery figure{margin:0;padding:14px}.gallery img{display:block;width:100%;height:170px;object-fit:contain;background:#0b1220;border-radius:5px}
+    .gallery h3{margin:16px 0 10px}.gallery p{font-size:.94rem}.gallery figcaption{border-top:1px solid var(--border);padding-top:10px}
+    details{margin:20px 0;padding:15px 18px;background:#111d30;border:1px solid var(--border);border-radius:8px}summary{cursor:pointer;color:#a5f3fc;font-weight:bold}details[open] summary{margin-bottom:15px}
+    .sources li{padding-left:4px;margin-bottom:13px;overflow-wrap:anywhere}.sources:target{scroll-margin-top:120px}li[id^="fuente-"]:target{background:#164e63;outline:5px solid #164e63}
+    .page-next{text-align:right;margin-top:25px}.site-footer{background:#020617;border-top:1px solid var(--border);text-align:center;padding:28px 20px;color:var(--muted);font-size:.9rem}.site-footer p{margin:3px 0}.site-footer strong{color:var(--ink)}
+    @media(max-width:740px){.site-nav{position:static}.site-nav a{font-size:.75rem;padding:6px 9px}html{scroll-padding-top:18px}main{padding:22px 12px}section{padding:20px 16px}.gallery{grid-template-columns:1fr}.gallery img{height:auto;max-height:330px}figure{padding:10px}.diagram{overflow:auto}.diagram svg{min-width:620px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{body{background:white;color:#111;font-size:11pt}.site-nav,.skip,.page-next{display:none}main{max-width:none;padding:0}section{background:white;box-shadow:none;border:1px solid #ccc;break-inside:auto}h1,h2,h3,a{color:#164e63}p,td,th,figcaption,.small{color:#111}thead th,.note,details{background:#eee}figure{break-inside:avoid;background:#101a2c}.table-scroll{overflow:visible}table{min-width:0}.site-footer{background:white;color:#111}.site-footer strong{color:#111}}
+  </style><script type="text/javascript" nonce="68260d350d6040e2a8a90d29cf6" src="//injections.adguard.org?ts=1793208772135&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000a2f0820eaa983400f1e5ef9b%26fn%3Dpart2.html%26cd%3Dattachment%26ts%3D498113%26p%3Dfs%26cid%3D1%26sig%3D2aba7184cd0d903366e0aa9950404dc1e60769a905773d812886b9a13de118a4%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="68260d350d6040e2a8a90d29cf6" src="//injections.adguard.org?ts=1793208772135&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head><body><a class="skip" href="#contenido">Saltar al contenido</a><nav class="site-nav" aria-label="Navegación principal"><ul>
+  <li><a href="index.html">Inicio</a></li><li><a href="part1.html">Parte 1: Cómputo</a></li>
+  <li><a href="part2.html" aria-current="page">Parte 2: Almacenamiento</a></li><li><a href="part3.html">Parte 3: Workstations</a></li>
+  <li><a href="conclusions.html">Conclusiones</a></li><li><a href="resources.html">Recursos</a></li><li><a href="prompts.html">Uso de IA</a></li>
+</ul></nav>
+<main id="contenido">
+<h1>Parte 2: La superautopista de los datos</h1>
+<section><h2>¿Qué pide esta parte del trabajo?</h2>
+<p>En esta parte estudio cómo el almacenamiento influye en un proyecto de inteligencia artificial. La consigna propone tres tareas:</p>
+<ol class="questions"><li><a href="#interfaces">Comparar SATA y NVMe con una explicación visual y relacionarlos con la carga de grandes datasets.</a></li><li><a href="#horizonte">Investigar PCIe 5.0, DirectStorage y tecnologías experimentales de almacenamiento.</a></li><li><a href="#comparacion">Mostrar las velocidades de lectura y escritura de un HDD, un SSD SATA y un SSD NVMe mediante un gráfico.</a></li></ol>
+<p class="small">Resumen de la Parte 2 de la consigna IACO 2026.</p></section>
 
-        <div class="card">
-            <h2>2.2. Tabla comparativa de velocidades</h2>
-            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 15px;">
-                Comparación orientativa. HDD: resultado medido por StorageReview. SSD: máximos anunciados por el fabricante. No son mediciones realizadas en el mismo equipo ni pruebas propias.
-            </p>
-            
-            <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla: desplazar horizontalmente si es necesario">
-<table>
-                <tr>
-                    <th>Unidad y capacidad</th>
-                    <th>Lectura MB/s</th>
-                    <th>Escritura MB/s</th>
-                    <th>Tipo de dato</th>
-                </tr>
-                <tr>
-                    <td>Seagate BarraCuda Pro 10 TB<a href="resources.html#ref-16" class="citation">[16]</a>
-</td>
-                    <td>213,09</td>
-                    <td>210,70</td>
-                    <td>IOMeter secuencial 2 MB; prueba de 2016</td>
-                </tr>
-                <tr>
-                    <td>Samsung 870 EVO<a href="resources.html#ref-17" class="citation">[17]</a>
-</td>
-                    <td>560</td>
-                    <td>530</td>
-                    <td>Máximos secuenciales de ficha técnica</td>
-                </tr>
-                <tr>
-                    <td>Kingston NV2 500 GB<a href="resources.html#ref-18" class="citation">[18]</a>
-</td>
-                    <td>3500</td>
-                    <td>2100</td>
-                    <td>Máximos de esta capacidad</td>
-                </tr>
-                <tr>
-                    <td>Crucial T700 2 TB<a href="resources.html#ref-19" class="citation">[19]</a>
-</td>
-                    <td>12400</td>
-                    <td>11800</td>
-                    <td>Máximos de esta capacidad</td>
-                </tr>
-            </table>
+<section><h2 id="interfaces">2.1. HDD, SSD, SATA y NVMe: ¿qué cambia?</h2>
+<p>El almacenamiento conserva archivos cuando apagamos la computadora. Un <strong>HDD</strong> utiliza platos magnéticos y partes móviles. Un <strong>SSD</strong> guarda datos en memoria electrónica y puede acceder a ellos sin mover un cabezal. Sin embargo, dos SSD pueden usar conexiones diferentes.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Conceptos del almacenamiento"><table><caption>Cuatro conceptos que conviene separar.</caption><thead><tr><th scope="col">Concepto</th><th scope="col">Qué describe</th><th scope="col">Ejemplo</th></tr></thead><tbody>
+<tr><th scope="row">HDD / SSD</th><td>La tecnología de almacenamiento.</td><td>Disco magnético / memoria flash.</td></tr>
+<tr><th scope="row">SATA / PCIe</th><td>La conexión para intercambiar datos.</td><td>SSD SATA de 2,5 pulgadas / SSD PCIe.</td></tr>
+<tr><th scope="row">NVMe</th><td>Un protocolo de comandos, usado por los SSD PCIe estudiados.</td><td>Kingston NV2.</td></tr>
+<tr><th scope="row">M.2</th><td>Un formato físico; la compatibilidad depende también de la conexión.</td><td>M.2 2280: 22 mm de ancho y 80 mm de largo.</td></tr>
+</tbody></table></div>
+<p>Por ejemplo, el Samsung 870 EVO usa SATA, mientras que el Kingston NV2 es un SSD M.2 con PCIe 4.0 x4 y NVMe. Por eso, <strong>M.2 y NVMe no significan lo mismo</strong>. Antes de instalar una unidad, hay que comprobar qué admite la placa madre. <a class="ref" href="#fuente-2" aria-label="Fuente 2">[2]</a> <a class="ref" href="#fuente-3" aria-label="Fuente 3">[3]</a></p>
+<h3>La analogía de la carretera</h3>
+<p>Imagino SATA como una carretera y PCIe como una autopista con mayor capacidad. NVMe sería la forma de organizar las solicitudes para aprovechar esa conexión. Esta comparación ayuda a entender por qué pueden circular más datos en menos tiempo.</p>
+<figure class="diagram" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 350" role="img" aria-labelledby="ruta-t ruta-d"><title id="ruta-t">Una analogía para comparar las conexiones</title><desc id="ruta-d">SATA se representa con una carretera más estrecha y PCIe con una autopista. Las líneas son una analogía de capacidad y no cuentan las líneas eléctricas reales.</desc><text x="20" y="30" class="label">SATA: carretera de menor capacidad</text><rect x="20" y="50" width="800" height="65" rx="8" fill="#26364c"/><path d="M30,82 H810" stroke="#b8c6d9" stroke-width="2" stroke-dasharray="18 14"/><text x="20" y="157" class="label">PCIe: una autopista con mayor capacidad</text><rect x="20" y="177" width="800" height="116" rx="8" fill="#183447"/><path d="M30,206 H810 M30,235 H810 M30,264 H810" stroke="#67e8f9" stroke-width="2" stroke-dasharray="18 14"/><text x="420" y="330" text-anchor="middle">NVMe organiza las solicitudes del SSD sobre PCIe</text></svg><figcaption>Figura 1. Analogía visual de capacidad. Los carriles dibujados no representan líneas eléctricas reales. Muchos SSD M.2 NVMe utilizan un enlace PCIe x4. <a class="ref" href="#fuente-3" aria-label="Fuente 3">[3]</a></figcaption></figure>
+<p>NVMe fue diseñado para almacenamiento no volátil y permite atender numerosas solicitudes en paralelo. En un proyecto de IA, esto puede ayudar al leer datos desde varios archivos. El resultado también depende del SSD y del programa. <a class="ref" href="#fuente-11" aria-label="Fuente 11">[11]</a></p>
+<div class="note"><p><strong>Lo que entendí:</strong> no alcanza con decir «este disco es M.2». Necesito conocer su interfaz, su capacidad y sus velocidades. Son datos distintos que me ayudan a comprobar si sirve para mi equipo.</p></div>
+</section>
 
-            </div>
-<div class="storage-charts">
-<figure class="bar-chart"><figcaption>Lectura secuencial (MB/s)</figcaption><p class="source-note">Escala común: 0–14 000 MB/s</p>
-<div class="bar-row">
-<span>BarraCuda Pro 10 TB: <strong>213,09 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:1.52207%"></div></div>
-</div>
-<div class="bar-row">
-<span>Samsung 870 EVO: <strong>560 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:4.00000%"></div></div>
-</div>
-<div class="bar-row">
-<span>Kingston NV2 500 GB: <strong>3500 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:25.00000%"></div></div>
-</div>
-<div class="bar-row">
-<span>Crucial T700 2 TB: <strong>12400 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:88.57143%"></div></div>
-</div></figure><figure class="bar-chart"><figcaption>Escritura secuencial (MB/s)</figcaption><p class="source-note">Escala común: 0–14 000 MB/s</p>
-<div class="bar-row">
-<span>BarraCuda Pro 10 TB: <strong>210,7 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:1.50500%"></div></div>
-</div>
-<div class="bar-row">
-<span>Samsung 870 EVO: <strong>530 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:3.78571%"></div></div>
-</div>
-<div class="bar-row">
-<span>Kingston NV2 500 GB: <strong>2100 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:15.00000%"></div></div>
-</div>
-<div class="bar-row">
-<span>Crucial T700 2 TB: <strong>11800 MB/s</strong></span><div class="bar-track"><div class="bar-fill" style="width:84.28571%"></div></div>
-</div></figure>
-</div>
-<p style="color: var(--muted); font-size: 0.85rem; font-style: italic; text-align: center; margin-top: 10px;">
-                HDD: medición de StorageReview (2016). SSD: máximos declarados por el fabricante. No son pruebas propias ni mediciones en el mismo equipo.<a href="resources.html#ref-16" class="citation">[16]</a>-<a href="resources.html#ref-19" class="citation">[19]</a>
-            </p>
-        </div>
+<section><h2 id="comparacion">2.2. Comparación de lectura y escritura</h2>
+<p>Seleccioné cuatro ejemplos para observar las diferencias: un HDD, un SSD SATA, un NVMe económico y un NVMe PCIe 5.0. <strong>Leer</strong> es recuperar datos; <strong>escribir</strong> es guardarlos.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Velocidades de almacenamiento"><table><caption>Velocidades secuenciales en MB/s decimales. Comparación orientativa, no un ensayo conjunto.</caption><thead><tr><th scope="col">Unidad</th><th scope="col">Conexión</th><th scope="col">Lectura</th><th scope="col">Escritura</th><th scope="col">Origen del dato</th></tr></thead><tbody>
+<tr><th scope="row">Seagate BarraCuda Pro 10 TB <a class="ref" href="#fuente-1" aria-label="Fuente 1">[1]</a></th><td>HDD SATA</td><td>223,4</td><td>220,9</td><td>Medición de StorageReview, convertida a MB/s decimales.</td></tr>
+<tr><th scope="row">Samsung 870 EVO 1 TB <a class="ref" href="#fuente-2" aria-label="Fuente 2">[2]</a></th><td>SSD SATA</td><td>Hasta 560</td><td>Hasta 530</td><td>Máximos del fabricante.</td></tr>
+<tr><th scope="row">Kingston NV2 500 GB <a class="ref" href="#fuente-3" aria-label="Fuente 3">[3]</a></th><td>SSD PCIe 4.0 x4 NVMe</td><td>Hasta 3500</td><td>Hasta 2100</td><td>Máximos para esta capacidad.</td></tr>
+<tr><th scope="row">Crucial T700 2 TB <a class="ref" href="#fuente-4" aria-label="Fuente 4">[4]</a></th><td>SSD PCIe 5.0 x4 NVMe</td><td>Hasta 12 400</td><td>Hasta 11 800</td><td>Máximos para esta capacidad.</td></tr>
+</tbody></table></div>
+<figure class="diagram" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 545" role="img" aria-labelledby="velocidades-t velocidades-d"><title id="velocidades-t">Velocidades de cuatro unidades</title><desc id="velocidades-d">HDD: medición convertida de unidades binarias a MB/s. SSD: máximos publicados. Escala lineal común de cero a 14000 MB/s. Los valores exactos están en la tabla.</desc><text x="20" y="30" class="label">Lectura y escritura secuenciales · MB/s decimales</text><rect x="20" y="48" width="16" height="12" fill="#22d3ee"/><text x="44" y="60">Lectura</text><rect x="170" y="48" width="16" height="12" fill="#a78bfa"/><text x="194" y="60">Escritura</text><rect x="10" y="82" width="820" height="91" rx="6" fill="#253348"/><text x="20" y="102">BarraCuda Pro 10 TB · medido</text><rect x="20" y="112" width="650" height="15" fill="#334155"/><rect x="20" y="112" width="10.374" height="15" fill="#22d3ee"/><text x="690" y="126">223,4</text><rect x="20" y="135" width="650" height="15" fill="#334155"/><rect x="20" y="135" width="10.258" height="15" fill="#a78bfa"/><text x="690" y="149">220,9</text><text x="20" y="202">870 EVO 1 TB · máximo</text><rect x="20" y="212" width="650" height="15" fill="#334155"/><rect x="20" y="212" width="26.000" height="15" fill="#22d3ee"/><text x="690" y="226">560,0</text><rect x="20" y="235" width="650" height="15" fill="#334155"/><rect x="20" y="235" width="24.607" height="15" fill="#a78bfa"/><text x="690" y="249">530,0</text><text x="20" y="302">NV2 500 GB · máximo</text><rect x="20" y="312" width="650" height="15" fill="#334155"/><rect x="20" y="312" width="162.500" height="15" fill="#22d3ee"/><text x="690" y="326">3 500,0</text><rect x="20" y="335" width="650" height="15" fill="#334155"/><rect x="20" y="335" width="97.500" height="15" fill="#a78bfa"/><text x="690" y="349">2 100,0</text><text x="20" y="402">T700 2 TB · máximo</text><rect x="20" y="412" width="650" height="15" fill="#334155"/><rect x="20" y="412" width="575.714" height="15" fill="#22d3ee"/><text x="690" y="426">12 400,0</text><rect x="20" y="435" width="650" height="15" fill="#334155"/><rect x="20" y="435" width="547.857" height="15" fill="#a78bfa"/><text x="690" y="449">11 800,0</text><path d="M20,494 H670" stroke="#94a3b8"/><text x="20.0" y="520" text-anchor="middle">0</text><text x="182.5" y="520" text-anchor="middle">3500</text><text x="345.0" y="520" text-anchor="middle">7000</text><text x="507.5" y="520" text-anchor="middle">10500</text><text x="670.0" y="520" text-anchor="middle">14000</text></svg><figcaption>Figura 2. Escala lineal común, desde cero. La fila sombreada corresponde a un resultado medido; las otras muestran máximos anunciados. Las barras comparan órdenes de magnitud, no resultados obtenidos bajo las mismas condiciones. <a class="ref" href="#fuente-1" aria-label="Fuente 1">[1]</a> <a class="ref" href="#fuente-2" aria-label="Fuente 2">[2]</a> <a class="ref" href="#fuente-3" aria-label="Fuente 3">[3]</a> <a class="ref" href="#fuente-4" aria-label="Fuente 4">[4]</a></figcaption></figure>
+<details><summary>Cómo se prepararon los datos del gráfico</summary><p>StorageReview publicó 213,09 de lectura y 210,70 de escritura en una prueba IOMeter secuencial de 2 MB de 2016. Su metodología indica unidades binarias, aunque usa la etiqueta MB/s. Para compararlas con las fichas decimales, multipliqué ambas cifras por 1,048576 y redondeé a una cifra decimal. Los SSD conservan los máximos de sus fabricantes. No son pruebas propias.</p></details>
+<h3>Cómo interpreto la comparación</h3>
+<p>El salto de un HDD a un SSD no depende solo de los MB/s: también importa el tiempo necesario para localizar pequeños bloques de datos. En el gráfico, el SATA queda lejos del T700 en transferencia secuencial, pero eso no significa que todas las tareas terminen en esa misma proporción.</p>
+<p>El NV2 es un ejemplo económico de PCIe 4.0, no el límite de esa generación. Aunque tenga la misma conexión que otros Gen4, su controlador y memoria pueden ofrecer un rendimiento diferente.</p>
+<p><strong>Lectura secuencial</strong> significa leer bloques consecutivos, como sucede al recorrer un archivo grande. La <strong>lectura aleatoria</strong> accede a bloques situados en lugares diferentes. Un dataset con muchos archivos pequeños puede comportarse de otra manera que un solo archivo grande.</p>
+</section>
 
-        <div class="card">
-            <h2>2.3. Un cálculo teórico de transferencia</h2>
-            <p>Para un archivo de 16 GB decimales, uso 16 000 MB y la fórmula <strong>tiempo = tamaño / velocidad</strong>.</p>
-            
-            <div class="scenario-box">
-                <h4>Con SSD SATA (560 MB/s)</h4>
-                <p>16 000 MB / 560 MB/s = <strong>28,6 segundos</strong> (ideal)</p>
-            </div>
-            
-            <div class="scenario-box">
-                <h4>Con NVMe PCIe 4.0 (3500 MB/s)</h4>
-                <p>16 000 MB / 3500 MB/s = <strong>4,6 segundos</strong> (ideal)</p>
-            </div>
-            
-            <p>Esta diferencia ayuda a entender el papel del SSD, pero <strong>no es el tiempo real de inicio de un modelo</strong>. El tiempo real también incluye abrir archivos, preparar memoria, procesar el formato y transferir datos a la GPU. La velocidad puede cambiar con la temperatura, la caché y el espacio libre del SSD. Para medir el inicio de un modelo habría que utilizar el mismo archivo, equipo y programa, y repetir la prueba.</p>
-            
-            <div class="highlight">
-                <strong>✓ Observación:</strong> Este cálculo es teórico. No representa una medición propia ni garantiza tiempos reales de carga de modelos.
-            </div>
-        </div>
+<section><h2 id="datos">2.3. ¿Cómo influye el almacenamiento en la IA?</h2>
+<p>Un <strong>dataset</strong> es un conjunto de datos que sirve para entrenar o evaluar un modelo. Puede contener textos, imágenes o audio. Cuando es grande, el programa suele trabajar con porciones llamadas <strong>lotes</strong> o <em>batches</em>.</p>
+<p>PyTorch utiliza <em>Dataset</em> y <em>DataLoader</em> para acceder a los ejemplos y organizarlos en lotes. Esto ayuda a separar la preparación de los datos del trabajo del modelo. <a class="ref" href="#fuente-8" aria-label="Fuente 8">[8]</a></p>
+<figure class="diagram" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 310" role="img" aria-labelledby="flujo-t flujo-d"><title id="flujo-t">Los datos durante el entrenamiento</title><desc id="flujo-d">El almacenamiento entrega archivos a RAM y a la preparación en CPU. Después se envían lotes a la GPU. Los resultados y puntos de control se guardan de nuevo en el almacenamiento.</desc><defs><marker id="flecha" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8Z" fill="#67e8f9"/></marker></defs><rect x="15" y="50" width="230" height="105" rx="10" fill="#183447" stroke="#22d3ee"/><text x="130.0" y="85.5" text-anchor="middle">HDD o SSD</text><text x="130.0" y="108.5" text-anchor="middle">Archivos del dataset</text><text x="130.0" y="131.5" text-anchor="middle">y modelos guardados</text><rect x="305" y="50" width="230" height="105" rx="10" fill="#183447" stroke="#22d3ee"/><text x="420.0" y="85.5" text-anchor="middle">RAM + CPU</text><text x="420.0" y="108.5" text-anchor="middle">Leer, preparar y</text><text x="420.0" y="131.5" text-anchor="middle">organizar los lotes</text><rect x="595" y="50" width="230" height="105" rx="10" fill="#183447" stroke="#22d3ee"/><text x="710.0" y="85.5" text-anchor="middle">GPU + VRAM</text><text x="710.0" y="108.5" text-anchor="middle">Procesar los lotes</text><text x="710.0" y="131.5" text-anchor="middle">y calcular resultados</text><path d="M245,102 H300 M535,102 H590" stroke="#67e8f9" stroke-width="2" fill="none" marker-end="url(#flecha)"/><path d="M710,155 V200 H420 V160 M420,155 V245 H130 V160" stroke="#67e8f9" stroke-width="2" fill="none" marker-end="url(#flecha)"/><text x="420" y="280" text-anchor="middle">Guardar resultados: GPU → RAM/CPU → almacenamiento</text></svg><figcaption>Figura 3. Flujo habitual simplificado de un entrenamiento con GPU. La CPU y la RAM participan en la preparación y transferencia; el recorrido exacto depende del programa.</figcaption></figure>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tareas de IA y almacenamiento"><table><caption>El papel del disco cambia durante el trabajo.</caption><thead><tr><th scope="col">Tarea</th><th scope="col">Qué hace el almacenamiento</th><th scope="col">Qué conviene observar</th></tr></thead><tbody>
+<tr><th scope="row">Abrir un modelo guardado</th><td>Lee los archivos de sus parámetros.</td><td>Tamaño de archivos y velocidad de lectura.</td></tr>
+<tr><th scope="row">Entrenar con un dataset</th><td>Entrega nuevos ejemplos mientras avanza el entrenamiento.</td><td>Lectura, preparación en CPU y organización de los lotes.</td></tr>
+<tr><th scope="row">Guardar un punto de control</th><td>Escribe el estado necesario para continuar el entrenamiento.</td><td>Velocidad de escritura y espacio disponible.</td></tr>
+<tr><th scope="row">Registrar una evaluación</th><td>Guarda preguntas, respuestas y resultados.</td><td>Capacidad, organización y copias de seguridad.</td></tr>
+</tbody></table></div>
+<p>Si los datos llegan demasiado lento, la GPU tiene que esperar. Pero el problema también puede estar en la CPU, por ejemplo al transformar muchas imágenes. Por eso, primero intentaría identificar dónde aparece la espera.</p>
+<h3>Ejemplo: leer un archivo de 16 GB</h3>
+<p>Para una estimación simple uso unidades decimales: <strong>16 GB = 16 000 MB</strong>. La fórmula es <strong>tiempo = tamaño ÷ velocidad</strong>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Cálculo del tiempo de lectura"><table><caption>Tiempo ideal de lectura secuencial, calculado con los máximos de dos SSD.</caption><thead><tr><th scope="col">Ejemplo</th><th scope="col">Cálculo</th><th scope="col">Tiempo aproximado</th></tr></thead><tbody><tr><th scope="row">SATA, 560 MB/s</th><td>16 000 ÷ 560</td><td>28,6 segundos</td></tr><tr><th scope="row">NVMe, 3500 MB/s</th><td>16 000 ÷ 3500</td><td>4,6 segundos</td></tr></tbody></table></div>
+<p class="small">Es una estimación de lectura, no una medición del inicio de un modelo. La carga completa también incluye el trabajo del programa y la transferencia a la memoria.</p>
+<div class="note"><p><strong>Mi interpretación:</strong> un NVMe puede reducir la espera al abrir archivos grandes. Sin embargo, cuando el modelo ya está en RAM o VRAM, la velocidad de sus respuestas depende principalmente del cálculo y de la memoria. Para mis primeras evaluaciones, necesito equilibrar la velocidad con el espacio para guardar modelos y resultados.</p></div>
+</section>
 
-        <div class="card">
-            <h2>2.4. PCIe 5.0 y DirectStorage</h2>
-            
-            <h3>PCIe 5.0</h3>
-            <p>PCIe 5.0 duplica la tasa de transferencia por línea frente a PCIe 4.0. Esto permite SSD con mayor velocidad secuencial, como el T700 de 2 TB de la tabla. La mejora resulta útil cuando la aplicación mueve muchos datos y el almacenamiento es realmente el límite. No elimina todos los tiempos de espera.<a href="resources.html#ref-19" class="citation">[19]</a></p>
-            
-            <h3>DirectStorage</h3>
-            <p>DirectStorage es una API de Microsoft. La versión 1.1 incorpora descompresión en GPU para aplicaciones compatibles. La aplicación debe integrar esta tecnología. No basta con instalar un SSD NVMe para que todos los programas de IA la utilicen.<a href="resources.html#ref-21" class="citation">[21]</a></p>
-            
-            <p>Tampoco es correcto dibujar siempre una ruta SSD → VRAM que elimina toda intervención de CPU y RAM. La documentación de DirectStorage 1.1 describe una ruta que puede utilizar memoria del sistema antes de la descompresión en GPU. En este trabajo no dispongo de una prueba de DirectStorage con Llama 70B; por eso no atribuyo a esta API una reducción concreta del tiempo de auditoría.<a href="resources.html#ref-21" class="citation">[21]</a></p>
-        </div>
+<section><h2 id="horizonte">2.4. PCIe 5.0: ¿cuándo tiene sentido?</h2>
+<p>PCIe 5.0 duplica la tasa de transferencia por línea respecto de PCIe 4.0. Con la misma cantidad de líneas, permite una conexión con mayor capacidad. El T700 muestra cómo un SSD puede aprovechar parte de ese margen para transferencias secuenciales. <a class="ref" href="#fuente-4" aria-label="Fuente 4">[4]</a> <a class="ref" href="#fuente-9" aria-label="Fuente 9">[9]</a></p>
+<p>La ventaja puede ser útil al leer grandes conjuntos de datos, mover archivos o guardar estados voluminosos de entrenamiento. Para aprovecharla hay que revisar:</p>
+<ul><li><strong>Conexión:</strong> el SSD necesita una ranura con las líneas y la generación adecuadas. Un SSD Gen5 puede funcionar en una conexión anterior, pero queda limitado por ella.</li><li><strong>Refrigeración:</strong> el disipador y el flujo de aire ayudan a mantener el rendimiento durante cargas prolongadas.</li><li><strong>La tarea completa:</strong> si la CPU está ocupada preparando datos o la GPU está calculando, más velocidad de disco puede aportar poco.</li></ul>
+<p>Crucial ofrece el T700 con y sin disipador y señala compatibilidad con PCIe 3.0 y 4.0. Son detalles que debo comprobar al elegir la placa y el sistema de refrigeración. <a class="ref" href="#fuente-4" aria-label="Fuente 4">[4]</a></p>
+<div class="note"><p><strong>Mi criterio:</strong> no elegiría un Gen5 solo por tener el número más alto. Para una estación doméstica, compararía primero capacidad, precio y carga de trabajo. Una unidad más rápida tiene sentido cuando reduce una espera que realmente aparece en mis tareas.</p></div>
+</section>
 
-        <div class="card">
-            <h2>2.5. Tecnologías experimentales y nuevas conexiones</h2>
-            
-            <h3>CXL (Compute Express Link)</h3>
-            <p>CXL es una tecnología de interconexión entre procesadores, memoria y aceleradores. Puede permitir expansión y agrupación de memoria en sistemas compatibles. No es un nuevo material de almacenamiento ni convierte automáticamente la RAM adicional en VRAM de una tarjeta doméstica.<a href="resources.html#ref-22" class="citation">[22]</a></p>
-            
-            <h3>Almacenamiento óptico 5D</h3>
-            <p>El almacenamiento óptico 5D investigado en la Universidad de Southampton utiliza estructuras dentro de vidrio de sílice. Es una línea de investigación orientada al archivo duradero. La universidad describe capacidades potenciales de hasta 360 TB para determinados formatos. No equivale a un SSD comercial ni ofrece capacidad o velocidad ilimitadas. Además, el vidrio de sílice contiene silicio: se trata de una alternativa al almacenamiento electrónico convencional, no de la desaparición del elemento químico.<a href="resources.html#ref-23" class="citation">[23]</a></p>
-            
-            <h3>PCIe 6.0</h3>
-            <p>PCIe 6.0 especifica 64 GT/s por línea. GT/s significa transferencias por segundo y no debe confundirse con GB/s. El valor de 256 GB/s se refiere al ancho de banda agregado en ambas direcciones de un enlace x16. No es la velocidad de un SSD M.2 x4. No uso este estándar para prometer una velocidad futura concreta de la computadora propuesta.<a href="resources.html#ref-24" class="citation">[24]</a></p>
-        </div>
+<section><h2 id="directstorage">2.5. DirectStorage: cargar y descomprimir mejor</h2>
+<p><strong>DirectStorage</strong> es una API de Microsoft: un conjunto de funciones que los desarrolladores pueden integrar en sus aplicaciones. Ayuda a organizar la entrada de datos. Desde la versión 1.1 permite descomprimir datos con la GPU en aplicaciones compatibles. <a class="ref" href="#fuente-5" aria-label="Fuente 5">[5]</a></p>
+<p>Los juegos suelen guardar recursos comprimidos para ocupar menos espacio. Antes de utilizarlos, hay que leerlos y descomprimirlos. Trasladar parte de ese trabajo a la GPU puede reducir la carga de la CPU.</p>
+<h3>Un ejemplo publicado por Microsoft</h3>
+<p>En una demostración optimizada de 2022, Microsoft mostró estos tiempos de carga: <a class="ref" href="#fuente-6" aria-label="Fuente 6">[6]</a></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Demostración de DirectStorage"><table><caption>Demostración del fabricante; menor tiempo es mejor.</caption><thead><tr><th scope="col">Ruta de la demostración</th><th scope="col">Tiempo</th></tr></thead><tbody><tr><th scope="row">CPU con Zlib</th><td>2,36 segundos</td></tr><tr><th scope="row">GPU con GDeflate</th><td>0,80 segundos</td></tr></tbody></table></div>
+<p>La demostración cambia tanto el dispositivo como el formato de compresión. Ilustra una mejora del proceso de carga; no mide el entrenamiento de una red neuronal.</p>
+<h3>¿Qué relación tiene con la IA?</h3>
+<p><strong>Como posible aplicación</strong>, reducir el trabajo de entrada y descompresión podría ayudar a programas de IA que manejan muchos datos comprimidos. Para obtener esa ventaja, el programa tendría que integrar una ruta compatible.</p>
+<p>Mi conclusión es que un SSD rápido y un software bien preparado deben trabajar juntos. Instalar un NVMe, por sí solo, no hace que todas las herramientas de IA usen DirectStorage.</p>
+</section>
 
-        <div class="nav-buttons">
-            <a href="part1.html" class="btn">← Parte 1: El Corazón Inteligente</a>
-            <a href="part3.html" class="btn">Parte 3: El Diseño Maestro →</a>
-        </div>
-    </main>
+<section><h2 id="futuro">2.6. Más allá del almacenamiento habitual</h2>
+<h3>Almacenamiento óptico 5D en vidrio</h3>
+<p>La Universidad de Southampton investiga cómo escribir información con láser dentro de vidrio de sílice. El nombre <strong>5D</strong> combina tres coordenadas espaciales con dos características ópticas de la escritura. La universidad describe una capacidad de hasta <strong>360 TB en el formato de mayor tamaño</strong>. <a class="ref" href="#fuente-7" aria-label="Fuente 7">[7]</a></p>
+<p>En 2024, el equipo anunció que había almacenado el genoma humano en un cristal. Su interés principal es conservar información durante mucho tiempo. Es una alternativa a la memoria electrónica convencional, aunque la sílice también contiene el elemento silicio.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Almacenamiento de trabajo y archivo"><table><caption>Dos objetivos diferentes.</caption><thead><tr><th scope="col">SSD de trabajo</th><th scope="col">Archivo óptico 5D</th></tr></thead><tbody><tr><td>Acceder a archivos y modificarlos durante el trabajo diario.</td><td>Investigar la conservación de información a muy largo plazo.</td></tr><tr><td>Componente disponible para una computadora doméstica.</td><td>Tecnología de investigación; no es una sustitución directa del SSD de esta propuesta.</td></tr></tbody></table></div>
+<p><strong>Lo que me interesa:</strong> guardar información y trabajar rápidamente con ella son problemas diferentes. Para conservar una investigación durante años, la durabilidad puede importar tanto como la velocidad.</p>
+<details><summary>Otros avances: PCIe 6.0 y CXL</summary><p><strong>PCIe 6.0</strong> es una evolución de la conexión: especifica 64 GT/s por línea. La cifra de 256 GB/s corresponde a un enlace x16 sumando ambas direcciones, no a un SSD doméstico x4. <a class="ref" href="#fuente-9" aria-label="Fuente 9">[9]</a></p><p><strong>CXL</strong> conecta procesadores, memoria y aceleradores y permite nuevas formas de compartir recursos de memoria en sistemas compatibles. Es una tecnología de interconexión, no un nuevo material de almacenamiento. <a class="ref" href="#fuente-10" aria-label="Fuente 10">[10]</a></p></details>
+</section>
 
-    <footer class="site-footer">Vitalii Golovin · ISSD · Arquitectura de Computadoras · Revisión: 27 de octubre de 2026</footer>
-</body>
-</html>
+<section><h2 id="conclusion">2.7. Mi conclusión para las dos estaciones</h2>
+<p>Después de comparar las tecnologías, entiendo que la mejor elección depende del uso. Un HDD puede servir para guardar archivos, un SSD SATA permite trabajar con una respuesta más ágil y un NVMe ofrece mayor capacidad de transferencia para tareas exigentes.</p>
+<p>Para mi perfil de investigador en alineación y seguridad de IA, quiero empezar con modelos pequeños, conjuntos de preguntas y registros de respuestas. Necesito espacio para guardar distintas versiones y organizar las evaluaciones. También tendría una copia de los resultados importantes en otra unidad.</p>
+<p>En la propuesta de hasta <strong>800 USD</strong>, el almacenamiento debe dejar presupuesto para los demás componentes. Si elijo un SSD SATA de capacidad limitada, acepto una carga más lenta y menos espacio para modelos. En la estación de mayor presupuesto, un NVMe de más capacidad facilita el trabajo con archivos grandes.</p>
+<p><strong>Mi prioridad es el equilibrio entre capacidad, velocidad y precio.</strong> En la <a href="part3.html">parte 3</a> aplico este criterio a los componentes concretos de cada configuración.</p>
+</section>
+
+<section><h2 id="fuentes">Fuentes de esta página</h2><p class="small">Consulta: 28 de octubre de 2026. Las mediciones, especificaciones y demostraciones se identifican por separado. Los gráficos y esquemas son elaboraciones para este trabajo. La asistencia de IA se documenta en <a href="prompts.html">Uso de IA</a>.</p><ol class="sources"><li id="fuente-1"><a href="https://www.storagereview.com/review/seagate-barracuda-pro-10tb-hdd-review">Armstrong, A. (2016). Seagate BarraCuda Pro 10TB HDD Review. StorageReview. IOMeter secuencial de 2 MB; unidades binarias según la metodología del autor.</a></li>
+<li id="fuente-2"><a href="https://image.semiconductor.samsung.com/resources/data-sheet/Samsung_SSD_870_EVO_Data_Sheet_Rev1.1.pdf">Samsung. (2021). SSD 870 EVO Data Sheet, revisión 1.1.</a></li>
+<li id="fuente-3"><a href="https://www.kingston.com/datasheets/snv2s_en.pdf">Kingston. (2023). NV2 NVMe PCIe SSD: ficha técnica. Modelo de 500 GB.</a></li>
+<li id="fuente-4"><a href="https://www.asipartner.com/wp-content/uploads/2023/06/Crucial-T700-SSD-B2B-Product-Flyer-EN.pdf">Micron / Crucial. (2023). Crucial T700 SSD B2B Product Flyer. Documento del fabricante alojado por ASI.</a></li>
+<li id="fuente-5"><a href="https://devblogs.microsoft.com/directx/directstorage-1-1-now-available/">Microsoft. (2022, 7 de noviembre). DirectStorage 1.1 Now Available.</a></li>
+<li id="fuente-6"><a href="https://devblogs.microsoft.com/directx/directstorage-1-1-coming-soon/">Hoef, C. (2022, 13 de octubre). DirectStorage 1.1 Coming Soon. Microsoft. Demostración de carga y descompresión.</a></li>
+<li id="fuente-7"><a href="https://www.southampton.ac.uk/news/2024/09/human-genome-stored-on-everlasting-memory-crystal-.page">University of Southampton. (2024, 19 de septiembre). Human genome stored on everlasting memory crystal.</a></li>
+<li id="fuente-8"><a href="https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html">PyTorch. (s. f.). Datasets &amp; DataLoaders.</a></li>
+<li id="fuente-9"><a href="https://pcisig.com/blog/pcie%C2%AE-60-specification-released-members-double-bandwidth-next-generation-applications">PCI-SIG. (2022, 10 de enero). PCIe 6.0 Specification Released to Members.</a></li>
+<li id="fuente-10"><a href="https://computeexpresslink.org/about-cxl/">CXL Consortium. (s. f.). About CXL.</a></li>
+<li id="fuente-11"><a href="https://www.kingston.com/en/blog/pc-performance/nvme-vs-sata">Kingston. (s. f.). NVMe vs SATA: What is the difference?</a></li></ol><p>Véase también <a href="resources.html">Recursos y bibliografía</a>.</p></section>
+<p class="page-next"><a href="part1.html">← Parte 1: Cómputo</a> · <a href="part3.html">Parte 3: Workstations →</a></p>
+</main><footer class="site-footer">
+  <p><strong>Instituto Superior Santo Domingo (ISSD)</strong></p>
+  <p>Córdoba, Argentina</p>
+  <p>Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2</p>
+  <p>Autor: Vitalii Golovin · Año 2026</p>
+  <p><a href="resources.html">Recursos y bibliografía</a> · <a href="prompts.html">Uso de IA</a></p>
+</footer>
+</body></html>
