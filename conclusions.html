@@ -1,1 +1,754 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conclusiones — TP2 ISSD</title><link rel="stylesheet" href="styles.css"></head><body><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><p class="eyebrow">ISSD · Arquitectura de Computadoras · 2026</p><h1>Conclusiones</h1><p>Investigación de Vitalii Golovin · Revisión: 27/10/2026</p></header><nav><a href="index.html">Inicio</a><a href="part1.html">Parte 1: Cómputo</a><a href="part2.html">Parte 2: Almacenamiento</a><a href="part3.html">Parte 3: Workstations</a><a href="conclusions.html" class="active" aria-current="page">Conclusiones</a><a href="resources.html">Recursos</a><a href="prompts.html">Uso de IA</a></nav><main class="container" id="contenido"><section class="card"><h2>Primero la tarea, después el componente</h2><p>La comparación me ayuda a distinguir capacidad, velocidad y precio. Para estudiar seguridad de IA necesito ejecutar pruebas repetibles y revisar sus resultados. Una computadora más cara puede reducir algunos tiempos, pero no reemplaza un método de trabajo claro.</p><p>La GPU y su memoria son importantes para ejecutar modelos localmente. La CPU prepara datos y organiza tareas. La RAM mantiene los programas y sus datos, mientras que el SSD guarda modelos y resultados. Un componente rápido no elimina todos los límites del conjunto.</p></section><section class="card"><h2>Qué consigo con 800 USD</h2><p>La propuesta económica suma 783,66 USD. Mantiene una RTX 3060 de 12 GB usada, Ryzen 5 5600 y 16 GB de RAM. Para respetar el límite acepto un SSD SATA de solo 256 GB y una plataforma AM4 con menos posibilidades de ampliación.</p><p>Este resultado es un presupuesto condicionado: el anuncio de la tarjeta está agotado. Por eso no puedo concluir que toda la computadora esté disponible hoy por ese precio. Antes de convertir el diseño en una compra debo encontrar una unidad equivalente dentro del máximo de 472.487,03 ARS y revisar su estado. La falta de stock forma parte del análisis económico.</p></section><section class="card"><h2>Qué aporta la gama alta</h2><p>La segunda propuesta suma 4.672,42 USD y se mantiene por debajo de 5000 USD. Incorpora un procesador presentado en 2026, una RTX 5080, 32 GB de RAM y 2 TB de SSD. Es una estación doméstica potente, no una estación industrial sin límite de presupuesto.</p><p>La VRAM aumenta de 12 a 16 GB, es decir, un 33,3 %. La RAM se duplica, de 16 a 32 GB. Estas diferencias permiten más margen de trabajo, pero no prueban una velocidad determinada. La caché adicional del procesador tampoco garantiza una mejora proporcional en inferencia. Para justificar el gasto con resultados reales sería necesario medir las dos configuraciones.</p></section><section class="card"><h2>Mi elección y sus límites</h2><p>Para comenzar a aprender elegiría la opción económica, siempre que aparezca una GPU usada adecuada dentro del límite. Priorizaría un conjunto pequeño de modelos y documentaría cada experimento. La primera ampliación sería el SSD; después revisaría si realmente necesito más RAM.</p><p>Elegiría la gama alta si utilizara el equipo con frecuencia para preparar datos y ejecutar distintas tareas. Aun así, compararía el coste del procesador con la posibilidad de dedicar más dinero a memoria. No afirmo que la configuración más nueva sea automáticamente la mejor relación entre precio y utilidad.</p><p>Este trabajo presenta una selección razonada basada en fuentes. No se realizaron benchmarks propios, montaje físico ni mediciones de energía. El siguiente paso es confirmar stock, revisión de componentes y estabilidad, y después ejecutar una prueba controlada con las mismas condiciones.</p></section></main><footer><p>Trabajo académico · Fuentes y límites documentados · No se realizaron pruebas físicas.</p></footer></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="author" content="Vitalii Golovin">
+  <meta
+    name="description"
+    content="Conclusiones del trabajo práctico sobre arquitectura de computadoras y dos estaciones domésticas para comenzar a investigar inteligencia artificial."
+  >
+
+  <title>Conclusiones | TP 2 · ISSD</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --background: #0f172a;
+      --navigation: #020617;
+      --surface: #1e293b;
+      --surface-dark: #111c30;
+
+      --text: #e8eef7;
+      --muted: #b4c3d6;
+
+      --accent: #22d3ee;
+      --accent-dark: #0891b2;
+      --purple: #c4b5fd;
+
+      --border: #3b4b62;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: #a5f3fc;
+    }
+
+    a:focus-visible,
+    summary:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 3px solid #fbbf24;
+      outline-offset: 5px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      z-index: 100;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: var(--navigation);
+      font-weight: bold;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      background: var(--navigation);
+    }
+
+    .site-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: 9px 14px;
+      border: 1px solid var(--accent-dark);
+      border-radius: 7px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover {
+      background: #123047;
+    }
+
+    .site-nav a[aria-current="page"] {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--navigation);
+    }
+
+    main {
+      width: min(1050px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 42px 0 55px;
+    }
+
+    .page-header {
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 15px;
+      color: var(--accent);
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.2;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .card {
+      margin-bottom: 24px;
+      padding: 28px 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 16px rgb(0 0 0 / 12%);
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      font-size: clamp(21px, 3vw, 26px);
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin: 24px 0 8px;
+      color: #d5f7fc;
+      font-size: 19px;
+      line-height: 1.4;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: #ffffff;
+    }
+
+    .section-link {
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    caption {
+      padding: 15px;
+      background: var(--surface-dark);
+      color: var(--text);
+      font-weight: bold;
+      text-align: left;
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: break-word;
+    }
+
+    thead th {
+      background: var(--navigation);
+      color: var(--accent);
+    }
+
+    tbody th {
+      width: 22%;
+      color: #e0edf9;
+      font-weight: bold;
+    }
+
+    tbody tr:last-child th,
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .ideal-heading {
+      color: var(--purple);
+    }
+
+    .price {
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .personal-choice {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      background: var(--surface-dark);
+    }
+
+    .closing {
+      border-top: 3px solid var(--accent);
+    }
+
+    .closing-line {
+      margin-top: 20px;
+      color: #cffafe;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    .page-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .page-links a {
+      padding: 11px 17px;
+      border: 1px solid var(--accent-dark);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .page-links a:hover {
+      background: var(--surface);
+    }
+
+    .site-footer {
+      padding: 28px 20px 34px;
+      border-top: 1px solid var(--border);
+      background: var(--navigation);
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .site-footer p {
+      margin: 4px 0;
+    }
+
+    .footer-links {
+      margin-top: 14px !important;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        font-size: 16px;
+      }
+
+      .site-nav {
+        position: static;
+        padding: 10px;
+      }
+
+      .site-nav ul {
+        gap: 6px;
+      }
+
+      .site-nav a {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+
+      main {
+        width: min(100% - 24px, 1050px);
+        padding-top: 28px;
+      }
+
+      .card {
+        padding: 22px 18px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      table {
+        min-width: 650px;
+      }
+
+      .page-links a {
+        flex: 1 1 220px;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        background: white;
+        color: black;
+        font-size: 11pt;
+      }
+
+      .site-nav,
+      .skip-link,
+      .page-links {
+        display: none;
+      }
+
+      main {
+        width: 100%;
+        padding: 0;
+      }
+
+      .card,
+      .personal-choice {
+        background: white;
+        color: black;
+        box-shadow: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      strong,
+      a,
+      .lead,
+      .eyebrow,
+      .note,
+      .closing-line,
+      .ideal-heading,
+      tbody th {
+        color: black;
+      }
+
+      h2,
+      h3 {
+        break-after: avoid;
+      }
+
+      tr {
+        break-inside: avoid;
+      }
+
+      .table-wrap {
+        overflow: visible;
+      }
+
+      table {
+        min-width: 0;
+      }
+
+      caption,
+      thead th {
+        background: #eeeeee;
+        color: black;
+      }
+
+      .site-footer {
+        background: white;
+        color: black;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">
+    Saltar al contenido
+  </a>
+
+  <nav class="site-nav" aria-label="Navegación principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="part1.html">Parte 1: Cómputo</a></li>
+      <li><a href="part2.html">Parte 2: Almacenamiento</a></li>
+      <li><a href="part3.html">Parte 3: Workstations</a></li>
+      <li>
+        <a href="conclusions.html" aria-current="page">
+          Conclusiones
+        </a>
+      </li>
+      <li><a href="resources.html">Recursos</a></li>
+      <li><a href="prompts.html">Uso de IA</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido">
+
+    <header class="page-header">
+      <p class="eyebrow">
+        Arquitectura de Computadoras · TP 2 · 2026
+      </p>
+
+      <h1>Conclusiones del trabajo</h1>
+
+      <p class="lead">
+        Qué aprendí al comparar componentes y cómo usaría ese
+        conocimiento para comenzar a investigar IA desde casa.
+      </p>
+    </header>
+
+    <section class="card" aria-labelledby="resultado">
+      <h2 id="resultado">1. Qué aprendí en este trabajo</h2>
+
+      <p>
+        Mi interés por la alineación y la seguridad de la IA fue el
+        punto de partida. Quería entender qué computadora necesito
+        para realizar mis primeras pruebas con modelos locales.
+        Después de investigar, considero que
+        <strong>primero debo definir la tarea y después elegir los
+        componentes</strong>.
+      </p>
+
+      <p>
+        Aprendí a relacionar capacidad, velocidad, compatibilidad y
+        precio. Para mi propuesta, busco una combinación que permita
+        ejecutar los programas necesarios y trabajar dentro del
+        presupuesto.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="aprendizajes">
+      <h2 id="aprendizajes">
+        2. Qué entendí al comparar los componentes
+      </h2>
+
+      <h3>CPU, GPU y NPU</h3>
+
+      <p>
+        Al comparar procesadores, entendí que los núcleos, los hilos
+        y la caché deben analizarse según la tarea. La CPU prepara
+        datos y coordina programas; la GPU permite realizar muchos
+        cálculos en paralelo. Para mis pruebas con modelos locales,
+        doy especial importancia a la <strong>VRAM</strong>.
+        La NPU puede ayudar en tareas compatibles, aunque no es mi
+        principal criterio de elección.
+      </p>
+
+      <h3>Almacenamiento y resultados publicados</h3>
+
+      <p>
+        También aprendí que SATA y PCIe son interfaces de conexión,
+        mientras que NVMe es un protocolo utilizado por muchos SSD
+        que funcionan sobre PCIe. Un SSD rápido puede reducir el
+        tiempo de lectura de archivos. Cuando el modelo ya está
+        cargado, la velocidad de respuesta también depende del
+        procesamiento y de la memoria.
+      </p>
+
+      <p>
+        Los tests publicados me mostraron la importancia del programa,
+        la tarea y las condiciones de medición. Por eso, una sola cifra
+        no alcanza para decidir qué componente conviene.
+      </p>
+
+      <p class="section-link">
+        Desarrollo del análisis:
+        <a href="part1.html">Parte 1: Cómputo</a>
+        y
+        <a href="part2.html">Parte 2: Almacenamiento</a>.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="configuraciones">
+      <h2 id="configuraciones">
+        3. Dos configuraciones, dos posibilidades
+      </h2>
+
+      <p>
+        Apliqué estos criterios a dos propuestas domésticas:
+        una para comenzar con hasta 800 USD y otra ideal,
+        sin un límite de precio fijado por la consigna.
+      </p>
+
+      <div
+        class="table-wrap"
+        role="region"
+        aria-label="Comparación de las dos estaciones; desplazamiento horizontal en pantallas pequeñas"
+        tabindex="0"
+      >
+        <table>
+          <caption>
+            Síntesis de las configuraciones de la parte 3
+          </caption>
+
+          <thead>
+            <tr>
+              <th scope="col">Aspecto</th>
+              <th scope="col">El Punto Dulce</th>
+              <th scope="col" class="ideal-heading">
+                Money is No Object
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th scope="row">Presupuesto</th>
+              <td class="price">795,53 USD</td>
+              <td class="price">8.127,58 USD</td>
+            </tr>
+
+            <tr>
+              <th scope="row">CPU</th>
+              <td>AMD Ryzen 5 5600</td>
+              <td>AMD Ryzen 9 9950X</td>
+            </tr>
+
+            <tr>
+              <th scope="row">GPU y VRAM</th>
+              <td>RTX 3060 · 12 GB</td>
+              <td>RTX 5090 · 32 GB</td>
+            </tr>
+
+            <tr>
+              <th scope="row">RAM</th>
+              <td>16 GB DDR4</td>
+              <td>64 GB DDR5</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Almacenamiento</th>
+              <td>SSD SATA de 256 GB</td>
+              <td>Dos SSD NVMe de 2 TB cada uno</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Objetivo</th>
+              <td>
+                Aprender, programar y comenzar pruebas con
+                modelos pequeños.
+              </td>
+              <td>
+                Avanzar hacia pruebas más exigentes y trabajar
+                con más datos.
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">Principal compromiso</th>
+              <td>
+                Poco espacio de almacenamiento y menor
+                margen de RAM.
+              </td>
+              <td>
+                Una inversión mucho mayor y mayores exigencias
+                de alimentación y refrigeración.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Importes de referencia de la parte 3, consultados el
+        28/10/2026. Conversión: 1 USD = 1.560 ARS, cotización
+        vendedora del dólar billete del Banco Nación del 27/10/2026.
+        Se calcula la torre, sin logística y reutilizando periféricos.
+        Las fuentes y el detalle de componentes están en
+        <a href="part3.html">la comparación completa</a>.
+      </p>
+
+      <p>
+        En la propuesta económica, mi decisión principal fue conservar
+        una GPU de 12 GB y ahorrar en la plataforma y el almacenamiento.
+        El SSD pequeño obliga a seleccionar qué archivos guardar.
+        Considero esta combinación un punto de partida razonable
+        dentro de las opciones analizadas.
+      </p>
+
+      <p>
+        La estación ideal ofrece más memoria y espacio para ampliar
+        las pruebas. Estas capacidades permiten trabajar con otras
+        cargas, pero no indican por sí solas cuánto más rápido
+        responderá una misma aplicación.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="eleccion">
+      <h2 id="eleccion">
+        4. Con qué equipo empezaría y por qué
+      </h2>
+
+      <div class="personal-choice">
+        <p>
+          <strong>Para mi situación actual, elegiría la propuesta
+          económica.</strong>
+          Mi objetivo inicial es aprender a preparar pruebas,
+          comparar respuestas y registrar los resultados.
+        </p>
+      </div>
+
+      <p>
+        Empezaría con tareas pequeñas para conocer los límites del
+        equipo. Si me falta espacio para modelos y resultados,
+        ampliaría el almacenamiento. Si la RAM limita mis pruebas,
+        evaluaría su ampliación. Así, cada mejora respondería a
+        una necesidad concreta.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="alcance">
+      <h2 id="alcance">
+        5. Alcance del trabajo y próximo paso
+      </h2>
+
+      <p>
+        Este trabajo se basa en documentación técnica, precios
+        publicados y tests de otras fuentes. Realicé una selección
+        de componentes, cálculos y una revisión de compatibilidad
+        según la documentación. No monté las dos computadoras ni
+        medí su rendimiento.
+      </p>
+
+      <p>
+        Como próximo paso, me gustaría ejecutar un modelo pequeño,
+        usar una lista de preguntas y registrar las respuestas,
+        los tiempos y el uso de memoria. También revisaría errores
+        y respuestas contradictorias, relacionando la prueba con
+        mi interés por la seguridad de la IA.
+      </p>
+
+      <p class="section-link">
+        Fuentes del trabajo:
+        <a href="resources.html">Recursos y bibliografía</a>.
+        Registro de la asistencia utilizada:
+        <a href="prompts.html">Uso de IA</a>.
+      </p>
+    </section>
+
+    <section class="card closing" aria-labelledby="reflexion">
+      <h2 id="reflexion">
+        6. Qué significa este proyecto para mí
+      </h2>
+
+      <p>
+        Esta investigación me ayudó a conectar mi interés por la IA
+        con decisiones concretas de hardware. Ahora entiendo mejor
+        qué necesito para empezar y qué podría mejorar más adelante.
+        Todavía tengo mucho por aprender, pero puedo explicar
+        con más claridad mis elecciones.
+      </p>
+
+      <p class="closing-line">
+        Para mí, preparar una primera estación doméstica es un
+        paso práctico para seguir aprendiendo a investigar.
+      </p>
+    </section>
+
+    <nav class="page-links" aria-label="Continuar por el trabajo">
+      <a href="part3.html">← Parte 3: Workstations</a>
+      <a href="resources.html">Recursos y bibliografía →</a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <strong>Instituto Superior Santo Domingo (ISSD)</strong>
+    </p>
+    <p>Córdoba, Argentina</p>
+    <p>
+      Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2
+    </p>
+    <p>Autor: Vitalii Golovin · Año 2026</p>
+
+    <p class="footer-links">
+      <a href="index.html">Inicio</a>
+      ·
+      <a href="resources.html">Recursos y bibliografía</a>
+      ·
+      <a href="prompts.html">Uso de IA</a>
+    </p>
+  </footer>
+</body>
+</html>
