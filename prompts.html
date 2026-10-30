@@ -1,18 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Vitalii Golovin">
-  <meta
-    name="description"
-    content="Cómo utilicé la inteligencia artificial para organizar la investigación, comprender conceptos, revisar información y preparar este trabajo práctico."
-  >
-
-  <title>Cómo trabajé con la IA | TP 2 · ISSD</title>
-
-  <style>
-    :root {
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Vitalii Golovin y Nikolai Zapolnev" name="author"/>
+<meta content="Cómo utilicé la inteligencia artificial para organizar la investigación, comprender conceptos, revisar información y preparar este trabajo práctico." name="description"/>
+<title>
+   Cómo trabajé con la IA | TP 2 · ISSD
+  </title>
+<style>
+   :root {
       color-scheme: dark;
       --background: #0f172a;
       --navigation: #020617;
@@ -487,521 +485,316 @@
       }
     }
   </style>
+<style id="academic-common-style">
+   /* Presentación común de las siete páginas académicas. */
+html { scroll-padding-top: 110px; }
+header.academic-masthead { margin:0; padding:26px 20px 24px; text-align:center; background:#0b1222; border-bottom:1px solid #334155; color:#e8eef7; font-family:Arial,Helvetica,sans-serif; }
+header.academic-masthead .academic-course { margin:0; padding:0; color:#22d3ee; font-size:22px; font-weight:700; line-height:1.4; letter-spacing:0; }
+header.academic-masthead .academic-work { margin:6px 0 0; padding:0; color:#b4c3d6; font-size:14px; line-height:1.5; }
+nav.academic-nav { position:sticky; top:0; z-index:50; margin:0; padding:12px 16px; background:#020617; border-bottom:1px solid #334155; font-family:Arial,Helvetica,sans-serif; }
+nav.academic-nav ul { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; list-style:none; padding:0; margin:0; }
+nav.academic-nav li { padding:0; margin:0; }
+nav.academic-nav a { display:block; padding:9px 13px; border:1px solid #22d3ee; border-radius:7px; font-size:14px; font-weight:600; line-height:1.4; color:#22d3ee; text-decoration:none; background:transparent; }
+nav.academic-nav a:hover,nav.academic-nav a[aria-current="page"] { color:#020617; background:#22d3ee; }
+nav.academic-nav a:focus-visible { outline:3px solid #fbbf24; outline-offset:3px; }
+main#contenido { width:calc(100% - 40px); max-width:1100px; margin:0 auto; padding:32px 0 48px; }
+main#contenido > header.academic-page-header { margin:0 0 30px; padding:0; text-align:center; background:none; border:0; box-shadow:none; }
+header.academic-page-header h1 { margin:0; padding:0; color:#22d3ee; font-size:clamp(26px,3vw,36px); line-height:1.25; border:0; text-align:center; }
+header.academic-page-header p { max-width:760px; margin:14px auto 0; color:#b4c3d6; font-size:17px; line-height:1.65; text-align:center; }
+footer.academic-common-footer { margin:0; padding:30px 20px; border-top:1px solid #334155; text-align:center; background:#0b1222; color:#b4c3d6; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:1.6; }
+footer.academic-common-footer p { margin:4px 0; }
+footer.academic-common-footer strong { color:#e8eef7; }
+footer.academic-common-footer a { color:#22d3ee; }
+@media(max-width:600px) { header.academic-masthead{padding:20px 16px;} header.academic-masthead .academic-course{font-size:20px;} nav.academic-nav{position:relative;padding:10px;} nav.academic-nav ul{gap:6px;} nav.academic-nav a{padding:8px 10px;font-size:13px;} main#contenido{width:calc(100% - 28px);padding-top:24px;} html{scroll-padding-top:16px;} }
+@media print { header.academic-masthead,footer.academic-common-footer{background:white;color:black;} nav.academic-nav{display:none;} main#contenido{width:100%;max-width:none;} }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#contenido">
-    Saltar al contenido
-  </a>
-
-  <nav class="site-nav" aria-label="Navegación principal">
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="part1.html">Parte 1: Cómputo</a></li>
-      <li><a href="part2.html">Parte 2: Almacenamiento</a></li>
-      <li><a href="part3.html">Parte 3: Workstations</a></li>
-      <li><a href="conclusions.html">Conclusiones</a></li>
-      <li><a href="resources.html">Recursos</a></li>
-      <li>
-        <a href="prompts.html" aria-current="page">Uso de IA</a>
-      </li>
-    </ul>
-  </nav>
-
-  <main id="contenido">
-
-    <header class="page-header">
-      <p class="eyebrow">
-        Arquitectura de Computadoras · TP 2 · 2026
-      </p>
-
-      <h1>Cómo trabajé con la IA</h1>
-
-      <p class="lead">
-        Las preguntas, las revisiones y las decisiones que dieron
-        forma a mi investigación.
-      </p>
-    </header>
-
-    <section class="card" aria-labelledby="introduccion">
-      <h2 id="introduccion">
-        Una ayuda para investigar y aprender
-      </h2>
-
-      <p>
-        En este trabajo utilicé la inteligencia artificial como
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="academic-masthead">
+<p class="academic-course">Arquitectura de Computadoras · 2026</p>
+<p class="academic-work">Trabajo Práctico Integrador N.º 2 · ISSD</p>
+</header>
+<nav aria-label="Navegación principal" class="academic-nav">
+<ul>
+<li>
+<a href="index.html">Inicio</a>
+</li>
+<li>
+<a href="part1.html">Parte 1: Cómputo</a>
+</li>
+<li>
+<a href="part2.html">Parte 2: Almacenamiento</a>
+</li>
+<li>
+<a href="part3.html">Parte 3: Workstations</a>
+</li>
+<li>
+<a href="conclusions.html">Conclusiones</a>
+</li>
+<li>
+<a href="resources.html">Recursos</a>
+</li>
+<li>
+<a aria-current="page" href="prompts.html">Uso de IA</a>
+</li>
+</ul>
+</nav>
+<main id="contenido">
+<header class="academic-page-header">
+<h1>Cómo trabajé con la IA</h1>
+<p class="lead">Las preguntas, las revisiones y las decisiones que dieron forma a mi investigación.</p>
+</header>
+<section aria-labelledby="introduccion" class="card">
+<h2 id="introduccion">Una ayuda para investigar y aprender</h2>
+<p>Soy Vitalii Golovin y me encargué de las consultas a ChatGPT (OpenAI), de solicitar revisiones y de organizar la ayuda recibida. Nikolai Zapolnev y yo realizamos conjuntamente los demás apartados de la investigación. Por eso, esta página describe mi experiencia en primera persona, mientras que las decisiones compartidas se presentan en plural en el resto del sitio.</p>
+<p>
+     En este trabajo utilicé la inteligencia artificial como
         apoyo para comprender conceptos, buscar fuentes, comparar
         alternativas y preparar el sitio web. Mi punto de partida
         fue una pregunta personal:
-        <strong>¿qué computadora necesito para comenzar a investigar
-        sobre alineación y seguridad de la IA desde casa?</strong>
-      </p>
-
-      <p>
-        El proceso tuvo varias revisiones. A medida que comprendía
-        mejor el tema, también podía formular preguntas más precisas
-        y reconocer qué explicaciones necesitaban cambios.
-      </p>
-
-      <p class="note">
-        Las preguntas que aparecen a continuación resumen la lógica
-        del trabajo. No son una transcripción literal de todas las
-        conversaciones ni un registro exacto de su orden.
-      </p>
-    </section>
-
-    <nav class="card contents" aria-labelledby="recorrido">
-      <h2 id="recorrido">El recorrido de la investigación</h2>
-
-      <ol>
-        <li><a href="#paso-1">1. Comprender la necesidad</a></li>
-        <li><a href="#paso-2">2. Elegir una orientación</a></li>
-        <li><a href="#paso-3">3. Organizar la investigación</a></li>
-        <li><a href="#paso-4">4. Comparar componentes y tests</a></li>
-        <li><a href="#paso-5">5. Entender el almacenamiento</a></li>
-        <li><a href="#paso-6">6. Diseñar las dos estaciones</a></li>
-        <li><a href="#paso-7">7. Revisar y corregir</a></li>
-        <li><a href="#paso-8">8. Preparar el texto y el sitio</a></li>
-      </ol>
-    </nav>
-
-    <section class="card" aria-labelledby="paso-1">
-      <h2 id="paso-1" class="step-heading">
-        <span class="step-number" aria-hidden="true">1</span>
-        <span class="step-title">
-          Comprender qué necesitaba investigar
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Qué cambia al elegir una computadora doméstica para
-          estudiar y trabajar con IA? ¿Qué componentes necesitan
-          más atención y por qué?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Me ayudó a relacionar las funciones de la CPU, la GPU,
-            la RAM y el almacenamiento con distintas tareas.
-            También sirvió para distinguir entre usar una aplicación
-            en la nube y ejecutar un modelo en la propia computadora.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué hice con esa ayuda</h3>
-          <p>
-            Definí un objetivo inicial: aprender a utilizar modelos
-            locales, comparar sus respuestas y registrar los
-            resultados. Esto me permitió pensar en necesidades
-            concretas antes de elegir componentes.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="paso-2">
-      <h2 id="paso-2" class="step-heading">
-        <span class="step-number" aria-hidden="true">2</span>
-        <span class="step-title">
-          Relacionar el trabajo con mis intereses
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Qué desafíos presenta el desarrollo de la IA? ¿Qué áreas
-          profesionales existen y cuáles podrían crecer en los
-          próximos años?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Me permitió explorar áreas como la evaluación de
-            modelos, la seguridad, la protección de datos y el
-            desarrollo de aplicaciones. Las posibilidades futuras
-            se trataron como escenarios, no como predicciones seguras.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué decidí</h3>
-          <p>
-            Elegí el perfil de investigador en alineación y
-            seguridad de IA porque me interesa comprender cuándo
-            una respuesta puede ser incorrecta, contradictoria o
-            poco fiable. Tomé este perfil como una orientación para
-            mi aprendizaje y para el diseño de la estación doméstica.
-          </p>
-        </div>
-      </div>
-
-      <p class="section-link">
-        <a href="index.html">
-          Ver la motivación y el perfil elegido en Inicio →
-        </a>
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="paso-3">
-      <h2 id="paso-3" class="step-heading">
-        <span class="step-number" aria-hidden="true">3</span>
-        <span class="step-title">
-          Convertir la consigna en un plan
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Cómo puedo organizar los requisitos del trabajo en una
-          secuencia de investigación clara?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Ayudó a ordenar los temas: primero los componentes de
-            cómputo, después el almacenamiento y finalmente las
-            dos configuraciones completas. También propuso formas
-            de presentar comparaciones, fuentes y conclusiones.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué hice con esa ayuda</h3>
-          <p>
-            Fui revisando la estructura para que cada parte
-            respondiera a las preguntas de la consigna. Pedí que
-            las páginas comenzaran con sus objetivos y que las
-            explicaciones mantuvieran una relación clara con el
-            perfil elegido.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="paso-4">
-      <h2 id="paso-4" class="step-heading">
-        <span class="step-number" aria-hidden="true">4</span>
-        <span class="step-title">
-          Comparar componentes y comprender los tests
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Qué CPUs, GPU y NPU puedo analizar para responder a la
-          consigna? ¿Dónde puedo encontrar documentación y pruebas
-          públicas que ayuden a comprender sus diferencias?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Colaboró en la búsqueda de modelos, documentación
-            técnica y benchmarks. También ayudó a explicar
-            conceptos como núcleos, hilos, caché, cálculo paralelo
-            y memoria de video.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué aprendí y revisé</h3>
-          <p>
-            Aprendí a distinguir una especificación del fabricante
-            de un resultado medido. Pedí que los ejemplos indicaran
-            qué tarea se había probado y de dónde procedían los
-            datos. Los tests de otras fuentes se presentan como
-            resultados publicados, no como pruebas realizadas por mí.
-          </p>
-        </div>
-      </div>
-
-      <p class="section-link">
-        <a href="part1.html">
-          Ver el análisis en Parte 1: Cómputo →
-        </a>
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="paso-5">
-      <h2 id="paso-5" class="step-heading">
-        <span class="step-number" aria-hidden="true">5</span>
-        <span class="step-title">
-          Entender el papel del almacenamiento
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Qué diferencias hay entre SATA, PCIe y NVMe? ¿Cómo afectan
-          al trabajo con modelos y conjuntos de datos?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Ayudó a organizar las diferencias, preparar tablas y
-            representar las velocidades de lectura y escritura.
-            También colaboró en los cálculos teóricos de tiempo
-            de transferencia.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué aprendí y revisé</h3>
-          <p>
-            Comprendí que leer un archivo más rápido no significa
-            acelerar todas las etapas de una aplicación. En la
-            presentación se distinguieron los valores anunciados,
-            los resultados de tests publicados y los cálculos
-            teóricos.
-          </p>
-        </div>
-      </div>
-
-      <p class="section-link">
-        <a href="part2.html">
-          Ver el análisis en Parte 2: Almacenamiento →
-        </a>
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="paso-6">
-      <h2 id="paso-6" class="step-heading">
-        <span class="step-number" aria-hidden="true">6</span>
-        <span class="step-title">
-          Diseñar dos estaciones para el mismo perfil
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Cómo puedo diseñar una estación de hasta 800 USD y otra
-          ideal? ¿Dónde puedo ahorrar y qué ventajas aportan los
-          componentes de mayor capacidad?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Propuso alternativas, ayudó a calcular presupuestos y
-            a revisar la compatibilidad según la documentación.
-            También permitió comparar los compromisos de cada
-            configuración.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué decidí</h3>
-          <p>
-            En la propuesta económica, di prioridad a una GPU de
-            12 GB de VRAM y acepté una plataforma más sencilla y un
-            SSD pequeño. Para la estación ideal, busqué más
-            capacidad de memoria y almacenamiento. Pedí que las
-            dos propuestas se explicaran mediante su utilidad para
-            el perfil, además de sus características técnicas.
-          </p>
-        </div>
-      </div>
-
-      <p class="section-link">
-        <a href="part3.html">
-          Ver las configuraciones en Parte 3: Workstations →
-        </a>
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="paso-7">
-      <h2 id="paso-7" class="step-heading">
-        <span class="step-number" aria-hidden="true">7</span>
-        <span class="step-title">
-          Revisar respuestas y corregir el trabajo
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Qué datos, enlaces o explicaciones necesitan una revisión?
-          ¿Hay afirmaciones demasiado generales o conclusiones que
-          no están suficientemente justificadas?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            Ayudó a contrastar referencias, detectar diferencias
-            entre versiones y revisar cálculos y enlaces.
-            También señaló limitaciones de acceso a algunas fuentes.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué hice con esa ayuda</h3>
-          <p>
-            Solicité nuevas revisiones cuando una explicación no
-            me resultaba clara o parecía alejarse del objetivo.
-            No acepté todas las propuestas iniciales: fui pidiendo
-            cambios en el presupuesto, la estructura, la profundidad
-            técnica y la forma de expresar las conclusiones.
-          </p>
-        </div>
-      </div>
-
-      <p class="section-link">
-        <a href="resources.html">
-          Consultar los recursos y la bibliografía →
-        </a>
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="paso-8">
-      <h2 id="paso-8" class="step-heading">
-        <span class="step-number" aria-hidden="true">8</span>
-        <span class="step-title">
-          Dar forma al texto y al sitio web
-        </span>
-      </h2>
-
-      <p class="question-label">Mi pregunta</p>
-
-      <blockquote class="question">
-        <p>
-          ¿Cómo puedo presentar mis ideas en español con una
-          estructura clara y una redacción correcta? ¿Cómo puedo
-          organizar el sitio para que el lector siga el razonamiento?
-        </p>
-      </blockquote>
-
-      <div class="roles">
-        <div class="role">
-          <h3>Cómo me ayudó la IA</h3>
-          <p>
-            La ayuda incluyó la revisión de mis formulaciones en
-            español, correcciones gramaticales y propuestas para
-            mejorar la claridad, las transiciones y el orden de los
-            párrafos. También colaboró en la elaboración y
-            reformulación de pasajes, y en la preparación del código
-            HTML, las tablas, los gráficos y los esquemas.
-          </p>
-        </div>
-
-        <div class="role">
-          <h3>Qué decidí</h3>
-          <p>
-            Revisé las propuestas y pedí cambios para mantener el
-            sentido que quería expresar. Busqué una presentación
-            que pudiera comprender y explicar, con una voz personal
-            y una relación clara entre preguntas, datos y conclusiones.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="responsabilidad">
-      <h2 id="responsabilidad">Mi responsabilidad como autor</h2>
-
-      <p>
-        Las respuestas de la IA sirvieron como orientación y
-        material de trabajo. Para fundamentar los datos técnicos
-        se utilizaron las fuentes identificadas en cada sección
-        y en la bibliografía.
-      </p>
-
-      <p>
-        Mi responsabilidad es revisar el contenido, comprender
-        las decisiones que presento y poder explicarlas. Si
-        encuentro un error o una afirmación que no puedo justificar,
-        debo corregirla.
-      </p>
-
-      <p>
-        Este trabajo no incluye montaje físico ni benchmarks
-        propios de las dos estaciones.
-      </p>
-    </section>
-
-    <section class="card closing" aria-labelledby="aprendizaje">
-      <h2 id="aprendizaje">
-        Qué aprendí de esta forma de trabajar
-      </h2>
-
-      <p>
-        Aprendí que una pregunta más precisa puede producir una
-        respuesta más útil, pero que esa respuesta todavía necesita
-        revisión. También comprobé que volver a preguntar y
-        cambiar una decisión forma parte del aprendizaje.
-      </p>
-
-      <p class="closing-line">
-        La IA me ayudó a avanzar y organizar el trabajo. Mi interés
-        personal dio dirección al proceso: comprender qué necesito
-        para comenzar a investigar desde casa y cómo justificar
-        esa elección.
-      </p>
-
-      <p class="section-link">
-        <a href="conclusions.html">
-          Leer las conclusiones de la investigación →
-        </a>
-      </p>
-    </section>
-
-    <nav class="page-links" aria-label="Continuar por el trabajo">
-      <a href="resources.html">← Recursos y bibliografía</a>
-      <a href="index.html">Volver al inicio →</a>
-    </nav>
-
-  </main>
-
-  <footer class="site-footer">
-    <p>
-      <strong>Instituto Superior Santo Domingo (ISSD)</strong>
-    </p>
-    <p>Córdoba, Argentina</p>
-    <p>
-      Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2
-    </p>
-    <p>Autor: Vitalii Golovin · Año 2026</p>
-
-    <p class="footer-links">
-      <a href="index.html">Inicio</a>
-      ·
-      <a href="resources.html">Recursos y bibliografía</a>
-      ·
-      <a href="conclusions.html">Conclusiones</a>
-    </p>
-  </footer>
+     <strong>¿qué computadora necesito para comenzar a investigar sobre alineación y seguridad de la IA desde casa?</strong>
+</p>
+<p>El proceso tuvo varias revisiones. A medida que comprendía mejor el tema, también podía formular preguntas más precisas y reconocer qué explicaciones necesitaban cambios.</p>
+<p class="note">Las preguntas que aparecen a continuación resumen la lógica del trabajo. No son una transcripción literal de todas las conversaciones ni un registro exacto de su orden.</p>
+</section>
+<nav aria-labelledby="recorrido" class="card contents">
+<h2 id="recorrido">El recorrido de la investigación</h2>
+<ol>
+<li>
+<a href="#paso-1">1. Comprender la necesidad</a>
+</li>
+<li>
+<a href="#paso-2">2. Elegir una orientación</a>
+</li>
+<li>
+<a href="#paso-3">3. Organizar la investigación</a>
+</li>
+<li>
+<a href="#paso-4">4. Comparar componentes y tests</a>
+</li>
+<li>
+<a href="#paso-5">5. Entender el almacenamiento</a>
+</li>
+<li>
+<a href="#paso-6">6. Diseñar las dos estaciones</a>
+</li>
+<li>
+<a href="#paso-7">7. Revisar y corregir</a>
+</li>
+<li>
+<a href="#paso-8">8. Preparar el texto y el sitio</a>
+</li>
+</ol>
+</nav>
+<section aria-labelledby="paso-1" class="card">
+<h2 class="step-heading" id="paso-1">
+<span aria-hidden="true" class="step-number">1</span>
+<span class="step-title">Comprender qué necesitaba investigar</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Qué cambia al elegir una computadora doméstica para estudiar y trabajar con IA? ¿Qué componentes necesitan más atención y por qué?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Me ayudó a relacionar las funciones de la CPU, la GPU, la RAM y el almacenamiento con distintas tareas. También sirvió para distinguir entre usar una aplicación en la nube y ejecutar un modelo en la propia computadora.</p>
+</div>
+<div class="role">
+<h3>Qué hice con esa ayuda</h3>
+<p>Definí un objetivo inicial: aprender a utilizar modelos locales, comparar sus respuestas y registrar los resultados. Esto me permitió pensar en necesidades concretas antes de elegir componentes.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="paso-2" class="card">
+<h2 class="step-heading" id="paso-2">
+<span aria-hidden="true" class="step-number">2</span>
+<span class="step-title">Relacionar el trabajo con mis intereses</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Qué desafíos presenta el desarrollo de la IA? ¿Qué áreas profesionales existen y cuáles podrían crecer en los próximos años?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Me permitió explorar áreas como la evaluación de modelos, la seguridad, la protección de datos y el desarrollo de aplicaciones. Las posibilidades futuras se trataron como escenarios, no como predicciones seguras.</p>
+</div>
+<div class="role">
+<h3>Qué decidí</h3>
+<p>Elegí el perfil de investigador en alineación y seguridad de IA porque me interesa comprender cuándo una respuesta puede ser incorrecta, contradictoria o poco fiable. Tomé este perfil como una orientación para mi aprendizaje y para el diseño de la estación doméstica.</p>
+</div>
+</div>
+<p class="section-link">
+<a href="index.html">Ver la motivación y el perfil elegido en Inicio →</a>
+</p>
+</section>
+<section aria-labelledby="paso-3" class="card">
+<h2 class="step-heading" id="paso-3">
+<span aria-hidden="true" class="step-number">3</span>
+<span class="step-title">Convertir la consigna en un plan</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Cómo puedo organizar los requisitos del trabajo en una secuencia de investigación clara?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Ayudó a ordenar los temas: primero los componentes de cómputo, después el almacenamiento y finalmente las dos configuraciones completas. También propuso formas de presentar comparaciones, fuentes y conclusiones.</p>
+</div>
+<div class="role">
+<h3>Qué hice con esa ayuda</h3>
+<p>Fui revisando la estructura para que cada parte respondiera a las preguntas de la consigna. Pedí que las páginas comenzaran con sus objetivos y que las explicaciones mantuvieran una relación clara con el perfil elegido.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="paso-4" class="card">
+<h2 class="step-heading" id="paso-4">
+<span aria-hidden="true" class="step-number">4</span>
+<span class="step-title">Comparar componentes y comprender los tests</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Qué CPUs, GPU y NPU puedo analizar para responder a la consigna? ¿Dónde puedo encontrar documentación y pruebas públicas que ayuden a comprender sus diferencias?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Colaboró en la búsqueda de modelos, documentación técnica y benchmarks. También ayudó a explicar conceptos como núcleos, hilos, caché, cálculo paralelo y memoria de video.</p>
+</div>
+<div class="role">
+<h3>Qué aprendí y revisé</h3>
+<p>Aprendí a distinguir una especificación del fabricante de un resultado medido. Pedí que los ejemplos indicaran qué tarea se había probado y de dónde procedían los datos. Los tests de otras fuentes se presentan como resultados publicados, no como pruebas realizadas por mí.</p>
+</div>
+</div>
+<p class="section-link">
+<a href="part1.html">Ver el análisis en Parte 1: Cómputo →</a>
+</p>
+</section>
+<section aria-labelledby="paso-5" class="card">
+<h2 class="step-heading" id="paso-5">
+<span aria-hidden="true" class="step-number">5</span>
+<span class="step-title">Entender el papel del almacenamiento</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Qué diferencias hay entre SATA, PCIe y NVMe? ¿Cómo afectan al trabajo con modelos y conjuntos de datos?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Ayudó a organizar las diferencias, preparar tablas y representar las velocidades de lectura y escritura. También colaboró en los cálculos teóricos de tiempo de transferencia.</p>
+</div>
+<div class="role">
+<h3>Qué aprendí y revisé</h3>
+<p>Comprendí que leer un archivo más rápido no significa acelerar todas las etapas de una aplicación. En la presentación se distinguieron los valores anunciados, los resultados de tests publicados y los cálculos teóricos.</p>
+</div>
+</div>
+<p class="section-link">
+<a href="part2.html">Ver el análisis en Parte 2: Almacenamiento →</a>
+</p>
+</section>
+<section aria-labelledby="paso-6" class="card">
+<h2 class="step-heading" id="paso-6">
+<span aria-hidden="true" class="step-number">6</span>
+<span class="step-title">Diseñar dos estaciones para el mismo perfil</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Cómo puedo diseñar una estación de hasta 800 USD y otra ideal? ¿Dónde puedo ahorrar y qué ventajas aportan los componentes de mayor capacidad?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Propuso alternativas, ayudó a calcular presupuestos y a revisar la compatibilidad según la documentación. También permitió comparar los compromisos de cada configuración.</p>
+</div>
+<div class="role">
+<h3>Qué decidí</h3>
+<p>En la propuesta económica, di prioridad a una GPU de 12 GB de VRAM y acepté una plataforma más sencilla y un SSD pequeño. Para la estación ideal, busqué más capacidad de memoria y almacenamiento. Pedí que las dos propuestas se explicaran mediante su utilidad para el perfil, además de sus características técnicas.</p>
+</div>
+</div>
+<p class="section-link">
+<a href="part3.html">Ver las configuraciones en Parte 3: Workstations →</a>
+</p>
+</section>
+<section aria-labelledby="paso-7" class="card">
+<h2 class="step-heading" id="paso-7">
+<span aria-hidden="true" class="step-number">7</span>
+<span class="step-title">Revisar respuestas y corregir el trabajo</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Qué datos, enlaces o explicaciones necesitan una revisión? ¿Hay afirmaciones demasiado generales o conclusiones que no están suficientemente justificadas?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>Ayudó a contrastar referencias, detectar diferencias entre versiones y revisar cálculos y enlaces. También señaló limitaciones de acceso a algunas fuentes.</p>
+</div>
+<div class="role">
+<h3>Qué hice con esa ayuda</h3>
+<p>Solicité nuevas revisiones cuando una explicación no me resultaba clara o parecía alejarse del objetivo. No acepté todas las propuestas iniciales: fui pidiendo cambios en el presupuesto, la estructura, la profundidad técnica y la forma de expresar las conclusiones.</p>
+</div>
+</div>
+<p class="section-link">
+<a href="resources.html">Consultar los recursos y la bibliografía →</a>
+</p>
+</section>
+<section aria-labelledby="paso-8" class="card">
+<h2 class="step-heading" id="paso-8">
+<span aria-hidden="true" class="step-number">8</span>
+<span class="step-title">Dar forma al texto y al sitio web</span>
+</h2>
+<p class="question-label">Mi pregunta</p>
+<blockquote class="question">
+<p>¿Cómo puedo presentar mis ideas en español con una estructura clara y una redacción correcta? ¿Cómo puedo organizar el sitio para que el lector siga el razonamiento?</p>
+</blockquote>
+<div class="roles">
+<div class="role">
+<h3>Cómo me ayudó la IA</h3>
+<p>La ayuda incluyó la revisión de mis formulaciones en español, correcciones gramaticales y propuestas para mejorar la claridad, las transiciones y el orden de los párrafos. También colaboró en la elaboración y reformulación de pasajes, y en la preparación del código HTML, las tablas, los gráficos y los esquemas.</p>
+</div>
+<div class="role">
+<h3>Qué decidí</h3>
+<p>Revisé las propuestas y pedí cambios para mantener el sentido que quería expresar. Busqué una presentación que pudiera comprender y explicar, con una voz personal y una relación clara entre preguntas, datos y conclusiones.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="responsabilidad" class="card">
+<h2 id="responsabilidad">Mi responsabilidad como autor</h2>
+<p>Las respuestas de la IA sirvieron como orientación y material de trabajo. Para fundamentar los datos técnicos se utilizaron las fuentes identificadas en cada sección y en la bibliografía.</p>
+<p>Mi responsabilidad es revisar el contenido, comprender las decisiones que presento y poder explicarlas. Si encuentro un error o una afirmación que no puedo justificar, debo corregirla.</p>
+<p>Este trabajo no incluye montaje físico ni benchmarks propios de las dos estaciones.</p>
+</section>
+<section aria-labelledby="aprendizaje" class="card closing">
+<h2 id="aprendizaje">Qué aprendí de esta forma de trabajar</h2>
+<p>Aprendí que una pregunta más precisa puede producir una respuesta más útil, pero que esa respuesta todavía necesita revisión. También comprobé que volver a preguntar y cambiar una decisión forma parte del aprendizaje.</p>
+<p class="closing-line">La IA me ayudó a avanzar y organizar el trabajo. Mi interés personal dio dirección al proceso: comprender qué necesito para comenzar a investigar desde casa y cómo justificar esa elección.</p>
+<p class="section-link">
+<a href="conclusions.html">Leer las conclusiones de la investigación →</a>
+</p>
+</section>
+<nav aria-label="Continuar por el trabajo" class="page-links">
+<a href="resources.html">← Recursos y bibliografía</a>
+<a href="index.html">Volver al inicio →</a>
+</nav>
+</main>
+<footer class="academic-common-footer">
+<p>
+<strong>Instituto Superior Santo Domingo (ISSD)</strong>
+</p>
+<p>Córdoba, Argentina</p>
+<p>Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2</p>
+<p>Integrantes: Vitalii Golovin y Nikolai Zapolnev · Año 2026</p>
+<p>
+<a href="index.html">Inicio</a>
+    ·
+    <a href="resources.html">Recursos y bibliografía</a>
+    ·
+    <a href="prompts.html">Uso de IA</a>
+</p>
+</footer>
 </body>
 </html>
