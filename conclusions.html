@@ -1,19 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="author" content="Vitalii Golovin">
-  <meta
-    name="description"
-    content="Conclusiones del trabajo práctico sobre arquitectura de computadoras y dos estaciones domésticas para comenzar a investigar inteligencia artificial."
-  >
-
-  <title>Conclusiones | TP 2 · ISSD</title>
-
-  <style>
-    :root {
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Vitalii Golovin y Nikolai Zapolnev" name="author"/>
+<meta content="Conclusiones del trabajo práctico sobre arquitectura de computadoras y dos estaciones domésticas para comenzar a investigar inteligencia artificial." name="description"/>
+<title>
+   Conclusiones | TP 2 · ISSD
+  </title>
+<style>
+   :root {
       color-scheme: dark;
 
       --background: #0f172a;
@@ -439,316 +436,202 @@
       }
     }
   </style>
+<style id="academic-common-style">
+   /* Presentación común de las siete páginas académicas. */
+html { scroll-padding-top: 110px; }
+header.academic-masthead { margin:0; padding:26px 20px 24px; text-align:center; background:#0b1222; border-bottom:1px solid #334155; color:#e8eef7; font-family:Arial,Helvetica,sans-serif; }
+header.academic-masthead .academic-course { margin:0; padding:0; color:#22d3ee; font-size:22px; font-weight:700; line-height:1.4; letter-spacing:0; }
+header.academic-masthead .academic-work { margin:6px 0 0; padding:0; color:#b4c3d6; font-size:14px; line-height:1.5; }
+nav.academic-nav { position:sticky; top:0; z-index:50; margin:0; padding:12px 16px; background:#020617; border-bottom:1px solid #334155; font-family:Arial,Helvetica,sans-serif; }
+nav.academic-nav ul { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; list-style:none; padding:0; margin:0; }
+nav.academic-nav li { padding:0; margin:0; }
+nav.academic-nav a { display:block; padding:9px 13px; border:1px solid #22d3ee; border-radius:7px; font-size:14px; font-weight:600; line-height:1.4; color:#22d3ee; text-decoration:none; background:transparent; }
+nav.academic-nav a:hover,nav.academic-nav a[aria-current="page"] { color:#020617; background:#22d3ee; }
+nav.academic-nav a:focus-visible { outline:3px solid #fbbf24; outline-offset:3px; }
+main#contenido { width:calc(100% - 40px); max-width:1100px; margin:0 auto; padding:32px 0 48px; }
+main#contenido > header.academic-page-header { margin:0 0 30px; padding:0; text-align:center; background:none; border:0; box-shadow:none; }
+header.academic-page-header h1 { margin:0; padding:0; color:#22d3ee; font-size:clamp(26px,3vw,36px); line-height:1.25; border:0; text-align:center; }
+header.academic-page-header p { max-width:760px; margin:14px auto 0; color:#b4c3d6; font-size:17px; line-height:1.65; text-align:center; }
+footer.academic-common-footer { margin:0; padding:30px 20px; border-top:1px solid #334155; text-align:center; background:#0b1222; color:#b4c3d6; font-family:Arial,Helvetica,sans-serif; font-size:14px; line-height:1.6; }
+footer.academic-common-footer p { margin:4px 0; }
+footer.academic-common-footer strong { color:#e8eef7; }
+footer.academic-common-footer a { color:#22d3ee; }
+@media(max-width:600px) { header.academic-masthead{padding:20px 16px;} header.academic-masthead .academic-course{font-size:20px;} nav.academic-nav{position:relative;padding:10px;} nav.academic-nav ul{gap:6px;} nav.academic-nav a{padding:8px 10px;font-size:13px;} main#contenido{width:calc(100% - 28px);padding-top:24px;} html{scroll-padding-top:16px;} }
+@media print { header.academic-masthead,footer.academic-common-footer{background:white;color:black;} nav.academic-nav{display:none;} main#contenido{width:100%;max-width:none;} }
+  </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#contenido">
-    Saltar al contenido
-  </a>
-
-  <nav class="site-nav" aria-label="Navegación principal">
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="part1.html">Parte 1: Cómputo</a></li>
-      <li><a href="part2.html">Parte 2: Almacenamiento</a></li>
-      <li><a href="part3.html">Parte 3: Workstations</a></li>
-      <li>
-        <a href="conclusions.html" aria-current="page">
-          Conclusiones
-        </a>
-      </li>
-      <li><a href="resources.html">Recursos</a></li>
-      <li><a href="prompts.html">Uso de IA</a></li>
-    </ul>
-  </nav>
-
-  <main id="contenido">
-
-    <header class="page-header">
-      <p class="eyebrow">
-        Arquitectura de Computadoras · TP 2 · 2026
-      </p>
-
-      <h1>Conclusiones del trabajo</h1>
-
-      <p class="lead">
-        Qué aprendí al comparar componentes y cómo usaría ese
-        conocimiento para comenzar a investigar IA desde casa.
-      </p>
-    </header>
-
-    <section class="card" aria-labelledby="resultado">
-      <h2 id="resultado">1. Qué aprendí en este trabajo</h2>
-
-      <p>
-        Mi interés por la alineación y la seguridad de la IA fue el
-        punto de partida. Quería entender qué computadora necesito
-        para realizar mis primeras pruebas con modelos locales.
-        Después de investigar, considero que
-        <strong>primero debo definir la tarea y después elegir los
-        componentes</strong>.
-      </p>
-
-      <p>
-        Aprendí a relacionar capacidad, velocidad, compatibilidad y
-        precio. Para mi propuesta, busco una combinación que permita
-        ejecutar los programas necesarios y trabajar dentro del
-        presupuesto.
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="aprendizajes">
-      <h2 id="aprendizajes">
-        2. Qué entendí al comparar los componentes
-      </h2>
-
-      <h3>CPU, GPU y NPU</h3>
-
-      <p>
-        Al comparar procesadores, entendí que los núcleos, los hilos
-        y la caché deben analizarse según la tarea. La CPU prepara
-        datos y coordina programas; la GPU permite realizar muchos
-        cálculos en paralelo. Para mis pruebas con modelos locales,
-        doy especial importancia a la <strong>VRAM</strong>.
-        La NPU puede ayudar en tareas compatibles, aunque no es mi
-        principal criterio de elección.
-      </p>
-
-      <h3>Almacenamiento y resultados publicados</h3>
-
-      <p>
-        También aprendí que SATA y PCIe son interfaces de conexión,
-        mientras que NVMe es un protocolo utilizado por muchos SSD
-        que funcionan sobre PCIe. Un SSD rápido puede reducir el
-        tiempo de lectura de archivos. Cuando el modelo ya está
-        cargado, la velocidad de respuesta también depende del
-        procesamiento y de la memoria.
-      </p>
-
-      <p>
-        Los tests publicados me mostraron la importancia del programa,
-        la tarea y las condiciones de medición. Por eso, una sola cifra
-        no alcanza para decidir qué componente conviene.
-      </p>
-
-      <p class="section-link">
-        Desarrollo del análisis:
-        <a href="part1.html">Parte 1: Cómputo</a>
-        y
-        <a href="part2.html">Parte 2: Almacenamiento</a>.
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="configuraciones">
-      <h2 id="configuraciones">
-        3. Dos configuraciones, dos posibilidades
-      </h2>
-
-      <p>
-        Apliqué estos criterios a dos propuestas domésticas:
-        una para comenzar con hasta 800 USD y otra ideal,
-        sin un límite de precio fijado por la consigna.
-      </p>
-
-      <div
-        class="table-wrap"
-        role="region"
-        aria-label="Comparación de las dos estaciones; desplazamiento horizontal en pantallas pequeñas"
-        tabindex="0"
-      >
-        <table>
-          <caption>
-            Síntesis de las configuraciones de la parte 3
-          </caption>
-
-          <thead>
-            <tr>
-              <th scope="col">Aspecto</th>
-              <th scope="col">El Punto Dulce</th>
-              <th scope="col" class="ideal-heading">
-                Money is No Object
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <th scope="row">Presupuesto</th>
-              <td class="price">795,53 USD</td>
-              <td class="price">8.127,58 USD</td>
-            </tr>
-
-            <tr>
-              <th scope="row">CPU</th>
-              <td>AMD Ryzen 5 5600</td>
-              <td>AMD Ryzen 9 9950X</td>
-            </tr>
-
-            <tr>
-              <th scope="row">GPU y VRAM</th>
-              <td>RTX 3060 · 12 GB</td>
-              <td>RTX 5090 · 32 GB</td>
-            </tr>
-
-            <tr>
-              <th scope="row">RAM</th>
-              <td>16 GB DDR4</td>
-              <td>64 GB DDR5</td>
-            </tr>
-
-            <tr>
-              <th scope="row">Almacenamiento</th>
-              <td>SSD SATA de 256 GB</td>
-              <td>Dos SSD NVMe de 2 TB cada uno</td>
-            </tr>
-
-            <tr>
-              <th scope="row">Objetivo</th>
-              <td>
-                Aprender, programar y comenzar pruebas con
-                modelos pequeños.
-              </td>
-              <td>
-                Avanzar hacia pruebas más exigentes y trabajar
-                con más datos.
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">Principal compromiso</th>
-              <td>
-                Poco espacio de almacenamiento y menor
-                margen de RAM.
-              </td>
-              <td>
-                Una inversión mucho mayor y mayores exigencias
-                de alimentación y refrigeración.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="note">
-        Importes de referencia de la parte 3, consultados el
-        28/10/2026. Conversión: 1 USD = 1.560 ARS, cotización
-        vendedora del dólar billete del Banco Nación del 27/10/2026.
-        Se calcula la torre, sin logística y reutilizando periféricos.
-        Las fuentes y el detalle de componentes están en
-        <a href="part3.html">la comparación completa</a>.
-      </p>
-
-      <p>
-        En la propuesta económica, mi decisión principal fue conservar
-        una GPU de 12 GB y ahorrar en la plataforma y el almacenamiento.
-        El SSD pequeño obliga a seleccionar qué archivos guardar.
-        Considero esta combinación un punto de partida razonable
-        dentro de las opciones analizadas.
-      </p>
-
-      <p>
-        La estación ideal ofrece más memoria y espacio para ampliar
-        las pruebas. Estas capacidades permiten trabajar con otras
-        cargas, pero no indican por sí solas cuánto más rápido
-        responderá una misma aplicación.
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="eleccion">
-      <h2 id="eleccion">
-        4. Con qué equipo empezaría y por qué
-      </h2>
-
-      <div class="personal-choice">
-        <p>
-          <strong>Para mi situación actual, elegiría la propuesta
-          económica.</strong>
-          Mi objetivo inicial es aprender a preparar pruebas,
-          comparar respuestas y registrar los resultados.
-        </p>
-      </div>
-
-      <p>
-        Empezaría con tareas pequeñas para conocer los límites del
-        equipo. Si me falta espacio para modelos y resultados,
-        ampliaría el almacenamiento. Si la RAM limita mis pruebas,
-        evaluaría su ampliación. Así, cada mejora respondería a
-        una necesidad concreta.
-      </p>
-    </section>
-
-    <section class="card" aria-labelledby="alcance">
-      <h2 id="alcance">
-        5. Alcance del trabajo y próximo paso
-      </h2>
-
-      <p>
-        Este trabajo se basa en documentación técnica, precios
-        publicados y tests de otras fuentes. Realicé una selección
-        de componentes, cálculos y una revisión de compatibilidad
-        según la documentación. No monté las dos computadoras ni
-        medí su rendimiento.
-      </p>
-
-      <p>
-        Como próximo paso, me gustaría ejecutar un modelo pequeño,
-        usar una lista de preguntas y registrar las respuestas,
-        los tiempos y el uso de memoria. También revisaría errores
-        y respuestas contradictorias, relacionando la prueba con
-        mi interés por la seguridad de la IA.
-      </p>
-
-      <p class="section-link">
-        Fuentes del trabajo:
-        <a href="resources.html">Recursos y bibliografía</a>.
-        Registro de la asistencia utilizada:
-        <a href="prompts.html">Uso de IA</a>.
-      </p>
-    </section>
-
-    <section class="card closing" aria-labelledby="reflexion">
-      <h2 id="reflexion">
-        6. Qué significa este proyecto para mí
-      </h2>
-
-      <p>
-        Esta investigación me ayudó a conectar mi interés por la IA
-        con decisiones concretas de hardware. Ahora entiendo mejor
-        qué necesito para empezar y qué podría mejorar más adelante.
-        Todavía tengo mucho por aprender, pero puedo explicar
-        con más claridad mis elecciones.
-      </p>
-
-      <p class="closing-line">
-        Para mí, preparar una primera estación doméstica es un
-        paso práctico para seguir aprendiendo a investigar.
-      </p>
-    </section>
-
-    <nav class="page-links" aria-label="Continuar por el trabajo">
-      <a href="part3.html">← Parte 3: Workstations</a>
-      <a href="resources.html">Recursos y bibliografía →</a>
-    </nav>
-
-  </main>
-
-  <footer class="site-footer">
-    <p>
-      <strong>Instituto Superior Santo Domingo (ISSD)</strong>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="academic-masthead">
+<p class="academic-course">Arquitectura de Computadoras · 2026</p>
+<p class="academic-work">Trabajo Práctico Integrador N.º 2 · ISSD</p>
+</header>
+<nav aria-label="Navegación principal" class="academic-nav">
+<ul>
+<li>
+<a href="index.html">Inicio</a>
+</li>
+<li>
+<a href="part1.html">Parte 1: Cómputo</a>
+</li>
+<li>
+<a href="part2.html">Parte 2: Almacenamiento</a>
+</li>
+<li>
+<a href="part3.html">Parte 3: Workstations</a>
+</li>
+<li>
+<a aria-current="page" href="conclusions.html">Conclusiones</a>
+</li>
+<li>
+<a href="resources.html">Recursos</a>
+</li>
+<li>
+<a href="prompts.html">Uso de IA</a>
+</li>
+</ul>
+</nav>
+<main id="contenido">
+<header class="academic-page-header">
+<h1>Conclusiones del trabajo</h1>
+<p class="lead">Qué aprendimos al comparar componentes y cómo usaríamos ese conocimiento para comenzar a investigar IA desde casa.</p>
+</header>
+<section aria-labelledby="resultado" class="card">
+<h2 id="resultado">1. Qué aprendimos en este trabajo</h2>
+<p>
+     Nuestro interés por la alineación y la seguridad de la IA fue el punto de partida. Queríamos entender qué computadora necesitamos para realizar nuestras primeras pruebas con modelos locales. Después de investigar, consideramos que
+     <strong>primero debemos definir la tarea y después elegir los componentes</strong>
+     .
     </p>
-    <p>Córdoba, Argentina</p>
-    <p>
-      Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2
+<p>Aprendimos a relacionar capacidad, velocidad, compatibilidad y precio. Para nuestra propuesta, buscamos una combinación que permita ejecutar los programas necesarios y trabajar dentro del presupuesto.</p>
+</section>
+<section aria-labelledby="aprendizajes" class="card">
+<h2 id="aprendizajes">2. Qué entendimos al comparar los componentes</h2>
+<h3>CPU, GPU y NPU</h3>
+<p>
+     Al comparar procesadores, entendimos que los núcleos, los hilos y la caché deben analizarse según la tarea. La CPU prepara datos y coordina programas; la GPU permite realizar muchos cálculos en paralelo. Para nuestras pruebas con modelos locales, damos especial importancia a la
+     <strong>VRAM</strong>
+     . La NPU puede ayudar en tareas compatibles, aunque no es nuestro principal criterio de elección.
     </p>
-    <p>Autor: Vitalii Golovin · Año 2026</p>
-
-    <p class="footer-links">
-      <a href="index.html">Inicio</a>
-      ·
-      <a href="resources.html">Recursos y bibliografía</a>
-      ·
-      <a href="prompts.html">Uso de IA</a>
+<h3>Almacenamiento y resultados publicados</h3>
+<p>También aprendimos que SATA y PCIe son interfaces de conexión, mientras que NVMe es un protocolo utilizado por muchos SSD que funcionan sobre PCIe. Un SSD rápido puede reducir el tiempo de lectura de archivos. Cuando el modelo ya está cargado, la velocidad de respuesta también depende del procesamiento y de la memoria.</p>
+<p>Los tests publicados nos mostraron la importancia del programa, la tarea y las condiciones de medición. Por eso, una sola cifra no alcanza para decidir qué componente conviene.</p>
+<p class="section-link">
+     Desarrollo del análisis:
+     <a href="part1.html">Parte 1: Cómputo</a>
+     y
+     <a href="part2.html">Parte 2: Almacenamiento</a>
+     .
     </p>
-  </footer>
+</section>
+<section aria-labelledby="configuraciones" class="card">
+<h2 id="configuraciones">3. Dos configuraciones, dos posibilidades</h2>
+<p>Aplicamos estos criterios a dos propuestas domésticas: una para comenzar con hasta 800 USD y otra ideal, sin un límite de precio fijado por la consigna.</p>
+<div aria-label="Comparación de las dos estaciones; desplazamiento horizontal en pantallas pequeñas" class="table-wrap" role="region" tabindex="0">
+<table>
+<caption>
+       Síntesis de las configuraciones de la parte 3
+      </caption>
+<thead>
+<tr>
+<th scope="col">Aspecto</th>
+<th scope="col">El Punto Dulce</th>
+<th class="ideal-heading" scope="col">Money is No Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Presupuesto</th>
+<td class="price">795,53 USD</td>
+<td class="price">8.127,58 USD</td>
+</tr>
+<tr>
+<th scope="row">CPU</th>
+<td>AMD Ryzen 5 5600</td>
+<td>AMD Ryzen 9 9950X</td>
+</tr>
+<tr>
+<th scope="row">GPU y VRAM</th>
+<td>RTX 3060 · 12 GB</td>
+<td>RTX 5090 · 32 GB</td>
+</tr>
+<tr>
+<th scope="row">RAM</th>
+<td>16 GB DDR4</td>
+<td>64 GB DDR5</td>
+</tr>
+<tr>
+<th scope="row">Almacenamiento</th>
+<td>SSD SATA de 256 GB</td>
+<td>Dos SSD NVMe de 2 TB cada uno</td>
+</tr>
+<tr>
+<th scope="row">Objetivo</th>
+<td>Aprender, programar y comenzar pruebas con modelos pequeños.</td>
+<td>Avanzar hacia pruebas más exigentes y trabajar con más datos.</td>
+</tr>
+<tr>
+<th scope="row">Principal compromiso</th>
+<td>Poco espacio de almacenamiento y menor margen de RAM.</td>
+<td>Una inversión mucho mayor y mayores exigencias de alimentación y refrigeración.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="note">
+     Importes de referencia de la parte 3, consultados el 28/10/2026. Conversión: 1 USD = 1.560 ARS, cotización vendedora del dólar billete del Banco Nación del 27/10/2026. Se calcula la torre, sin logística y reutilizando periféricos. Las fuentes y el detalle de componentes están en
+     <a href="part3.html">la comparación completa</a>
+     .
+    </p>
+<p>En la propuesta económica, nuestra decisión principal fue conservar una GPU de 12 GB y ahorrar en la plataforma y el almacenamiento. El SSD pequeño obliga a seleccionar qué archivos guardar. Consideramos esta combinación un punto de partida razonable dentro de las opciones analizadas.</p>
+<p>La estación ideal ofrece más memoria y espacio para ampliar las pruebas. Estas capacidades permiten trabajar con otras cargas, pero no indican por sí solas cuánto más rápido responderá una misma aplicación.</p>
+</section>
+<section aria-labelledby="eleccion" class="card">
+<h2 id="eleccion">4. Con qué equipo empezaríamos y por qué</h2>
+<div class="personal-choice">
+<p>
+<strong>Para nuestra situación actual, elegiríamos la propuesta económica.</strong>
+      Nuestro objetivo inicial es aprender a preparar pruebas, comparar respuestas y registrar los resultados.
+     </p>
+</div>
+<p>Empezaríamos con tareas pequeñas para conocer los límites del equipo. Si nos falta espacio para modelos y resultados, ampliaríamos el almacenamiento. Si la RAM limita nuestras pruebas, evaluaríamos su ampliación. Así, cada mejora respondería a una necesidad concreta.</p>
+</section>
+<section aria-labelledby="alcance" class="card">
+<h2 id="alcance">5. Alcance del trabajo y próximo paso</h2>
+<p>Este trabajo se basa en documentación técnica, precios publicados y tests de otras fuentes. Realizamos una selección de componentes, cálculos y una revisión de compatibilidad según la documentación. No montamos las dos computadoras ni medimos su rendimiento.</p>
+<p>Como próximo paso, nos gustaría ejecutar un modelo pequeño, usar una lista de preguntas y registrar las respuestas, los tiempos y el uso de memoria. También revisaríamos errores y respuestas contradictorias, relacionando la prueba con nuestro interés por la seguridad de la IA.</p>
+<p class="section-link">
+     Fuentes del trabajo:
+     <a href="resources.html">Recursos y bibliografía</a>
+     . Registro de la asistencia utilizada:
+     <a href="prompts.html">Uso de IA</a>
+     .
+    </p>
+</section>
+<section aria-labelledby="reflexion" class="card closing">
+<h2 id="reflexion">6. Qué significa este proyecto para nosotros</h2>
+<p>Esta investigación nos ayudó a conectar nuestro interés por la IA con decisiones concretas de hardware. Ahora entendemos mejor qué necesitamos para empezar y qué podríamos mejorar más adelante. Todavía tenemos mucho por aprender, pero podemos explicar con más claridad nuestras elecciones.</p>
+<p class="closing-line">Para nosotros, preparar una primera estación doméstica es un paso práctico para seguir aprendiendo a investigar.</p>
+</section>
+<nav aria-label="Continuar por el trabajo" class="page-links">
+<a href="part3.html">← Parte 3: Workstations</a>
+<a href="resources.html">Recursos y bibliografía →</a>
+</nav>
+</main>
+<footer class="academic-common-footer">
+<p>
+<strong>Instituto Superior Santo Domingo (ISSD)</strong>
+</p>
+<p>Córdoba, Argentina</p>
+<p>Arquitectura de Computadoras · Trabajo Práctico Integrador N.º 2</p>
+<p>Integrantes: Vitalii Golovin y Nikolai Zapolnev · Año 2026</p>
+<p>
+<a href="index.html">Inicio</a>
+    ·
+    <a href="resources.html">Recursos y bibliografía</a>
+    ·
+    <a href="prompts.html">Uso de IA</a>
+</p>
+</footer>
 </body>
 </html>
